@@ -1,0 +1,43 @@
+User-agent: Yandex
+Disallow: /cart
+Disallow: /personal-data
+Disallow: /personal-data/
+Disallow: /cookie
+Disallow: *ProductSearch
+Disallow: *search
+Disallow: *sort=
+Disallow: *login
+Disallow: *?t=
+Disallow: *Ajax
+Disallow: *js
+
+Clean-param: t&t= /pdf/products/
+
+User-agent: Googlebot
+Disallow: /cart
+Disallow: /personal-data
+Disallow: /personal-data/
+Disallow: /cookie
+Disallow: *ProductSearch
+Disallow: *search
+Disallow: *sort=
+Disallow: *login
+Disallow: *?t=
+Disallow: *Ajax
+Disallow: *js
+
+User-agent: *
+Disallow: /cart
+Disallow: /personal-data
+Disallow: /personal-data/
+Disallow: /cookie
+Disallow: *ProductSearch
+Disallow: *search
+Clean-param: t&t= /pdf/products/
+Disallow: *sort=
+Disallow: *login
+Disallow: *?t=
+Disallow: *Ajax
+Disallow: *js
+
+Sitemap: https://gassensor.ru/sitemap.xml

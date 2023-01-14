@@ -1,0 +1,17 @@
+# use index.php as index file
+DirectoryIndex index.php
+
+# use mod_rewrite for pretty URL support
+RewriteEngine on
+
+# redirect to the page without a trailing slash
+RewriteCond %{REQUEST_URI} ^/.*/$
+RewriteRule ^(.*)/ /backend/$1 [L,R=301]
+
+# If a directory or a file exists, use the request directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !\.(css|gif|ico|jpg|js|png|swf|txt)$
+
+# Otherwise forward the request to index.php
+RewriteRule ^(.*)$ index.php

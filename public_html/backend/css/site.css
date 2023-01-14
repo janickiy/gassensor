@@ -1,0 +1,88 @@
+body > .xdebug-var-dump {
+    /* fix overlap navbar */
+    margin-top: 100px;
+    background: orange;
+    overflow: visible;
+}
+
+main > .container-fluid {
+  padding: 60px 15px 0;
+}
+
+form .form-group button.btn.btn-success {
+	margin-top: 1rem;
+}
+
+form .has-error input {
+	background: #fee;
+}
+
+form .has-error div.help-block {
+	background: red;
+	color: #eee;
+	margin-bottom: 1rem;
+	padding-left: 1rem;
+}
+
+.grid-view td,
+.grid-view th,
+.detail-view th,
+.detail-view td {
+    font-size: 0.75em;
+    padding: 4px !important;
+}
+
+
+/*
+
+#main-menu .nav-link {
+	font-size: 0.7rem;
+}
+
+#main-menu .navbar-brand {
+	font-size: 1rem;
+}
+
+@media (max-width: 991px) {
+	#main-menu .nav-link {
+	    font-size: 1.5rem;
+	}
+	#main-menu .navbar-brand {
+	    font-size: 2rem;
+	}
+}
+*/
+
+/* >=xs */
+/*
+@media (min-width: 1200px) {
+	#main-menu .nav-link {
+	    font-size: 0.85rem;
+	}
+	#main-menu .navbar-brand {
+	    font-size: 1.25rem;
+	}
+
+}
+
+.grid-view tr.inactive {
+	background: #fcc !important;
+}
+
+.mt--3 {
+	margin-top: -16px;
+}
+
+.user-index .grid-view tr.inactive td.isActive button {
+	color: red;
+}
+
+form .has-error input {
+	background: #fee;
+}
+
+form .help-block {
+	color: red;
+	font-weight: 700;
+}
+*/

@@ -1,0 +1,31 @@
+# yii console commands
+/yii_test
+/yii_test.bat
+
+# composer vendor dir
+/vendor
+
+# composer itself is not needed
+composer.phar
+
+# phpunit itself is not needed
+phpunit.phar
+# local phpunit config
+/phpunit.xml
+/.settings/
+/.buildpath
+/.project
+/tmp/
+/*.php
+/*.log
+/*.sql
+/public_html/news
+/yii-app/tests
+.vscode/settings.json
+/public_html/i/products
+/public_html/i/manufactures
+/public_html/pdf
+/public_html/.vscode
+/.vscode
+
+/composer.lock
