@@ -19,16 +19,15 @@ LegacyAsset::register($this);
     <html lang="<?= Yii::$app->language ?>" class="h-100">
     <head>
         <?= $this->render('google') ?>
-        <meta charset="<?= Yii::$app->charset ?>"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta charset="<?= Yii::$app->charset ?>">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <?= Html::csrfMetaTags() ?>
 
         <title><?= defined('TITLE_PREFIX') ? TITLE_PREFIX : '' ?><?= Html::encode($this->title) ?></title>
         <?= $this->render('json-ld') ?>
 
-
-        <link rel="shortcut icon" href="/i/favicon.png"/>
+        <link rel="shortcut icon" href="/i/favicon.png">
 
         <?php
 

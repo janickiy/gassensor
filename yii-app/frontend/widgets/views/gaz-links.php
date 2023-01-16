@@ -2,7 +2,6 @@
 /* @var $this yii\web\View */
 
 use common\models\Gaz;
-use yii\helpers\Html;
 
 ?>
 
