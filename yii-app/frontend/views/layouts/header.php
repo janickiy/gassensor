@@ -87,7 +87,7 @@ $user = Yii::$app->user;
             <a href="/page/accessories">Аксессуары</a>
           </li>
           <li class="menu-item">
-            <a href="/converter">Конвертер газа</a>
+            <a href="/converter">Конвертер</a>
           </li>
           <li class="menu-item">
             <a href="/page/contacts">Контакты </a>
@@ -142,7 +142,7 @@ $user = Yii::$app->user;
                 <li class="menu-item  current-menu-ancestor current-menu-parent"><a href="/">Главная</a></li>
                 <li class="menu-item"><a href="/catalog">Каталог</a></li>
                 <li class="menu-item"><a href="/page/accessories">Аксессуары</a></li>
-                <li class="menu-item"><a href="/converter">Конвертер газа</a></li>
+                <li class="menu-item"><a href="/converter">Конвертер</a></li>
                 <li class="menu-item"><a href="/manufacture">Производители</a></li>
                 <li class="menu-item"><a href="/page/contacts">Контакты </a></li>
               </ul>

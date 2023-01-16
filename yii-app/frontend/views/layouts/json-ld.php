@@ -49,8 +49,8 @@ use yii\helpers\Url;
     {
       "@type":"SiteNavigationElement",
       "position":5,
-      "name": "Конвертер газа",
-      "description": "Конвертер газа",
+      "name": "Конвертер",
+      "description": "Конвертер",
       "url":"https://gassensor.ru/converter"
     },
     {
