@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 <div class="add-product-to-cart-wrap">
         <?php $form = ActiveForm::begin(['action' => ['cart/add']]) ?>
 
-          <?= $form->field($formAdd, 'productId')->hiddenInput(['id'=>'addtocartform-productid-p-' . $model->id])->label(false) ?>
+          <?= $form->field($formAdd, 'productId')->hiddenInput(['id'=>'addtocartform-productid-p' . $model->id])->label(false) ?>
 
           <?php
             $countControl = $form->field($formAdd, 'count');
@@ -62,6 +62,6 @@ use yii\widgets\ActiveForm;
     </table>
 
 
-        <?php ModalCustomeader::end();?>
+        <?php ModalCustomHeader::end();?>
 
     </div>

@@ -9,7 +9,7 @@ use yii\base\Widget;
 
 class GazConverterWidget extends Widget
 {
-    public $title = 'Конвертер';
+    public $title = 'Конвертер газа';
 
     public function run()
     {

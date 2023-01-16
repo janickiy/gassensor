@@ -128,7 +128,7 @@ $user = Yii::$app->user;
         <div class="row">
           <div class="col-6">
             <div class="logo-brand-mobile">
-              <a href="/"><img src="/i/logo.svg" alt="industris" title="industris"></a>
+              <a href="/"><img src="/i/logo.svg" alt="industris" title="industris" /></a>
             </div>
           </div>
           <div class="col-6">
