@@ -62,14 +62,14 @@ $user = Yii::$app->user;
     </div>
 
     <div id="sky">
-      <img src="/i/header.png" alt="header" title="header">
+      <img src="/i/header.png" loading="lazy" alt="header" title="header">
       <div class="lozung-block">
         <span>Поиск, подбор, поставка и техническая<br>поддержка газовых датчиков и сенсоров</span>
       </div>
       <div class="logo-block">
         <div class="logo-brand">
           <a href="/">
-            <img src="/i/logo.svg" alt="Газсенсор: ГАЗОВЫЕ ДАТЧИКИ И СЕНСОРЫ" title="Газсенсор: ГАЗОВЫЕ ДАТЧИКИ И СЕНСОРЫ">
+            <img src="/i/logo.svg" loading="lazy" alt="Газсенсор: ГАЗОВЫЕ ДАТЧИКИ И СЕНСОРЫ" title="Газсенсор: ГАЗОВЫЕ ДАТЧИКИ И СЕНСОРЫ">
           </a>
         </div>
       </div>
@@ -128,7 +128,7 @@ $user = Yii::$app->user;
         <div class="row">
           <div class="col-6">
             <div class="logo-brand-mobile">
-              <a href="/"><img src="/i/logo.svg" alt="industris" title="industris" /></a>
+              <a href="/"><img src="/i/logo.svg" loading="lazy" alt="industris" title="industris" /></a>
             </div>
           </div>
           <div class="col-6">

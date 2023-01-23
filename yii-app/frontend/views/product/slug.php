@@ -45,6 +45,7 @@ $this->params['productJsonLd'] = $model->getJsonLd();
     ?>
           <?= Html::img($url, [
               'alt' => $this->title,
+              'loading' => "lazy",
               'title' => $this->title,
               'class' => 'border',
           ]) ?>

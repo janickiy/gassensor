@@ -28,7 +28,7 @@ $seo = Seo::findOne(['type' => Seo::TYPE_MANUFACTURES])->registerMetaTags($this)
               <div class="my-services-box">
                 <div class="services-icon">
                   <a href="<?= $url ?>">
-                      <?= Html::img($model->logoUrl, ['style' => "max-height: 100px;", 'alt' => $model->title, 'title' => $model->title]) ?>
+                      <?= Html::img($model->logoUrl, ['style' => "max-height: 100px;", 'loading' => "lazy", 'alt' => $model->title, 'title' => $model->title]) ?>
                   </a>
                 </div>
                 <div class="services-content">

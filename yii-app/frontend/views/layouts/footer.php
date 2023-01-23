@@ -12,7 +12,7 @@ use common\models\Setting;
       <div class="col-md-3 col-sm-6">
         <div class="widget-footer">
           <div id="media_image-1" class="widget widget_media_image">
-            <a href="/"><img src="/i/logo-footer.svg" alt="Газсенсор: ГАЗОВЫЕ ДАТЧИКИ И СЕНСОРЫ"></a>
+            <a href="/"><img loading="lazy" src="/i/logo-footer.svg" alt="Газсенсор: ГАЗОВЫЕ ДАТЧИКИ И СЕНСОРЫ"></a>
           </div>
         </div>
       </div>

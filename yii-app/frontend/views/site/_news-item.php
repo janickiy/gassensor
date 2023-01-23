@@ -30,7 +30,7 @@ use yii\helpers\Html;
     <?php
         $url = $model->getPictUrl() ?: 'https://dummyimage.com/240x160/fff/aaa.png&text=no%20foto';
     ?>
-    <?= Html::img($url, ['alt' => $model->title, 'title' => $model->title,]) ?>
+    <?= Html::img($url, ['alt' => $model->title, 'loading' => "lazy", 'title' => $model->title,]) ?>
   </div>
   <div class="inner-post">
       <div class="entry-summary">

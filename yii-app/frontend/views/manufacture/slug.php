@@ -22,7 +22,7 @@ if ($seo = $model->seo) {
       <div class="manufacture-header">
         <div class="single-img">
           <div class="img-main">
-            <?= Html::img($model->logoUrl, ['style' => "max-height: 100px;", 'alt' => $model->title]) ?>
+            <?= Html::img($model->logoUrl, ['style' => "max-height: 100px;", 'loading' => "lazy", 'alt' => $model->title]) ?>
           </div>
         </div>
         <div class="col">

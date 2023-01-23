@@ -48,6 +48,7 @@ use yii\widgets\ActiveForm;
           <div class="col">
               <?= Html::img($url, [
                   'alt' => $model->name,
+                  'loading' => "lazy",
                   'title' => $model->name,
                   'style' => 'width: 120px;',
               ]) ?>
