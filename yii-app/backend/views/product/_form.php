@@ -6,8 +6,10 @@
 
 /* @var $modelsRange common\models\ProductRange[] */
 
-use common\models\{Gaz,Manufacture,MeasurementType};
-use wbraganca\dynamicform\DynamicFormWidget;
+use common\models\Gaz;
+use common\models\Manufacture;
+use common\models\MeasurementType;
+use kidzen\dynamicform\DynamicFormWidget;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\web\View;
@@ -120,12 +122,14 @@ use yii\web\View;
 
             <h3>Диапазоны</h3>
 
-            <?php
 
+            <?php
+            //https://github.com/kidzen/yii2-dynamicform
             DynamicFormWidget::begin([
                 'widgetContainer' => 'dynamicform_wrapper', // required: only alphanumeric characters plus "_" [A-Za-z0-9_]
                 'widgetBody' => '.container-items', // required: css class selector
-                'widgetItem' => '.row', // required: css class
+                'widgetItem' => '.item', // required: css class
+                //'limit' => 4, // the maximum times, an element can be added (default 999)
                 'min' => 1, // 0 or 1 (default 1)
                 'insertButton' => '.add-item', // css class
                 'deleteButton' => '.remove-item', // css class
@@ -138,11 +142,12 @@ use yii\web\View;
                 ],
             ]); ?>
 
+
             <div class="box-header">
                 <div class="row">
                     <div class="col-md-12">
 
-                        <button type="button" class="btn btn-success btn-sm pull-right"><i
+                        <button type="button" class="btn add-item btn-success btn-sm pull-right"><i
                                     class="fa fa-plus-circle"></i> Добавить
                         </button>
 
@@ -152,33 +157,37 @@ use yii\web\View;
 
             <br>
 
+
             <div class="container-items">
-            <?php foreach ($modelsRange as $i => $modelRange): ?>
+                <?php foreach ($modelsRange as $i => $modelRange): ?>
 
-                <?php if (!$modelRange->isNewRecord): ?>
-                    <?= Html::activeHiddenInput($modelRange, "[{$i}]id") ?>
-                <?php endif; ?>
+                    <?php if (!$modelRange->isNewRecord): ?>
+                        <?= Html::activeHiddenInput($modelRange, "[{$i}]id") ?>
+                    <?php endif; ?>
 
-                    <div class="row">
-                        <div class="col">
-                            <?= $form->field($modelRange, "[{$i}]from")->textInput() ?>
-                        </div>
-                        <div class="col">
-                            <?= $form->field($modelRange, "[{$i}]to")->textInput() ?>
-                        </div>
-                        <div class="col">
-                            <?= $form->field($modelRange, "[{$i}]unit")->textInput() ?>
-                        </div>
+                    <div class="card item row p-1 mb-2">
 
                         <div>
                             <button type="button" class="remove-item btn btn-danger btn-xs"><i
                                         class="fa fa-trash-o"></i></button>
                         </div>
+
+
+                        <div class="row">
+                            <div class="col">
+                                <?= $form->field($modelRange, "[{$i}]from")->textInput() ?>
+                            </div>
+                            <div class="col">
+                                <?= $form->field($modelRange, "[{$i}]to")->textInput() ?>
+                            </div>
+                            <div class="col">
+                                <?= $form->field($modelRange, "[{$i}]unit")->textInput() ?>
+                            </div>
+                        </div>
+
                     </div>
-
-            <?php endforeach; ?>
-
-        </div>
+                <?php endforeach; ?>
+            </div>
 
             <?php DynamicFormWidget::end(); ?>
 
@@ -216,4 +225,5 @@ $this->registerJs(
     View::POS_END
 );
 ?>
+
 

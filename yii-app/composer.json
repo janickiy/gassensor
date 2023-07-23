@@ -1,48 +1,50 @@
 {
-	"name" : "gassensor/gassensor",
-	"description" : "gassensor site",
-	"type" : "project",
-	"minimum-stability" : "dev",
-	"require" : {
-		"php": ">=7.4.0",
-		"box/spout": "^3.3",
-		"kartik-v/yii2-editors": "dev-master",
-		"kartik-v/yii2-grid": "dev-master",
-		"kartik-v/yii2-widget-select2": "@dev",
-		"wbraganca/yii2-dynamicform": "*",
-		"phpoffice/phpspreadsheet": "dev-master",
-		"wdmg/yii2-robots": "dev-master",
-		"yiisoft/yii2": "~2.0.14",
-		"yiisoft/yii2-bootstrap5": "2.0.1",
-		"yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
-		"yiithings/yii2-dotenv": "*"
-	},
-	"require-dev" : {
-		"bazilio/yii2-stubs-generator" : "dev-master",
-		"codeception/codeception" : "4.0.*-dev",
-		"codeception/module-yii2" : "~1.1.5",
-		"codeception/specify" : "dev-master",
-		"codeception/verify" : "~1.0.0",
-		"jdorn/sql-formatter" : "dev-master",
-		"yiisoft/yii2-debug" : "~2.1.0",
-		"yiisoft/yii2-faker" : "~2.0.0",
-		"yiisoft/yii2-gii" : "~2.2.0"
-	},
-	"config" : {
-		"process-timeout" : 1800,
-		"fxp-asset" : {
-			"enabled" : false
-		},
-		"optimize-autoloader" : true,
-		"preferred-install" : "dist",
-		"sort-packages" : true,
-		"allow-plugins": {
-			"yiisoft/yii2-composer": true
-		}
-	},
-	"repositories" : [{
-			"type" : "composer",
-			"url" : "https://asset-packagist.org"
-		}
-	]
+  "name": "gassensor/gassensor",
+  "description": "gassensor site",
+  "type": "project",
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=7.4.0",
+    "box/spout": "^3.3",
+    "kartik-v/yii2-editors": "dev-master",
+    "kartik-v/yii2-grid": "dev-master",
+    "kartik-v/yii2-widget-select2": "@dev",
+    "wbraganca/yii2-dynamicform": "*",
+    "phpoffice/phpspreadsheet": "dev-master",
+    "wdmg/yii2-robots": "dev-master",
+    "yiisoft/yii2": "~2.0.14",
+    "yiisoft/yii2-bootstrap5": "2.0.1",
+    "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
+    "yiithings/yii2-dotenv": "*",
+    "kidzen/yii2-dynamicform": "*"
+  },
+  "require-dev": {
+    "bazilio/yii2-stubs-generator": "dev-master",
+    "codeception/codeception": "4.0.*-dev",
+    "codeception/module-yii2": "~1.1.5",
+    "codeception/specify": "dev-master",
+    "codeception/verify": "~1.0.0",
+    "jdorn/sql-formatter": "dev-master",
+    "yiisoft/yii2-debug": "~2.1.0",
+    "yiisoft/yii2-faker": "~2.0.0",
+    "yiisoft/yii2-gii": "~2.2.0"
+  },
+  "config": {
+    "process-timeout": 1800,
+    "fxp-asset": {
+      "enabled": false
+    },
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ]
 }
