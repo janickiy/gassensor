@@ -102,7 +102,7 @@ class SeoController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
+    public function actionView(int $id)
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
@@ -136,7 +136,7 @@ class SeoController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdate(int $id)
     {
         $model = $this->findModel($id);
 
@@ -154,13 +154,16 @@ class SeoController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDelete(int $id)
     {
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
 
+    /**
+     * @return string
+     */
     public function actionManufacture()
     {
         $searchModel = new ManufactureSearch();
@@ -174,10 +177,10 @@ class SeoController extends Controller
     }
 
     /**
-     * @param $id
-     * @return string
+     * @param int $id
+     * @return string|\yii\web\Response
      */
-    public function actionManufactureUpdate($id)
+    public function actionManufactureUpdate(int $id)
     {
         $model = Manufacture::findOne($id);
 
@@ -204,7 +207,6 @@ class SeoController extends Controller
         return $this->render('manufacture-update', compact('modelSeo', 'model'));
     }
 
-
     /**
      * Finds the Seo model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -212,7 +214,7 @@ class SeoController extends Controller
      * @return Seo the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected function findModel(int $id)
     {
         if (($model = Seo::findOne($id)) !== null) {
             return $model;

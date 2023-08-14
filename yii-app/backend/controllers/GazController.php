@@ -7,7 +7,7 @@ use common\models\search\GazSearch;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\{Controller,NotFoundHttpException};
-
+use common\helpers\StringHelpers;
 
 /**
  * GazController implements the CRUD actions for Gaz model.
@@ -50,7 +50,7 @@ class GazController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
+    public function actionView(int $id)
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
@@ -75,13 +75,13 @@ class GazController extends Controller
                 $isValid = $modelSeo->validate() && $isValid;
 
                 if ($isValid) {
+                    $model->slug = StringHelpers::slug($model->slug);
                     $model->save(false);
                     $modelSeo->ref_id = $model->id;
                     $modelSeo->save(false);
 
                     return $this->redirect(['view', 'id' => $model->id]);
                 }
-
             }
         } else {
             $model->loadDefaultValues();
@@ -97,7 +97,7 @@ class GazController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdate(int $id)
     {
         $model = $this->findModel($id);
 
@@ -110,6 +110,7 @@ class GazController extends Controller
             $isValid = $modelSeo->validate() && $isValid;
 
             if ($isValid) {
+                $model->slug = StringHelpers::slug($model->slug);
                 $model->save(false);
                 $modelSeo->save(false);
 
@@ -127,7 +128,7 @@ class GazController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDelete(int $id)
     {
         $this->findModel($id)->delete();
 
@@ -141,7 +142,7 @@ class GazController extends Controller
      * @return Gaz the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected function findModel(int $id)
     {
         if (($model = Gaz::findOne($id)) !== null) {
             return $model;

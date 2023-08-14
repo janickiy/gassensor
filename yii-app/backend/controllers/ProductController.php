@@ -4,12 +4,12 @@ namespace backend\controllers;
 
 use Yii;
 use common\helpers\FlashTrait;
-use common\models\{ProductRange,Seo,Product,ProductGaz};
+use common\models\{ProductRange, Seo, Product, ProductGaz};
 use common\models\search\ProductSearch;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
-use yii\web\{Controller,NotFoundHttpException,UploadedFile};
-
+use yii\web\{Controller, NotFoundHttpException, UploadedFile};
+use common\helpers\StringHelpers;
 
 /**
  * ProductController implements the CRUD actions for Product model.
@@ -64,7 +64,8 @@ class ProductController extends Controller
     /**
      * Creates a new Product model.
      * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
+     * @return string|\yii\web\Response
+     * @throws \Exception
      */
     public function actionCreate()
     {
@@ -85,6 +86,7 @@ class ProductController extends Controller
                 $isValid = Product::validateMultiple($modelsRange, ['from', 'to', 'unit']) && $isValid;
 
                 if ($isValid) {
+                    $model->slug = StringHelpers::slug($model->slug);
                     $model->save(false);
                     $modelSeo->ref_id = $model->id;
                     $modelSeo->save(false);
@@ -130,7 +132,7 @@ class ProductController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdate(int $id)
     {
         $model = $this->findModel($id);
         $modelSeo = $model->seo ?: new Seo(['type' => Seo::TYPE_PRODUCT, 'ref_id' => $model->id]);
@@ -152,6 +154,7 @@ class ProductController extends Controller
             $isValid = Product::validateMultiple($modelsRange, ['from', 'to', 'unit']) && $isValid;
 
             if ($isValid) {
+                $model->slug = StringHelpers::slug($model->slug);
                 $model->save(false);
                 $modelSeo->save(false);
 
@@ -177,6 +180,7 @@ class ProductController extends Controller
                 if ($deletedIDs) {
                     ProductRange::deleteAll(['id' => $deletedIDs]);
                 }
+
                 foreach ($modelsRange as $modelRange) {
                     $modelRange->product_id = $model->id;
                     $modelRange->save(false);
@@ -194,11 +198,13 @@ class ProductController extends Controller
     /**
      * Deletes an existing Product model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $id ID
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * @param int $id
+     * @return \yii\web\Response
+     * @throws NotFoundHttpException
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
      */
-    public function actionDelete($id)
+    public function actionDelete(int $id)
     {
         $model = $this->findModel($id);
 
@@ -249,12 +255,12 @@ class ProductController extends Controller
     }
 
     /**
-     * @param $id
+     * @param int $id
      * @param $i
      * @return \yii\web\Response
      * @throws NotFoundHttpException
      */
-    public function actionDeletePdf($id, $i)
+    public function actionDeletePdf(int $id, $i)
     {
         $i = $i ? (int)$i : '';
         $model = $this->findModel($id);
@@ -276,7 +282,7 @@ class ProductController extends Controller
      * @return Product the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected function findModel(int $id)
     {
         if (($model = Product::findOne($id)) !== null) {
             return $model;

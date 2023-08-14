@@ -8,6 +8,7 @@ use common\models\{Manufacture,Seo};
 use common\models\search\ManufactureSearch;
 use yii\filters\VerbFilter;
 use yii\web\{NotFoundHttpException,UploadedFile,Controller};
+use common\helpers\StringHelpers;
 
 /**
  * ManufactureController implements the CRUD actions for Manufacture model.
@@ -55,7 +56,7 @@ class ManufactureController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
+    public function actionView(int $id)
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
@@ -65,6 +66,7 @@ class ManufactureController extends Controller
     /**
      * Creates a new Manufacture model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     *
      * @return mixed
      */
     public function actionCreate()
@@ -81,6 +83,7 @@ class ManufactureController extends Controller
                 $isValid = $modelSeo->validate() && $isValid;
 
                 if ($isValid) {
+                    $model->slug = StringHelpers::slug($model->slug);
                     $model->save(false);
                     $modelSeo->ref_id = $model->id;
                     $modelSeo->save(false);
@@ -103,11 +106,12 @@ class ManufactureController extends Controller
     /**
      * Updates an existing Manufacture model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $id ID
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     *
+     * @param int $id
+     * @return string|\yii\web\Response
+     * @throws NotFoundHttpException
      */
-    public function actionUpdate($id)
+    public function actionUpdate(int $id)
     {
         $model = $this->findModel($id);
 
@@ -120,7 +124,7 @@ class ManufactureController extends Controller
             $isValid = $modelSeo->validate() && $isValid;
 
             if ($isValid) {
-
+                $model->slug = StringHelpers::slug($model->slug);
                 $model->save(false);
                 $modelSeo->save(false);
 
@@ -132,7 +136,6 @@ class ManufactureController extends Controller
 
                 return $this->redirect(['view', 'id' => $model->id]);
             }
-
         }
 
         return $this->render('update', [
@@ -141,14 +144,18 @@ class ManufactureController extends Controller
         ]);
     }
 
+
     /**
      * Deletes an existing Manufacture model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $id ID
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     *
+     * @param int $id
+     * @return \yii\web\Response
+     * @throws NotFoundHttpException
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
      */
-    public function actionDelete($id)
+    public function actionDelete(int $id)
     {
         $this->findModel($id)->delete();
 
@@ -158,11 +165,12 @@ class ManufactureController extends Controller
     /**
      * Finds the Manufacture model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $id ID
-     * @return Manufacture the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
+     *
+     * @param int $id
+     * @return Manufacture|null
+     * @throws NotFoundHttpException
      */
-    protected function findModel($id)
+    protected function findModel(int $id)
     {
         if (($model = Manufacture::findOne($id)) !== null) {
             return $model;

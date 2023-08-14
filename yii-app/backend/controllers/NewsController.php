@@ -9,6 +9,7 @@ use common\models\search\NewsSearch;
 use yii\filters\VerbFilter;
 use yii\helpers\Inflector;
 use yii\web\{Controller,NotFoundHttpException,UploadedFile};
+use common\helpers\StringHelpers;
 
 
 /**
@@ -54,7 +55,7 @@ class NewsController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
+    public function actionView(int $id)
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
@@ -64,7 +65,8 @@ class NewsController extends Controller
     /**
      * Creates a new News model.
      * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
+     * @return string|\yii\web\Response
+     * @throws \Exception
      */
     public function actionCreate()
     {
@@ -79,6 +81,7 @@ class NewsController extends Controller
                 $isValid = $modelSeo->validate() && $isValid;
 
                 if ($isValid) {
+                    $model->slug = StringHelpers::slug($model->slug);
                     $model->save(false);
                     $modelSeo->ref_id = $model->id;
                     $modelSeo->save(false);
@@ -104,7 +107,7 @@ class NewsController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdate(int $id)
     {
         $model = $this->findModel($id);
 
@@ -117,6 +120,7 @@ class NewsController extends Controller
             $isValid = $modelSeo->validate() && $isValid;
 
             if ($isValid) {
+                $model->slug = StringHelpers::slug($model->slug);
                 $model->save(false);
                 $modelSeo->save(false);
 
@@ -138,7 +142,7 @@ class NewsController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDelete(int $id)
     {
         $model = $this->findModel($id);
 
@@ -152,12 +156,12 @@ class NewsController extends Controller
     }
 
     /**
-     * @param null $id
-     * @param null $basename
+     * @param int|null $id
+     * @param $basename
      * @return \yii\web\Response
      * @throws NotFoundHttpException
      */
-    public function actionDeleteFile($id = null, $basename = null)
+    public function actionDeleteFile(int $id = null, $basename = null)
     {
         $model = $this->findModel($id);
 
@@ -170,12 +174,12 @@ class NewsController extends Controller
     }
 
     /**
-     * @param null $id
-     * @param null $basename
+     * @param int|null $id
+     * @param $basename
      * @return \yii\web\Response
      * @throws NotFoundHttpException
      */
-    public function actionFixFilename($id = null, $basename = null)
+    public function actionFixFilename(int $id = null, $basename = null)
     {
         $model = $this->findModel($id);
 
@@ -209,7 +213,7 @@ class NewsController extends Controller
      * @return News the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected function findModel(int $id)
     {
         if (($model = News::findOne($id)) !== null) {
             return $model;

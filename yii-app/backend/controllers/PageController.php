@@ -7,6 +7,7 @@ use common\models\Page;
 use common\models\search\PageSearch;
 use yii\web\{Controller,NotFoundHttpException,};
 use yii\filters\VerbFilter;
+use common\helpers\StringHelpers;
 
 /**
  * PageController implements the CRUD actions for Page model.
@@ -49,7 +50,7 @@ class PageController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
+    public function actionView(int $id)
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
@@ -66,6 +67,9 @@ class PageController extends Controller
         $model = new Page();
 
         if ($this->request->isPost) {
+
+            $model->slug = StringHelpers::slug($model->slug);
+
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
@@ -83,9 +87,11 @@ class PageController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdate(int $id)
     {
         $model = $this->findModel($id);
+
+        $model->slug = StringHelpers::slug($model->slug);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -101,7 +107,7 @@ class PageController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDelete(int $id)
     {
         $this->findModel($id)->delete();
 
@@ -115,7 +121,7 @@ class PageController extends Controller
      * @return Page the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected function findModel(int $id)
     {
         if (($model = Page::findOne($id)) !== null) {
             return $model;

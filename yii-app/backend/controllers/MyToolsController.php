@@ -35,7 +35,6 @@ class MyToolsController extends Controller
         $action = array_pop($arr);
         $controller = array_pop($arr);
 
-
         $ns = $arr ? '\\' . join('\\', $arr) : '';
 
         var_dump($queryParams);
@@ -47,10 +46,12 @@ class MyToolsController extends Controller
 
         $params = [];
         $paramsCalled = [];
+
         foreach ($queryParams as $name => $val) {
             if (is_array($val)) {
                 continue;
             }
+
             $params[] = "\$$name = null";
             $paramsCalled[] = "\$$name = '$val'";
         }

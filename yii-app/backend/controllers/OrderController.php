@@ -7,7 +7,7 @@ use common\helpers\FlashTrait;
 use common\models\Order;
 use common\models\search\OrderSearch;
 use yii\filters\VerbFilter;
-use yii\web\{BadRequestHttpException,Controller,NotFoundHttpException};
+use yii\web\{BadRequestHttpException, Controller, NotFoundHttpException};
 
 
 /**
@@ -53,7 +53,7 @@ class OrderController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
+    public function actionView(int $id)
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
@@ -87,7 +87,7 @@ class OrderController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdate(int $id)
     {
         $model = $this->findModel($id);
 
@@ -105,7 +105,7 @@ class OrderController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDelete(int $id)
     {
         $this->findModel($id)->delete();
 
@@ -113,12 +113,12 @@ class OrderController extends Controller
     }
 
     /**
-     * @param $id
+     * @param int $id
      * @param $status
      * @return \yii\web\Response
      * @throws NotFoundHttpException
      */
-    public function actionSetStatus($id, $status)
+    public function actionSetStatus(int $id, $status)
     {
         $model = $this->findModel($id);
 
@@ -141,7 +141,7 @@ class OrderController extends Controller
     {
         $req = Yii::$app->request;
 
-        if (!$action = $req->post('action') OR !$data = json_decode($req->post('data'))) {
+        if (!$action = $req->post('action') or !$data = json_decode($req->post('data'))) {
             throw new BadRequestHttpException('invalid request');
         }
 
@@ -158,8 +158,11 @@ class OrderController extends Controller
     }
 
     /**
-     * @param null $sort
+     * @param $sort
      * @return \yii\web\Response
+     * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
+     * @throws \yii\db\Exception
+     * @throws \yii\web\RangeNotSatisfiableHttpException
      */
     public function actionExportExcel($sort = null)
     {
@@ -173,7 +176,7 @@ class OrderController extends Controller
      * @return Order the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected function findModel(int $id)
     {
         if (($model = Order::findOne($id)) !== null) {
             return $model;
