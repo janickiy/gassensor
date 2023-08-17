@@ -58,6 +58,27 @@ use yii\web\View;
 
 $this->registerJsFile('/admin/js/plugin/ckeditor/ckeditor.js', ['position' => View::POS_END]);
 
-$this->registerJs("$(document).ready(function () {CKEDITOR.replace('manufacture-description', {height: '380px', startupFocus: true});CKEDITOR.config.allowedContent = true;CKEDITOR.config.removePlugins = 'spellchecker, about, save, newpage, print, templates, scayt, flash, pagebreak, smiley,preview,find'});", View::POS_END);
+$this->registerJs("$(document).ready(function () {
+    CKEDITOR.replace( 'manufacture-description', {
+    extraAllowedContent: 'img[title]',
+    height: 380,
+    startupFocus: true,
+    filebrowserUploadUrl: \"/upload.php\",
+    on: {
+       instanceReady: function() {
+            this.dataProcessor.htmlFilter.addRules( {
+                elements: {
+                    img: function( el ) {
+                       el.attributes.title = el.attributes.alt;
+                    }
+                }
+            });            
+        }
+    }
+    });
+
+CKEDITOR.config.allowedContent = true;CKEDITOR.config.extraAllowedContent = 'img[title]';CKEDITOR.config.removePlugins = 'spellchecker, about, save, newpage, print, templates, scayt, flash, pagebreak, smiley,preview,find'});", View::POS_END);
+
+
 
 ?>
