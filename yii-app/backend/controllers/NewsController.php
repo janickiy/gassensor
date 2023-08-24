@@ -78,11 +78,12 @@ class NewsController extends Controller
         if ($req->isPost) {
             if ($model->load($req->post()) && $modelSeo->load($req->post())) {
                 $isValid = $model->validate();
-                $isValid = $modelSeo->validate() && $isValid;
 
                 if ($isValid) {
                     $model->slug = StringHelpers::slug($model->slug);
-                    $model->save(false);
+
+                    $model->save();
+
                     $modelSeo->ref_id = $model->id;
                     $modelSeo->save(false);
 
@@ -117,11 +118,12 @@ class NewsController extends Controller
 
         if ($req->isPost && $model->load($req->post()) && $modelSeo->load($req->post())) {
             $isValid = $model->validate();
-            $isValid = $modelSeo->validate() && $isValid;
 
             if ($isValid) {
                 $model->slug = StringHelpers::slug($model->slug);
-                $model->save(false);
+
+                $model->save();
+
                 $modelSeo->save(false);
 
                 if ($model->uploadFile = UploadedFile::getInstance($model, 'uploadFile')) {
