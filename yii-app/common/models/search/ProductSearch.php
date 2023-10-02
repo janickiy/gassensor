@@ -5,7 +5,7 @@ namespace common\models\search;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\Product;
-use yii\db\ActiveQuery;
+
 
 /**
  * ProductSearch represents the model behind the search form of `common\models\Product`.

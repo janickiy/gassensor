@@ -22,6 +22,8 @@ use common\models\traits\DynamicForm;
  * @property Seo $seo
  * @property ProductGaz $mainProductGaz
  * @property Gaz $mainGaz
+ * @property Gaz $mainGaz2
+ * @property Gaz $mainGaz3
  * @property Gaz $notMainGazes
  * @property string $pictUrl
  * @property string $pictPath
@@ -57,6 +59,16 @@ class Product extends ProductBase
         return $this->mainGaz->id ?? null;
     }
 
+    public function getMainGaz2Id()
+    {
+        return $this->mainGaz2->id ?? null;
+    }
+
+    public function getMainGaz3Id()
+    {
+        return $this->mainGaz3->id ?? null;
+    }
+
     /**
      * @return array
      */
@@ -79,12 +91,10 @@ class Product extends ProductBase
         return [
             'timestamp' => [
                 'class' => TimestampBehavior::class,
-                //'updatedAtAttribute' => false,
             ],
             'sluggable' => [
                 'class' => SluggableBehavior::class,
                 'attribute' => 'name',
-                //'ensureUnique' => true,
                 'immutable' => true,
             ],
         ];
@@ -111,9 +121,41 @@ class Product extends ProductBase
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getMainProductGaz2()
+    {
+        return $this->hasOne(ProductGaz::class, ['product_id' => 'id'])->andOnCondition(['is_main_2' => 1]);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getMainProductGaz3()
+    {
+        return $this->hasOne(ProductGaz::class, ['product_id' => 'id'])->andOnCondition(['is_main_3' => 1]);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getMainGaz()
     {
         return $this->hasOne(Gaz::class, ['id' => 'gaz_id'])->via('mainProductGaz');
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getMainGaz2()
+    {
+        return $this->hasOne(Gaz::class, ['id' => 'gaz_id'])->via('mainProductGaz2');
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getMainGaz3()
+    {
+        return $this->hasOne(Gaz::class, ['id' => 'gaz_id'])->via('mainProductGaz3');
     }
 
     /**
@@ -122,6 +164,7 @@ class Product extends ProductBase
     public function getNotMainGazes()
     {
         $gazs = $this->gazs;
+
         if ($gazs and $mainGaz = $this->mainGaz) {
             $gazs = array_filter($gazs, function ($gaz) use ($mainGaz) {
                 return $gaz->id !== $mainGaz->id;
@@ -416,14 +459,16 @@ class Product extends ProductBase
     }
 
     /**
-     * @param $id
+     * @param int $id
+     * @return void
      * @throws \Exception
      */
-    public function saveMainbGaz($id)
+    public function saveMainbGaz(int $id)
     {
         if (!$id) {
             return;
         }
+
         $cond = ['product_id' => $this->id, 'gaz_id' => $id];
         $model = ProductGaz::findOne($cond);
 
@@ -438,6 +483,68 @@ class Product extends ProductBase
         //todo check exists gaz?
 
         $model->is_main = 1;
+
+        if (!$model->save()) {
+            throw new \Exception('fail saving ProductGaz');
+        }
+    }
+
+    /**
+     * @param int|null $id
+     * @return void
+     * @throws \Exception
+     */
+    public function saveMainbGaz2(?int $id = null)
+    {
+        if (!$id) {
+            return;
+        }
+
+        $cond = ['product_id' => $this->id, 'gaz_id' => $id];
+        $model = ProductGaz::findOne($cond);
+
+        if (!$model) {
+            $model = new ProductGaz($cond);
+        }
+
+        if ($model->is_main_2) {
+            return; //not changed
+        }
+
+        //todo check exists gaz?
+
+        $model->is_main_2 = 1;
+
+        if (!$model->save()) {
+            throw new \Exception('fail saving ProductGaz');
+        }
+    }
+
+    /**
+     * @param int|null $id
+     * @return void
+     * @throws \Exception
+     */
+    public function saveMainbGaz3(?int $id = null)
+    {
+        if (!$id) {
+            return;
+        }
+
+        $cond = ['product_id' => $this->id, 'gaz_id' => $id];
+        $model = ProductGaz::findOne($cond);
+
+        if (!$model) {
+            $model = new ProductGaz($cond);
+        }
+
+        if ($model->is_main_3) {
+            return; //not changed
+        }
+
+        //todo check exists gaz?
+
+        $model->is_main_3 = 1;
 
         if (!$model->save()) {
             throw new \Exception('fail saving ProductGaz');

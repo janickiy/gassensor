@@ -41,12 +41,25 @@ use yii\web\View;
                 </div>
             </div>
             <legend>Газы</legend>
+
             <div class="row">
 
                 <?= $form->field($model, 'mainGazId')
                     ->dropDownList(
                         Gaz::getDropDownData(true,), ['class' => 'select2 itemName2', 'style' => 'width:100%']
-                    )->label("Главный")
+                    )->label("Главный 1")
+                ?>
+
+                <?= $form->field($model, 'mainGaz2Id')
+                    ->dropDownList(
+                        Gaz::getDropDownData(true,), ['class' => 'select2 itemName2', 'style' => 'width:100%', 'prompt' => 'Выберите']
+                    )->label("Главный 2")
+                ?>
+
+                <?= $form->field($model, 'mainGaz3Id')
+                    ->dropDownList(
+                        Gaz::getDropDownData(true,), ['class' => 'select2 itemName2', 'style' => 'width:100%', 'prompt' => 'Выберите']
+                    )->label("Главный 3")
                 ?>
 
                 <?= $form->field($modelProductGaz, 'gaz_id')
@@ -120,8 +133,7 @@ use yii\web\View;
 
         <div class="col">
 
-            <h3>Диапазоны</h3>
-
+            <h3>Диапазоны Главный газ 1</h3>
 
             <?php
             //https://github.com/kidzen/yii2-dynamicform
@@ -190,6 +202,7 @@ use yii\web\View;
             </div>
 
             <?php DynamicFormWidget::end(); ?>
+
 
         </div>
 
