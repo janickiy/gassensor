@@ -36,7 +36,7 @@ class ProductRangeBase extends \yii\db\ActiveRecord
     {
         return [
             [['product_id', 'from', 'to', 'unit'], 'required'],
-            [['product_id'], 'integer'],
+            [['product_id', 'pos'], 'integer'],
             [['from', 'to'], 'number'],
             [['unit'], 'string', 'max' => 30],
             [['product_id'], 'exist', 'skipOnError' => true, 'targetClass' => ProductBase::class, 'targetAttribute' => ['product_id' => 'id']],
@@ -54,6 +54,7 @@ class ProductRangeBase extends \yii\db\ActiveRecord
             'from' => Yii::t('app', 'From'),
             'to' => Yii::t('app', 'To'),
             'unit' => Yii::t('app', 'Unit'),
+            'pos' => Yii::t('app', 'Газы'),
         ];
     }
 

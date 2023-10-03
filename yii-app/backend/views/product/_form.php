@@ -195,6 +195,15 @@ use yii\web\View;
                             <div class="col">
                                 <?= $form->field($modelRange, "[{$i}]unit")->textInput() ?>
                             </div>
+                            <div class="section">
+
+                                <?= $form->field($modelRange, "[{$i}]pos")
+                                    ->dropDownList(
+                                        [0 => 'Главный газ 1', 1 => 'Главный газ 2', 2 => 'Главный газ 3'],
+                                        ['class' => 'form-select']
+                                    ) ?>
+
+                            </div>
                         </div>
 
                     </div>
