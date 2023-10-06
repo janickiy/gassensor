@@ -9,14 +9,14 @@
     "kartik-v/yii2-editors": "dev-master",
     "kartik-v/yii2-grid": "dev-master",
     "kartik-v/yii2-widget-select2": "@dev",
+    "kidzen/yii2-dynamicform": "*",
+    "phpoffice/phpspreadsheet": "^1.29",
     "wbraganca/yii2-dynamicform": "*",
-    "phpoffice/phpspreadsheet": "dev-master",
     "wdmg/yii2-robots": "dev-master",
     "yiisoft/yii2": "~2.0.14",
     "yiisoft/yii2-bootstrap5": "2.0.1",
     "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
-    "yiithings/yii2-dotenv": "*",
-    "kidzen/yii2-dynamicform": "*"
+    "yiithings/yii2-dotenv": "*"
   },
   "require-dev": {
     "bazilio/yii2-stubs-generator": "dev-master",
