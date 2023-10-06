@@ -489,6 +489,19 @@ class Product extends ProductBase
         }
     }
 
+
+    /**
+     * @param int $pos
+     * @return \yii\db\ActiveQuery
+     */
+    public function ProductRangesByPos(int $pos = 0)
+    {
+        return ProductRange::find()->where(['pos' => $pos, 'product_id' => $this->id])->all();
+
+
+      //  return $this->hasMany(ProductRange::class, ['product_id' => 'id'])->where(['pos' => $pos]);
+    }
+
     /**
      * @param int|null $id
      * @return void

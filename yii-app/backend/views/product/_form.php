@@ -16,7 +16,7 @@ use yii\web\View;
 
 ?>
 
-<?php $form = ActiveForm::begin(['id' => 'form-product', 'options' => ['class' => '']]); ?>
+<?php $form = ActiveForm::begin(['id' => 'form-product', 'options' => ['class' => 'list_opt']]); ?>
 
 <div class="row">
     <div class="col-sm-3">
@@ -46,19 +46,19 @@ use yii\web\View;
 
                 <?= $form->field($model, 'mainGazId')
                     ->dropDownList(
-                        Gaz::getDropDownData(true,), ['class' => 'select2 itemName2', 'style' => 'width:100%']
+                        Gaz::getDropDownData(true,), ['id' => 'list1', 'class' => 'select2 itemName2', 'style' => 'width:100%']
                     )->label("Главный 1")
                 ?>
 
                 <?= $form->field($model, 'mainGaz2Id')
                     ->dropDownList(
-                        Gaz::getDropDownData(true,), ['class' => 'select2 itemName2', 'style' => 'width:100%', 'prompt' => 'Выберите']
+                        Gaz::getDropDownData(true,), ['id' => 'list2', 'class' => 'select2 itemName2', 'style' => 'width:100%', 'prompt' => 'Выберите']
                     )->label("Главный 2")
                 ?>
 
                 <?= $form->field($model, 'mainGaz3Id')
                     ->dropDownList(
-                        Gaz::getDropDownData(true,), ['class' => 'select2 itemName2', 'style' => 'width:100%', 'prompt' => 'Выберите']
+                        Gaz::getDropDownData(true,), ['id' => 'list3', 'class' => 'select2 itemName2', 'style' => 'width:100%', 'prompt' => 'Выберите']
                     )->label("Главный 3")
                 ?>
 
@@ -133,7 +133,7 @@ use yii\web\View;
 
         <div class="col">
 
-            <h3>Диапазоны Главный газ 1</h3>
+            <h3>Диапазоны</h3>
 
             <?php
             //https://github.com/kidzen/yii2-dynamicform
