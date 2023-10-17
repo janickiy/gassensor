@@ -39,7 +39,7 @@ $this->registerJs("$(document).ready(function () {
     extraAllowedContent: 'img[title]',
     height: 380,
     startupFocus: true,
-    filebrowserUploadUrl: \"/upload.php\",
+    filebrowserUploadUrl: '/upload.php',
     on: {
        instanceReady: function() {
             this.dataProcessor.htmlFilter.addRules( {
