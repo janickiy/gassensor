@@ -123,32 +123,6 @@ $this->params['productJsonLd'] = $model->getJsonLd();
                         }
                     ],
 
-
-                    [
-                        'attribute' => 'mainGaz',
-                        'label' => 'Основной газ 2',
-                        'format' => 'raw',
-                        'value' => function ($model) {
-                            if (!$gaz = $model->mainGaz2) {
-                                return;
-                            }
-                            return Html::a($gaz->title, "/catalog/{$gaz->slug}");
-                        }
-                    ],
-
-                    [
-                        'attribute' => 'mainGaz',
-                        'label' => 'Основной газ 3',
-                        'format' => 'raw',
-                        'value' => function ($model) {
-                            if (!$gaz = $model->mainGaz3) {
-                                return;
-                            }
-                            return Html::a($gaz->title, "/catalog/{$gaz->slug}");
-                        }
-                    ],
-
-
                     Product::getGazesGridCol(false, $model->notMainGazes),
 
                     'measurementType.name:text:Тип измерения',
