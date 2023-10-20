@@ -82,7 +82,9 @@ class ProductController extends Controller
                 $isValid = $modelSeo->validate() && $isValid;
 
                 $modelsRange = Product::createMultiple(ProductRange::class);
+
                 Product::loadMultiple($modelsRange, $req->post());
+
                 $isValid = Product::validateMultiple($modelsRange, ['from', 'to', 'unit']) && $isValid;
 
                 if ($isValid) {
@@ -110,6 +112,9 @@ class ProductController extends Controller
 
                     $model->saveMainbGaz($req->post('Product')['mainGazId']);
 
+                    if ($req->post('Product')['mainGaz2Id']) $model->saveMainbGaz2($req->post('Product')['mainGaz2Id']);
+                    if ($req->post('Product')['mainGaz3Id']) $model->saveMainbGaz3($req->post('Product')['mainGaz3Id']);
+
                     foreach ($modelsRange as $modelRange) {
                         $modelRange->product_id = $model->id;
                         $modelRange->save(false);
@@ -136,7 +141,6 @@ class ProductController extends Controller
     {
         $model = $this->findModel($id);
         $modelSeo = $model->seo ?: new Seo(['type' => Seo::TYPE_PRODUCT, 'ref_id' => $model->id]);
-        //$modelGaz = $model->productGazs[0] ?? new ProductGaz(['product_id' => $model->id]);
         $modelProductGaz = new ProductGaz(['product_id' => $model->id]);
 
         $modelsRange = $model->productRanges ?: [new ProductRange];
@@ -174,8 +178,10 @@ class ProductController extends Controller
                 }
 
                 $model->saveGazs($modelProductGaz->gaz_id); //select2 array $modelProductGaz->gaz_id
-
                 $model->saveMainbGaz($req->post('Product')['mainGazId']);
+
+                if ($req->post('Product')['mainGaz2Id']) $model->saveMainbGaz2($req->post('Product')['mainGaz2Id']);
+                if ($req->post('Product')['mainGaz3Id']) $model->saveMainbGaz3($req->post('Product')['mainGaz3Id']);
 
                 if ($deletedIDs) {
                     ProductRange::deleteAll(['id' => $deletedIDs]);

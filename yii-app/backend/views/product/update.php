@@ -14,6 +14,13 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Товары'), 'url
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 
+$js =
+    <<<JS
+
+
+JS;
+
+$this->registerJs($js, $this::POS_READY);
 ?>
 
 <!-- row -->

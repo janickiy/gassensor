@@ -16,7 +16,7 @@ use yii\web\View;
 
 ?>
 
-<?php $form = ActiveForm::begin(['id' => 'form-product', 'options' => ['class' => '']]); ?>
+<?php $form = ActiveForm::begin(['id' => 'form-product', 'options' => ['class' => 'list_opt']]); ?>
 
 <div class="row">
     <div class="col-sm-3">
@@ -41,12 +41,25 @@ use yii\web\View;
                 </div>
             </div>
             <legend>Газы</legend>
+
             <div class="row">
 
                 <?= $form->field($model, 'mainGazId')
                     ->dropDownList(
-                        Gaz::getDropDownData(true,), ['class' => 'select2 itemName2', 'style' => 'width:100%']
-                    )->label("Главный")
+                        Gaz::getDropDownData(true,), ['id' => 'list1', 'class' => 'select2 itemName2', 'style' => 'width:100%']
+                    )->label("Главный 1")
+                ?>
+
+                <?= $form->field($model, 'mainGaz2Id')
+                    ->dropDownList(
+                        Gaz::getDropDownData(true,), ['id' => 'list2', 'class' => 'select2 itemName2', 'style' => 'width:100%', 'prompt' => 'Выберите']
+                    )->label("Главный 2")
+                ?>
+
+                <?= $form->field($model, 'mainGaz3Id')
+                    ->dropDownList(
+                        Gaz::getDropDownData(true,), ['id' => 'list3', 'class' => 'select2 itemName2', 'style' => 'width:100%', 'prompt' => 'Выберите']
+                    )->label("Главный 3")
                 ?>
 
                 <?= $form->field($modelProductGaz, 'gaz_id')
@@ -122,7 +135,6 @@ use yii\web\View;
 
             <h3>Диапазоны</h3>
 
-
             <?php
             //https://github.com/kidzen/yii2-dynamicform
             DynamicFormWidget::begin([
@@ -183,6 +195,15 @@ use yii\web\View;
                             <div class="col">
                                 <?= $form->field($modelRange, "[{$i}]unit")->textInput() ?>
                             </div>
+                            <div class="section">
+
+                                <?= $form->field($modelRange, "[{$i}]pos")
+                                    ->dropDownList(
+                                        [0 => 'Главный газ 1', 1 => 'Главный газ 2', 2 => 'Главный газ 3'],
+                                        ['class' => 'form-select']
+                                    ) ?>
+
+                            </div>
                         </div>
 
                     </div>
@@ -190,6 +211,7 @@ use yii\web\View;
             </div>
 
             <?php DynamicFormWidget::end(); ?>
+
 
         </div>
 

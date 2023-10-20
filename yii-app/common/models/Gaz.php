@@ -29,7 +29,6 @@ class Gaz extends GazBase
                 'class' => SluggableBehavior::class,
                 'attribute' => 'title',
                 'immutable' => true,
-                //'ensureUnique' => true,
             ],
         ];
     }
@@ -44,10 +43,10 @@ class Gaz extends GazBase
     }
 
     /**
-     * @param false $isPrependEmpty
+     * @param bool $isPrependEmpty
      * @return array
      */
-    public static function getDropDownData($isPrependEmpty = false)
+    public static function getDropDownData(bool $isPrependEmpty = false)
     {
         $rows = self::find()->orderBy('title')->cache(10)->all();
         $rows = ArrayHelper::map($rows, 'id', 'title');
@@ -69,10 +68,10 @@ class Gaz extends GazBase
     }
 
     /**
-     * @param $value
+     * @param int $value
      * @return array
      */
-    public function covertFromMg($value)
+    public function covertFromMg(int $value)
     {
         $result = [];
         $result['mg'] = $value;
@@ -84,10 +83,10 @@ class Gaz extends GazBase
     }
 
     /**
-     * @param $value
+     * @param int $value
      * @return array
      */
-    public function covertFromPpm($value)
+    public function covertFromPpm(int $value)
     {
         $result = [];
         $result['mg'] = 0.12 * ($value / 1000) * $this->weight * 101325 / 293.15;
@@ -99,10 +98,10 @@ class Gaz extends GazBase
     }
 
     /**
-     * @param $value
+     * @param int $value
      * @return array
      */
-    public function covertFromObd($value)
+    public function covertFromObd(int $value)
     {
         $result = [];
         $result['mg'] = 0.12 * ($value / 0.1) * $this->weight * 101325 / 293.15;
@@ -114,10 +113,10 @@ class Gaz extends GazBase
     }
 
     /**
-     * @param $value
+     * @param int $value
      * @return array
      */
-    public function covertFromNkpr($value)
+    public function covertFromNkpr(int $value)
     {
         $result = [];
         $result['mg'] = 0;//0.12 * ($value / 0.1) * $gazWeight * 101325 / 293.15;
