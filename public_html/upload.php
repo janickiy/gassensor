@@ -18,9 +18,10 @@ if (isset($_FILES['upload']['name'])) {
         $url = 'https://' . $_SERVER['SERVER_NAME'] . '/upload/' . $new_image_name; //Set your path
         $message = '';
 
-        $return_data = array( 'fileName' => $new_image_name, 'uploaded' => true, 'url' => $url );
+        $return_data = array('fileName' => $new_image_name, 'uploaded' => true, 'url' => $url);
 
-        echo json_encode( $return_data );
+        echo "<script>window.parent.CKEDITOR.tools.callFunction($function_number, '$url', '$message');</script>";
+        //  echo json_encode( $return_data );
 
     }
 }
