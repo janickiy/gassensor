@@ -44,6 +44,8 @@ class Product extends ProductBase
      */
     public $uploadPdf;
 
+
+
     /**
      * @var UploadedFile
      */
@@ -78,6 +80,8 @@ class Product extends ProductBase
 
         $rules[] = ['uploadPict', 'file', 'extensions' => 'png, jpg, gif'];
         $rules[] = [['uploadPdf', 'uploadPdf2', 'uploadPdf3'], 'file', 'extensions' => 'pdf'];
+        $rules[] = [['mainGazId'],'required'];
+        $rules[] = [['mainGazId', 'mainGaz2Id', 'mainGaz3Id'],'integer'];
 
         return $rules;
     }
@@ -163,15 +167,13 @@ class Product extends ProductBase
      */
     public function getNotMainGazes()
     {
-        $gazs = $this->gazs;
-
-        if ($gazs and $mainGaz = $this->mainGaz) {
-            $gazs = array_filter($gazs, function ($gaz) use ($mainGaz) {
-                return $gaz->id !== $mainGaz->id;
-            });
-        }
-
-        return $gazs;
+        return Gaz::find()
+            ->innerJoin('product_gaz','product_gaz.gaz_id=gaz.id')
+            ->andWhere(['product_gaz.product_id' => $this->id])
+            ->andWhere(['is_main' => 0])
+            ->andWhere(['is_main_2' => 0])
+            ->andWhere(['is_main_3' => 0])
+            ->all();
     }
 
 

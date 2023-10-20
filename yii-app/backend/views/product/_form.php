@@ -25,10 +25,10 @@ use yii\web\View;
                 <?= $form->field($model, 'manufacture_id')
                     ->dropDownList(
                         Manufacture::getDropDownData(true), ['class' => 'select2 itemName1', 'style' => 'width:100%']
-                    )->label('Производитель')
+                    )->label('Производитель*')
                 ?>
             </div>
-            <div class="row"> <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?></div>
+            <div class="row"> <?= $form->field($model, 'name')->textInput(['maxlength' => true])->label('Название*') ?></div>
 
             <div class="row"><?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?></div>
 
@@ -47,7 +47,7 @@ use yii\web\View;
                 <?= $form->field($model, 'mainGazId')
                     ->dropDownList(
                         Gaz::getDropDownData(true,), ['id' => 'list1', 'class' => 'select2 itemName2', 'style' => 'width:100%']
-                    )->label("Главный 1")
+                    )->label("Главный 1*")
                 ?>
 
                 <?= $form->field($model, 'mainGaz2Id')
@@ -65,7 +65,7 @@ use yii\web\View;
                 <?= $form->field($modelProductGaz, 'gaz_id')
                     ->dropDownList(
                         Gaz::getDropDownData(true,), ['class' => 'select2 itemName2', 'multiple' => 'multiple', 'style' => 'width:100%', 'id' => 'main_gaz_id', 'placeholder' => 'Поиск газа ...',]
-                    )->label("Все")
+                    )->label("Дополнительный газ")
                 ?>
             </div>
 
@@ -76,7 +76,7 @@ use yii\web\View;
                     ->dropDownList(
                         MeasurementType::getDropDownData(true),
                         ['class' => 'select2 itemName1', 'style' => 'width:100%']
-                    )->label("Типы измерений")
+                    )->label("Типы измерений*")
                 ?>
             </div>
 
@@ -187,13 +187,13 @@ use yii\web\View;
 
                         <div class="row">
                             <div class="col">
-                                <?= $form->field($modelRange, "[{$i}]from")->textInput() ?>
+                                <?= $form->field($modelRange, "[{$i}]from")->textInput()->label('From*') ?>
                             </div>
                             <div class="col">
-                                <?= $form->field($modelRange, "[{$i}]to")->textInput() ?>
+                                <?= $form->field($modelRange, "[{$i}]to")->textInput()->label('To*') ?>
                             </div>
                             <div class="col">
-                                <?= $form->field($modelRange, "[{$i}]unit")->textInput() ?>
+                                <?= $form->field($modelRange, "[{$i}]unit")->textInput()->label('Unit*') ?>
                             </div>
                             <div class="section">
 

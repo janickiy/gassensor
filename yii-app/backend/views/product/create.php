@@ -41,6 +41,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <h1><?= Html::encode($this->title) ?></h1>
 
+                    <p>*-обязательные поля</p>
+
                     <?= $this->render('_form', [
                         'model' => $model,
                         'modelSeo' => $modelSeo,

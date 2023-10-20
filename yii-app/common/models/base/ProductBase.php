@@ -135,6 +135,8 @@ class ProductBase extends \yii\db\ActiveRecord
         return $this->hasMany(Gaz::class, ['id' => 'gaz_id'])->viaTable('product_gaz', ['product_id' => 'id']);
     }
 
+
+
     /**
      * @return \yii\db\ActiveQuery
      */
