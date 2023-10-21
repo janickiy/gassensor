@@ -177,11 +177,20 @@ class ProductController extends Controller
                     }
                 }
 
-                $model->saveGazs($modelProductGaz->gaz_id); //select2 array $modelProductGaz->gaz_id
-                $model->saveMainbGaz($req->post('Product')['mainGazId']);
+                $ids = [];
+                $ids[] = $req->post('ProductGaz')['is_main'];
 
-                if ($req->post('Product')['mainGaz2Id']) $model->saveMainbGaz2($req->post('Product')['mainGaz2Id']);
-                if ($req->post('Product')['mainGaz3Id']) $model->saveMainbGaz3($req->post('Product')['mainGaz3Id']);
+                if (isset($req->post('ProductGaz')['is_main']) && is_array($req->post('ProductGaz')['gaz_id'])) $ids = array_merge($ids, $req->post('ProductGaz')['gaz_id']);
+                if (isset($req->post('ProductGaz')['is_main_2']) && !empty($req->post('ProductGaz')['is_main_2'])) $ids[] = $req->post('ProductGaz')['is_main_2'];
+                if (isset($req->post('ProductGaz')['is_main_3']) && !empty($req->post('ProductGaz')['is_main_3'])) $ids[] = $req->post('ProductGaz')['is_main_3'];
+
+                $ids = array_unique($ids);
+
+                $model->saveGazs($ids); //select2 array $modelProductGaz->gaz_id
+                $model->saveMainbGaz($req->post('ProductGaz')['is_main']);
+
+                if (isset($req->post('ProductGaz')['is_main_2']) && !empty($req->post('ProductGaz')['is_main_2'])) $model->saveMainbGaz2($req->post('ProductGaz')['is_main_2']);
+                if (isset($req->post('ProductGaz')['is_main_3']) && !empty($req->post('ProductGaz')['is_main_3'])) $model->saveMainbGaz3($req->post('ProductGaz')['is_main_3']);
 
                 if ($deletedIDs) {
                     ProductRange::deleteAll(['id' => $deletedIDs]);
@@ -196,7 +205,10 @@ class ProductController extends Controller
             }
         }
 
-        $modelProductGaz->gaz_id = ArrayHelper::getColumn($model->gazs, 'id');
+        $modelProductGaz->gaz_id = ArrayHelper::getColumn($model->notMainGazes, 'id');
+        $modelProductGaz->is_main = $model->mainGaz->id ?? null;
+        $modelProductGaz->is_main_2 = $model->mainGaz2->id ?? null;
+        $modelProductGaz->is_main_3 = $model->mainGaz3->id ?? null;
 
         return $this->render('update', compact('model', 'modelSeo', 'modelProductGaz', 'modelsRange'));
     }

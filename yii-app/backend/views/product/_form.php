@@ -24,7 +24,7 @@ use yii\web\View;
             <div class="row">
                 <?= $form->field($model, 'manufacture_id')
                     ->dropDownList(
-                        Manufacture::getDropDownData(true), ['class' => 'select2 itemName1', 'style' => 'width:100%']
+                        Manufacture::getDropDownData(true), ['class' => 'form-select', 'style' => 'width:100%']
                     )->label('Производитель*')
                 ?>
             </div>
@@ -44,19 +44,19 @@ use yii\web\View;
 
             <div class="row">
 
-                <?= $form->field($model, 'mainGazId')
+                <?= $form->field($modelProductGaz, 'is_main')
                     ->dropDownList(
-                        Gaz::getDropDownData(true,), ['id' => 'list1', 'class' => 'select2 itemName2', 'style' => 'width:100%']
+                        Gaz::getDropDownData(true,), ['id' => 'list1', 'class' => 'select2 form-select itemName2', 'style' => 'width:100%']
                     )->label("Главный 1*")
                 ?>
 
-                <?= $form->field($model, 'mainGaz2Id')
+                <?= $form->field($modelProductGaz, 'is_main_2')
                     ->dropDownList(
                         Gaz::getDropDownData(true,), ['id' => 'list2', 'class' => 'select2 itemName2', 'style' => 'width:100%', 'prompt' => 'Выберите']
                     )->label("Главный 2")
                 ?>
 
-                <?= $form->field($model, 'mainGaz3Id')
+                <?= $form->field($modelProductGaz, 'is_main_3')
                     ->dropDownList(
                         Gaz::getDropDownData(true,), ['id' => 'list3', 'class' => 'select2 itemName2', 'style' => 'width:100%', 'prompt' => 'Выберите']
                     )->label("Главный 3")
@@ -67,6 +67,7 @@ use yii\web\View;
                         Gaz::getDropDownData(true,), ['class' => 'select2 itemName2', 'multiple' => 'multiple', 'style' => 'width:100%', 'id' => 'main_gaz_id', 'placeholder' => 'Поиск газа ...',]
                     )->label("Дополнительный газ")
                 ?>
+
             </div>
 
             <legend></legend>
@@ -75,7 +76,7 @@ use yii\web\View;
                 <?= $form->field($model, 'measurement_type_id')
                     ->dropDownList(
                         MeasurementType::getDropDownData(true),
-                        ['class' => 'select2 itemName1', 'style' => 'width:100%']
+                        ['class' => 'select2 form-select', 'style' => 'width:100%']
                     )->label("Типы измерений*")
                 ?>
             </div>
@@ -169,7 +170,6 @@ use yii\web\View;
 
             <br>
 
-
             <div class="container-items">
                 <?php foreach ($modelsRange as $i => $modelRange): ?>
 
@@ -184,16 +184,15 @@ use yii\web\View;
                                         class="fa fa-trash-o"></i></button>
                         </div>
 
-
                         <div class="row">
                             <div class="col">
-                                <?= $form->field($modelRange, "[{$i}]from")->textInput()->label('From*') ?>
+                                <?= $form->field($modelRange, "[{$i}]from")->textInput()->label('От*') ?>
                             </div>
                             <div class="col">
-                                <?= $form->field($modelRange, "[{$i}]to")->textInput()->label('To*') ?>
+                                <?= $form->field($modelRange, "[{$i}]to")->textInput()->label('До*') ?>
                             </div>
                             <div class="col">
-                                <?= $form->field($modelRange, "[{$i}]unit")->textInput()->label('Unit*') ?>
+                                <?= $form->field($modelRange, "[{$i}]unit")->textInput()->label('Ед. измерения*') ?>
                             </div>
                             <div class="section">
 
@@ -243,9 +242,12 @@ use yii\web\View;
 <?php
 
 $this->registerJs(
-    '$(document).ready(function() {$(\'.itemName1\').select2();$(\'.itemName2\').select2({placeholder: "Поиск газа ...",});});',
+    '$(document).ready(function() {
+        $(\'.itemName2\').select2({placeholder: "Поиск газа ...",});
+    });',
     View::POS_END
 );
+
 ?>
 
 

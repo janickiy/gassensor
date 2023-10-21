@@ -16,6 +16,7 @@ use yii\web\UploadedFile;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use common\models\traits\DynamicForm;
+use yii\db\Query;
 
 /**
  *
@@ -43,8 +44,6 @@ class Product extends ProductBase
      * @var UploadedFile
      */
     public $uploadPdf;
-
-
 
     /**
      * @var UploadedFile
@@ -80,8 +79,6 @@ class Product extends ProductBase
 
         $rules[] = ['uploadPict', 'file', 'extensions' => 'png, jpg, gif'];
         $rules[] = [['uploadPdf', 'uploadPdf2', 'uploadPdf3'], 'file', 'extensions' => 'pdf'];
-        $rules[] = [['mainGazId'],'required'];
-        $rules[] = [['mainGazId', 'mainGaz2Id', 'mainGaz3Id'],'integer'];
 
         return $rules;
     }
@@ -168,7 +165,7 @@ class Product extends ProductBase
     public function getNotMainGazes()
     {
         return Gaz::find()
-            ->innerJoin('product_gaz','product_gaz.gaz_id=gaz.id')
+            ->innerJoin('product_gaz', 'product_gaz.gaz_id=gaz.id')
             ->andWhere(['product_gaz.product_id' => $this->id])
             ->andWhere(['is_main' => 0])
             ->andWhere(['is_main_2' => 0])
@@ -440,20 +437,20 @@ class Product extends ProductBase
     }
 
     /**
-     * @param $ids
+     * @param array $ids
+     * @return void
      * @throws \Exception
      */
-    public function saveGazs($ids)
+    public function saveGazs(array $ids)
     {
         ProductGaz::deleteAll(['product_id' => $this->id]);
 
         foreach ($ids as $id) {
             $cond = ['product_id' => $this->id, 'gaz_id' => $id];
-            if (ProductGaz::findOne($cond)) {//skip exists
-                continue;
-            }
-            //todo check exists gaz?
+
             $model = new ProductGaz($cond);
+            $model->is_main = 0;
+
             if (!$model->save()) {
                 throw new \Exception('fail saving ProductGaz');
             }
@@ -491,19 +488,6 @@ class Product extends ProductBase
         }
     }
 
-
-    /**
-     * @param int $pos
-     * @return \yii\db\ActiveQuery
-     */
-    public function ProductRangesByPos(int $pos = 0)
-    {
-        return ProductRange::find()->where(['pos' => $pos, 'product_id' => $this->id])->all();
-
-
-      //  return $this->hasMany(ProductRange::class, ['product_id' => 'id'])->where(['pos' => $pos]);
-    }
-
     /**
      * @param int|null $id
      * @return void
@@ -526,14 +510,28 @@ class Product extends ProductBase
             return; //not changed
         }
 
-        //todo check exists gaz?
-
+        $model->is_main = 0;
         $model->is_main_2 = 1;
+        $model->is_main_3 = 0;
 
         if (!$model->save()) {
             throw new \Exception('fail saving ProductGaz');
         }
     }
+
+
+    /**
+     * @param int $pos
+     * @return \yii\db\ActiveQuery
+     */
+    public function ProductRangesByPos(int $pos = 0)
+    {
+        return ProductRange::find()->where(['pos' => $pos, 'product_id' => $this->id])->all();
+
+
+        //  return $this->hasMany(ProductRange::class, ['product_id' => 'id'])->where(['pos' => $pos]);
+    }
+
 
     /**
      * @param int|null $id
@@ -557,12 +555,12 @@ class Product extends ProductBase
             return; //not changed
         }
 
-        //todo check exists gaz?
-
+        $model->is_main = 0;
+        $model->is_main_2 = 0;
         $model->is_main_3 = 1;
 
         if (!$model->save()) {
-            throw new \Exception('fail saving ProductGaz');
+             throw new \Exception('fail saving ProductGaz');
         }
     }
 
