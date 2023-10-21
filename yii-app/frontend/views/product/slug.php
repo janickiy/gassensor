@@ -101,7 +101,6 @@ $this->params['productJsonLd'] = $model->getJsonLd();
                             $rerurn = '';
 
                             if ($gaz = $model->mainGaz) {
-
                                 $arrs[] = ['slug' => $gaz->slug, 'title' => $gaz->title];
                             }
 
@@ -144,13 +143,7 @@ $this->params['productJsonLd'] = $model->getJsonLd();
                             return $this->render('_cell-range', ['model' => $model]);
                         }
                     ],
-                    /*[
-                        'attribute' => 'resolution',
-                        'format' => 'raw',
-                        'value' => function($model) {
-                            return $this->render('_cell-range', ['model' => $model]);
-                        }
-                    ],*/
+
                     [
                         'attribute' => 'sensitivity',
                         'format' => 'raw',
