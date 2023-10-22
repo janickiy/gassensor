@@ -1,9 +1,9 @@
 <?php
+
 /* @var $this yii\web\View */
 /* @var $model common\models\Product */
 /* @var $modelSeo common\models\Seo */
 /* @var $modelProductGaz common\models\ProductGaz */
-
 /* @var $modelsRange common\models\ProductRange[] */
 
 use common\models\Gaz;
@@ -12,6 +12,7 @@ use common\models\MeasurementType;
 use kidzen\dynamicform\DynamicFormWidget;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
 use yii\web\View;
 
 ?>
@@ -47,19 +48,19 @@ use yii\web\View;
                 <?= $form->field($modelProductGaz, 'is_main')
                     ->dropDownList(
                         Gaz::getDropDownData(true,), ['id' => 'list1', 'class' => 'select2 form-select itemName2', 'style' => 'width:100%']
-                    )->label("Главный 1*")
+                    )->label("Главный газ 1*")
                 ?>
 
                 <?= $form->field($modelProductGaz, 'is_main_2')
                     ->dropDownList(
                         Gaz::getDropDownData(true,), ['id' => 'list2', 'class' => 'select2 itemName2', 'style' => 'width:100%', 'prompt' => 'Выберите']
-                    )->label("Главный 2")
+                    )->label("Главный газ 2")
                 ?>
 
                 <?= $form->field($modelProductGaz, 'is_main_3')
                     ->dropDownList(
                         Gaz::getDropDownData(true,), ['id' => 'list3', 'class' => 'select2 itemName2', 'style' => 'width:100%', 'prompt' => 'Выберите']
-                    )->label("Главный 3")
+                    )->label("Главный газ 3")
                 ?>
 
                 <?= $form->field($modelProductGaz, 'gaz_id')
@@ -173,6 +174,22 @@ use yii\web\View;
             <div class="container-items">
                 <?php foreach ($modelsRange as $i => $modelRange): ?>
 
+                    <?php
+
+                    switch ($i) {
+                        case 0:
+                            $title = ArrayHelper::getValue($model, 'mainGaz.title');
+                            break;
+                        case 1:
+                            $title = ArrayHelper::getValue($model, 'mainGaz2.title');
+                            break;
+                        case 2:
+                            $title = ArrayHelper::getValue($model, 'mainGaz3.title');
+                            break;
+                    }
+
+                    ?>
+
                     <?php if (!$modelRange->isNewRecord): ?>
                         <?= Html::activeHiddenInput($modelRange, "[{$i}]id") ?>
                     <?php endif; ?>
@@ -194,13 +211,13 @@ use yii\web\View;
                             <div class="col">
                                 <?= $form->field($modelRange, "[{$i}]unit")->textInput()->label('Ед. измерения*') ?>
                             </div>
-                            <div class="section">
+                            <div class="section list{$i}">
 
                                 <?= $form->field($modelRange, "[{$i}]pos")
                                     ->dropDownList(
                                         [0 => 'Главный газ 1', 1 => 'Главный газ 2', 2 => 'Главный газ 3'],
-                                        ['class' => 'form-select']
-                                    ) ?>
+                                        ['class' => 'form-select select-gaz', 'data-list' => $i]
+                                    )->label('Газы (<span id="gaz_' . $i . '">' . $title . '</span>)') ?>
 
                             </div>
                         </div>
@@ -244,6 +261,25 @@ use yii\web\View;
 $this->registerJs(
     '$(document).ready(function() {
         $(\'.itemName2\').select2({placeholder: "Поиск газа ...",});
+            $(".select-gaz").on(\'change\', function() {
+            let gazId = $(this).val();
+            let posId = $(this).attr(\'data-list\')
+          
+            if (gazId) {
+                gazId = Number(gazId);
+                if (gazId === 0) {
+                   // console.log($("#list1 option:selected");
+                    $("#gaz_" + posId).text($("#list1 option:selected").text());
+                } else if(gazId === 1) {
+                  //  console.log($("#list2 option:selected");
+                    $("#gaz_" + posId).text($("#list2 option:selected").text());
+                } else if (gazId === 2) {
+                  //  console.log($("#list3 option:selected");
+                    $("#gaz_" + posId).text($("#list3 option:selected").text());
+                }
+            }
+        }); 
+        
     });',
     View::POS_END
 );

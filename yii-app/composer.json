@@ -10,7 +10,7 @@
     "kartik-v/yii2-grid": "dev-master",
     "kartik-v/yii2-widget-select2": "@dev",
     "wbraganca/yii2-dynamicform": "*",
-    "phpoffice/phpspreadsheet": "dev-master",
+    "phpoffice/phpspreadsheet": "*",
     "wdmg/yii2-robots": "dev-master",
     "yiisoft/yii2": "~2.0.14",
     "yiisoft/yii2-bootstrap5": "2.0.1",
