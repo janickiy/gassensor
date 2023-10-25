@@ -47,7 +47,7 @@ use yii\web\View;
 
                 <?= $form->field($modelProductGaz, 'is_main')
                     ->dropDownList(
-                        Gaz::getDropDownData(true,), ['id' => 'list1', 'class' => 'select2 form-select itemName2', 'style' => 'width:100%']
+                        Gaz::getDropDownData(true,), ['id' => 'list1', 'class' => 'select2 form-select form-list itemName2', 'style' => 'width:100%']
                     )->label("Главный газ 1*")
                 ?>
 
