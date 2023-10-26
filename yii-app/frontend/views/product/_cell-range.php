@@ -1,5 +1,6 @@
 <?php
 /* @var $this yii\web\View */
+
 /* @var $model common\models\Product */
 
 use \yii\helpers\ArrayHelper;
@@ -7,74 +8,68 @@ use \yii\helpers\ArrayHelper;
 ?>
 <div class="container">
     <div class="row">
-        <div class="col-sm">
+    <?php
 
-            <?php
+    $productRanges1 = $model->ProductRangesByPos(0);
 
-            echo ArrayHelper::getValue($model, 'mainGaz.title');
+    if ($productRanges1 && is_array($productRanges1)):
 
-                $productRanges1 = $model->ProductRangesByPos(0);
+    ?>
+         <div class="col-sm">
 
-                if ($productRanges1 && is_array($productRanges1)):
-
-            ?>
+             <b><?= ArrayHelper::getValue($model, 'mainGaz.title') ?></b>
 
                 <?php foreach ($productRanges1 as $v): ?>
 
-                <div>
-                    <?= $v->from ?> - <?= $v->to ?> <?= $v->unit ?>
-                </div>
+                <div class="fs-07"><?= $v->from ?> - <?= $v->to ?> <?= $v->unit ?></div>
 
-            <?php endforeach; ?>
-
-            <?php endif; ?>
+                <?php endforeach; ?>
 
         </div>
+
+    <?php endif; ?>
+
+    <?php
+
+    $productRanges2 = $model->ProductRangesByPos(1);
+
+    if ($productRanges2 && is_array($productRanges2)):
+
+    ?>
         <div class="col-sm">
 
-            <?php
-
-            echo ArrayHelper::getValue($model, 'mainGaz2.title');
-
-            $productRanges2 = $model->ProductRangesByPos(1);
-
-            if ($productRanges2 && is_array($productRanges2)):
-
-            ?>
+            <b><?= ArrayHelper::getValue($model, 'mainGaz2.title') ?></b>
 
             <?php foreach ($productRanges2 as $v): ?>
 
-                <div>
-                    <?= $v->from ?> - <?= $v->to ?> <?= $v->unit ?>
-                </div>
+            <div class="fs-07"><?= $v->from ?> - <?= $v->to ?> <?= $v->unit ?></div>
 
-            <?php endforeach; ?>
-
-            <?php endif; ?>
+        <?php endforeach; ?>
 
         </div>
+
+    <?php endif; ?>
+
+    <?php
+
+    $productRanges3 = $model->ProductRangesByPos(2);
+
+    if ($productRanges3 && is_array($productRanges3)):
+
+    ?>
         <div class="col-sm">
 
-            <?php
+        <b><?=ArrayHelper::getValue($model, 'mainGaz3.title') ?></b>
 
-            echo ArrayHelper::getValue($model, 'mainGaz3.title');
+        <?php foreach ($productRanges3 as $v): ?>
 
-            $productRanges3 = $model->ProductRangesByPos(2);
+            <div class="fs-07"><?= $v->from ?> - <?= $v->to ?> <?= $v->unit ?></div>
 
-            if ($productRanges3 && is_array($productRanges3)):
-
-            ?>
-
-            <?php foreach ($productRanges3 as $v): ?>
-
-                <div>
-                    <?= $v->from ?> - <?= $v->to ?> <?= $v->unit ?>
-                </div>
-
-            <?php endforeach; ?>
-
-            <?php endif; ?>
+        <?php endforeach; ?>
 
         </div>
+
+    <?php endif; ?>
+
     </div>
 </div>
