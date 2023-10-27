@@ -63,7 +63,7 @@ use \yii\helpers\ArrayHelper;
 
         <?php foreach ($productRanges3 as $v): ?>
 
-            <div class="fs-07"><?= $v->from ?> - <?= $v->to ?> <?= $v->unit ?></div>
+           <?= $v->from ?> - <?= $v->to ?> <?= $v->unit ?>
 
         <?php endforeach; ?>
 
