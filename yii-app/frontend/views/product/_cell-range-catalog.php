@@ -17,7 +17,7 @@ use \yii\helpers\ArrayHelper;
     ?>
          <div class="col-sm">
 
-             <b><?= ArrayHelper::getValue($model, 'mainGaz.title') ?></b><br>
+             <?= ArrayHelper::getValue($model, 'mainGaz.title') ?><br>
 
              <?php foreach ($productRanges1 as $v): ?>
 
@@ -25,7 +25,7 @@ use \yii\helpers\ArrayHelper;
 
              <?php endforeach; ?>
 
-        </div>
+         </div>
 
     <?php endif; ?>
 
@@ -38,13 +38,13 @@ use \yii\helpers\ArrayHelper;
     ?>
         <div class="col-sm">
 
-            <b><?= ArrayHelper::getValue($model, 'mainGaz2.title') ?></b><br>
+            <?= ArrayHelper::getValue($model, 'mainGaz2.title') ?><br>
 
             <?php foreach ($productRanges2 as $v): ?>
 
             <?= $v->from ?> - <?= $v->to ?> <?= $v->unit ?>
 
-        <?php endforeach; ?>
+            <?php endforeach; ?>
 
         </div>
 
@@ -59,7 +59,7 @@ use \yii\helpers\ArrayHelper;
     ?>
         <div class="col-sm">
 
-            <b><?=ArrayHelper::getValue($model, 'mainGaz3.title') ?></b><br>
+            <?=ArrayHelper::getValue($model, 'mainGaz3.title') ?><br>
 
             <?php foreach ($productRanges3 as $v): ?>
 
