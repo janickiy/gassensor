@@ -73,11 +73,12 @@ class ProductBase extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['created_at', 'updated_at', 'manufacture_id', 'measurement_type_id', 'sensitivity', 'response_time', 'temperature_range_from', 'temperature_range_to'], 'integer'],
+            [['created_at', 'updated_at', 'manufacture_id', 'measurement_type_id', 'response_time', 'temperature_range_from', 'temperature_range_to'], 'integer'],
             [['manufacture_id', 'name', 'measurement_type_id'], 'required'],
             [['price', 'range_from', 'range_to', 'resolution', 'sensitivity_from', 'sensitivity_to', 'energy_consumption_from', 'energy_consumption_to'], 'number'],
             [['name', 'formfactor', 'range_unit'], 'string', 'max' => 30],
             [['img'], 'string', 'max' => 3],
+            [['sensitivity'], 'string',],
             [['pdf', 'pdf2', 'pdf3', 'slug'], 'string', 'max' => 100],
             [['info'], 'string', 'max' => 512],
             [['formfactor_unit', 'sensitivity_unit'], 'string', 'max' => 20],
