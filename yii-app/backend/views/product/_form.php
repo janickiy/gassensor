@@ -47,19 +47,19 @@ use yii\web\View;
 
                 <?= $form->field($modelProductGaz, 'is_main')
                     ->dropDownList(
-                        Gaz::getDropDownData(true,), ['id' => 'list1', 'class' => 'select2 form-select form-list itemName2', 'style' => 'width:100%']
+                        Gaz::getDropDownData(true,), ['id' => 'list1', 'class' => 'select2 form-list itemName2', 'style' => 'width:100%']
                     )->label("Главный газ 1*")
                 ?>
 
                 <?= $form->field($modelProductGaz, 'is_main_2')
                     ->dropDownList(
-                        Gaz::getDropDownData(true,), ['id' => 'list2', 'class' => 'select2 itemName2', 'style' => 'width:100%', 'prompt' => 'Выберите']
+                        Gaz::getDropDownData(true,), ['id' => 'list2', 'class' => 'select2 form-list itemName2', 'style' => 'width:100%', 'prompt' => 'Выберите']
                     )->label("Главный газ 2")
                 ?>
 
                 <?= $form->field($modelProductGaz, 'is_main_3')
                     ->dropDownList(
-                        Gaz::getDropDownData(true,), ['id' => 'list3', 'class' => 'select2 itemName2', 'style' => 'width:100%', 'prompt' => 'Выберите']
+                        Gaz::getDropDownData(true,), ['id' => 'list3', 'class' => 'select2 form-list itemName2', 'style' => 'width:100%', 'prompt' => 'Выберите']
                     )->label("Главный газ 3")
                 ?>
 
@@ -216,7 +216,7 @@ use yii\web\View;
                                 <?= $form->field($modelRange, "[{$i}]pos")
                                     ->dropDownList(
                                         [0 => 'Главный газ 1', 1 => 'Главный газ 2', 2 => 'Главный газ 3'],
-                                        ['class' => 'form-select select-gaz', 'data-list' => $i]
+                                        ['class' => 'form-select form-list select-gaz', 'data-list' => $i]
                                     )->label('Газы (<span id="gaz_' . $i . '">' . $title . '</span>)') ?>
 
                             </div>
