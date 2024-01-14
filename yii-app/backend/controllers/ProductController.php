@@ -108,12 +108,16 @@ class ProductController extends Controller
                         }
                     }
 
-                    $model->saveGazs($modelProductGaz->gaz_id); //select2 array $modelGaz->gaz_id
+                    $ids = [];
+                    $ids[] = $req->post('ProductGaz')['is_main'];
 
-                    $model->saveMainbGaz($req->post('Product')['mainGazId']);
+                    $ids = array_unique($ids);
 
-                    if ($req->post('Product')['mainGaz2Id']) $model->saveMainbGaz2($req->post('Product')['mainGaz2Id']);
-                    if ($req->post('Product')['mainGaz3Id']) $model->saveMainbGaz3($req->post('Product')['mainGaz3Id']);
+                    $model->saveGazs($ids); //select2 array $modelGaz->gaz_id
+                    $model->saveMainbGaz($req->post('ProductGaz')['is_main']);
+
+                    if (isset($req->post('ProductGaz')['is_main_2']) && !empty($req->post('ProductGaz')['is_main_2'])) $model->saveMainbGaz2($req->post('ProductGaz')['is_main_2']);
+                    if (isset($req->post('ProductGaz')['is_main_3']) && !empty($req->post('ProductGaz')['is_main_3'])) $model->saveMainbGaz3($req->post('ProductGaz')['is_main_3']);
 
                     foreach ($modelsRange as $modelRange) {
                         $modelRange->product_id = $model->id;
