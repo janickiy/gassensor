@@ -71,8 +71,11 @@ class GazController extends Controller
 
         if ($req->isPost) {
             if ($model->load($req->post()) && $modelSeo->load($req->post())) {
+
+            if (empty($model->slug)) $model->slug = $model->title;
+
                 $isValid = $model->validate();
-                $isValid = $modelSeo->validate() && $isValid;
+              //  $isValid = $modelSeo->validate() && $isValid;
 
                 if ($isValid) {
                     $model->slug = StringHelpers::slug($model->slug);
