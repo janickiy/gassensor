@@ -55,6 +55,12 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index', 's
                         <?= Html::textInput('setting[' . Setting::NAME_PHONE . ']', Setting::getPhone(), ['class' => 'form-control']) ?>
                     </div>
 
+
+                    <div class="form-group">
+                        Контактный номер телефона 2
+                        <?= Html::textInput('setting[' . Setting::NAME_PHONE_2 . ']', Setting::getPhone2(), ['class' => 'form-control']) ?>
+                    </div>
+
                     <div class="form-group">
                         Адрес
                         <?= Html::textInput('setting[' . Setting::NAME_ADRESS . ']', Setting::getAdress(), ['class' => 'form-control']) ?>
