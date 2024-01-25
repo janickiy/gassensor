@@ -1,5 +1,6 @@
 <?php
 
+
 if (isset($_FILES['upload']['name'])) {
     $file = $_FILES['upload']['tmp_name'];
     $file_name = $_FILES['upload']['name'];
@@ -25,3 +26,6 @@ if (isset($_FILES['upload']['name'])) {
 
     }
 }
+
+
+
