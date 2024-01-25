@@ -19,6 +19,9 @@ class Setting extends SettingBase
 
     const NAME_PHONE = 'PHONE';
 
+
+    const NAME_PHONE_2 = 'PHONE_2';
+
     const NAME_ADRESS = 'ADRESS';
 
     const NAME_EMAIL = 'EMAIL';
@@ -100,9 +103,30 @@ class Setting extends SettingBase
         return $result;
     }
 
+    /**
+     * @return string|null
+     */
+    public static function getPhone2()
+    {
+        $result = self::getValue(self::NAME_PHONE_2);
+        return $result;
+    }
+
+    /**
+     * @return array|string|string[]|null
+     */
     public static function getPhoneOnlyNumber()
     {
         $result = preg_replace("/[^,.0-9]/", '', self::getValue(self::NAME_PHONE));
+        return $result;
+    }
+
+    /**
+     * @return array|string|string[]|null
+     */
+    public static function getPhoneOnlyNumber2()
+    {
+        $result = preg_replace("/[^,.0-9]/", '', self::getValue(self::NAME_PHONE_2));
         return $result;
     }
 

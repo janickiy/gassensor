@@ -18,6 +18,7 @@ $user = Yii::$app->user;
                   <i class="icon ion-md-pin"></i><?= Setting::getAdress() ?>
                 </a></li>
                 <li><a onclick="ym(85084891,'reachGoal','CLICK_ON_PHONE')" href="tel:+<?=Setting::getPhoneOnlyNumber() ?>"><i class="icon ion-md-call"></i><?= Setting::getPhone() ?></a></li>
+                <li><a onclick="ym(85084891,'reachGoal','CLICK_ON_PHONE')" href="tel:+<?=Setting::getPhoneOnlyNumber2() ?>"><i class="icon ion-md-call"></i><?= Setting::getPhone2() ?></a></li>
                 <li><a href="mailto:<?= Setting::getEmail() ?>"><i class="icon ion-md-mail"></i><?= Setting::getEmail() ?></a></li>
               </ul>
             </div>
