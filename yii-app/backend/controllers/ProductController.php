@@ -181,28 +181,35 @@ class ProductController extends Controller
                     }
                 }
 
-                $ids = [];
-                $ids[] = $req->post('ProductGaz')['is_main'];
 
-                if (isset($req->post('ProductGaz')['is_main']) && is_array($req->post('ProductGaz')['gaz_id'])) $ids = array_merge($ids, $req->post('ProductGaz')['gaz_id']);
-                if (isset($req->post('ProductGaz')['is_main_2']) && !empty($req->post('ProductGaz')['is_main_2'])) $ids[] = $req->post('ProductGaz')['is_main_2'];
-                if (isset($req->post('ProductGaz')['is_main_3']) && !empty($req->post('ProductGaz')['is_main_3'])) $ids[] = $req->post('ProductGaz')['is_main_3'];
 
-                $ids = array_unique($ids);
+                if (isset($req->post('ProductGaz')['is_main'])) {
+                    $ids = [];
+                    $ids[] = $req->post('ProductGaz')['is_main'];
 
-                $model->saveGazs($ids); //select2 array $modelProductGaz->gaz_id
-                $model->saveMainbGaz($req->post('ProductGaz')['is_main']);
+                    if (isset($req->post('ProductGaz')['is_main']) && is_array($req->post('ProductGaz')['gaz_id'])) $ids = array_merge($ids, $req->post('ProductGaz')['gaz_id']);
+                    if (isset($req->post('ProductGaz')['is_main_2']) && !empty($req->post('ProductGaz')['is_main_2'])) $ids[] = $req->post('ProductGaz')['is_main_2'];
+                    if (isset($req->post('ProductGaz')['is_main_3']) && !empty($req->post('ProductGaz')['is_main_3'])) $ids[] = $req->post('ProductGaz')['is_main_3'];
 
-                if (isset($req->post('ProductGaz')['is_main_2']) && !empty($req->post('ProductGaz')['is_main_2'])) $model->saveMainbGaz2($req->post('ProductGaz')['is_main_2']);
-                if (isset($req->post('ProductGaz')['is_main_3']) && !empty($req->post('ProductGaz')['is_main_3'])) $model->saveMainbGaz3($req->post('ProductGaz')['is_main_3']);
+                    $ids = array_unique($ids);
 
-                if ($deletedIDs) {
-                    ProductRange::deleteAll(['id' => $deletedIDs]);
-                }
+                    $model->saveGazs($ids); //select2 array $modelProductGaz->gaz_id
 
-                foreach ($modelsRange as $modelRange) {
-                    $modelRange->product_id = $model->id;
-                    $modelRange->save(false);
+                    if (isset($req->post('ProductGaz')['is_main'])) {
+                        $model->saveMainbGaz($req->post('ProductGaz')['is_main']);
+                    }
+
+                    if (isset($req->post('ProductGaz')['is_main_2']) && !empty($req->post('ProductGaz')['is_main_2'])) $model->saveMainbGaz2($req->post('ProductGaz')['is_main_2']);
+                    if (isset($req->post('ProductGaz')['is_main_3']) && !empty($req->post('ProductGaz')['is_main_3'])) $model->saveMainbGaz3($req->post('ProductGaz')['is_main_3']);
+
+                    if ($deletedIDs) {
+                        ProductRange::deleteAll(['id' => $deletedIDs]);
+                    }
+
+                    foreach ($modelsRange as $modelRange) {
+                        $modelRange->product_id = $model->id;
+                        $modelRange->save(false);
+                    }
                 }
 
                 return $this->redirect(['view', 'id' => $model->id]);

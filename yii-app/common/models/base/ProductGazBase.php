@@ -1,11 +1,9 @@
 <?php
 
-
 namespace common\models\base;
 
 use Yii;
 use common\models\{Gaz,Product};
-
 
 /**
  * This is the model class for table "product_gaz".
@@ -35,7 +33,7 @@ class ProductGazBase extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['product_id', 'is_main'], 'required'],
+            [['product_id'], 'required'],
             [['product_id', 'gaz_id', 'is_main', 'is_main_2', 'is_main_3'], 'integer'],
             [['product_id', 'gaz_id'], 'unique', 'targetAttribute' => ['product_id', 'gaz_id']],
             [['gaz_id'], 'exist', 'skipOnError' => true, 'targetClass' => GazBase::class, 'targetAttribute' => ['gaz_id' => 'id']],
