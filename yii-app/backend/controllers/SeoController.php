@@ -60,10 +60,28 @@ class SeoController extends Controller
      */
     public function actionUpdateRobots()
     {
-        if (\Yii::$app->request->post()) {
-            $content = \Yii::$app->request->post('content');
+        if (Yii::$app->request->post()) {
+            $content = Yii::$app->request->post('content');
 
             file_put_contents('../../public_html/robots.txt', $content);
+
+            return $this->redirect(['/seo']);
+        }
+    }
+
+    public function actionGoogle()
+    {
+        $content = file_get_contents('../../public_html/url_list.txt', true);
+
+        return $this->render('google', compact('content'));
+    }
+
+    public function actionUpdateGoogle()
+    {
+        if (Yii::$app->request->post()) {
+            $content = Yii::$app->request->post('content');
+
+            file_put_contents('../../public_html/url_list.txt', $content);
 
             return $this->redirect(['/seo']);
         }
@@ -167,13 +185,10 @@ class SeoController extends Controller
     public function actionManufacture()
     {
         $searchModel = new ManufactureSearch();
-
         $dataProvider = $searchModel->search($this->request->queryParams);
-
         $dataProvider->pagination->pageSize = 100;
 
         return $this->render('manufacture', compact('searchModel', 'dataProvider'));
-
     }
 
     /**
@@ -183,15 +198,12 @@ class SeoController extends Controller
     public function actionManufactureUpdate(int $id)
     {
         $model = Manufacture::findOne($id);
-
         $seo = Seo::find()->where(['type' => Seo::TYPE_CATALOG_MANUFACTURES, 'ref_id' => $id])->one();
-
         $modelSeo = $seo ?: new Seo(['type' => Seo::TYPE_CATALOG_MANUFACTURES, 'ref_id' => $id]);
 
         if (!isset($modelSeo->type)) $modelSeo->type = Seo::TYPE_CATALOG_MANUFACTURES;
 
         $modelSeo->ref_id = $id;
-
         $req = $this->request;
 
         if ($req->isPost && $modelSeo->load($req->post())) {

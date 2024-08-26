@@ -2,7 +2,6 @@
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\search\SeoSearch */
-
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 use yii\grid\GridView;
@@ -32,14 +31,17 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="row">
                         <div class="col-md-12">
 
-
-
                             <?= Html::a(Yii::t('app', 'Добавить'), ['create'], ['class' => 'btn btn-info btn-sm pull-left']) ?>
 
                             <br><br>
 
-                            <?php foreach ([Seo::TYPE_PAGE_HOME, Seo::TYPE_PAGE_CATALOG, Seo::TYPE_PAGE_CONTACT,
-                                               Seo::TYPE_MANUFACTURES, Seo::TYPE_PAGE_VACANCY, Seo::TYPE_PAGE_ACCESSORIES, Seo::TYPE_PAGE_CONVERTER,] as $v):
+                            <?php foreach ([Seo::TYPE_PAGE_HOME,
+                                               Seo::TYPE_PAGE_CATALOG,
+                                               Seo::TYPE_PAGE_CONTACT,
+                                               Seo::TYPE_MANUFACTURES,
+                                               Seo::TYPE_PAGE_VACANCY,
+                                               Seo::TYPE_PAGE_ACCESSORIES,
+                                               Seo::TYPE_PAGE_CONVERTER,] as $v):
                                 if ($model = Seo::findOne(['type' => $v])) {
                                     $url = ['update', 'id' => $model->id];
                                 } else {
@@ -54,10 +56,10 @@ $this->params['breadcrumbs'][] = $this->title;
                             <?= Html::a('<i class="fa fa-fw fa-edit"></i> Производители (каталог)', Url::to(['seo/manufacture']), ['class' => 'btn btn-success']) ?>
                             <br><br>
                             <?= Html::a('<i class="fa fa-fw fa-edit"></i> Robots.txt', Url::to(['seo/robots']), ['class' => 'btn btn-success']) ?>
-
                             <br><br>
-
                             <?= Html::a('<i class="fa fa-fw fa-edit"></i> Sitemap.xml', Url::to(['seo/sitemap']), ['class' => 'btn btn-success']) ?>
+                            <br><br>
+                            <?= Html::a('<i class="fa fa-fw fa-edit"></i> Google Indexing URLs', Url::to(['seo/google']), ['class' => 'btn btn-success']) ?>
 
                         </div>
 
