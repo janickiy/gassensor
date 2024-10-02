@@ -8,7 +8,6 @@ namespace frontend\controllers;
 
 use common\components\cart\AddToCartForm;
 use Yii;
-use yii\filters\VerbFilter;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\web\Response;

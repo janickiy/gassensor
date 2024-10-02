@@ -14,12 +14,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row">
         <div class="col-sm-9 col-md-6 col-lg-4">
-
+            <ul>
             <?php foreach($applications as $application): ?>
-                <div class="panel panel-default">
-                    <div class="panel-heading"><?= $application->title ?></div>
-                </div>
+                <li><?= $application->title ?></li>
             <?php endforeach; ?>
+            </ul>
 
             <?= LinkPager::widget([
                 'pagination' => $pages,

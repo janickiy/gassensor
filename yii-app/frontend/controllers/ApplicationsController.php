@@ -5,9 +5,13 @@ namespace frontend\controllers;
 use common\models\Applications;
 use yii\data\Pagination;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 
 class ApplicationsController extends Controller
 {
+    /**
+     * @return string
+     */
     public function actionIndex()
     {
         $query = Applications::find();
@@ -17,5 +21,19 @@ class ApplicationsController extends Controller
             ->all();
 
         return $this->render($this->action->id, compact('applications', 'pages'));
+    }
+
+    /**
+     * @param int $id
+     * @return string
+     * @throws NotFoundHttpException
+     */
+    public function actionInfo(int $id)
+    {
+        if (!$model = Applications::findOne(['id' => $id])) {
+            throw new NotFoundHttpException('not found');
+        }
+
+        return $this->render($this->action->id, []);
     }
 }

@@ -2,7 +2,6 @@
 /* @var $this yii\web\View */
 /* @var $model common\models\News */
 
-use common\helpers\Tools;
 use yii\helpers\Html;
 
 $this->title = $model->title;
