@@ -1,6 +1,5 @@
 <?php
 /* @var $this \yii\web\View */
-
 /* @var $content string */
 
 use common\widgets\Alert;
@@ -27,7 +26,6 @@ LegacyAsset::register($this);
         <title><?= defined('TITLE_PREFIX') ? TITLE_PREFIX : '' ?><?= Html::encode($this->title) ?></title>
         <?= $this->render('json-ld') ?>
 
-
         <link rel="shortcut icon" href="/i/favicon.png"/>
 
         <?php
@@ -44,6 +42,7 @@ LegacyAsset::register($this);
         ?>
 
         <?php $this->head() ?>
+        <script src="//code.jivo.ru/widget/T5tUejTiZb" async></script>
     </head>
     <body>
     <?php $this->beginBody() ?>
