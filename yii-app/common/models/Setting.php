@@ -19,7 +19,6 @@ class Setting extends SettingBase
 
     const NAME_PHONE = 'PHONE';
 
-
     const NAME_PHONE_2 = 'PHONE_2';
 
     const NAME_ADRESS = 'ADRESS';
