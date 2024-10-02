@@ -21,6 +21,8 @@ class Page extends PageBase
     const TYPE_VACANCY = 400;
     const TYPE_ACCESSORIES = 500;
 
+    const TYPE_APPLICATIONS = 600;
+
     public function rules()
     {
         return array_merge(parent::rules(), [

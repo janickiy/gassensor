@@ -24,9 +24,9 @@ use common\models\Setting;
               <div class="textwidget custom-html-widget">
                 <ul>
                   <li><a href="/">Главная</a></li>
-                  <li><a href="/catalog">Газовые датчики и аксессуары</a></li>
                   <li><a href="/catalog">Каталог</a></li>
                   <li><a href="/page/accessories">Аксессуары</a></li>
+                  <li><a href="/applications">Применение</a></li>
                 </ul>
                 </div>
               </div>

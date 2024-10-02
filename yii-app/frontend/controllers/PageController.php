@@ -24,4 +24,8 @@ class PageController extends Controller
         return $this->render($slug);
     }
 
+    public function actionApplications()
+    {
+        return $this->render('applications');
+    }
 }
