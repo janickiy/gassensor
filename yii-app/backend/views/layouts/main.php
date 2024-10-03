@@ -204,7 +204,7 @@ Use search to find needed section.
             </li>
 
             <li class="nav-item">
-                <a href="<?= Url::to(['applications/index', 'sort' => 'weight,-id']) ?>"><i class="fa fa-fw fa-list-ul"></i> <span
+                <a href="<?= Url::to(['applications/index']) ?>"><i class="fa fa-fw fa-list-ul"></i> <span
                             class="menu-item-parent"> <?= Yii::t('app', 'Applications') ?></span></a>
             </li>
 
