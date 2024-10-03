@@ -4,6 +4,14 @@ namespace common\models\base;
 
 use Yii;
 
+/**
+ * This is the model class for table "applications".
+ *
+ * @property integer $id
+ * @property string $slug
+ * @property string $title
+ * @property string $content
+ */
 class ApplicationsBase extends \yii\db\ActiveRecord
 {
     /**
@@ -20,8 +28,10 @@ class ApplicationsBase extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title','description','content'], 'required'],
-            [['title','description','content'], 'string'],
+            [['title', 'content'], 'required'],
+            [['content'], 'string'],
+            [['slug', 'title'], 'string', 'max' => 255],
+            [['slug'], 'unique'],
         ];
     }
 
@@ -32,8 +42,8 @@ class ApplicationsBase extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
+            'slug' => Yii::t('app', 'Slug'),
             'title' => Yii::t('app', 'Title'),
-            'description' => Yii::t('app', 'Description'),
             'content' => Yii::t('app', 'Content'),
         ];
     }

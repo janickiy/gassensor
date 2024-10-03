@@ -3,10 +3,40 @@
 namespace common\models;
 
 use common\models\base\ApplicationsBase;
-use common\models\base\ApplicationsBaseQuery;
+use common\models\query\ApplicationsQuery;
+use yii\behaviors\SluggableBehavior;
 
+/**
+ *
+ * @property Seo $seo
+ *
+ */
 class Applications extends ApplicationsBase
 {
+
+  //  public $description;
+    public function rules()
+    {
+        $rules = parent::rules();
+
+        return $rules;
+    }
+
+    /**
+     * {@inheritDoc}
+     * @see \yii\base\Component::behaviors()
+     */
+    public function behaviors()
+    {
+        return [
+            'sluggable' => [
+                'class' => SluggableBehavior::class,
+                'attribute' => 'title',
+                'immutable' => true,
+            ],
+        ];
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -17,10 +47,12 @@ class Applications extends ApplicationsBase
     }
 
     /**
-     * @return ApplicationsBaseQuery
+     * @inheritdoc
+     * @return ApplicationsQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new ApplicationsBaseQuery(get_called_class());
+        return new ApplicationsQuery(get_called_class());
     }
 }
+

@@ -24,16 +24,16 @@ class ApplicationsController extends Controller
     }
 
     /**
-     * @param int $id
+     * @param string $slug
      * @return string
      * @throws NotFoundHttpException
      */
-    public function actionInfo(int $id)
+    public function actionSlug(string $slug)
     {
-        if (!$model = Applications::findOne(['id' => $id])) {
-            throw new NotFoundHttpException('not found');
+        if (!$model = Applications::findOne(['slug' => $slug])) {
+            throw new NotFoundHttpException('Страница не найдена');
         }
 
-        return $this->render($this->action->id, []);
+        return $this->render($this->action->id, compact('model'));
     }
 }

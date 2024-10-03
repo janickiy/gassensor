@@ -17,7 +17,7 @@ $accessRules = [
 
     //allow admin
     ['allow' => true, 'roles' => [ROLE_NAME_ADMIN], 'controllers' => [
-        'site', 'news', 'user', 'manufacture', 'product', 'seo', 'gaz', 'order', 'page', 'redirect', 'measurement-type', 'url', 'setting',
+        'applications', 'site', 'news', 'user', 'manufacture', 'product', 'seo', 'gaz', 'order', 'page', 'redirect', 'measurement-type', 'url', 'setting',
     ]],
 
     //allow all
@@ -46,7 +46,6 @@ return [
             'rules' => [
                 'seo/robots' => 'seo/robots',
                 'PUT,POST seo/update-robots' => 'seo/update-robots',
-
                 'seo/sitemap' => 'seo/sitemap',
                 'seo/upload-sitemap' => 'seo/upload-sitemap',
             ],
@@ -55,7 +54,7 @@ return [
     'params' => $params,
 
     'as access' => [
-        'class' => AccessControl::className(),
+        'class' => AccessControl::class,
         'rules' => $accessRules,
     ],
 

@@ -2,14 +2,18 @@
 
 namespace common\models\base;
 
-
 /**
- * This is the ActiveQuery class for [[ApplicationsBase]].
+ * This is the ActiveQuery class for [[NewsBase]].
  *
- * @see GazGroupBase
+ * @see ApplicationsBase
  */
 class ApplicationsBaseQuery extends \yii\db\ActiveQuery
 {
+    /*public function active()
+    {
+        return $this->andWhere('[[status]]=1');
+    }*/
+
     /**
      * @inheritdoc
      * @return ApplicationsBase[]|array
