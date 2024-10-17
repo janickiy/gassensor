@@ -75,26 +75,27 @@ $user = Yii::$app->user;
       </div>
       <div class="main-navigation">
         <ul id="primary-menu" class="menu">
-          <li class="menu-item current-menu-ancestor current-menu-parent"><a href="/"> Главная</a>
-          </li>
-          <li class="menu-item">
-            <a href="/manufacture">Производители</a>
-          </li>
-          <li class="menu-item">
-            <a href="/catalog">Каталог</a>
-          </li>
-          <li class="menu-item">
-            <a href="/page/accessories">Аксессуары</a>
-          </li>
-          <li class="menu-item">
-              <a href="/applications">Применение</a>
-          </li>
-          <li class="menu-item">
-            <a href="/converter">Конвертер</a>
-          </li>
-          <li class="menu-item">
-            <a href="/page/contacts">Контакты </a>
-          </li>
+            <li class="menu-item current-menu-ancestor current-menu-parent">
+                <a href="/">Главная</a>
+            </li>
+            <li class="menu-item">
+                <a href="/catalog">Каталог</a>
+            </li>
+            <li class="menu-item">
+                <a href="/applications">Применение</a>
+            </li>
+            <li class="menu-item">
+                <a href="/page/accessories">Аксессуары</a>
+            </li>
+            <li class="menu-item">
+                <a href="/manufacture">Производители</a>
+            </li>
+            <li class="menu-item">
+                <a href="/converter">Конвертер</a>
+            </li>
+            <li class="menu-item">
+                <a href="/page/contacts">Контакты </a>
+            </li>
         </ul>
         <a style="display: none" href="#" class="btn btn-primary">Вопрос<i class="icon ion-md-paper-plane"></i></a>
       </div>
@@ -142,13 +143,13 @@ $user = Yii::$app->user;
           <div class="col-12">
             <div class="mobile-nav" style="display: none;">
               <ul id="primary-menu-mobile" class="mobile-menu">
-                <li class="menu-item  current-menu-ancestor current-menu-parent"><a href="/">Главная</a></li>
-                <li class="menu-item"><a href="/catalog">Каталог</a></li>
-                <li class="menu-item"><a href="/page/accessories">Аксессуары</a></li>
-                <li class="menu-item"><a href="/converter">Конвертер</a></li>
-                <li class="menu-item"><a href="/manufacture">Производители</a></li>
-                <li class="menu-item"><a href="/applications">Применение</a></li>
-                <li class="menu-item"><a href="/page/contacts">Контакты </a></li>
+                  <li class="menu-item  current-menu-ancestor current-menu-parent"><a href="/">Главная</a></li>
+                  <li class="menu-item"><a href="/catalog">Каталог</a></li>
+                  <li class="menu-item"><a href="/applications">Применение</a></li>
+                  <li class="menu-item"><a href="/page/accessories">Аксессуары</a></li>
+                  <li class="menu-item"><a href="/manufacture">Производители</a></li>
+                  <li class="menu-item"><a href="/converter">Конвертер</a></li>
+                  <li class="menu-item"><a href="/page/contacts">Контакты </a></li>
               </ul>
             </div>
           </div>
