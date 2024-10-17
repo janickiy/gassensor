@@ -139,9 +139,8 @@ $this->params['productJsonLd'] = $model->getJsonLd();
                         'attribute' => 'range',
                         'label' => 'Диапазон',
                         'format' => 'raw',
-                        'options' => ['style' => 'width:150px'],
                         'value' => function ($model) {
-                            return $this->render('_cell-range-catalog', ['model' => $model]);
+                            return $this->render('_cell-range', ['model' => $model]);
                         }
                     ],
 

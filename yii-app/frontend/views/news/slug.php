@@ -2,6 +2,7 @@
 /* @var $this yii\web\View */
 /* @var $model common\models\News */
 
+use common\helpers\Tools;
 use yii\helpers\Html;
 
 $this->title = $model->title;
@@ -41,12 +42,15 @@ if ($seo = $model->seo) {
 
             </div>
         </div>
+
+
+
             <p id="news-content">
             <?= $model->content ?>
             </p>
         </div>
 
-            <?php if (Yii::$app->user->isAdmin()): ?>
+            <?php if (\Yii::$app->user->isAdmin()): ?>
               <div class="mt-5">
               <a href="/backend/news/update?id=<?= $model->id ?>"
                 class="btn d-inline rounded-pill"

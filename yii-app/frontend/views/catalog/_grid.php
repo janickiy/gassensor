@@ -48,9 +48,6 @@ use yii\helpers\Html;
         [
             'attribute' => 'cart',
             'label' => 'Заказать',
-            'headerOptions' => [
-                'style' => 'width:40px',
-            ],
             'format' => 'raw',
             'value' => function($model) {
                 return $this->render('_cell-cart', ['model' => $model]);
@@ -59,9 +56,6 @@ use yii\helpers\Html;
 
         [
             'label' => 'Диапазон',
-            'headerOptions' => [
-                'style' => 'width:260px',
-            ],
             'class' => MyDataColumn::class,
             'tpl' => '/product/_cell-range',
         ],

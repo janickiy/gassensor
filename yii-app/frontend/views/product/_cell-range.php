@@ -1,5 +1,4 @@
 <?php
-
 /* @var $this yii\web\View */
 /* @var $model common\models\Product */
 
@@ -8,68 +7,74 @@ use \yii\helpers\ArrayHelper;
 ?>
 <div class="container">
     <div class="row">
-    <?php
-
-    $productRanges1 = $model->ProductRangesByPos(0);
-
-    if ($productRanges1 && is_array($productRanges1)):
-
-    ?>
-         <div class="col-sm">
-
-             <b><?= ArrayHelper::getValue($model, 'mainGaz.title') ?></b><br>
-
-             <?php foreach ($productRanges1 as $v): ?>
-
-             <?= $v->from ?> - <?= $v->to ?> <?= $v->unit ?>
-
-             <?php endforeach; ?>
-
-        </div>
-
-    <?php endif; ?>
-
-    <?php
-
-    $productRanges2 = $model->ProductRangesByPos(1);
-
-    if ($productRanges2 && is_array($productRanges2)):
-
-    ?>
         <div class="col-sm">
 
-            <b><?= ArrayHelper::getValue($model, 'mainGaz2.title') ?></b><br>
+            <?php
 
-            <?php foreach ($productRanges2 as $v): ?>
+            echo ArrayHelper::getValue($model, 'mainGaz.title');
 
-            <?= $v->from ?> - <?= $v->to ?> <?= $v->unit ?>
+                $productRanges1 = $model->ProductRangesByPos(0);
 
-        <?php endforeach; ?>
+                if ($productRanges1 && is_array($productRanges1)):
 
-        </div>
+            ?>
 
-    <?php endif; ?>
+                <?php foreach ($productRanges1 as $v): ?>
 
-    <?php
-
-    $productRanges3 = $model->ProductRangesByPos(2);
-
-    if ($productRanges3 && is_array($productRanges3)):
-
-    ?>
-        <div class="col-sm">
-
-            <b><?=ArrayHelper::getValue($model, 'mainGaz3.title') ?></b><br>
-
-            <?php foreach ($productRanges3 as $v): ?>
-
-            <?= $v->from ?> - <?= $v->to ?> <?= $v->unit ?>
+                <div>
+                    <?= $v->from ?> - <?= $v->to ?> <?= $v->unit ?>
+                </div>
 
             <?php endforeach; ?>
 
+            <?php endif; ?>
+
         </div>
+        <div class="col-sm">
 
-    <?php endif; ?>
+            <?php
 
+            echo ArrayHelper::getValue($model, 'mainGaz2.title');
+
+            $productRanges2 = $model->ProductRangesByPos(1);
+
+            if ($productRanges2 && is_array($productRanges2)):
+
+            ?>
+
+            <?php foreach ($productRanges2 as $v): ?>
+
+                <div>
+                    <?= $v->from ?> - <?= $v->to ?> <?= $v->unit ?>
+                </div>
+
+            <?php endforeach; ?>
+
+            <?php endif; ?>
+
+        </div>
+        <div class="col-sm">
+
+            <?php
+
+            echo ArrayHelper::getValue($model, 'mainGaz3.title');
+
+            $productRanges3 = $model->ProductRangesByPos(2);
+
+            if ($productRanges3 && is_array($productRanges3)):
+
+            ?>
+
+            <?php foreach ($productRanges3 as $v): ?>
+
+                <div>
+                    <?= $v->from ?> - <?= $v->to ?> <?= $v->unit ?>
+                </div>
+
+            <?php endforeach; ?>
+
+            <?php endif; ?>
+
+        </div>
     </div>
 </div>
