@@ -27,6 +27,7 @@ return [
         'urlManager' => [
             'rules' => [
                     'catalog/manufacture/<slug>' => 'catalog/manufacture',
+                    'applications/<slug>' => 'applications/slug',
                     'news/<slug>' => 'news/slug',
                     'manufacture/<slug>' => 'manufacture/slug',
                     'product/<slug>' => 'product/slug',
