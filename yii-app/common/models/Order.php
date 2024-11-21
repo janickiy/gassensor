@@ -87,6 +87,23 @@ class Order extends OrderBase
     }
 
     /**
+     * @return array
+     */
+    public function getItems(): array
+    {
+        /* @var \common\components\cart\Cart $cart */
+        $cart = Yii::$app->cart;
+
+        $items = [];
+
+        foreach ($cart->getItems() as $item) {
+            $items[] = ['name' => $item->product->name, 'count' => $item->count];
+        }
+
+        return $items;
+    }
+
+    /**
      * @param false $isPrependEmpty
      * @return array
      */

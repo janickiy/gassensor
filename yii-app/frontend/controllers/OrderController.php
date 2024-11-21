@@ -30,7 +30,7 @@ class OrderController extends Controller
                 $model->status = Order::STATUS_NEW;
                 if ($model->save()) {
                     //$this->addFlashSuccess("Создан заказ №{$model->id}");
-                    Yii::$app->session->setFlash(self::FLASH_KEY_ORDER, $model);
+                    Yii::$app->session->setFlash(self::FLASH_KEY_ORDER, array_merge($model->attributes, ['items' => $model->getItems()]));
 
                     $model->addProductsFromCart();
 
@@ -53,13 +53,6 @@ class OrderController extends Controller
      */
     public function actionThanks()
     {
-        if (0) { //debug mail
-            $order = Order::find()->orderBy('id DESC')->limit(1)->one();
-            $result = $order->sendMailToManager();
-            var_dump($result);
-            exit;
-        }
-
         $model = Yii::$app->session->getFlash(self::FLASH_KEY_ORDER);
 
         return $this->render($this->action->id, compact('model'));
