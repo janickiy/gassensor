@@ -26,20 +26,20 @@ return [
         ],
         'urlManager' => [
             'rules' => [
-                    'catalog/manufacture/<slug>' => 'catalog/manufacture',
-                    'applications/<slug>' => 'applications/slug',
-                    'news/<slug>' => 'news/slug',
-                    'manufacture/<slug>' => 'manufacture/slug',
-                    'product/<slug>' => 'product/slug',
-                    'catalog/<slugGaz>/<slug>' => 'product/slug',
-                    'catalog/index' => 'catalog/index',
-                    'catalog/<slug>' => 'catalog/gas',
-                    'page/<slug>' => 'page/index',
+                'catalog/manufacture/<slug>' => 'catalog/manufacture',
+                'news/<slug>' => 'news/slug',
+                'manufacture/<slug>' => 'manufacture/slug',
+                'applications/<slug>' => 'applications/slug',
+                'product/<slug>' => 'product/slug',
+                'catalog/<slugGaz>/<slug>' => 'product/slug',
+                'catalog/index' => 'catalog/index',
+                'catalog/<slug>' => 'catalog/gas',
+                'page/<slug>' => 'page/index',
                 [
                     'pattern' => 'products',
                     'route' => 'redirector/index',
                     'defaults' => ['url' => '/catalog',],
-                ],[
+                ], [
                     'pattern' => 'sensors',
                     'route' => 'redirector/index',
                     'defaults' => ['url' => '/manufacture',],
