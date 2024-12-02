@@ -71,7 +71,7 @@ class UserController extends Controller
         $model = new UserForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => getId()]);
+            return $this->redirect(['index']);
         }
 
         return $this->render('create', compact('model'));
@@ -89,7 +89,7 @@ class UserController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            return $this->redirect(['index', 'id' => $model->id]);
         }
 
         return $this->render('update', compact('model'));
