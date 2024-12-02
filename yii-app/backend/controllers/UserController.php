@@ -5,7 +5,8 @@ namespace backend\controllers;
 use Yii;
 use common\models\User;
 use common\models\search\UserSearch;
-use yii\web\{Controller,NotFoundHttpException};
+use backend\models\UserForm;
+use yii\web\{Controller, NotFoundHttpException};
 use yii\filters\VerbFilter;
 
 /**
@@ -37,6 +38,7 @@ class UserController extends Controller
      */
     public function actionIndex()
     {
+
         $searchModel = new UserSearch();
 
         $dataProvider = $searchModel->search($this->request->queryParams);
@@ -66,14 +68,10 @@ class UserController extends Controller
      */
     public function actionCreate()
     {
-        $model = new User();
+        $model = new UserForm();
 
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
-        } else {
-            $model->loadDefaultValues();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => getId()]);
         }
 
         return $this->render('create', compact('model'));
@@ -91,7 +89,7 @@ class UserController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', compact('model'));

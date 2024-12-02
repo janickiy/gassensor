@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use yii\grid\ActionColumn;
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\search\UserSearch */
@@ -24,8 +25,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <h1><?= Html::encode($this->title) ?></h1>
 
-
-                <!--
                 <div class="box-header">
                     <div class="row">
                         <div class="col-md-12">
@@ -35,7 +34,6 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                     </div>
                 </div>
-                 -->
 
                 <br>
 
@@ -51,10 +49,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
                             'id',
                             'username',
-//             'firstname',
-//             'lastname',
-//             'patronymic',
-                            //'phone',
+                            'firstname',
+                            'lastname',
+                            'patronymic',
+                            'phone',
                             //'access_token',
                             //'auth_key',
                             //'password_hash',
@@ -65,6 +63,16 @@ $this->params['breadcrumbs'][] = $this->title;
                             //'updated_at',
                             //'verification_token',
                             //'telegram_chat_id',
+
+                            [
+                                'class' => ActionColumn::class,
+                                'visibleButtons' => [
+                                    'update' => Yii::$app->user->can('admin'),
+                                    'delete' => function ($model, $key, $index) {
+                                        return $model->id !== Yii::$app->user->identity->id && Yii::$app->user->can('admin');
+                                    }
+                                ],
+                            ],
 
                             //['class' => 'yii\grid\ActionColumn'],
                         ],
