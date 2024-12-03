@@ -1,6 +1,7 @@
 <?php
 
 /* @var $this \yii\web\View */
+
 /* @var $content string */
 
 use backend\assets\AppAsset;
@@ -162,62 +163,55 @@ Use search to find needed section.
                 <a href="<?= Url::to(['url/index', 'sort' => '-id']) ?>"><i class="fa fa-fw fa-chain"></i> <span
                             class="menu-item-parent"> URL</span></a>
             </li>
-
             <li class="nav-item">
-                <a href="<?= Url::to(['redirect/index', 'sort' => '-id']) ?>"><i class="fa fa-fw fa-mail-forward"></i> <span
+                <a href="<?= Url::to(['redirect/index', 'sort' => '-id']) ?>"><i class="fa fa-fw fa-mail-forward"></i>
+                    <span
                             class="menu-item-parent"> Редиректы</span></a>
             </li>
-
             <li class="nav-item">
-                <a href="<?=Url::to(['seo/index', 'sort' => '-id']) ?>"><i class="fa fa-fw fa-list-ul"></i> <span
+                <a href="<?= Url::to(['seo/index', 'sort' => '-id']) ?>"><i class="fa fa-fw fa-list-ul"></i> <span
                             class="menu-item-parent"> SEO</span></a>
             </li>
-
             <li class="nav-item">
                 <a href="<?= Url::to(['page/index', 'sort' => '-id']) ?>"><i class="fa fa-fw fa-file-text"></i> <span
                             class="menu-item-parent"> Страницы</span></a>
             </li>
-
             <li class="nav-item">
                 <a href="<?= Url::to(['gaz/index', 'sort' => '-id']) ?>"><i class="fa fa-fw fa-list-ul"></i> <span
                             class="menu-item-parent"> Газы</span></a>
             </li>
-
             <li class="nav-item">
-                <a href="<?= Url::to(['order/index', 'sort' => '-id']) ?>"><i class="fa fa-fw fa-shopping-cart"></i> <span
+                <a href="<?= Url::to(['order/index', 'sort' => '-id']) ?>"><i class="fa fa-fw fa-shopping-cart"></i>
+                    <span
                             class="menu-item-parent"> <?= Yii::t('app', 'Orders') ?></span></a>
             </li>
-
             <li class="nav-item">
                 <a href="<?= Url::to(['measurement-type/index']) ?> "><i class="fa fa-fw fa-list-ul"></i> <span
                             class="menu-item-parent"> <?= Yii::t('app', 'Measurement Types') ?></span></a>
             </li>
-
             <li class="nav-item">
                 <a href="<?= Url::to(['product/index', 'sort' => '-id']) ?>"><i class="fa fa-fw fa-list-ul"></i> <span
                             class="menu-item-parent"> <?= Yii::t('app', 'Products') ?></span></a>
             </li>
-
             <li class="nav-item">
-                <a href="<?= Url::to(['manufacture/index', 'sort' => 'weight,-id']) ?>"><i class="fa fa-fw fa-list-ul"></i> <span
+                <a href="<?= Url::to(['manufacture/index', 'sort' => 'weight,-id']) ?>"><i
+                            class="fa fa-fw fa-list-ul"></i> <span
                             class="menu-item-parent"> <?= Yii::t('app', 'Manufactures') ?></span></a>
             </li>
-
             <li class="nav-item">
                 <a href="<?= Url::to(['applications/index']) ?>"><i class="fa fa-fw fa-list-ul"></i> <span
                             class="menu-item-parent"> <?= Yii::t('app', 'Applications') ?></span></a>
             </li>
-
             <li class="nav-item">
                 <a href="<?= Url::to(['user/index']) ?>"><i class="fa fa-fw fa-users"></i> <span
                             class="menu-item-parent"> <?= Yii::t('app', 'Users') ?></span></a>
             </li>
-
-            <li class="nav-item">
-                <a href="<?= Url::to(['setting/index']) ?>"><i class="fa fa-fw fa-cog txt-color-blue"></i> <span
-                            class="menu-item-parent"> Настройки</span></a>
-            </li>
-
+            <?php if (Yii::$app->user->can('viewAdminPage')): ?>
+                <li class="nav-item">
+                    <a href="<?= Url::to(['setting/index']) ?>"><i class="fa fa-fw fa-cog txt-color-blue"></i> <span
+                                class="menu-item-parent"> Настройки</span></a>
+                </li>
+            <?php endif; ?>
         </ul>
     </nav>
 

@@ -13,8 +13,9 @@ trait FlashTrait
      * @param $key
      * @param bool $value
      * @param bool $removeAfterAccess
+     * @return null
      */
-    public function addFlash($key, $value = true, $removeAfterAccess = true)
+    public function addFlash($key, bool $value = true, bool $removeAfterAccess = true)
     {
         if (!is_scalar($value)) {
             $value = json_encode($value, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
@@ -28,6 +29,7 @@ trait FlashTrait
 
     /**
      * @param $data
+     * @return null
      */
     public function addFlashSuccess($data)
     {
@@ -41,5 +43,4 @@ trait FlashTrait
     {
         return $this->addFlash('error', $data);
     }
-
 }

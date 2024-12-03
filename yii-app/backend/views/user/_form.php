@@ -19,11 +19,7 @@ $items = ArrayHelper::map($roles, 'name', 'name');
 
 <?php $form = ActiveForm::begin(); ?>
 
-<?= $form->field($model, 'firstname') ?>
-
-<?= $form->field($model, 'lastname') ?>
-
-<?= $form->field($model, 'patronymic') ?>
+<?= $form->field($model, 'name') ?>
 
 <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
 

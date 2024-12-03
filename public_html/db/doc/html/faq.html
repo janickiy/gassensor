@@ -784,8 +784,8 @@ invalid <a class="reference internal" href="glossary.html#term-SQL"><span class=
 workaround to this behaviour.  News to this item will be posted in <a class="reference external" href="https://github.com/phpmyadmin/phpmyadmin/issues/7383">issue
 #7383</a>.</p>
 </div>
-<div class="section" id="homonyms-and-no-primary-key-when-the-results-of-a-select-display-more-that-one-column-with-the-same-value-for-example-select-lastname-from-employees-where-firstname-like-a-and-two-smith-values-are-displayed-if-i-click-edit-i-cannot-be-sure-that-i-am-editing-the-intended-row">
-<span id="faq3-10"></span><h3>3.10 Homonyms and no primary key: When the results of a SELECT display more that one column with the same value (for example <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">lastname</span> <span class="pre">from</span> <span class="pre">employees</span> <span class="pre">where</span> <span class="pre">firstname</span> <span class="pre">like</span> <span class="pre">'A%'</span></code> and two “Smith” values are displayed), if I click Edit I cannot be sure that I am editing the intended row.<a class="headerlink" href="#homonyms-and-no-primary-key-when-the-results-of-a-select-display-more-that-one-column-with-the-same-value-for-example-select-lastname-from-employees-where-firstname-like-a-and-two-smith-values-are-displayed-if-i-click-edit-i-cannot-be-sure-that-i-am-editing-the-intended-row" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="homonyms-and-no-primary-key-when-the-results-of-a-select-display-more-that-one-column-with-the-same-value-for-example-select-name-from-employees-where-firstname-like-a-and-two-smith-values-are-displayed-if-i-click-edit-i-cannot-be-sure-that-i-am-editing-the-intended-row">
+<span id="faq3-10"></span><h3>3.10 Homonyms and no primary key: When the results of a SELECT display more that one column with the same value (for example <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">name</span> <span class="pre">from</span> <span class="pre">employees</span> <span class="pre">where</span> <span class="pre">firstname</span> <span class="pre">like</span> <span class="pre">'A%'</span></code> and two “Smith” values are displayed), if I click Edit I cannot be sure that I am editing the intended row.<a class="headerlink" href="#homonyms-and-no-primary-key-when-the-results-of-a-select-display-more-that-one-column-with-the-same-value-for-example-select-name-from-employees-where-firstname-like-a-and-two-smith-values-are-displayed-if-i-click-edit-i-cannot-be-sure-that-i-am-editing-the-intended-row" title="Permalink to this headline">¶</a></h3>
 <p>Please make sure that your table has a <a class="reference internal" href="glossary.html#term-primary-key"><span class="xref std std-term">primary key</span></a>, so that phpMyAdmin
 can use it for the Edit and Delete links.</p>
 </div>
@@ -1573,7 +1573,7 @@ Third Normal Form.</p>
  <span class="n">`petBreed`</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="no">NULL</span><span class="p">,</span>
  <span class="n">`petType`</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="no">NULL</span><span class="p">,</span>
  <span class="n">`petDOB`</span> <span class="kt">date</span> <span class="k">NOT</span> <span class="no">NULL</span><span class="p">,</span>
- <span class="n">`ownerLastName`</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="no">NULL</span><span class="p">,</span>
+ <span class="n">`ownername`</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="no">NULL</span><span class="p">,</span>
  <span class="n">`ownerFirstName`</span> <span class="kt">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">NOT</span> <span class="no">NULL</span><span class="p">,</span>
  <span class="n">`ownerPhone1`</span> <span class="kt">int</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span> <span class="k">NOT</span> <span class="no">NULL</span><span class="p">,</span>
  <span class="n">`ownerPhone2`</span> <span class="kt">int</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span> <span class="k">NOT</span> <span class="no">NULL</span><span class="p">,</span>
@@ -1582,16 +1582,16 @@ Third Normal Form.</p>
 </pre></div>
 </div>
 <p>The above table is not in First normal Form as no <a class="reference internal" href="glossary.html#term-primary-key"><span class="xref std std-term">primary key</span></a> exists. Primary key
-is supposed to be (<cite>petName</cite>,`ownerLastName`,`ownerFirstName`) . If the <a class="reference internal" href="glossary.html#term-primary-key"><span class="xref std std-term">primary key</span></a>
+is supposed to be (<cite>petName</cite>,`ownername`,`ownerFirstName`) . If the <a class="reference internal" href="glossary.html#term-primary-key"><span class="xref std std-term">primary key</span></a>
 is chosen as suggested the resultant table won’t be in Second as well as Third Normal
 form as the following dependencies exists.</p>
-<div class="highlight-mysql notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">OwnerLastName</span><span class="p">,</span> <span class="n">OwnerFirstName</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OwnerEmail</span>
-<span class="p">(</span><span class="n">OwnerLastName</span><span class="p">,</span> <span class="n">OwnerFirstName</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OwnerPhone</span>
+<div class="highlight-mysql notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">Ownername</span><span class="p">,</span> <span class="n">OwnerFirstName</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OwnerEmail</span>
+<span class="p">(</span><span class="n">Ownername</span><span class="p">,</span> <span class="n">OwnerFirstName</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OwnerPhone</span>
 <span class="n">PetBreed</span> <span class="o">-&gt;</span> <span class="n">PetType</span>
 </pre></div>
 </div>
-<p>Which says, OwnerEmail depends on OwnerLastName and OwnerFirstName.
-OwnerPhone depends on OwnerLastName and OwnerFirstName.
+<p>Which says, OwnerEmail depends on Ownername and OwnerFirstName.
+OwnerPhone depends on Ownername and OwnerFirstName.
 PetType depends on PetBreed.</p>
 </div>
 <div class="section" id="how-can-i-reassign-auto-incremented-values">
@@ -1833,7 +1833,7 @@ spreadsheet program to properly parse and sanitize such data on input instead.</
 <li><a class="reference internal" href="#i-have-table-with-many-100-columns-and-when-i-try-to-browse-table-i-get-series-of-errors-like-warning-unable-to-parse-url-how-can-this-be-fixed">3.7 I have table with many (100+) columns and when I try to browse table I get series of errors like “Warning: unable to parse url”. How can this be fixed?</a></li>
 <li><a class="reference internal" href="#i-cannot-use-clickable-html-forms-in-columns-where-i-put-a-mime-transformation-onto">3.8 I cannot use (clickable) HTML-forms in columns where I put a MIME-Transformation onto!</a></li>
 <li><a class="reference internal" href="#i-get-error-messages-when-using-sql-mode-ansi-for-the-mysql-server">3.9 I get error messages when using “–sql_mode=ANSI” for the MySQL server.</a></li>
-<li><a class="reference internal" href="#homonyms-and-no-primary-key-when-the-results-of-a-select-display-more-that-one-column-with-the-same-value-for-example-select-lastname-from-employees-where-firstname-like-a-and-two-smith-values-are-displayed-if-i-click-edit-i-cannot-be-sure-that-i-am-editing-the-intended-row">3.10 Homonyms and no primary key: When the results of a SELECT display more that one column with the same value (for example <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">lastname</span> <span class="pre">from</span> <span class="pre">employees</span> <span class="pre">where</span> <span class="pre">firstname</span> <span class="pre">like</span> <span class="pre">'A%'</span></code> and two “Smith” values are displayed), if I click Edit I cannot be sure that I am editing the intended row.</a></li>
+<li><a class="reference internal" href="#homonyms-and-no-primary-key-when-the-results-of-a-select-display-more-that-one-column-with-the-same-value-for-example-select-name-from-employees-where-firstname-like-a-and-two-smith-values-are-displayed-if-i-click-edit-i-cannot-be-sure-that-i-am-editing-the-intended-row">3.10 Homonyms and no primary key: When the results of a SELECT display more that one column with the same value (for example <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">name</span> <span class="pre">from</span> <span class="pre">employees</span> <span class="pre">where</span> <span class="pre">firstname</span> <span class="pre">like</span> <span class="pre">'A%'</span></code> and two “Smith” values are displayed), if I click Edit I cannot be sure that I am editing the intended row.</a></li>
 <li><a class="reference internal" href="#the-number-of-rows-for-innodb-tables-is-not-correct">3.11 The number of rows for InnoDB tables is not correct.</a></li>
 <li><a class="reference internal" href="#faq3-12">3.12 (withdrawn).</a></li>
 <li><a class="reference internal" href="#i-get-an-error-when-entering-use-followed-by-a-db-name-containing-an-hyphen">3.13 I get an error when entering <code class="docutils literal notranslate"><span class="pre">USE</span></code> followed by a db name containing an hyphen.</a></li>

@@ -8,9 +8,7 @@ use yii\base\Model;
 
 class UserForm extends Model
 {
-    public $firstname;
-    public $lastname;
-    public $patronymic;
+    public $name;
     public $phone;
     public $username;
     public $email;
@@ -20,13 +18,9 @@ class UserForm extends Model
     public function rules(): array
     {
         return [
-            ['firstname', 'trim'],
-            ['firstname', 'required'],
+            ['name', 'trim'],
+            ['name', 'required'],
 
-            ['lastname', 'trim'],
-            ['lastname', 'required'],
-
-            ['patronymic', 'trim'],
             ['phone', 'trim'],
 
             ['username', 'trim'],
@@ -34,9 +28,7 @@ class UserForm extends Model
             ['username', 'unique', 'targetClass' => User::class, 'message' => 'This username has already been taken.'],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
-            ['firstname', 'string', 'min' => 2, 'max' => 255],
-            ['lastname', 'string', 'min' => 2, 'max' => 255],
-            ['patronymic', 'string', 'min' => 2, 'max' => 255],
+            ['name', 'string', 'min' => 2, 'max' => 255],
             ['phone', 'string'],
 
             ['role', 'string'],
@@ -55,6 +47,7 @@ class UserForm extends Model
 
     /**
      * @return bool|null
+     * @throws \Exception
      */
     public function save(): ?bool
     {
@@ -63,9 +56,7 @@ class UserForm extends Model
         }
 
         $user = new User();
-        $user->firstname = $this->firstname;
-        $user->lastname = $this->lastname;
-        $user->patronymic = $this->patronymic;
+        $user->name = $this->name;
         $user->phone = $this->phone;
         $user->username = $this->username;
         $user->email = $this->email;
@@ -90,15 +81,11 @@ class UserForm extends Model
     public function attributeLabels()
     {
         return [
-            'firstname' => 'Имя',
-            'lastname' => 'Фамилия',
-            'patronymic' => 'Отчество',
+            'name' => 'ФИО',
             'phone' => 'Телефон',
             'username' => 'Логин',
             'email' => 'E-mail',
             'role' => 'Роль',
         ];
     }
-
-
 }

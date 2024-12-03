@@ -6,8 +6,9 @@ use Yii;
 use common\models\User;
 use common\models\search\UserSearch;
 use backend\models\UserForm;
-use yii\web\{Controller, NotFoundHttpException};
+use yii\web\{Controller, ForbiddenHttpException, NotFoundHttpException};
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -15,30 +16,11 @@ use yii\filters\VerbFilter;
 class UserController extends Controller
 {
     /**
-     * @inheritDoc
-     */
-    public function behaviors()
-    {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::class,
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
-                ],
-            ]
-        );
-    }
-
-    /**
      * Lists all User models.
      * @return mixed
      */
     public function actionIndex()
     {
-
         $searchModel = new UserSearch();
 
         $dataProvider = $searchModel->search($this->request->queryParams);
@@ -104,6 +86,9 @@ class UserController extends Controller
      */
     public function actionDelete(int $id)
     {
+        $auth = Yii::$app->authManager;
+        $auth->revokeAll($id);
+
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

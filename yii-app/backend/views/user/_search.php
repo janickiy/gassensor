@@ -22,11 +22,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'username') ?>
 
-    <?= $form->field($model, 'firstname') ?>
+    <?= $form->field($model, 'name') ?>
 
-    <?= $form->field($model, 'lastname') ?>
-
-    <?= $form->field($model, 'patronymic') ?>
 
     <?= $form->field($model, 'phone') ?>
 

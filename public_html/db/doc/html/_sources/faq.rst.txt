@@ -981,7 +981,7 @@ workaround to this behaviour.  News to this item will be posted in `issue
 
 .. _faq3_10:
 
-3.10 Homonyms and no primary key: When the results of a SELECT display more that one column with the same value (for example ``SELECT lastname from employees where firstname like 'A%'`` and two "Smith" values are displayed), if I click Edit I cannot be sure that I am editing the intended row.
+3.10 Homonyms and no primary key: When the results of a SELECT display more that one column with the same value (for example ``SELECT name from employees where firstname like 'A%'`` and two "Smith" values are displayed), if I click Edit I cannot be sure that I am editing the intended row.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Please make sure that your table has a :term:`primary key`, so that phpMyAdmin
@@ -2017,7 +2017,7 @@ Third Normal Form.
      `petBreed` varchar(64) NOT NULL,
      `petType` varchar(64) NOT NULL,
      `petDOB` date NOT NULL,
-     `ownerLastName` varchar(64) NOT NULL,
+     `ownername` varchar(64) NOT NULL,
      `ownerFirstName` varchar(64) NOT NULL,
      `ownerPhone1` int(12) NOT NULL,
      `ownerPhone2` int(12) NOT NULL,
@@ -2025,18 +2025,18 @@ Third Normal Form.
     );
 
 The above table is not in First normal Form as no :term:`primary key` exists. Primary key
-is supposed to be (`petName`,`ownerLastName`,`ownerFirstName`) . If the :term:`primary key`
+is supposed to be (`petName`,`ownername`,`ownerFirstName`) . If the :term:`primary key`
 is chosen as suggested the resultant table won't be in Second as well as Third Normal
 form as the following dependencies exists.
 
 .. code-block:: mysql
 
-    (OwnerLastName, OwnerFirstName) -> OwnerEmail
-    (OwnerLastName, OwnerFirstName) -> OwnerPhone
+    (Ownername, OwnerFirstName) -> OwnerEmail
+    (Ownername, OwnerFirstName) -> OwnerPhone
     PetBreed -> PetType
 
-Which says, OwnerEmail depends on OwnerLastName and OwnerFirstName.
-OwnerPhone depends on OwnerLastName and OwnerFirstName.
+Which says, OwnerEmail depends on Ownername and OwnerFirstName.
+OwnerPhone depends on Ownername and OwnerFirstName.
 PetType depends on PetBreed.
 
 .. _faq6_38:

@@ -28,9 +28,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="box-header">
                     <div class="row">
                         <div class="col-md-12">
+                            <?php if (Yii::$app->user->can('viewAdminPage')): ?>
 
-                            <?= Html::a(Yii::t('app', 'Create User'), ['create'], ['class' => 'btn btn-info btn-sm pull-left']) ?>
+                                <?= Html::a('Добавить пользователя', ['create'], ['class' => 'btn btn-info btn-sm pull-left']) ?>
 
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -49,13 +51,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
                             'id',
                             'username',
-                            'firstname',
-                            'lastname',
-                            'patronymic',
+                            'name',
                             'phone',
                             //'access_token',
                             //'auth_key',
-                            //'password_hash',
+                           // 'password_hash',
                             //'password_reset_token',
                             'email:email',
                             //'status',
@@ -69,7 +69,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'visibleButtons' => [
                                     'update' => Yii::$app->user->can('admin'),
                                     'delete' => function ($model, $key, $index) {
-                                        return $model->id !== Yii::$app->user->identity->id && Yii::$app->user->can('admin');
+                                        return $model->id !== Yii::$app->user->identity->id && Yii::$app->user->can('viewAdminPage');
                                     }
                                 ],
                             ],

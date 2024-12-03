@@ -6,10 +6,30 @@ use Yii;
 use common\helpers\FlashTrait;
 use common\models\Setting;
 use yii\web\Controller;
+use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 class SettingController extends Controller
 {
     use FlashTrait;
+
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class'        => AccessControl::class,
+                'only'         => ['index'],
+
+                'rules'        => [
+                    [
+                        'allow'   => true,
+                        'actions' => ['index'],
+                        'roles'   => ['manger','admin'],
+                    ],
+                ],
+            ],
+        ];
+    }
 
     /**
      * @return string
