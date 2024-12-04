@@ -29,7 +29,9 @@ return [
                 'catalog/manufacture/<slug>' => 'catalog/manufacture',
                 'news/<slug>' => 'news/slug',
                 'manufacture/<slug>' => 'manufacture/slug',
+                'applications/index' => 'applications/index',
                 'applications/<slug>' => 'applications/slug',
+
                 'product/<slug>' => 'product/slug',
                 'catalog/<slugGaz>/<slug>' => 'product/slug',
                 'catalog/index' => 'catalog/index',
