@@ -45,8 +45,6 @@ LegacyAsset::register($this);
 
         <?php $this->head() ?>
 
-        <script src="//code.jivo.ru/widget/T5tUejTiZb" async></script>
-
     </head>
     <body>
     <?php $this->beginBody() ?>
@@ -74,15 +72,7 @@ LegacyAsset::register($this);
     </div>
     <?php $this->endBody() ?>
 
-    <?php if (!defined('LOCAL_SITE')): ?>
-
-        <?= $this->render('yandex-metrika') ?>
-
-        <?= $this->render('googletagmanager') ?>
-
-    <?php else: ?>
-        <!--  LOCAL_SITE -->
-    <?php endif; ?>
+ 
     </body>
     </html>
 <?php $this->endPage() ?>
