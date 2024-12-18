@@ -1,7 +1,11 @@
 <?php
 
 defined('ROLE_NAME_ADMIN') or define('ROLE_NAME_ADMIN', 'admin');
+defined('ROLE_NAME_MANGER') or define('ROLE_NAME_MANGER', 'manger');
 defined('ROLE_NAME_DEVELOPER') or define('ROLE_NAME_DEVELOPER', 'developer');
+
+
+//manger
 
 $i18n = [];
 foreach (['app', 'seo', 'order',] as $v) {
