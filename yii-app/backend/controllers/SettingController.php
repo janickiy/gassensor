@@ -24,7 +24,7 @@ class SettingController extends Controller
                     [
                         'allow'   => true,
                         'actions' => ['index'],
-                        'roles'   => ['manger','admin'],
+                        'roles'   => [ROLE_NAME_MANAGER,ROLE_NAME_ADMIN],
                     ],
                 ],
             ],

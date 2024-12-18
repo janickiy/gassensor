@@ -20,7 +20,7 @@ $accessRules = [
         'applications', 'site', 'news', 'user', 'manufacture', 'product', 'seo', 'gaz', 'order', 'page', 'redirect', 'measurement-type', 'url', 'setting',
     ]],
 
-    ['allow' => true, 'roles' => [ROLE_NAME_MANGER], 'controllers' => [
+    ['allow' => true, 'roles' => [ROLE_NAME_MANAGER], 'controllers' => [
         'applications', 'site', 'news', 'manufacture', 'product', 'seo', 'gaz', 'order', 'page', 'redirect', 'measurement-type', 'url',
     ]],
 

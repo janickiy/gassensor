@@ -202,11 +202,13 @@ Use search to find needed section.
                 <a href="<?= Url::to(['applications/index']) ?>"><i class="fa fa-fw fa-list-ul"></i> <span
                             class="menu-item-parent"> <?= Yii::t('app', 'Applications') ?></span></a>
             </li>
+            <?php if (!Yii::$app->user->isManager()): ?>
             <li class="nav-item">
                 <a href="<?= Url::to(['user/index']) ?>"><i class="fa fa-fw fa-users"></i> <span
                             class="menu-item-parent"> <?= Yii::t('app', 'Users') ?></span></a>
             </li>
-            <?php if (Yii::$app->user->can('viewAdminPage')): ?>
+            <?php endif; ?>
+            <?php if (!Yii::$app->user->isManager()): ?>
                 <li class="nav-item">
                     <a href="<?= Url::to(['setting/index']) ?>"><i class="fa fa-fw fa-cog txt-color-blue"></i> <span
                                 class="menu-item-parent"> Настройки</span></a>

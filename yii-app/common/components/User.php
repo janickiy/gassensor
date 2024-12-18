@@ -18,6 +18,11 @@ class User extends \yii\web\User
         return $this->can(ROLE_NAME_ADMIN);
     }
 
+    public function isManager()
+    {
+        return $this->can(ROLE_NAME_MANAGER);
+    }
+
     public function isDeveloper()
     {
         return $this->can(ROLE_NAME_DEVELOPER);
