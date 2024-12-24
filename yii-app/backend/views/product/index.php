@@ -1,4 +1,5 @@
 <?php
+
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\search\ProductSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -39,6 +40,8 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index', 's
                 <div class="table-responsive">
                     <?php Pjax::begin(); ?>
 
+                    <?= Html::beginForm(['product/checkbox-delete'], 'post'); ?>
+
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,
                         'filterModel' => $searchModel,
@@ -46,6 +49,11 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index', 's
                             ['class' => 'yii\grid\SerialColumn'],
                             ['class' => 'yii\grid\ActionColumn'],
                             'id',
+                            [
+                                'class' => 'yii\grid\CheckboxColumn', 'checkboxOptions' => function ($model) {
+                                return ['value' => $model->id];
+                            },
+                            ],
                             'createdUpdatedAt:raw:Создан/Изменен',
                             'name',
                             'manufacture_id:raw:id производителя',
@@ -57,7 +65,7 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index', 's
                             [
                                 'attribute' => 'picture',
                                 'format' => 'raw',
-                                'value' => function($model) {
+                                'value' => function ($model) {
                                     return $model->pictUrl
                                         ? Html::img($model->pictUrl, ['style' => 'max-width: 100px;'])
                                         : null;
@@ -67,7 +75,7 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index', 's
                             [
                                 'attribute' => 'slug',
                                 'format' => 'raw',
-                                'value' => function($model) {
+                                'value' => function ($model) {
                                     $url = $model->url;
                                     return $model->slug . '<hr/>' . Html::a($url, $url, ['target' => '_blank', 'data-pjax' => 0]);
                                 }
@@ -80,7 +88,7 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index', 's
                                 'attribute' => 'range',
                                 'label' => 'Диапазоны',
                                 'format' => 'raw',
-                                'value' => function($model) {
+                                'value' => function ($model) {
                                     return $this->render('_ranges', ['model' => $model]);
                                 }
                             ],
@@ -96,7 +104,12 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index', 's
                         ],
                     ]); ?>
 
+                    <?= Html::submitButton('Удалить выбранные', ['class' => 'btn btn-danger mt-3 mb-3', 'data-confirm' => Yii::t('yii', 'Вы уверены, что хотите удалить данные записи? Восстановить их будет нельзя.'),]); ?>
+
+                    <?= Html::endForm() ?>
+
                     <?php Pjax::end(); ?>
+
                 </div>
 
             </div>

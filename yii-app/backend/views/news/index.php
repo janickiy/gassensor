@@ -41,13 +41,19 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php Pjax::begin(); ?>
                     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
+                    <?= Html::beginForm(['news/checkbox-delete'],'post');?>
+
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,
                         'filterModel' => $searchModel,
                         'columns' => [
                             ['class' => 'yii\grid\SerialColumn'],
                             ['class' => 'yii\grid\ActionColumn'],
-
+                            [
+                                'class' => 'yii\grid\CheckboxColumn', 'checkboxOptions' => function($model) {
+                                    return ['value' => $model->id];
+                                },
+                            ],
                             'id',
                             'created_at:dateTime',
                             'date:date',
@@ -75,13 +81,16 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'value' => function ($data) {
                                     return StringHelpers::shortText(StringHelpers::removeHtmlTags($data->content));
                                 }
-
                             ],
-
                         ],
                     ]); ?>
 
+                    <?= Html::submitButton('Удалить выбранные', ['class' => 'btn btn-danger mt-3 mb-3','data-confirm' => Yii::t('yii', 'Вы уверены, что хотите удалить данные записи? Восстановить их будет нельзя.'),]); ?>
+
+                    <?= Html::endForm() ?>
+
                     <?php Pjax::end(); ?>
+
                 </div>
 
             </div>

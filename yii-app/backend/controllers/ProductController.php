@@ -18,6 +18,8 @@ class ProductController extends Controller
 {
     use FlashTrait;
 
+    public $enableCsrfValidation = false;
+
     /**
      * @inheritDoc
      */
@@ -181,8 +183,6 @@ class ProductController extends Controller
                     }
                 }
 
-
-
                 if (isset($req->post('ProductGaz')['is_main'])) {
                     $ids = [];
                     $ids[] = $req->post('ProductGaz')['is_main'];
@@ -244,6 +244,33 @@ class ProductController extends Controller
         $model->delete();
 
         return $this->redirect(['index', 'sort' => '-id',]);
+    }
+
+    public function actionCheckboxDelete()
+    {
+        $selection = Yii::$app->request->post('selection');
+
+        if ($selection != null) {
+            $news = Product::find()->where(['in', 'id', $selection]);
+
+            foreach ($news ?? [] as $new) {
+                $seo = $new->seo ?? null;
+                if ($seo) {
+                    $seo->delete();
+                }
+            }
+
+            Product::deleteAll([
+                'id' => $selection
+            ]);
+
+            Yii::$app->session->setFlash('success', 'Выбранные данные удалены!');
+            return $this->redirect(['index', 'sort' => '-id',]);
+        } else {
+            Yii::$app->session->setFlash('error', 'Нечего удалять!');
+
+            return $this->redirect(['index', 'sort' => '-id',]);
+        }
     }
 
     /**

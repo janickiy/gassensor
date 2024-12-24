@@ -4,11 +4,11 @@ namespace backend\controllers;
 
 use Yii;
 use common\helpers\FlashTrait;
-use common\models\{News,Seo};
+use common\models\{News, Seo};
 use common\models\search\NewsSearch;
 use yii\filters\VerbFilter;
 use yii\helpers\Inflector;
-use yii\web\{Controller,NotFoundHttpException,UploadedFile};
+use yii\web\{Controller, NotFoundHttpException, UploadedFile};
 use common\helpers\StringHelpers;
 
 
@@ -18,7 +18,7 @@ use common\helpers\StringHelpers;
 class NewsController extends Controller
 {
     use FlashTrait;
-
+    public $enableCsrfValidation = false;
     /**
      * @inheritDoc
      */
@@ -31,6 +31,7 @@ class NewsController extends Controller
                     'class' => VerbFilter::class,
                     'actions' => [
                         'delete' => ['POST'],
+                        'checkbox-delete' => ['POST'],
                     ],
                 ],
             ]
@@ -206,6 +207,33 @@ class NewsController extends Controller
         }
 
         return $this->redirect(['update', 'id' => $id]);
+    }
+
+    public function actionCheckboxDelete()
+    {
+        $selection = Yii::$app->request->post('selection');
+
+        if ($selection != null) {
+            $news = News::find()->where(['in', 'id', $selection]);
+
+            foreach ($news ?? [] as $new) {
+                $seo = $new->seo ?? null;
+                if ($seo) {
+                    $seo->delete();
+                }
+            }
+
+            News::deleteAll([
+                'id' => $selection
+            ]);
+
+            Yii::$app->session->setFlash('success', 'Выбранные данные удалены!');
+            return $this->redirect(['index']);
+        } else {
+            Yii::$app->session->setFlash('error', 'Нечего удалять!');
+
+            return $this->redirect(['index']);
+        }
     }
 
     /**
