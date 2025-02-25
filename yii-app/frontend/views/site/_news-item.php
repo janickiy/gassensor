@@ -35,7 +35,7 @@ use yii\helpers\Html;
   <div class="inner-post">
       <div class="entry-summary">
       <p>
-        <?= mb_substr(strip_tags($model->content), 0, 100) ?>&nbsp;...
+          <?= $model->seo->h1 ?? $this->title ?>
       </p>
       </div>
   </div>
