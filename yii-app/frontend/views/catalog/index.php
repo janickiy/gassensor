@@ -33,7 +33,9 @@ $req = Yii::$app->request;
     <div class="row">
       <div class="filter-wrap col-lg-2 col-md-3 bg-light border py-1">
 
-        <?= $this->render('_filter', ['model' => $searchModel,]) ?>
+        <?= $this->render('_filter', [
+                'model' => $searchModel,
+        ]) ?>
 
       </div>
       <div class="col-md-7">

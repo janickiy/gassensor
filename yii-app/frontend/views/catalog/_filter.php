@@ -7,6 +7,7 @@ use common\models\GazGroup;
 use common\models\Manufacture;
 use common\models\MeasurementType;
 use common\models\ProductRange;
+use frontend\helpers\CatalogFilterHelper;
 use yii\bootstrap5\ActiveForm;
 use yii\bootstrap5\Html;
 
@@ -14,15 +15,42 @@ use yii\bootstrap5\Html;
 
 <?php $form = ActiveForm::begin(['method' => 'get', 'action' => '/catalog']); ?>
 
-    <?= $form->field($model, 'manufacture_id')->dropDownList(
-        Manufacture::getDropDownData(true),
-        ['class' => 'form-select', 'options' => ['' => ['label' => ' ']]])
-    ?>
 
-    <?= $form->field($model, 'gaz_id')->dropDownList(
-        Gaz::getDropDownData(true),
-        ['class' => 'form-select', 'options' => ['' => ['label' => ' ']]])
-    ?>
+
+        <div class="mb-3 field-productsearch-manufacture_id">
+            <label class="form-label" for="productsearch-manufacture_id">Производитель</label>
+            <select id="productsearch-manufacture_id" class="form-select" name="ProductSearch[manufacture_id]">
+                <?php
+                $manufactureAvailableIds = CatalogFilterHelper::findAvailableManufacturesIds($model);
+                foreach (Manufacture::getDropDownData(true) as $id => $label) {?>
+                    <option
+                            value="<?= $id?>"
+                            label="<?= $label?>"
+                            <?= !in_array($id, $manufactureAvailableIds) && !empty($id) ? 'disabled' : ''?>
+                            <?= $id == $model->manufacture_id ? 'selected' : ''?>
+                    >
+                        <?= $label?></option>
+                <?php } ?>
+            </select>
+        </div>
+
+        <div class="mb-3 field-productsearch-gaz_id">
+            <label class="form-label" for="productsearch-gaz_id">Газ</label>
+            <select id="productsearch-gaz_id" class="form-select" name="ProductSearch[gaz_id]">
+                <?php
+                $gazAvailableIds = CatalogFilterHelper::findAvailableGazIds($model);
+                foreach (Gaz::getDropDownData(true) as $id => $label) {?>
+                    <option
+                        value="<?= $id?>"
+                        label="<?= $label?>"
+                        <?= !in_array($id, $gazAvailableIds) && !empty($id) ? 'disabled' : ''?>
+                        <?= $id == $model->gaz_id ? 'selected' : ''?>
+                    >
+                        <?= $label?></option>
+                <?php } ?>
+            </select>
+        </div>
+
 
 
 <?php if(0): ?>

@@ -20,11 +20,11 @@ array_unshift($route, '/catalog');
 
 <?php if ($count): ?>
 
-  Выбрано товаров <?= $count ?>шт <?= Html::a('Показать', $route) ?>
+    Выбрано товаров <?= $count ?>шт <?= Html::a('Показать', $route) ?>
 
 <?php else: ?>
 
-  Не найдено. <?= Html::a('Сбросить фильтры', '/catalog') ?>
+    Не найдено. <?= Html::a('Сбросить фильтры', '/catalog') ?>
 
 <?php endif; ?>
 

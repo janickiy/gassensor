@@ -34,6 +34,7 @@ return [
                     'product/<slug>' => 'product/slug',
                     'catalog/<slugGaz>/<slug>' => 'product/slug',
                     'catalog/index' => 'catalog/index',
+                    '__test' => 'catalog/test',
                     'catalog/<slug>' => 'catalog/gas',
                     'page/<slug>' => 'page/index',
                 [

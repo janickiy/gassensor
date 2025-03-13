@@ -2,6 +2,7 @@
 
 namespace common\models\search;
 
+use common\models\Manufacture;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\Product;
@@ -241,8 +242,6 @@ class ProductSearch extends Product
             //'gaz_title' => SORT_ASC,
             'name' => SORT_ASC
         ];
-
-        //$sql = $query->prepare(\Yii::$app->db->queryBuilder)->createCommand()->rawSql; echo $sql;
 
         return $dataProvider;
     }

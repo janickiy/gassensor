@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "gassensor-438111",
+  "private_key_id": "1f8aa1457467cbd7f911fb151615d6c8fc39c344",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCmZ91UURKjAfb/\nopzTeoUDcI5n8o18SUJ0+N0rBzos5rhEU/HA4DJty0t5Ya6jLC2oSOUWc0IYTz6w\nbm/INpmGGvPmPOf6iUWvOLKvZZOIwADuWxtQCIJkBmcbBnb/Pgo72P8iKal6C1pd\nsaX7grqPbOODCNtTVOfOfid/Ua3l/QRXxznijf0krASmJd4nXMLo/f8j5SXBXoQb\nzlN4J/JdiSxoa5RZmLmE2YzKUCQu/dPN16lPK/oclDENTYyoBB/GqxRNS+XYv0Cv\nJrY3mJ3sXwWCHrU4S19vJXnF4FccYxGy/l7XqFNV/2f2wb2qChCAGOfEed/rUQP3\n7na+mRenAgMBAAECggEAUks6U1j2wQOXPcwTB6jnQBC5dGGpI+ZtBcEPS5i65frB\n9RSYkbyuY8rui9xJi+ustrU6ChS9Ap2qEIHFKTwLR51rshi71pRtkF6XS5ON10qx\nCy+mPbm/lizub5iOX+M0F23UmvYEmNUlfwF8Zvo7PfPpPeOy566tJtsPuHDR8dMX\nORAnZBOT0Ix8Sd6AoIRCB1N5MJdwIwoawkrLcaGOGXDSP31F8XwsUR8A8qYrIdKh\nxToTTgwIC7KOBYsjmjXR6jyd7ViDmN7UDFo7AqiVANpmg88FLKB9bRwuPYlnU02G\ng746OWbKgRA0Mv7CislKwWeA8zTUVG/KKulFaOsMxQKBgQDWTT99OsOapoF4rcqH\nik8cVCM39PJy7JSrdeUxOMeCZVfbn3bDj5E70zF3L4lULjsnpJJ67s5BuXnShGXR\nmkf81H0X9O7BLG5b2buBzIawVx1NN2lZcmnnyexu9YzwNMrEroR/6d8b5Wq4MPhd\nnbFNLpjvLHcLRshkfwp/il4n+wKBgQDGyNR8GgiGQ9L/xxgrBEAbaf8ShTtuhAfP\nHHswtOi0GHmjZxVq+yp+21DLq/qgJyJSHhAwToMu1XaSnizQtoe7VKwB/jZ4x3PV\nlXcGtaD7zx6FPrfMn8a20XZjc3O4cevw/Oc8crl6rKgPW1owb0VjHmzNWM28RvMB\nYvXWenMjRQKBgQC6wymwnrT3o2K0ZGlcBGp7msvyqVNeWtYaM63hXsVo259c9LVR\nK158D8tNPq1lIsFFBETwRAyW9Oi5Uc9Wgyl3q0u1xC0LRwiKnc+vCCrdpZ4QvFjg\nrjij27Nk5DTG5otMK3en7o8VRbPjADKDi7mINTLtRggdWLut8ZWZn2H9XwKBgFUQ\nqgU1asJyEcAM5eW6muhgUpwNUaJ4c5MIoBr2v8IZ2yu2uC6grs28cnXF8alJNeGo\nJctWPcLz7BrP/2ONSMY8dKMhsxO6XnJe1KGVZf974ZapgSPal8GyHxRt2m5qqcnl\nn9p5SbAaZIy1zgF+DFZfNbYmM1xHjEPioksW+WB1AoGAQC4zhrwEWfjfFJb/eXgt\narf67Zlstq4H+8UHbWJdR1BFJgSMX6GK8Sh5gjME+BWXaLt01uLjighDFwlnebiE\n8JSD3ayAkcX0S+efeYrOhmfwb9KnLyTZqFppMQ65svKu8Na9x8gcqoeI60EHTZPt\nKaCS4O4z1UOyQmA8gvg06bw=\n-----END PRIVATE KEY-----\n",
+  "client_email": "gassensor@gassensor-438111.iam.gserviceaccount.com",
+  "client_id": "106092935961015318365",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/gassensor%40gassensor-438111.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

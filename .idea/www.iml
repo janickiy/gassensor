@@ -5,6 +5,10 @@
       <sourceFolder url="file://$MODULE_DIR$/public_html/db/libraries/classes" isTestSource="false" packagePrefix="PhpMyAdmin\" />
       <sourceFolder url="file://$MODULE_DIR$/public_html/db/test/classes" isTestSource="true" packagePrefix="PhpMyAdmin\Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/public_html/db/test/selenium" isTestSource="true" packagePrefix="PhpMyAdmin\Tests\Selenium\" />
+      <sourceFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/libraries/classes" isTestSource="false" packagePrefix="PhpMyAdmin\" />
+      <sourceFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/test/classes" isTestSource="true" packagePrefix="PhpMyAdmin\Tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/test/selenium" isTestSource="true" packagePrefix="PhpMyAdmin\Tests\Selenium\" />
+      <sourceFolder url="file://$MODULE_DIR$/yii-app/spec" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/yii-app/vendor/yiisoft/yii2-composer" />
       <excludeFolder url="file://$MODULE_DIR$/yii-app/vendor/symfony/polyfill-intl-grapheme" />
       <excludeFolder url="file://$MODULE_DIR$/yii-app/vendor/symfony/polyfill-mbstring" />
@@ -112,36 +116,6 @@
       <excludeFolder url="file://$MODULE_DIR$/yii-app/vendor/fakerphp/faker" />
       <excludeFolder url="file://$MODULE_DIR$/yii-app/vendor/phpspec/php-diff" />
       <excludeFolder url="file://$MODULE_DIR$/yii-app/vendor/yiithings/yii2-dotenv" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/vendor/bacon/bacon-qr-code" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/vendor/composer" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/vendor/dasprid/enum" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/vendor/google/recaptcha" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/vendor/nikic/fast-route" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/vendor/paragonie/constant_time_encoding" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/vendor/phpmyadmin/motranslator" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/vendor/phpmyadmin/shapefile" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/vendor/phpmyadmin/sql-parser" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/vendor/phpmyadmin/twig-i18n-extension" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/vendor/phpseclib/phpseclib" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/vendor/pragmarx/google2fa" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/vendor/pragmarx/google2fa-qrcode" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/vendor/psr/cache" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/vendor/psr/container" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/vendor/psr/log" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/vendor/samyoul/u2f-php-server" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/vendor/symfony/cache" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/vendor/symfony/cache-contracts" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/vendor/symfony/config" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/vendor/symfony/dependency-injection" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/vendor/symfony/expression-language" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/vendor/symfony/filesystem" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/vendor/symfony/polyfill-ctype" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/vendor/symfony/polyfill-mbstring" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/vendor/symfony/service-contracts" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/vendor/symfony/var-exporter" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/vendor/tecnickcom/tcpdf" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/vendor/twig/twig" />
-      <excludeFolder url="file://$MODULE_DIR$/public_html/backend/phpmyadmin/vendor/williamdes/mariadb-mysql-kbs" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/db/vendor/bacon/bacon-qr-code" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/db/vendor/code-lts/u2f-php-server" />
       <excludeFolder url="file://$MODULE_DIR$/public_html/db/vendor/composer" />
