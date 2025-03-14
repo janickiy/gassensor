@@ -3,12 +3,12 @@
 /* @var $this yii\web\View */
 /* @var $model common\models\search\ProductSearch */
 
+use common\helpers\CatalogFilterHelper;
 use common\models\Gaz;
 use common\models\GazGroup;
 use common\models\Manufacture;
 use common\models\MeasurementType;
 use common\models\ProductRange;
-use frontend\helpers\CatalogFilterHelper;
 use yii\bootstrap5\ActiveForm;
 use yii\bootstrap5\Html;
 

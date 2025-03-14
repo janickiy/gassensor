@@ -1,22 +1,21 @@
 <?php
 
-namespace frontend\helpers;
+namespace common\helpers;
 
 use common\models\Gaz;
 use common\models\Manufacture;
 use common\models\MeasurementType;
 use common\models\search\ProductSearch;
-use yii\web\Controller;
 use Yii;
+use yii\web\Controller;
 
 class CatalogFilterHelper extends Controller
 {
     /**
      * @param ProductSearch $searchModel
-     * @return array|\yii\db\DataReader
-     * @throws \yii\db\Exception
+     * @return array|null
      */
-    public static function findAvailableManufacturesIds(ProductSearch $searchModel)
+    public static function findAvailableManufacturesIds(ProductSearch $searchModel): ?array
     {
         $params = Yii::$app->request->queryParams;
 
@@ -26,12 +25,12 @@ class CatalogFilterHelper extends Controller
             $ids = (new ProductSearch())->searchFront($params)->query->select(['product.id'])->column();
 
             if ($ids) {
-                $manufactureAvailableIds = Yii::$app->db->createCommand("
-                SELECT m.id FROM `manufacture` m
-                LEFT JOIN product p ON p.manufacture_id = m.id
-                WHERE p.id IN (" . join(',', $ids) . ")
-                GROUP BY m.id
-            ")->queryColumn();
+                $manufactureAvailableIds = Manufacture::find()
+                    ->select(['manufacture.id'])
+                    ->leftJoin('product','product.manufacture_id = manufacture.id')
+                    ->where(['in', 'product.id', $ids])
+                    ->groupBy(['manufacture.id'])
+                    ->column();
             } else {
                 $manufactureAvailableIds = null;
             }
@@ -44,10 +43,9 @@ class CatalogFilterHelper extends Controller
 
     /**
      * @param ProductSearch $searchModel
-     * @return array|\yii\db\DataReader
-     * @throws \yii\db\Exception
+     * @return array|null
      */
-    public static function findAvailableGazIds(ProductSearch $searchModel)
+    public static function findAvailableGazIds(ProductSearch $searchModel): ?array
     {
         $params = Yii::$app->request->queryParams;
 
@@ -57,13 +55,13 @@ class CatalogFilterHelper extends Controller
             $ids = (new ProductSearch())->searchFront($params)->query->select(['product.id'])->column();
 
             if ($ids) {
-                $gazAvailableIds = Yii::$app->db->createCommand("
-				SELECT g.id FROM `gaz` g
-                LEFT JOIN product_gaz pg ON pg.gaz_id = g.id
-                LEFT JOIN product p ON p.id = pg.product_id
-                WHERE p.id IN (" . join(',', $ids) . ")
-                GROUP BY g.id
-            ")->queryColumn();
+                $gazAvailableIds = Gaz::find()
+                    ->select(['gaz.id'])
+                    ->leftJoin('product_gaz','product_gaz.gaz_id = gaz.id')
+                    ->leftJoin('product','product.id = product_gaz.product_id')
+                    ->where(['in', 'product.id', $ids])
+                    ->groupBy(['gaz.id'])
+                    ->column();
             } else {
                 $gazAvailableIds = null;
             }
@@ -76,10 +74,9 @@ class CatalogFilterHelper extends Controller
 
     /**
      * @param ProductSearch $searchModel
-     * @return array|\yii\db\DataReader
-     * @throws \yii\db\Exception
+     * @return array|null
      */
-    public static function findAvailableMeasurementTypeIds(ProductSearch $searchModel)
+    public static function findAvailableMeasurementTypeIds(ProductSearch $searchModel): ?array
     {
         $params = Yii::$app->request->queryParams;
 
@@ -89,12 +86,12 @@ class CatalogFilterHelper extends Controller
             $ids = (new ProductSearch())->searchFront($params)->query->select(['product.id'])->column();
 
             if ($ids) {
-                $measurementTypeIds = Yii::$app->db->createCommand("
-				SELECT m.id FROM `measurement_type` m
-                LEFT JOIN product p ON p.measurement_type_id = m.id
-                WHERE p.id IN (" . join(',', $ids) . ")
-                GROUP BY m.id
-            ")->queryColumn();
+                $measurementTypeIds = MeasurementType::find()
+                    ->select(['measurement_type.id'])
+                    ->leftJoin('product','product.measurement_type_id = measurement_type.id')
+                    ->where(['in', 'product.id', $ids])
+                    ->groupBy(['measurement_type.id'])
+                    ->column();
             } else {
                 $measurementTypeIds = null;
             }
