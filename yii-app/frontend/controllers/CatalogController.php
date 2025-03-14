@@ -76,7 +76,6 @@ class CatalogController extends Controller
      */
     public function actionManufacture($slug)
     {
-
         $searchModel = new ProductSearch();
 
         $params = $this->request->queryParams;
@@ -96,5 +95,32 @@ class CatalogController extends Controller
             'seo' => $seo,
         ]);
 
+    }
+
+    /**
+     * @param int $manufacture_id
+     * @return string
+     */
+    public function actionGaz(int $manufacture_id): string
+    {
+        $rows = Gaz::find()->asArray()->all();
+
+        $gazNoAvailableIds = Gaz::find()->select(['gaz.id'])
+            ->leftJoin('product_gaz', 'gaz.id = product_gaz.gaz_id')
+            ->leftJoin('product', 'product_gaz.product_id = product.id')
+            ->where(['product.manufacture_id' => $manufacture_id])
+            ->column();;
+
+        $options = '<option value="" label=""></option>';
+
+        foreach ($rows as $row) {
+            if (!in_array($row['id'], $gazNoAvailableIds) && $row['id']) {
+                $options .= '<option value="' . $row['id'] . '" disabled="disabled">' . $row['title'] . '</option>';
+            } else {
+                $options .= '<option value="' . $row['id'] . '">' . $row['title'] . '</option>';
+            }
+        }
+
+        echo $options;
     }
 }
