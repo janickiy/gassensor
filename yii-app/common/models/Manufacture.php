@@ -1,18 +1,16 @@
 <?php
-/**
- * generated 21-10-16 18:03:44
- *
- */
 
 namespace common\models;
 
 use common\helpers\Tools;
 use common\models\base\ManufactureBase;
 use common\models\query\ManufactureQuery;
+use common\models\search\ProductSearch;
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\helpers\ArrayHelper;
 use yii\web\UploadedFile;
+use Yii;
 
 /**
  * @property Seo $seo
@@ -25,11 +23,11 @@ class Manufacture extends ManufactureBase
     public $uploadPict;
 
     public function rules()
-     {
+    {
         $rules = parent::rules();
         $rules[] = ['uploadPict', 'file', 'extensions' => 'png, jpg, gif'];
         return $rules;
-     }
+    }
 
     /**
      * {@inheritDoc}
@@ -83,7 +81,7 @@ class Manufacture extends ManufactureBase
      */
     public static function getUploadDir()
     {
-        return \Yii::getAlias('@documentroot' . self::getUploadBaseUrl());
+        return Yii::getAlias('@documentroot' . self::getUploadBaseUrl());
     }
 
     public static function getUploadBaseUrl()
@@ -130,4 +128,52 @@ class Manufacture extends ManufactureBase
         return $result;
     }
 
+    /**
+     * @param ProductSearch $searchModel
+     * @return array|null
+     */
+    public static function findAvailableManufacturesIds(ProductSearch $searchModel): ?array
+    {
+        $params = Yii::$app->request->queryParams;
+
+        if ($searchModel->gaz_id) {
+            unset($params['ProductSearch']['manufacture_id']);
+
+            $ids = (new ProductSearch())->searchFront($params)->query->select(['product.id'])->column();
+
+            if ($ids) {
+                $manufactureAvailableIds = Manufacture::find()
+                    ->select(['manufacture.id'])
+                    ->leftJoin('product', 'product.manufacture_id = manufacture.id')
+                    ->where(['in', 'product.id', $ids])
+                    ->groupBy(['manufacture.id'])
+                    ->column();
+            } else {
+                $manufactureAvailableIds = null;
+            }
+        } else {
+            $manufactureAvailableIds = Manufacture::find()->select(['id'])->column();
+        }
+
+        return $manufactureAvailableIds;
+    }
+
+    /**
+     * @param ProductSearch $model
+     * @return array
+     */
+    public static function manufactureOption(ProductSearch $searchModel): array
+    {
+        $manufactureAvailableIds = self::findAvailableManufacturesIds($searchModel);
+        $manufactureOption = ['' => ['label' => ' ']];
+
+        if ($manufactureAvailableIds) {
+            foreach (Manufacture::getDropDownData(true) as $id => $label) {
+                if (!in_array($id, $manufactureAvailableIds) && !empty($id)) {
+                    $manufactureOption[$id] = ['disabled' => true];
+                }
+            }
+        }
+        return $manufactureOption;
+    }
 }

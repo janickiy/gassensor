@@ -3,7 +3,6 @@
 /* @var $this yii\web\View */
 /* @var $model common\models\search\ProductSearch */
 
-use common\helpers\CatalogFilterHelper;
 use common\models\Gaz;
 use common\models\GazGroup;
 use common\models\Manufacture;
@@ -12,51 +11,18 @@ use common\models\ProductRange;
 use yii\bootstrap5\ActiveForm;
 use yii\bootstrap5\Html;
 
-$manufactureAvailableIds = CatalogFilterHelper::findAvailableManufacturesIds($model);
-$manufactureOption = ['' => ['label' => ' ']];
-
-if ($manufactureAvailableIds) {
-    foreach (Manufacture::getDropDownData(true) as $id => $label) {
-        if (!in_array($id, $manufactureAvailableIds) && !empty($id)) {
-            $manufactureOption[$id] = ['disabled' => true];
-        }
-    }
-}
-
-$gazAvailableIds = CatalogFilterHelper::findAvailableGazIds($model);
-$gazOption = ['' => ['label' => ' ']];
-
-if ($gazAvailableIds) {
-    foreach (Gaz::getDropDownData(true) as $id => $label) {
-        if (!in_array($id, $gazAvailableIds) && !empty($id)) {
-            $gazOption[$id] = ['disabled' => true];
-        }
-    }
-}
-
-$measurementTypeIds = CatalogFilterHelper::findAvailableMeasurementTypeIds($model);
-$measurementTypeOption = ['' => ['label' => ' ']];
-
-if ($measurementTypeIds) {
-    foreach (MeasurementType::getDropDownData(true) as $id => $label) {
-        if (!in_array($id, $measurementTypeIds) && !empty($id)) {
-            $measurementTypeOption[$id] = ['disabled' => true];
-        }
-    }
-}
-
 ?>
 
 <?php $form = ActiveForm::begin(['method' => 'get', 'action' => '/catalog']); ?>
 
 <?= $form->field($model, 'manufacture_id')->dropDownList(
     Manufacture::getDropDownData(true),
-    ['class' => 'form-select', 'options' => $manufactureOption])
+    ['class' => 'form-select', 'options' => Manufacture::manufactureOption($model)])
 ?>
 
 <?= $form->field($model, 'gaz_id')->dropDownList(
     Gaz::getDropDownData(true),
-    ['class' => 'form-select', 'options' => $gazOption])
+    ['class' => 'form-select', 'options' => Gaz::gazOption($model)])
 ?>
 
 <?php if (0): ?>
@@ -68,7 +34,7 @@ if ($measurementTypeIds) {
 
 <?= $form->field($model, 'measurement_type_id')->dropDownList(
     MeasurementType::getDropDownData(true),
-    ['class' => 'form-select', 'options' => $measurementTypeOption])
+    ['class' => 'form-select', 'options' => MeasurementType::measurementTypeOption($model)])
 ?>
 
 <div class="mb-3 border p-1">
