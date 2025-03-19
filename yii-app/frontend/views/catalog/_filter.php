@@ -11,6 +11,7 @@ use common\models\ProductRange;
 use yii\bootstrap5\ActiveForm;
 use yii\bootstrap5\Html;
 
+
 ?>
 
 <?php $form = ActiveForm::begin(['method' => 'get', 'action' => '/catalog']); ?>

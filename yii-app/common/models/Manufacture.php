@@ -164,16 +164,23 @@ class Manufacture extends ManufactureBase
      */
     public static function manufactureOption(ProductSearch $searchModel): array
     {
-        $manufactureAvailableIds = self::findAvailableManufacturesIds($searchModel);
+        $q = Manufacture::find()->select(['manufacture.id']);
+        $q->leftJoin('product', 'product.manufacture_id = manufacture.id');
+        $q->where('product.id IS NULL');
+
+        if ($searchModel->gaz_id) {
+            $q->leftJoin('product_gaz', 'product_gaz.product_id = product.id');
+             $q->andWhere(['product_gaz.gaz_id' => $searchModel->gaz_id]);
+        }
+
+        $q->orderBy('manufacture.title');
+
         $manufactureOption = ['' => ['label' => ' ']];
 
-        if ($manufactureAvailableIds) {
-            foreach (Manufacture::getDropDownData(true) as $id => $label) {
-                if (!in_array($id, $manufactureAvailableIds) && !empty($id)) {
-                    $manufactureOption[$id] = ['disabled' => true];
-                }
-            }
+        foreach ($q->all() as $row) {
+            $manufactureOption[$row->id] = ['disabled' => true];
         }
+
         return $manufactureOption;
     }
 }

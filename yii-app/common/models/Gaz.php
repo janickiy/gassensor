@@ -128,48 +128,28 @@ class Gaz extends GazBase
         return $result;
     }
 
-    public static function findAvailableGazIds(ProductSearch $searchModel): ?array
-    {
-        $params = Yii::$app->request->queryParams;
-
-        if ($searchModel->manufacture_id) {
-            unset($params['ProductSearch']['gaz_id']);
-
-            $ids = (new ProductSearch())->searchFront($params)->query->select(['product.id'])->column();
-
-            if ($ids) {
-                $gazAvailableIds = Gaz::find()
-                    ->select(['gaz.id'])
-                    ->leftJoin('product_gaz','product_gaz.gaz_id = gaz.id')
-                    ->leftJoin('product','product.id = product_gaz.product_id')
-                    ->where(['in', 'product.id', $ids])
-                    ->groupBy(['gaz.id'])
-                    ->column();
-            } else {
-                $gazAvailableIds = null;
-            }
-        } else {
-            $gazAvailableIds = Gaz::find()->select(['id'])->column();
-        }
-
-        return $gazAvailableIds;
-    }
-
     /**
      * @param ProductSearch $searchModel
      * @return array[]
      */
     public static function gazOption(ProductSearch $searchModel): array
     {
-        $gazAvailableIds = self::findAvailableGazIds($searchModel);
+        $q = Gaz::find()->select(['gaz.id']);
+
+        $q->leftJoin('product_gaz', 'product_gaz.gaz_id = gaz.id');
+        $q->leftJoin('product', 'product.id = product_gaz.product_id');
+
+        if ($searchModel->manufacture_id) {
+            $q->andWhere(['product.id' => $searchModel->manufacture_id]);
+        }
+
+        $q->where('product.id IS NULL');
+        $q->orderBy('gaz.title');
+
         $gazOption = ['' => ['label' => ' ']];
 
-        if ($gazAvailableIds) {
-            foreach (Gaz::getDropDownData(true) as $id => $label) {
-                if (!in_array($id, $gazAvailableIds) && !empty($id)) {
-                    $gazOption[$id] = ['disabled' => true];
-                }
-            }
+        foreach ($q->all() as $row) {
+            $gazOption[$row->id] = ['disabled' => true];
         }
 
         return $gazOption;
