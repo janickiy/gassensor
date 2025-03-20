@@ -29,12 +29,12 @@ $gazNoAvailableIds = Gaz::find()->select(['gaz.id'])
 
 <?= $form->field($model, 'manufacture_id')->dropDownList(
     Manufacture::getDropDownData(true),
-    ['class' => 'form-select', 'options' => Manufacture::manufactureOption($model)])
+    ['class' => 'form-select', 'options' => Manufacture::manufactureOption2($model)])
 ?>
 
 <?= $form->field($model, 'gaz_id')->dropDownList(
     Gaz::getDropDownData(true),
-    ['class' => 'form-select', 'options' => Gaz::gazOption($model)])
+    ['class' => 'form-select', 'options' => Gaz::gazOption2($model)])
 ?>
 
 <?php if (0): ?>

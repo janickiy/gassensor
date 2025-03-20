@@ -136,7 +136,6 @@ class Manufacture extends ManufactureBase
 
         $q = self::find()->select(['manufacture.id']);
         $q->leftJoin('product', 'product.manufacture_id = manufacture.id');
-      //  $q->where('product.id IS NULL');
 
         if ($searchModel->gaz_id) {
             $q->leftJoin('product_gaz', 'product_gaz.product_id = product.id');
@@ -151,4 +150,55 @@ class Manufacture extends ManufactureBase
 
         return $options;
     }
+
+    /**
+     * @param ProductSearch $searchModel
+     * @return array|null
+     */
+    public static function findAvailableManufacturesIds(ProductSearch $searchModel): ?array
+    {
+        $params = Yii::$app->request->queryParams;
+
+        if ($searchModel->gaz_id) {
+            unset($params['ProductSearch']['manufacture_id']);
+
+            $ids = (new ProductSearch())->searchFront($params)->query->select(['product.id'])->column();
+
+            if ($ids) {
+                $manufactureAvailableIds = self::find()
+                    ->select(['manufacture.id'])
+                    ->leftJoin('product', 'product.manufacture_id = manufacture.id')
+                    ->where(['in', 'product.id', $ids])
+                    ->groupBy(['manufacture.id'])
+                    ->column();
+            } else {
+                $manufactureAvailableIds = null;
+            }
+        } else {
+            $manufactureAvailableIds = self::find()->select(['id'])->column();
+        }
+
+        return $manufactureAvailableIds;
+    }
+
+    /**
+     * @param ProductSearch $model
+     * @return array
+     */
+    public static function manufactureOption2(ProductSearch $searchModel): array
+    {
+        $availableIds = self::findAvailableManufacturesIds($searchModel);
+        $option = ['' => ['label' => ' ']];
+
+        if ($availableIds) {
+            foreach (self::getDropDownData(true) as $id => $label) {
+                if (!in_array($id, $availableIds) && !empty($id)) {
+                    $option[$id] = ['disabled' => true];
+                }
+            }
+        }
+
+        return $option;
+    }
 }
+

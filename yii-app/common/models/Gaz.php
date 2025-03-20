@@ -12,6 +12,7 @@ use common\models\query\GazQuery;
 use common\models\search\ProductSearch;
 use yii\behaviors\SluggableBehavior;
 use yii\helpers\ArrayHelper;
+use Yii;
 
 /**
  * @property Seo $seo
@@ -150,6 +151,53 @@ class Gaz extends GazBase
         }
 
         return $options;
+    }
+
+    public static function findAvailableGazIds(ProductSearch $searchModel): ?array
+    {
+        $params = Yii::$app->request->queryParams;
+
+        if ($searchModel->manufacture_id) {
+            unset($params['ProductSearch']['gaz_id']);
+
+            $ids = (new ProductSearch())->searchFront($params)->query->select(['product.id'])->column();
+
+            if ($ids) {
+                $gazAvailableIds = self::find()
+                    ->select(['gaz.id'])
+                    ->leftJoin('product_gaz','product_gaz.gaz_id = gaz.id')
+                    ->leftJoin('product','product.id = product_gaz.product_id')
+                    ->where(['in', 'product.id', $ids])
+                    ->groupBy(['gaz.id'])
+                    ->column();
+            } else {
+                $gazAvailableIds = null;
+            }
+        } else {
+            $gazAvailableIds = self::find()->select(['id'])->column();
+        }
+
+        return $gazAvailableIds;
+    }
+
+    /**
+     * @param ProductSearch $searchModel
+     * @return array[]
+     */
+    public static function gazOption2(ProductSearch $searchModel): array
+    {
+        $gazAvailableIds = self::findAvailableGazIds($searchModel);
+        $gazOption = ['' => ['label' => ' ']];
+
+        if ($gazAvailableIds) {
+            foreach (self::getDropDownData(true) as $id => $label) {
+                if (!in_array($id, $gazAvailableIds) && !empty($id)) {
+                    $gazOption[$id] = ['disabled' => true];
+                }
+            }
+        }
+
+        return $gazOption;
     }
 
 }
