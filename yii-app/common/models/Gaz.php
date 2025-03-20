@@ -12,7 +12,6 @@ use common\models\query\GazQuery;
 use common\models\search\ProductSearch;
 use yii\behaviors\SluggableBehavior;
 use yii\helpers\ArrayHelper;
-use Yii;
 
 /**
  * @property Seo $seo
@@ -134,25 +133,23 @@ class Gaz extends GazBase
      */
     public static function gazOption(ProductSearch $searchModel): array
     {
-        $q = Gaz::find()->select(['gaz.id']);
+        $rows = self::find()->orderBy('title')->asArray()->all();
 
+        $q = self::find()->select(['gaz.id']);
         $q->leftJoin('product_gaz', 'product_gaz.gaz_id = gaz.id');
         $q->leftJoin('product', 'product.id = product_gaz.product_id');
 
         if ($searchModel->manufacture_id) {
-            $q->andWhere(['product.id' => $searchModel->manufacture_id]);
+            $q->andWhere(['product.manufacture_id' => $searchModel->manufacture_id]);
         }
 
-        $q->where('product.id IS NULL');
-        $q->orderBy('gaz.title');
+        $options = ['' => ['label' => ' ']];
 
-        $gazOption = ['' => ['label' => ' ']];
-
-        foreach ($q->all() as $row) {
-            $gazOption[$row->id] = ['disabled' => true];
+        foreach ($rows as $row) {
+            if (in_array($row['id'], $q->column()) === false) $options[$row['id']] = ['disabled' => true];
         }
 
-        return $gazOption;
+        return $options;
     }
 
 }

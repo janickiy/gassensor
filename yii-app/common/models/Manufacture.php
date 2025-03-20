@@ -46,9 +46,7 @@ class Manufacture extends ManufactureBase
                 'ensureUnique' => true,
                 'immutable' => true,
             ],
-
         ];
-
     }
 
     /**
@@ -130,57 +128,27 @@ class Manufacture extends ManufactureBase
 
     /**
      * @param ProductSearch $searchModel
-     * @return array|null
-     */
-    public static function findAvailableManufacturesIds(ProductSearch $searchModel): ?array
-    {
-        $params = Yii::$app->request->queryParams;
-
-        if ($searchModel->gaz_id) {
-            unset($params['ProductSearch']['manufacture_id']);
-
-            $ids = (new ProductSearch())->searchFront($params)->query->select(['product.id'])->column();
-
-            if ($ids) {
-                $manufactureAvailableIds = Manufacture::find()
-                    ->select(['manufacture.id'])
-                    ->leftJoin('product', 'product.manufacture_id = manufacture.id')
-                    ->where(['in', 'product.id', $ids])
-                    ->groupBy(['manufacture.id'])
-                    ->column();
-            } else {
-                $manufactureAvailableIds = null;
-            }
-        } else {
-            $manufactureAvailableIds = Manufacture::find()->select(['id'])->column();
-        }
-
-        return $manufactureAvailableIds;
-    }
-
-    /**
-     * @param ProductSearch $model
      * @return array
      */
     public static function manufactureOption(ProductSearch $searchModel): array
     {
-        $q = Manufacture::find()->select(['manufacture.id']);
+        $rows = self::find()->orderBy('title')->asArray()->all();
+
+        $q = self::find()->select(['manufacture.id']);
         $q->leftJoin('product', 'product.manufacture_id = manufacture.id');
-        $q->where('product.id IS NULL');
+      //  $q->where('product.id IS NULL');
 
         if ($searchModel->gaz_id) {
             $q->leftJoin('product_gaz', 'product_gaz.product_id = product.id');
-             $q->andWhere(['product_gaz.gaz_id' => $searchModel->gaz_id]);
+            $q->andWhere(['product_gaz.gaz_id' => $searchModel->gaz_id]);
         }
 
-        $q->orderBy('manufacture.title');
+        $options = ['' => ['label' => ' ']];
 
-        $manufactureOption = ['' => ['label' => ' ']];
-
-        foreach ($q->all() as $row) {
-            $manufactureOption[$row->id] = ['disabled' => true];
+        foreach ($rows as $row) {
+            if (in_array($row['id'], $q->column()) === false) $options[$row['id']] = ['disabled' => true];
         }
 
-        return $manufactureOption;
+        return $options;
     }
 }

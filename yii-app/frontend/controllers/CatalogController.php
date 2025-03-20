@@ -103,18 +103,19 @@ class CatalogController extends Controller
      */
     public function actionGaz(int $manufacture_id): string
     {
-        $rows = Gaz::find()->asArray()->all();
+        $rows = Gaz::find()->orderBy('title')->asArray()->all();
 
         $gazNoAvailableIds = Gaz::find()->select(['gaz.id'])
-            ->leftJoin('product_gaz', 'gaz.id = product_gaz.gaz_id')
-            ->leftJoin('product', 'product_gaz.product_id = product.id')
-            ->where(['product.manufacture_id' => $manufacture_id])
-            ->column();;
+            ->leftJoin('product_gaz', 'product_gaz.gaz_id = gaz.id')
+            ->leftJoin('product', 'product.id = product_gaz.product_id')
+           // ->where('product.id IS NULL')
+            ->andWhere(['product.manufacture_id' => $manufacture_id])
+            ->column();
 
         $options = '<option value="" label=""></option>';
 
         foreach ($rows as $row) {
-            if (!in_array($row['id'], $gazNoAvailableIds) && $row['id']) {
+            if (in_array($row['id'], $gazNoAvailableIds) === false) {
                 $options .= '<option value="' . $row['id'] . '" disabled="disabled">' . $row['title'] . '</option>';
             } else {
                 $options .= '<option value="' . $row['id'] . '">' . $row['title'] . '</option>';
