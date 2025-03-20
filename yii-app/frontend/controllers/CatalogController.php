@@ -8,6 +8,7 @@ namespace frontend\controllers;
 
 use common\models\Gaz;
 use common\models\Manufacture;
+use common\models\MeasurementType;
 use common\models\search\ProductSearch;
 use common\models\Seo;
 use yii\web\Controller;
@@ -94,28 +95,26 @@ class CatalogController extends Controller
             'dataProvider' => $dataProvider,
             'seo' => $seo,
         ]);
-
     }
 
     /**
      * @param int $manufacture_id
-     * @return string
+     * @return void
      */
-    public function actionGaz(int $manufacture_id): string
+    public function actionGazOptions(int $manufacture_id)
     {
         $rows = Gaz::find()->orderBy('title')->asArray()->all();
 
-        $gazNoAvailableIds = Gaz::find()->select(['gaz.id'])
+        $noAvailableIds = Gaz::find()->select(['gaz.id'])
             ->leftJoin('product_gaz', 'product_gaz.gaz_id = gaz.id')
             ->leftJoin('product', 'product.id = product_gaz.product_id')
-           // ->where('product.id IS NULL')
             ->andWhere(['product.manufacture_id' => $manufacture_id])
             ->column();
 
         $options = '<option value="" label=""></option>';
 
         foreach ($rows as $row) {
-            if (in_array($row['id'], $gazNoAvailableIds) === false) {
+            if (in_array($row['id'], $noAvailableIds) === false) {
                 $options .= '<option value="' . $row['id'] . '" disabled="disabled">' . $row['title'] . '</option>';
             } else {
                 $options .= '<option value="' . $row['id'] . '">' . $row['title'] . '</option>';
@@ -124,4 +123,50 @@ class CatalogController extends Controller
 
         echo $options;
     }
+
+    /**
+     * @param int $gaz_id
+     * @return void
+     */
+    public function actionManufactureOptions(int $gaz_id)
+    {
+        $rows = Manufacture::find()->orderBy('title')->asArray()->all();
+
+        $noAvailableIds = Manufacture::find()->select(['manufacture.id'])
+            ->leftJoin('product', 'product.manufacture_id = manufacture.id')
+            ->leftJoin('product_gaz', 'product_gaz.product_id = product.id')
+            ->andWhere(['product_gaz.gaz_id' => $gaz_id])
+            ->column();
+
+        $options = '<option value="" label=""></option>';
+
+        foreach ($rows as $row) {
+            if (in_array($row['id'], $noAvailableIds) === false) {
+                $options .= '<option value="' . $row['id'] . '" disabled="disabled">' . $row['title'] . '</option>';
+            } else {
+                $options .= '<option value="' . $row['id'] . '">' . $row['title'] . '</option>';
+            }
+        }
+
+        echo $options;
+    }
+
+    public function actionMeasurementTypeOptions()
+    {
+        $rows = MeasurementType::find()->orderBy('name')->asArray()->all();
+        $noAvailableIds = MeasurementType::findAvailableMeasurementTypeAjaxIds();
+
+        $options = '<option value="" label=""></option>';
+
+        foreach ($rows as $row) {
+            if (in_array($row['id'], $noAvailableIds)=== false) {
+                $options .= '<option value="' . $row['id'] . '" disabled="disabled">' . $row['name'] . '</option>';
+            } else {
+                $options .= '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
+            }
+        }
+
+        echo $options;
+    }
 }
+

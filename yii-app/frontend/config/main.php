@@ -26,7 +26,9 @@ return [
         ],
         'urlManager' => [
             'rules' => [
-                    'catalog/gaz/<manufacture_id>' => 'catalog/gaz',
+                    'catalog/gaz-options/<manufacture_id>' => 'catalog/gaz-options',
+                    'catalog/manufacture-options/<gaz_id>' => 'catalog/manufacture-options',
+                    'catalog/measurement-type-options' => 'catalog/measurement-type-options',
                     'catalog/manufacture/<slug>' => 'catalog/manufacture',
                     'news/<slug>' => 'news/slug',
                     'manufacture/<slug>' => 'manufacture/slug',

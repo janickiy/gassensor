@@ -29,15 +29,49 @@ $('#productsearch-manufacture_id').on('change', function () {
    
    $.ajax({
         type: 'GET',
-        url: './catalog/gaz/' + manufactureId,
+        url: './catalog/gaz-options/' + manufactureId,
         success: function (data) {
             $('#productsearch-gaz_id').empty();
             $('#productsearch-gaz_id').append(data);
         }
     });
+   
+   $.ajax({
+        type: 'GET',
+        url: './catalog/measurement-type-options/',
+        success: function (data) {
+            $('#productsearch-measurement_type_id').empty();
+            $('#productsearch-measurement_type_id').append(data);
+        }
+    });
 
-  console.log('Changed option value ' + this.value);
-  console.log('Changed option text ' + $(this).find('option').filter(':selected').text());
+   console.log('Changed option value ' + this.value);
+   console.log('Changed option text ' + $(this).find('option').filter(':selected').text());
+});
+
+$('#productsearch-gaz_id').on('change', function () {
+    let gazId =  this.value;
+    
+    $.ajax({
+        type: 'GET',
+        url: './catalog/manufacture-options/' + gazId,
+        success: function (data) {
+            $('#productsearch-manufacture_id').empty();
+            $('#productsearch-manufacture_id').append(data);
+        }
+    });
+    
+    $.ajax({
+        type: 'GET',
+        url: './catalog/measurement-type-options/',
+        success: function (data) {
+            $('#productsearch-measurement_type_id').empty();
+            $('#productsearch-measurement_type_id').append(data);
+        }
+    });
+    
+    console.log('Changed option value ' + this.value);
+    console.log('Changed option text ' + $(this).find('option').filter(':selected').text());
 });
 JS;
 

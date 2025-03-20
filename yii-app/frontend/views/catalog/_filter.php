@@ -11,18 +11,6 @@ use common\models\ProductRange;
 use yii\bootstrap5\ActiveForm;
 use yii\bootstrap5\Html;
 
-$gazNoAvailableIds = Gaz::find()->select(['gaz.id'])
-    ->leftJoin('product_gaz', 'product_gaz.gaz_id = gaz.id')
-    ->leftJoin('product', 'product.id = product_gaz.product_id')
-
-    ->andWhere(['product.manufacture_id' => 2])
-    //->andWhere('product.id IS NULL')
-        ->asArray()
-    ->all();
-
-//var_dump($gazNoAvailableIds);
-//exit;
-
 ?>
 
 <?php $form = ActiveForm::begin(['method' => 'get', 'action' => '/catalog']); ?>
@@ -46,7 +34,7 @@ $gazNoAvailableIds = Gaz::find()->select(['gaz.id'])
 
 <?= $form->field($model, 'measurement_type_id')->dropDownList(
     MeasurementType::getDropDownData(true),
-    ['class' => 'form-select', 'options' => MeasurementType::measurementTypeOption($model)])
+    ['class' => 'form-select', 'options' => MeasurementType::measurementTypeOption2($model)])
 ?>
 
 <div class="mb-3 border p-1">
