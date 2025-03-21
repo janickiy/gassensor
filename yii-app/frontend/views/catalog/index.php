@@ -24,55 +24,15 @@ $req = Yii::$app->request;
 
 $js =
     <<<JS
-$('#productsearch-manufacture_id').on('change', function () {
-   let manufactureId =  this.value;
-   
-   $.ajax({
-        type: 'GET',
-        url: './catalog/gaz-options/' + manufactureId,
-        success: function (data) {
-            $('#productsearch-gaz_id').empty();
-            $('#productsearch-gaz_id').append(data);
-        }
-    });
-   
-   $.ajax({
-        type: 'GET',
-        url: './catalog/measurement-type-options/',
-        success: function (data) {
-            $('#productsearch-measurement_type_id').empty();
-            $('#productsearch-measurement_type_id').append(data);
-        }
-    });
 
-   console.log('Changed option value ' + this.value);
-   console.log('Changed option text ' + $(this).find('option').filter(':selected').text());
+$("select").change(function(){
+    $(this).closest("form").submit();
+})
+
+$('input[type="number"]').on('change keyup paste click', function() {
+    $(this).closest("form").submit();
 });
 
-$('#productsearch-gaz_id').on('change', function () {
-    let gazId =  this.value;
-    
-    $.ajax({
-        type: 'GET',
-        url: './catalog/manufacture-options/' + gazId,
-        success: function (data) {
-            $('#productsearch-manufacture_id').empty();
-            $('#productsearch-manufacture_id').append(data);
-        }
-    });
-    
-    $.ajax({
-        type: 'GET',
-        url: './catalog/measurement-type-options/',
-        success: function (data) {
-            $('#productsearch-measurement_type_id').empty();
-            $('#productsearch-measurement_type_id').append(data);
-        }
-    });
-    
-    console.log('Changed option value ' + this.value);
-    console.log('Changed option text ' + $(this).find('option').filter(':selected').text());
-});
 JS;
 
 $this->registerJs($js, $this::POS_READY);
@@ -87,7 +47,7 @@ $this->registerJs($js, $this::POS_READY);
     <?php endif; ?>
 
     <div class="row">
-        <div class="filter-wrap col-lg-2 col-md-3 bg-light border py-1">
+        <div class="col-lg-2 col-md-3 bg-light border py-1">
 
             <?= $this->render('_filter', [
                 'model' => $searchModel,
