@@ -18,6 +18,7 @@ LegacyAsset::register($this);
     <!doctype html>
     <html lang="<?= Yii::$app->language ?>" class="h-100">
     <head>
+        <meta http-equiv="Cache-Control" content="no-cache">
         <?= $this->render('google') ?>
         <meta charset="<?= Yii::$app->charset ?>"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
