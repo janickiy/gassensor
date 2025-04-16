@@ -1,6 +1,7 @@
 <?php
 
 use common\models\Setting;
+use yii\helpers\Url;
 
 ?>
 
@@ -12,8 +13,7 @@ use common\models\Setting;
                 <div class="col-md-3 col-sm-6">
                     <div class="widget-footer">
                         <div id="media_image-1" class="widget widget_media_image">
-                            <a href="/"><img loading="lazy" src="/i/logo-footer.svg"
-                                             alt="Газсенсор: ГАЗОВЫЕ ДАТЧИКИ И СЕНСОРЫ"></a>
+                            <a href="/"><img loading="lazy" src="/i/logo-footer.svg" alt="Газсенсор: ГАЗОВЫЕ ДАТЧИКИ И СЕНСОРЫ"></a>
                         </div>
                     </div>
                 </div>
@@ -24,12 +24,12 @@ use common\models\Setting;
                         <div id="custom_html-2" class="widget_text widget widget_custom_html padding-left">
                             <div class="textwidget custom-html-widget">
                                 <ul>
-                                    <li><a href="/">Главная</a></li>
-                                    <li><a href="/catalog">Каталог</a></li>
-                                    <li><a href="/applications">Применение</a></li>
-                                    <li><a href="/page/accessories">Аксессуары</a></li>
-                                    <li><a href="/manufacture">Производители</a></li>
-                                    <li><a href="/converter">Конвертер</a></li>
+                                    <li><a href="<?=Url::to(['/']) ?>">Главная</a></li>
+                                    <li><a href="<?=Url::to(['/catalog']) ?>">Каталог</a></li>
+                                    <li><a href="<?=Url::to(['/applications']) ?>">Применение</a></li>
+                                    <li><a href="<?=Url::to(['/page/accessories']) ?>">Аксессуары</a></li>
+                                    <li><a href="<?=Url::to(['/manufacture']) ?>">Производители</a></li>
+                                    <li><a href="<?=Url::to(['/converter']) ?>">Конвертер</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -42,9 +42,9 @@ use common\models\Setting;
                         <div id="custom_html-3" class="widget_text widge widget-footer widget_custom_html padding-left">
                             <div class="textwidget custom-html-widget">
                                 <ul>
-                                    <li><a href="/">Новости</a></li>
-                                    <li><a href="/page/vacancy">Вакансии</a></li>
-                                    <li><a href="/page/contacts">Контакты</a></li>
+                                    <li><a href="<?=Url::to(['/']) ?>">Новости</a></li>
+                                    <li><a href="<?=Url::to(['/page/vacancy']) ?>">Вакансии</a></li>
+                                    <li><a href="<?=Url::to(['/page/contacts']) ?>">Контакты</a></li>
                                 </ul>
                             </div>
                         </div>

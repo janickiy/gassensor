@@ -3,8 +3,11 @@
 
 use yii\helpers\Html;
 use common\models\Setting;
+use yii\helpers\Url;
 
 $user = Yii::$app->user;
+$currentUrl = Url::current();
+
 ?>
 
 <header id="site-header" class="site-header mobile-header-blue header-style-1">
@@ -75,26 +78,26 @@ $user = Yii::$app->user;
       </div>
       <div class="main-navigation">
         <ul id="primary-menu" class="menu">
-            <li class="menu-item current-menu-ancestor current-menu-parent">
+            <li class="menu-item <?=$currentUrl == '/site/index' ? 'current-menu-ancestor current-menu-parent':'' ?>">
                 <a href="/">Главная</a>
             </li>
-            <li class="menu-item">
-                <a href="/catalog">Каталог</a>
+            <li class="menu-item <?=$currentUrl == '/catalog/index' ? 'current-menu-ancestor current-menu-parent':'' ?>">
+                <a href="<?=Url::to(['/catalog']) ?>">Каталог</a>
             </li>
-            <li class="menu-item">
-                <a href="/applications">Применение</a>
+            <li class="menu-item <?=$currentUrl == '/applications/index' ? 'current-menu-ancestor current-menu-parent':'' ?>">
+                <a href="<?=Url::to(['/applications']) ?>">Применение</a>
             </li>
-            <li class="menu-item">
-                <a href="/page/accessories">Аксессуары</a>
+            <li class="menu-item <?=$currentUrl == '/page/accessories' ? 'current-menu-ancestor current-menu-parent':'' ?>">
+                <a href="<?=Url::to(['/page/accessories']) ?>">Аксессуары</a>
             </li>
-            <li class="menu-item">
-                <a href="/manufacture">Производители</a>
+            <li class="menu-item <?=$currentUrl == '/manufacture/index' ? 'current-menu-ancestor current-menu-parent':'' ?>">
+                <a href="<?=Url::to(['/manufacture']) ?>">Производители</a>
             </li>
-            <li class="menu-item">
-                <a href="/converter">Конвертер</a>
+            <li class="menu-item <?=$currentUrl == '/converter/index' ? 'current-menu-ancestor current-menu-parent':'' ?>">
+                <a href="<?=Url::to(['/converter']) ?>">Конвертер</a>
             </li>
-            <li class="menu-item">
-                <a href="/page/contacts">Контакты </a>
+            <li class="menu-item <?=$currentUrl == '/page/contacts' ? 'current-menu-ancestor current-menu-parent':'' ?>">
+                <a href="<?=Url::to(['/page/contacts']) ?>">Контакты </a>
             </li>
         </ul>
         <a style="display: none" href="#" class="btn btn-primary">Вопрос<i class="icon ion-md-paper-plane"></i></a>
@@ -143,13 +146,13 @@ $user = Yii::$app->user;
           <div class="col-12">
             <div class="mobile-nav" style="display: none;">
               <ul id="primary-menu-mobile" class="mobile-menu">
-                  <li class="menu-item  current-menu-ancestor current-menu-parent"><a href="/">Главная</a></li>
-                  <li class="menu-item"><a href="/catalog">Каталог</a></li>
-                  <li class="menu-item"><a href="/applications">Применение</a></li>
-                  <li class="menu-item"><a href="/page/accessories">Аксессуары</a></li>
-                  <li class="menu-item"><a href="/manufacture">Производители</a></li>
-                  <li class="menu-item"><a href="/converter">Конвертер</a></li>
-                  <li class="menu-item"><a href="/page/contacts">Контакты </a></li>
+                  <li class="menu-item <?=$currentUrl == '/site/index' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/') ?>">Главная</a></li>
+                  <li class="menu-item <?=$currentUrl == '/catalog/index' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/catalog') ?>">Каталог</a></li>
+                  <li class="menu-item <?=$currentUrl == '/applications/index' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/applications') ?>">Применение</a></li>
+                  <li class="menu-item <?=$currentUrl == '/page/accessories' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/page/accessories') ?>">Аксессуары</a></li>
+                  <li class="menu-item <?=$currentUrl == '/manufacture/index' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/manufacture') ?>">Производители</a></li>
+                  <li class="menu-item <?=$currentUrl == '/converter/index' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/converter') ?>">Конвертер</a></li>
+                  <li class="menu-item <?=$currentUrl == '/page/contacts' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/page/contacts') ?>">Контакты</a></li>
               </ul>
             </div>
           </div>
