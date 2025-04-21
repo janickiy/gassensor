@@ -4,8 +4,6 @@ defined('ROLE_NAME_ADMIN') or define('ROLE_NAME_ADMIN', 'admin');
 defined('ROLE_NAME_MANAGER') or define('ROLE_NAME_MANAGER', 'manager');
 defined('ROLE_NAME_DEVELOPER') or define('ROLE_NAME_DEVELOPER', 'developer');
 
-define("LOCAL_SITE", true);
-
 $i18n = [];
 foreach (['app', 'seo', 'order',] as $v) {
     $i18n['translations'][$v] = [
@@ -97,7 +95,7 @@ return [
         ]
     ],
 
-    /*
+    
     'on beforeRequest' => function ($event) {
         if(!Yii::$app->request->isSecureConnection){
             $url = Yii::$app->request->getAbsoluteUrl();
@@ -105,6 +103,6 @@ return [
             Yii::$app->getResponse()->redirect($url);
             Yii::$app->end();
         }
+
     },
-    */
 ];
