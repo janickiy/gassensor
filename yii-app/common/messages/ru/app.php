@@ -24,6 +24,7 @@ return [
     'Energy Consumption To' => 'До',
     'Temperature Range From' => 'От',
     'Temperature Range To' => 'До',
+    'Bias Voltage' => 'Напряжение смещения',
     'Sensitivity' => 'Чувствительность / выходной сигнал',
     'Resolution' => 'Разрешение',
     'Response Time' => 'Время отклика t90',

@@ -129,6 +129,10 @@ use yii\web\View;
                 <div class="col"><?= $form->field($model, 'info')->textarea(['rows' => '3'])->label('Описание') ?></div>
             </div>
 
+            <div class="row">
+                <div class="col"><?= $form->field($model, 'bias_voltage')->textInput()->label('Напряжение смещения (Bias (V_Sens-V_ref))') ?></div>
+            </div>
+
         </fieldset>
     </div>
     <div class="col-sm-3">

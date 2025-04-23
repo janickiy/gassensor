@@ -69,6 +69,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'temperature_range_from:raw:Температурный диапазон от',
                         'temperature_range_to:raw:Температурный диапазон до',
                         'info:raw:Описание',
+                        'bias_voltage:raw:Напряжение смещения (Bias (V_Sens-V_ref))'
                     ],
                 ]) ?>
 

@@ -16,7 +16,6 @@ use yii\web\UploadedFile;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use common\models\traits\DynamicForm;
-use yii\db\Query;
 
 /**
  *

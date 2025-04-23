@@ -48,6 +48,7 @@ use common\models\ProductRange;
  * @property integer $temperature_range_from
  * @property integer $temperature_range_to
  * @property string $info
+ * @property string $bias_voltage
  *
  * @property Gaz[] $gazs
  * @property Manufacture $manufacture
@@ -81,6 +82,7 @@ class ProductBase extends \yii\db\ActiveRecord
             [['sensitivity'], 'string',],
             [['pdf', 'pdf2', 'pdf3', 'slug'], 'string', 'max' => 100],
             [['info'], 'string', 'max' => 512],
+            [['bias_voltage'], 'string', 'max' => 255],
             [['formfactor_unit', 'sensitivity_unit'], 'string', 'max' => 20],
             [['response_time_unit', 'energy_consumption_unit'], 'string', 'max' => 10],
             [['slug'], 'unique'],
@@ -125,6 +127,7 @@ class ProductBase extends \yii\db\ActiveRecord
             'temperature_range_from' => Yii::t('app', 'Temperature Range From'),
             'temperature_range_to' => Yii::t('app', 'Temperature Range To'),
             'info' => Yii::t('app', 'Info'),
+            'bias_voltage' => Yii::t('app', 'Bias Voltage'),
         ];
     }
 
