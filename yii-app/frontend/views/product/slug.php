@@ -183,6 +183,12 @@ $this->params['productJsonLd'] = $model->getJsonLd();
                         'value' => $model->info,
                         'visible' => $model->info,
                     ],
+                    [
+                        'attribute' => 'bias_voltage',
+                        'label' => 'Напряжение смещения (Bias (V_Sens-V_ref))',
+                        'value' => $model->bias_voltage,
+                        'visible' => $model->bias_voltage,
+                    ],
                 ],
             ]) ?>
 
