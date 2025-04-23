@@ -116,7 +116,7 @@ $this->params['productJsonLd'] = $model->getJsonLd();
                                 $rerurn .= Html::a($arr['title'], "/catalog/{$arr['slug']}") . ' / ';
                             }
 
-                            $rerurn = rtrim($rerurn,' / ');
+                            $rerurn = rtrim($rerurn, ' / ');
 
                             return $rerurn;
                         }
@@ -185,9 +185,12 @@ $this->params['productJsonLd'] = $model->getJsonLd();
                     ],
                     [
                         'attribute' => 'bias_voltage',
-                        'label' => 'Напряжение смещения (Bias (V_Sens-V_ref))',
+                        'label' => 'Напряжение смещения (Bias Voltage)',
                         'value' => $model->bias_voltage,
                         'visible' => $model->bias_voltage,
+                        'format' => 'html',
+                        'captionOptions' => ['style' => 'color: red'],
+                        'contentOptions' => ['style' => 'color: red'],
                     ],
                 ],
             ]) ?>

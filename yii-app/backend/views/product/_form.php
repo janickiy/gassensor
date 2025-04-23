@@ -130,7 +130,7 @@ use yii\web\View;
             </div>
 
             <div class="row">
-                <div class="col"><?= $form->field($model, 'bias_voltage')->textInput()->label('Напряжение смещения (Bias (V_Sens-V_ref))') ?></div>
+                <div class="col"><?= $form->field($model, 'bias_voltage')->textInput()->label('Напряжение смещения (Bias Voltage)') ?></div>
             </div>
 
         </fieldset>
