@@ -14,6 +14,7 @@ Disallow: *js
 Clean-param: t&t= /pdf/products/
 
 User-agent: Googlebot
+Allow: /catalog/
 Disallow: /cart
 Disallow: /personal-data
 Disallow: /personal-data/
