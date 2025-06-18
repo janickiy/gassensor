@@ -31,6 +31,7 @@ class ProductSearch extends Product
 
     public $measurement_type_name;
 
+
     /**
      * {@inheritdoc}
      */
@@ -38,7 +39,7 @@ class ProductSearch extends Product
     {
         return [
             [['id', 'created_at', 'updated_at', 'manufacture_id', 'measurement_type_id',
-                'formfactor', 'range_from', 'range_to', 'sensitivity', 'response_time',
+                'formfactor', 'range_from', 'range_to', 'response_time',
                 'energy_consumption_from', 'energy_consumption_to', 'temperature_range_from',
                 'temperature_range_to'], 'integer'],
 
@@ -49,7 +50,7 @@ class ProductSearch extends Product
                 'response_time_from', 'response_time_to',
             ], 'integer'],
 
-            [['name', 'img', 'slug', 'range_unit', 'sensitivity_unit',
+            [['name', 'img', 'slug', 'range_unit', 'sensitivity_unit', 'sensitivity',
                 'gaz_title', 'manufacture_title', 'measurement_type_name',], 'safe'],
         ];
     }

@@ -66,6 +66,8 @@ use yii\helpers\Html;
 
         Product::getManufactureTitleGridCol(),
 
+        'sensitivity'
+
                 //'img',
     //             'price',
     //             'slug',
