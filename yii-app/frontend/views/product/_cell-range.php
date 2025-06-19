@@ -22,7 +22,7 @@ use \yii\helpers\ArrayHelper;
                 <?php foreach ($productRanges1 as $v): ?>
 
                 <div>
-                    <?= $v->from ?> - <?= $v->to ?> <?= $v->unit ?>
+                    <nobr><?= $v->from ?> - <?= $v->to ?> <?= $v->unit ?></nobr>
                 </div>
 
             <?php endforeach; ?>
@@ -45,7 +45,7 @@ use \yii\helpers\ArrayHelper;
             <?php foreach ($productRanges2 as $v): ?>
 
                 <div>
-                    <?= $v->from ?> - <?= $v->to ?> <?= $v->unit ?>
+                    <nobr><?= $v->from ?> - <?= $v->to ?> <?= $v->unit ?></nobr>
                 </div>
 
             <?php endforeach; ?>
@@ -68,7 +68,7 @@ use \yii\helpers\ArrayHelper;
             <?php foreach ($productRanges3 as $v): ?>
 
                 <div>
-                    <?= $v->from ?> - <?= $v->to ?> <?= $v->unit ?>
+                    <nobr><?= $v->from ?> - <?= $v->to ?> <?= $v->unit ?></nobr>
                 </div>
 
             <?php endforeach; ?>
