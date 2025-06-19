@@ -29,7 +29,11 @@ $("select").change(function(){
     $(this).closest("form").submit();
 })
 
-$('input[type="number"]').on('change keyup paste click', function() {
+$('input[type="number"]').on('change keyup paste', function() {
+    $(this).closest("form").submit();
+});
+
+$('input[type="text"]').on('change keyup paste', function() {
     $(this).closest("form").submit();
 });
 
