@@ -15,6 +15,8 @@ use yii\bootstrap5\Html;
 
 <?php $form = ActiveForm::begin(['method' => 'get', 'action' => '/catalog']); ?>
 
+<input type="hidden" name="scroll" value="">
+
 <?= $form->field($model, 'manufacture_id')->dropDownList(
     Manufacture::getDropDownData(true),
     ['class' => 'form-select', 'options' => Manufacture::manufactureOption2($model)])

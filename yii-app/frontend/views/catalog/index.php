@@ -1,8 +1,8 @@
 <?php
+
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\search\ProductSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
 /* @var $seo common\models\Seo|null */
 
 use common\models\Seo;
@@ -35,6 +35,22 @@ $('input[type="number"]').on('change', function() {
 
 $('input[type="text"]').on('change paste', function() {
     $(this).closest("form").submit();
+});
+
+$(window).on("scroll", function(){
+	$('input[name="scroll"]').val($(window).scrollTop());
+});
+
+$(document).ready(function(){
+
+	var p = window.location.search;
+
+	p = p.match(new RegExp('scroll=([^&=]+)'));
+
+	if (p) {
+		window.scrollTo(0, p[1]);
+	}	  
+
 });
 
 JS;
