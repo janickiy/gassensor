@@ -10,11 +10,14 @@ use common\helpers\Tools;
 use common\models\base\ProductBase;
 use common\models\query\ProductQuery;
 use common\models\traits\CreatedUpdateAtText;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
+use yii\web\Response;
 use yii\web\UploadedFile;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use Yii;
 use common\models\traits\DynamicForm;
 
 /**
@@ -614,53 +617,77 @@ class Product extends ProductBase
         ];
 
         return json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+    }
 
-        /*
-            {
-              "@context": "https://schema.org/",
-              "@type": "Product",
-              "name": "Executive Anvil",
-              "image": [
-                "https://example.com/photos/1x1/photo.jpg",
-                "https://example.com/photos/4x3/photo.jpg",
-                "https://example.com/photos/16x9/photo.jpg"
-               ],
-              "description": "Sleeker than ACME's Classic Anvil, the Executive Anvil is perfect for the business traveler looking for something to drop from a height.",
-              "sku": "0446310786",
-              "mpn": "925872",
-              "brand": {
-                "@type": "Brand",
-                "name": "ACME"
-              },
-              "review": {
-                "@type": "Review",
-                "reviewRating": {
-                  "@type": "Rating",
-                  "ratingValue": "4",
-                  "bestRating": "5"
-                },
-                "author": {
-                  "@type": "Person",
-                  "name": "Fred Benson"
+    /**
+     * @return Response
+     * @throws \yii\db\Exception
+     * @throws \yii\web\RangeNotSatisfiableHttpException
+     */
+    public static function exportExcel()
+    {
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        $sheet->getStyle("A:E")
+            ->getNumberFormat()
+            ->setFormatCode( \PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_TEXT );
+
+        $cols = ['name', 'measurement_type_id', "CONCAT(range_from, '-', range_to, ' ', range_unit) AS range"];
+
+        $q = self::find()->select($cols);
+        $rows = $q->createCommand()->queryAll();
+
+        if ($rows) {
+            array_unshift($rows, array_keys($q->select));
+
+            $i = 1;
+
+            $dimensions = $sheet->getColumnDimensions();
+
+            foreach ($dimensions as $v) {
+                $v->setWidth(40);
+                if ($i++ >= count($rows[0])) {
+                    break;
                 }
-              },
-              "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "4.4",
-                "reviewCount": "89"
-              },
-              "offers": {
-                "@type": "Offer",
-                "url": "https://example.com/anvil",
-                "priceCurrency": "USD",
-                "price": "119.99",
-                "priceValidUntil": "2020-11-20",
-                "itemCondition": "https://schema.org/UsedCondition",
-                "availability": "https://schema.org/InStock"
-              }
             }
-        */
 
+            $dimensions['A']->setWidth(30);
+            $dimensions['B']->setWidth(20);
+            $dimensions['C']->setWidth(30);
+        }
+
+        $sheet->fromArray($rows);
+
+        /* @var $response \yii\web\Response */
+        $response = Yii::$app->response;
+
+        $tmpResource = tmpfile();
+        if ($tmpResource === false) {
+            throw new \RuntimeException('Unable to create temporary file.');
+        }
+
+        $tmpResourceMetaData = stream_get_meta_data($tmpResource);
+        $tmpFileName = $tmpResourceMetaData['uri'];
+
+        $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+        $writer->save($tmpFileName);
+        unset($writer);
+
+        $attachmentName = date('Ymd-His') . '.xlsx';
+        $options = [];
+
+        $tmpFileStatistics = fstat($tmpResource);
+        if ($tmpFileStatistics['size'] > 0) {
+            return $response->sendStreamAsFile($tmpResource, $attachmentName, $options);
+        }
+
+        $response->on(Response::EVENT_AFTER_SEND, function() use ($tmpResource) {
+            // with temporary file resource closing file matching its URI will be deleted, even if resource is invalid
+            fclose($tmpResource);
+        });
+
+        return $response->sendFile($tmpFileName, $attachmentName, $options);
     }
 
 }

@@ -4,11 +4,12 @@ namespace backend\controllers;
 
 use Yii;
 use common\helpers\FlashTrait;
-use common\models\{ProductRange, Seo, Product, ProductGaz};
+use common\models\{Order, ProductRange, Seo, Product, ProductGaz};
 use common\models\search\ProductSearch;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 use yii\web\{Controller, NotFoundHttpException, UploadedFile};
+use arturoliveira\ExcelView;;
 use common\helpers\StringHelpers;
 
 /**
@@ -345,5 +346,17 @@ class ProductController extends Controller
         }
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+    }
+
+    /**
+     * @param $sort
+     * @return \yii\web\Response
+     * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
+     * @throws \yii\db\Exception
+     * @throws \yii\web\RangeNotSatisfiableHttpException
+     */
+    public function actionExportExcel($sort = null)
+    {
+        return Product::exportExcel();
     }
 }
