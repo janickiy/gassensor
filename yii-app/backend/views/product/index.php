@@ -2,12 +2,14 @@
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\search\ProductSearch */
+
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 use common\models\Product;
+use yii\helpers\Url;
 
 $this->title = Yii::t('app', 'Товары');
 $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index', 'sort' => '-id',]];
@@ -29,7 +31,9 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index', 's
                     <div class="row">
                         <div class="col-md-12">
 
-                            <?= Html::a(Yii::t('app', 'Добавить товар'), ['create'], ['class' => 'btn btn-info btn-sm pull-left']) ?>
+                            <?= Html::a(Yii::t('app', 'Добавить товар'), ['create'], ['class' => 'btn btn-info btn-sm']) ?>
+
+                            <?= Html::a('<i class="far fa-file-excel"></i> Выгрузить каталог', Url::current(['export-excel']), ['class' => 'btn btn-sm btn-primary mr-1']) ?>
 
                         </div>
                     </div>
@@ -38,22 +42,24 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index', 's
                 <br>
 
                 <div class="table-responsive">
+
                     <?php Pjax::begin(); ?>
 
                     <?= Html::beginForm(['product/checkbox-delete'], 'post'); ?>
 
-                    <?= GridView::widget([
+                    <?= GridView::widget(array(
                         'dataProvider' => $dataProvider,
                         'filterModel' => $searchModel,
-                        'columns' => [
-                            ['class' => 'yii\grid\SerialColumn'],
-                            ['class' => 'yii\grid\ActionColumn'],
+
+                        'columns' => array(
+                            array('class' => 'yii\grid\SerialColumn'),
+                            array('class' => 'yii\grid\ActionColumn'),
                             'id',
-                            [
+                            array(
                                 'class' => 'yii\grid\CheckboxColumn', 'checkboxOptions' => function ($model) {
-                                return ['value' => $model->id];
+                                return array('value' => $model->id);
                             },
-                            ],
+                            ),
                             'createdUpdatedAt:raw:Создан/Изменен',
                             'name',
                             'manufacture_id:raw:id производителя',
@@ -62,36 +68,36 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index', 's
 
                             Product::getGazesGridCol(true),
 
-                            [
+                            array(
                                 'attribute' => 'picture',
                                 'format' => 'raw',
                                 'value' => function ($model) {
                                     return $model->pictUrl
-                                        ? Html::img($model->pictUrl, ['style' => 'max-width: 100px;'])
+                                        ? Html::img($model->pictUrl, array('style' => 'max-width: 100px;'))
                                         : null;
                                 }
-                            ],
+                            ),
                             'price',
-                            [
+                            array(
                                 'attribute' => 'slug',
                                 'format' => 'raw',
                                 'value' => function ($model) {
                                     $url = $model->url;
-                                    return $model->slug . '<hr/>' . Html::a($url, $url, ['target' => '_blank', 'data-pjax' => 0]);
+                                    return $model->slug . '<hr/>' . Html::a($url, $url, array('target' => '_blank', 'data-pjax' => 0));
                                 }
-                            ],
+                            ),
                             'measurement_type_id',
                             'measurementType.name:text:Measurement Type',
                             'formfactor',
                             'formfactor_unit',
-                            [
+                            array(
                                 'attribute' => 'range',
                                 'label' => 'Диапазоны',
                                 'format' => 'raw',
                                 'value' => function ($model) {
-                                    return $this->render('_ranges', ['model' => $model]);
+                                    return $this->render('_ranges', array('model' => $model));
                                 }
-                            ],
+                            ),
                             'resolution',
                             'sensitivity',
                             'sensitivity_unit',
@@ -101,8 +107,8 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index', 's
                             'energy_consumption_unit',
                             'temperature_range_from',
                             'temperature_range_to',
-                        ],
-                    ]); ?>
+                        ),
+                    )); ?>
 
                     <?= Html::submitButton('Удалить выбранные', ['class' => 'btn btn-danger mt-3 mb-3', 'data-confirm' => Yii::t('yii', 'Вы уверены, что хотите удалить данные записи? Восстановить их будет нельзя.'),]); ?>
 
