@@ -29,7 +29,12 @@ class MeasurementType extends MeasurementTypeBase
             $rows = Tools::array_unshift_assoc($rows);
         }
 
-        return $rows;
+        $newArray = [];
+        foreach ($rows as $key => $value) {
+            $newArray[$key] = $value ? mb_ucfirst($value) : null;
+        }
+
+        return $newArray;
     }
 
 
