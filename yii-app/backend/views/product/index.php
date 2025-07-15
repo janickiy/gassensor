@@ -2,7 +2,6 @@
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\search\ProductSearch */
-
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 use yii\helpers\Html;
@@ -32,6 +31,8 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index', 's
                         <div class="col-md-12">
 
                             <?= Html::a(Yii::t('app', 'Добавить товар'), ['create'], ['class' => 'btn btn-info btn-sm']) ?>
+
+                            <?= Html::a(Yii::t('app', 'Добавить сенсоры'), ['upload-sensors'], ['class' => 'btn btn-info btn-sm']) ?>
 
                             <?= Html::a('<i class="far fa-file-excel"></i> Выгрузить каталог', Url::current(['export-excel']), ['class' => 'btn btn-sm btn-primary mr-1']) ?>
 

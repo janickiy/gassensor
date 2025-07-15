@@ -4,13 +4,16 @@ namespace backend\controllers;
 
 use Yii;
 use common\helpers\FlashTrait;
-use common\models\{Order, ProductRange, Seo, Product, ProductGaz};
+use common\models\{ProductRange, SensorsList, Seo, Product, ProductGaz};
 use common\models\search\ProductSearch;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 use yii\web\{Controller, NotFoundHttpException, UploadedFile};
-use arturoliveira\ExcelView;;
 use common\helpers\StringHelpers;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+use yii\base\DynamicModel;
 
 /**
  * ProductController implements the CRUD actions for Product model.
@@ -358,5 +361,125 @@ class ProductController extends Controller
     public function actionExportExcel($sort = null)
     {
         return Product::exportExcel();
+    }
+
+    /**
+     * Импорт сенсоров
+     *
+     * @return string
+     * @throws \PHPExcel_Reader_Exception
+     */
+    public function actionUploadSensors()
+    {
+        $modelImport = new DynamicModel([
+            'file' => 'Импорт сенсоров',
+        ]);
+        $modelImport->addRule(['file'], 'required');
+        $modelImport->addRule(['file'], 'file', ['extensions' => 'ods,xls,xlsx,csv'], ['maxSize' => 1024 * 1024]);
+
+        if (Yii::$app->request->post()) {
+            $modelImport->file = UploadedFile::getInstance($modelImport, 'file');
+
+            if ($modelImport->file && $modelImport->validate()) {
+
+                $count = self::importFromExcel($modelImport->file);
+
+                Yii::$app->getSession()->setFlash('success', 'Импорт успешно завершен. Импортировано: ' . $count);
+            } else {
+                Yii::$app->getSession()->setFlash('error', 'Ошибка импорта');
+            }
+        }
+
+        return $this->render('upload', ['model' => $modelImport]);
+    }
+
+    /**
+     * @param $importFile
+     * @return int
+     * @throws \yii\db\Exception
+     */
+    private static function importFromExcel($importFile): int
+    {
+        $iterator = static function ($data): \Generator {
+            yield from new \ArrayIterator($data);
+        };
+
+        $processed_data = static function (Worksheet $data) use ($iterator): ?array {
+            $key_lists = [];
+            $init_data = [];
+            foreach ($iterator($data->toArray()) as $item) {
+                if (empty($key_lists)) {
+                    if (is_null($item[0])) break;
+
+                    $item = array_map(static fn($_item) => trim((string)$_item), $item);
+                    $key_lists = $item;
+                } else {
+                    if (empty($key_lists)) break;
+
+                    $item = array_map(static fn($_item) => trim((string)$_item), $item);
+                    $init_data[] = array_combine($key_lists, $item);
+                }
+            }
+
+            return (empty($init_data))
+                ? null
+                : $init_data;
+        };
+
+        $extension = strtolower($importFile->getExtension());
+
+        $open_file = static function (string $file) use ($extension): ?Spreadsheet {
+
+            switch ($extension) {
+                case 'xlsx':
+                    $inputFileType = 'Xlsx';
+                    break;
+                case 'xls':
+                    $inputFileType = 'Xls';
+                    break;
+                case 'csv':
+                    $inputFileType = 'Csv';
+                    break;
+                case 'ods':
+                    $inputFileType = 'Ods';
+                    break;
+            }
+
+            $reader = IOFactory::createReader($inputFileType);
+            $reader->setReadDataOnly(false);
+
+            return $reader->load($file);
+        };
+
+        $processed = static function (Spreadsheet $spreadsheet) use ($iterator, $processed_data): int {
+            $count = 0;
+            $sheetData = $spreadsheet->getActiveSheet()->toArray(null, true, true, true);
+            $sheetCount = count($sheetData);
+
+            SensorsList::deleteAll();
+
+            $i = 24;
+            while ($i < $sheetCount) {
+                $name = trim($sheetData[$i]['A']);
+                $posNumber = (int)$sheetData[$i]['D'];
+
+                $model = new SensorsList();
+                $model->name = $name;
+                $model->count = $posNumber;
+
+                if ($model->save()) {
+                    $count++;
+                }
+
+                $i++;
+            }
+
+            return $count;
+        };
+
+        $worksheetData = $open_file($importFile->tempName);
+
+        return $processed($worksheetData);
+
     }
 }
