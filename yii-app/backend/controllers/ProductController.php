@@ -3,8 +3,9 @@
 namespace backend\controllers;
 
 use Yii;
+use yii\helpers\Url;
 use common\helpers\FlashTrait;
-use common\models\{ProductRange, SensorsList, Seo, Product, ProductGaz};
+use common\models\{ProductRange, SensorsList, Seo, Product, ProductGaz, Setting};
 use common\models\search\ProductSearch;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
@@ -381,8 +382,15 @@ class ProductController extends Controller
             $modelImport->file = UploadedFile::getInstance($modelImport, 'file');
 
             if ($modelImport->file && $modelImport->validate()) {
-
                 $count = self::importFromExcel($modelImport->file);
+
+                $fileName = 'sensors_list.' . $modelImport->file->extension;
+
+                $res = $modelImport->file->saveAs('../upload/' . $fileName);
+
+                if ($res) {
+                    Setting::saveValue('SENSORS_LIST', $fileName);
+                }
 
                 Yii::$app->getSession()->setFlash('success', 'Импорт успешно завершен. Импортировано: ' . $count);
             } else {
@@ -460,15 +468,30 @@ class ProductController extends Controller
 
             $i = 24;
             while ($i < $sheetCount) {
-                $name = trim($sheetData[$i]['A']);
-                $posNumber = (int)$sheetData[$i]['D'];
+                if ($sheetData[$i]['A'] && $sheetData[$i]['D']) {
+                    $name = trim($sheetData[$i]['A']);
+                    $posNumber = (int)$sheetData[$i]['D'];
 
-                $model = new SensorsList();
-                $model->name = $name;
-                $model->count = $posNumber;
+                    $model = new SensorsList();
 
-                if ($model->save()) {
-                    $count++;
+                    $model->name = $name;
+                    $model->count = $posNumber;
+
+                    $product = Product::find()->where(['like','name', $name])->limit(1)->one();
+
+                    if ($product) {
+                        if ($product->gaz->slug ?? null) {
+                            $link = "/catalog/{$product->gaz->slug}/{$product->slug}";
+                        } else {
+                            $link = "/product/{$product->slug}";
+                        }
+
+                        $model->link = $link;
+                    }
+
+                    if ($model->save()) {
+                        $count++;
+                    }
                 }
 
                 $i++;
@@ -480,6 +503,5 @@ class ProductController extends Controller
         $worksheetData = $open_file($importFile->tempName);
 
         return $processed($worksheetData);
-
     }
 }

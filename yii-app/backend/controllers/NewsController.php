@@ -128,6 +128,7 @@ class NewsController extends Controller
                 $modelSeo->save(false);
 
                 if ($model->uploadFile = UploadedFile::getInstance($model, 'uploadFile')) {
+                    Yii::$app->getSession()->setFlash('success', "Данные успешно обновлены");
                     $model->upload();
                 }
 

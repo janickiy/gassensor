@@ -1,8 +1,4 @@
 <?php
-/**
- * generated 22-03-22 18:18:23
- *
- */
 
 namespace common\models;
 
@@ -24,6 +20,8 @@ class Setting extends SettingBase
     const NAME_ADRESS = 'ADRESS';
 
     const NAME_EMAIL = 'EMAIL';
+
+    const SENSORS_LIST = 'SENSORS_LIST';
 
     /**
      * @inheritdoc
@@ -54,21 +52,22 @@ class Setting extends SettingBase
     }
 
     /**
-     * @param $name
+     * @param string $name
      * @return string|null
      */
-    public static function getValue($name)
+    public static function getValue(string $name): ?string
     {
         $model = self::getModelByName($name);
         return empty($model) ? null : $model->value;
     }
 
     /**
-     * @param $name
-     * @param $value
+     * @param string $name
+     * @param string $value
      * @return bool
+     * @throws \yii\db\Exception
      */
-    public static function saveValue($name, $value)
+    public static function saveValue(string $name, string $value): bool
     {
         if (!$model = self::getModelByName($name)) {
             $model = new self();
@@ -86,7 +85,7 @@ class Setting extends SettingBase
     /**
      * @return array|string|string[]
      */
-    public static function getEmailManagerOrder()
+    public static function getEmailManagerOrder(): ?string
     {
         $result = self::getValue(self::NAME_EMAIL_MANAGER_ORDER);
         $result = str_replace([' '], '', $result);
@@ -96,7 +95,7 @@ class Setting extends SettingBase
     /**
      * @return string|null
      */
-    public static function getPhone()
+    public static function getPhone(): ?string
     {
         $result = self::getValue(self::NAME_PHONE);
         return $result;
@@ -105,7 +104,7 @@ class Setting extends SettingBase
     /**
      * @return string|null
      */
-    public static function getPhone2()
+    public static function getPhone2(): ?string
     {
         $result = self::getValue(self::NAME_PHONE_2);
         return $result;
@@ -114,7 +113,7 @@ class Setting extends SettingBase
     /**
      * @return array|string|string[]|null
      */
-    public static function getPhoneOnlyNumber()
+    public static function getPhoneOnlyNumber(): ?string
     {
         $result = preg_replace("/[^,.0-9]/", '', self::getValue(self::NAME_PHONE));
         return $result;
@@ -123,7 +122,7 @@ class Setting extends SettingBase
     /**
      * @return array|string|string[]|null
      */
-    public static function getPhoneOnlyNumber2()
+    public static function getPhoneOnlyNumber2(): ?string
     {
         $result = preg_replace("/[^,.0-9]/", '', self::getValue(self::NAME_PHONE_2));
         return $result;
@@ -132,7 +131,7 @@ class Setting extends SettingBase
     /**
      * @return string|null
      */
-    public static function getAdress()
+    public static function getAdress(): ?string
     {
         $result = self::getValue(self::NAME_ADRESS);
         return $result;
@@ -141,9 +140,18 @@ class Setting extends SettingBase
     /**
      * @return string|null
      */
-    public static function getEmail()
+    public static function getEmail(): ?string
     {
         $result = self::getValue(self::NAME_EMAIL);
+        return $result;
+    }
+
+    /**
+     * @return string|null
+     */
+    public static function getSensorsList(): ?string
+    {
+        $result = self::getValue(self::SENSORS_LIST);
         return $result;
     }
 

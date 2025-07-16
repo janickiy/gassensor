@@ -42,9 +42,7 @@ class ManufactureController extends Controller
     public function actionIndex()
     {
         $searchModel = new ManufactureSearch();
-
         $dataProvider = $searchModel->search($this->request->queryParams);
-
         $dataProvider->pagination->pageSize = 100;
 
         return $this->render('index', compact('searchModel', 'dataProvider'));
@@ -77,7 +75,6 @@ class ManufactureController extends Controller
         $req = $this->request;
 
         if ($req->isPost) {
-
             if ($model->load($req->post()) && $modelSeo->load($req->post())) {
                 $isValid = $model->validate();
                 $isValid = $modelSeo->validate() && $isValid;
@@ -130,9 +127,11 @@ class ManufactureController extends Controller
 
                 if ($model->uploadPict = UploadedFile::getInstance($model, 'uploadPict')) {
                     if (!$model->uploadPict()) {
-                        $this->addFlashError('Ошибка загрузки картинки');
+                        Yii::$app->getSession()->setFlash('error', 'Ошибка загрузки картинки');
                     }
                 }
+
+                Yii::$app->getSession()->setFlash('success', "Данные успешно обновлены");
 
                 return $this->redirect(['view', 'id' => $model->id]);
             }

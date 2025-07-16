@@ -108,6 +108,8 @@ class ApplicationsController extends Controller
                 $model->save();
                 $modelSeo->save(false);
 
+                Yii::$app->getSession()->setFlash('success', "Данные успешно обновлены");
+
                 return $this->redirect(['view', 'id' => $id]);
             }
         }

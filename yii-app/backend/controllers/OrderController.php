@@ -92,6 +92,7 @@ class OrderController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            Yii::$app->getSession()->setFlash('success', "Данные успешно обновлены");
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -117,6 +118,7 @@ class OrderController extends Controller
      * @param $status
      * @return \yii\web\Response
      * @throws NotFoundHttpException
+     * @throws \yii\db\Exception
      */
     public function actionSetStatus(int $id, $status)
     {
@@ -125,9 +127,9 @@ class OrderController extends Controller
         $model->status = $status;
 
         if ($model->save()) {
-            $this->addFlashSuccess("Установлен статус '{$model->statusName}' заказа #{$model->id}");
+            Yii::$app->getSession()->setFlash('success', "Установлен статус '{$model->statusName}' заказа #{$model->id}");
         } else {
-            $this->addFlashError($model->errors);
+            Yii::$app->getSession()->setFlash('error', $model->errors);
         }
 
         return $this->redirect(['index', 'sort' => '-id']);

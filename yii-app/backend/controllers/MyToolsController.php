@@ -1,8 +1,4 @@
 <?php
-/**
- *
- * @since 2019-11-13 18:43
- */
 
 namespace frontend\controllers;
 

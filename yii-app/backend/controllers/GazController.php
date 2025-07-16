@@ -103,7 +103,6 @@ class GazController extends Controller
     public function actionUpdate(int $id)
     {
         $model = $this->findModel($id);
-
         $modelSeo = $model->seo ?: new Seo(['type' => Seo::TYPE_CATALOG_GAZ, 'ref_id' => $model->id]);
 
         $req = $this->request;
@@ -116,6 +115,8 @@ class GazController extends Controller
                 $model->slug = StringHelpers::slug($model->slug);
                 $model->save(false);
                 $modelSeo->save(false);
+
+                Yii::$app->getSession()->setFlash('success', "Данные успешно обновлены");
 
                 return $this->redirect(['view', 'id' => $id]);
             }

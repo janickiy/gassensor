@@ -9,6 +9,7 @@ use Yii;
  *
  * @property integer $id
  * @property string $name
+ * @property string $link
  * @property integer $count
  */
 class SensorsListBase extends \yii\db\ActiveRecord
@@ -29,7 +30,7 @@ class SensorsListBase extends \yii\db\ActiveRecord
         return [
             [['name'], 'required'],
             [['count'], 'integer'],
-            [['name'], 'string', 'max' => 255],
+            [['name','link'], 'string', 'max' => 255],
         ];
     }
 
@@ -42,6 +43,7 @@ class SensorsListBase extends \yii\db\ActiveRecord
             'id' => Yii::t('app', 'ID'),
             'name' => Yii::t('app', 'Наименование'),
             'count' => Yii::t('app', 'Количество'),
+            'link' => Yii::t('app', 'Ссылка'),
         ];
     }
 

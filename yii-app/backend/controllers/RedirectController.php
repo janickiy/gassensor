@@ -79,15 +79,18 @@ class RedirectController extends Controller
     /**
      * Updates an existing Redirect model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $id ID
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     *
+     * @param int $id
+     * @return string|\yii\web\Response
+     * @throws NotFoundHttpException
+     * @throws \yii\db\Exception
      */
     public function actionUpdate(int $id)
     {
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            Yii::$app->getSession()->setFlash('success', "Данные успешно обновлены");
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

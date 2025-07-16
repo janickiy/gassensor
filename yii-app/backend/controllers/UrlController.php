@@ -60,7 +60,9 @@ class UrlController extends Controller
     /**
      * Creates a new Url model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     *
      * @return string|\yii\web\Response
+     * @throws \yii\db\Exception
      */
     public function actionCreate()
     {
@@ -89,6 +91,7 @@ class UrlController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            Yii::$app->getSession()->setFlash('success', "Данные успешно обновлены");
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

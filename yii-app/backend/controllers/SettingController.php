@@ -6,7 +6,6 @@ use Yii;
 use common\helpers\FlashTrait;
 use common\models\Setting;
 use yii\web\Controller;
-use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
 class SettingController extends Controller
@@ -48,9 +47,9 @@ class SettingController extends Controller
 
         foreach ($req->post('setting') as $name => $v) {
             if (Setting::saveValue($name, $v)) {
-                $this->addFlashSuccess("Сохранена настройка '$name' = '$v'");
+                Yii::$app->getSession()->setFlash('success', "Сохранена настройка '$name' = '$v'");
             } else {
-                $this->addFlashError("Ошибка сохранения настройки '$name'");
+                Yii::$app->getSession()->setFlash('error',"Ошибка сохранения настройки '$name'");
             }
         }
 

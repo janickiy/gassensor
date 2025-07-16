@@ -6,7 +6,7 @@ use Yii;
 use common\models\User;
 use common\models\search\UserSearch;
 use backend\models\UserForm;
-use yii\web\{Controller, ForbiddenHttpException, NotFoundHttpException};
+use yii\web\{Controller, NotFoundHttpException};
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -20,9 +20,7 @@ class UserController extends Controller
     public function actionIndex()
     {
         $searchModel = new UserSearch();
-
         $dataProvider = $searchModel->search($this->request->queryParams);
-
         $dataProvider->query->andWhere('id != 2');
 
         return $this->render('index', compact('searchModel', 'dataProvider'));
@@ -44,7 +42,9 @@ class UserController extends Controller
     /**
      * Creates a new User model.
      * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
+     *
+     * @return string|\yii\web\Response
+     * @throws \Exception
      */
     public function actionCreate()
     {
@@ -60,15 +60,18 @@ class UserController extends Controller
     /**
      * Updates an existing User model.
      * If update is successful, the browser will be redirected to the 'view' page.
+     *
      * @param int $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * @return string|\yii\web\Response
+     * @throws NotFoundHttpException
+     * @throws \yii\db\Exception
      */
     public function actionUpdate(int $id)
     {
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            Yii::$app->getSession()->setFlash('success', "Данные успешно обновлены");
             return $this->redirect(['index', 'id' => $model->id]);
         }
 

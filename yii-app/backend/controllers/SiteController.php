@@ -7,7 +7,6 @@ use common\helpers\{Uploader,FlashTrait};
 use yii\filters\VerbFilter;
 use yii\web\{Controller,Response};
 
-
 /**
  * Site controller
  */
