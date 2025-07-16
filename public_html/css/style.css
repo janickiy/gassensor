@@ -365,5 +365,8 @@ option:disabled {
 .sensors-table th,
 .sensors-table td {
     font-size: 14px;
+}
+
+.sensors-table td {
     word-break: break-word;
 }
