@@ -39,25 +39,6 @@ use yii\bootstrap5\Html;
     ['class' => 'form-select', 'options' => MeasurementType::measurementTypeOption2($model)])
 ?>
 
-<div class="mb-3 border p-1">
-    <label>Диапазон</label>
-
-    <div class="row g-1">
-        <div class="col">
-            <?= $form->field($model, 'range_from')->input('number') ?>
-        </div>
-        <div class="col">
-            <?= $form->field($model, 'range_to')->input('number') ?>
-        </div>
-        <div class="col">
-            <?= $form->field($model, 'range_unit')->dropDownList(
-                ProductRange::getDropDownDataGroupCol('unit', true),
-                ['class' => 'form-select', 'options' => ['' => ['label' => ' ']]])
-            ?>
-        </div>
-    </div>
-</div>
-
 <?php if (0): ?>
     <div class="mb-3 border p-1">
         <label>Разрешение</label>
