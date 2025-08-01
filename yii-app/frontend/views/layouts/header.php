@@ -154,6 +154,7 @@ $currentUrl = Url::current();
                   <li class="menu-item <?=$currentUrl == '/manufacture/index' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/manufacture') ?>">Производители</a></li>
                   <li class="menu-item <?=$currentUrl == '/converter/index' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/converter') ?>">Конвертер</a></li>
                   <li class="menu-item <?=$currentUrl == '/page/contacts' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/page/contacts') ?>">Контакты</a></li>
+                  <li class="menu-item <?=$currentUrl == '/page/privacy' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/page/privacy') ?>">Политика конфиденциальности</a></li>
               </ul>
             </div>
           </div>
