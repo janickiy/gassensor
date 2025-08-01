@@ -40,6 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                Seo::TYPE_PAGE_CONTACT,
                                                Seo::TYPE_MANUFACTURES,
                                                Seo::TYPE_PAGE_VACANCY,
+                                               Seo::TYPE_PAGE_PRIVACY,
                                                Seo::TYPE_PAGE_ACCESSORIES,
                                                Seo::TYPE_PAGE_CONVERTER,] as $v):
                                 if ($model = Seo::findOne(['type' => $v])) {

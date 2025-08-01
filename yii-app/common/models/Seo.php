@@ -34,6 +34,7 @@ class Seo extends SeoBase
     const TYPE_PRODUCT = 60;
     const TYPE_CATALOG_GAZ = 70;
     const TYPE_CATALOG_MANUFACTURES = 80;
+    const TYPE_PAGE_PRIVACY = 90;
 
     /**
      * @param false $isPrependEmpty
@@ -153,6 +154,9 @@ class Seo extends SeoBase
                 if ($news = $this->news) {
                     $result = "/news/{$news->slug}";
                 }
+                break;
+            case self::TYPE_PAGE_PRIVACY:
+                $result = '/page/privacy';
                 break;
             default:
                 throw new \Exception("not implemented  {$this->type}");

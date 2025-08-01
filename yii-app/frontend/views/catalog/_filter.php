@@ -96,14 +96,6 @@ use yii\bootstrap5\Html;
     </div>
 </div>
 
-<div class="mb-3 border p-1">
-    <div class="row g-1">
-        <div class="col">
-            <?= $form->field($model, 'sensitivity') ?>
-        </div>
-    </div>
-</div>
-
 <div class="form-group">
     <?= Html::submitButton('Поиск', ['class' => 'btn mt-3 w-100']) ?>
 </div>

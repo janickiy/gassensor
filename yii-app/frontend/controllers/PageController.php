@@ -17,7 +17,7 @@ class PageController extends Controller
      */
     public function actionIndex($slug)
     {
-        if (!in_array($slug, ['vacancy', 'contacts', 'accessories'])) {
+        if (!in_array($slug, ['vacancy', 'contacts', 'accessories', 'privacy'])) {
             throw new NotFoundHttpException('not found');
         }
 
