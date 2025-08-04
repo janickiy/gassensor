@@ -8,7 +8,6 @@ namespace frontend\controllers;
 
 use common\models\Gaz;
 use common\models\Manufacture;
-use common\models\MeasurementType;
 use common\models\search\ProductSearch;
 use common\models\Seo;
 use yii\web\Controller;

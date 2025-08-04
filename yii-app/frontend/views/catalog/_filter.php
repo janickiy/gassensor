@@ -7,7 +7,6 @@ use common\models\Gaz;
 use common\models\GazGroup;
 use common\models\Manufacture;
 use common\models\MeasurementType;
-use common\models\ProductRange;
 use yii\bootstrap5\ActiveForm;
 use yii\bootstrap5\Html;
 
@@ -56,7 +55,7 @@ use yii\bootstrap5\Html;
 
 
 <div class="mb-3 border p-1">
-    <label>Время отклика</label>
+    <label>Время отклика SEC</label>
 
     <div class="row g-1">
         <div class="col">
@@ -84,7 +83,7 @@ use yii\bootstrap5\Html;
 <?php endif; ?>
 
 <div class="mb-3 border p-1">
-    <label>Диапазон температур</label>
+    <label>Диапазон температур °C</label>
 
     <div class="row g-1">
         <div class="col">

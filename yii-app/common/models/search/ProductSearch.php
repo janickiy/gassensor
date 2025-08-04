@@ -40,15 +40,24 @@ class ProductSearch extends Product
         return [
             [['id', 'created_at', 'updated_at', 'manufacture_id', 'measurement_type_id',
                 'formfactor', 'range_from', 'range_to', 'response_time',
-                'energy_consumption_from', 'energy_consumption_to', 'temperature_range_from',
-                'temperature_range_to'], 'integer'],
+                'energy_consumption_from', 'energy_consumption_to'], 'integer'],
 
             [['price', 'resolution'], 'number'],
 
             [['resolution_from', 'resolution_to'], 'number'],
-            [['gaz_id', 'gaz_group_id', 'measurement_type_id',
-                'response_time_from', 'response_time_to',
-            ], 'integer'],
+            [['gaz_id', 'gaz_group_id', 'measurement_type_id'], 'integer'],
+
+            [['response_time_from'], 'number', 'min' => 0, 'max' => 1000],
+            [['response_time_to'], 'number', 'min' => 0, 'max' => 1000],
+
+            ['response_time_from', 'default', 'value' => 0],
+            ['response_time_to', 'default', 'value' => 1000],
+
+            [['temperature_range_from'], 'number', 'min' => -60, 'max' => 1000],
+            [['temperature_range_to'], 'number', 'min' => 0, 'max' => 1000],
+
+            ['temperature_range_from', 'default', 'value' => -60],
+            ['temperature_range_to', 'default', 'value' => 1000],
 
             [['name', 'img', 'slug', 'range_unit', 'sensitivity_unit', 'sensitivity',
                 'gaz_title', 'manufacture_title', 'measurement_type_name',], 'safe'],
