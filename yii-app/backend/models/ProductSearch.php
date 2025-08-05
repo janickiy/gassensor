@@ -1,6 +1,6 @@
 <?php
 
-namespace common\models\search;
+namespace backend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
@@ -39,24 +39,15 @@ class ProductSearch extends Product
         return [
             [['id', 'created_at', 'updated_at', 'manufacture_id', 'measurement_type_id',
                 'formfactor', 'range_from', 'range_to', 'response_time',
-                'energy_consumption_from', 'energy_consumption_to'], 'integer'],
+                'energy_consumption_from', 'energy_consumption_to', 'temperature_range_from',
+                'temperature_range_to'], 'integer'],
 
             [['price', 'resolution'], 'number'],
 
             [['resolution_from', 'resolution_to'], 'number'],
-            [['gaz_id', 'gaz_group_id', 'measurement_type_id'], 'integer'],
-
-            [['response_time_from'], 'number', 'min' => 0, 'max' => 1000],
-            [['response_time_to'], 'number', 'min' => 0, 'max' => 1000],
-
-            ['response_time_from', 'default', 'value' => 0],
-            ['response_time_to', 'default', 'value' => 1000],
-
-            [['temperature_range_from'], 'number', 'min' => -60, 'max' => 1000],
-            [['temperature_range_to'], 'number', 'min' => 0, 'max' => 1000],
-
-            ['temperature_range_from', 'default', 'value' => -60],
-            ['temperature_range_to', 'default', 'value' => 1000],
+            [['gaz_id', 'gaz_group_id', 'measurement_type_id',
+                'response_time_from', 'response_time_to',
+            ], 'integer'],
 
             [['name', 'img', 'slug', 'range_unit', 'sensitivity_unit', 'sensitivity',
                 'gaz_title', 'manufacture_title', 'measurement_type_name',], 'safe'],
@@ -177,10 +168,6 @@ class ProductSearch extends Product
             'price' => $this->price,
             'measurement_type_id' => $this->measurement_type_id,
             'formfactor' => $this->formfactor,
-            //deprecated
-//             'range_from' => $this->range_from,
-//             'range_to' => $this->range_to,
-//             'resolution' => $this->resolution,
             'sensitivity' => $this->sensitivity,
             'response_time' => $this->response_time,
             'energy_consumption_from' => $this->energy_consumption_from,
@@ -198,61 +185,4 @@ class ProductSearch extends Product
         return $dataProvider;
     }
 
-    /**
-     * Creates data provider instance with search query applied
-     *
-     * @param array $params
-     *
-     * @return ActiveDataProvider
-     */
-    public function searchFront($params)
-    {
-        $dataProvider = $this->getDataProvider($params);
-        /* @var $query \yii\db\ActiveQuery */
-        $query = $dataProvider->query;
-
-        // grid filtering conditions
-        $query->andFilterWhere([
-            'id' => $this->id,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-            'manufacture_id' => $this->manufacture_id,
-            'price' => $this->price,
-            'measurement_type_id' => $this->measurement_type_id,
-            'formfactor' => $this->formfactor,
-            'sensitivity' => $this->sensitivity,
-            'response_time' => $this->response_time,
-        ]);
-
-        $query->andFilterWhere(['>=', 'temperature_range_from', $this->temperature_range_from]);
-        $query->andFilterWhere(['<=', 'temperature_range_to', $this->temperature_range_to]);
-
-        $query->andFilterWhere(['>=', 'energy_consumption_from', $this->energy_consumption_from]);
-        $query->andFilterWhere(['<=', 'energy_consumption_to', $this->energy_consumption_to]);
-
-        $query->andFilterWhere(['>=', 'product_range.from', $this->range_from]);
-        $query->andFilterWhere(['<=', 'product_range.to', $this->range_to]);
-
-        $query->andFilterWhere(['>=', 'resolution', $this->resolution_from]);
-        $query->andFilterWhere(['<=', 'resolution', $this->resolution_to]);
-
-        $query->andFilterWhere(['>=', 'response_time', $this->response_time_from]);
-        $query->andFilterWhere(['<=', 'response_time', $this->response_time_to]);
-
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'product_range.unit', $this->range_unit])
-            ->andFilterWhere(['like', 'sensitivity_unit', $this->sensitivity_unit]);
-
-        $query->andFilterWhere(['gaz.id' => $this->gaz_id]);
-
-        $query->andFilterWhere(['gaz_group.id' => $this->gaz_group_id]);
-
-        $dataProvider->sort->defaultOrder = [
-            //'gaz_title' => SORT_ASC,
-            'name' => SORT_ASC
-        ];
-
-        return $dataProvider;
-    }
 }
-

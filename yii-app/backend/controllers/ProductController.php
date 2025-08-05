@@ -3,10 +3,9 @@
 namespace backend\controllers;
 
 use Yii;
-use yii\helpers\Url;
 use common\helpers\FlashTrait;
 use common\models\{ProductRange, SensorsList, Seo, Product, ProductGaz, Setting};
-use common\models\search\ProductSearch;
+use backend\models\ProductSearch;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 use yii\web\{Controller, NotFoundHttpException, UploadedFile};
