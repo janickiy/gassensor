@@ -38,16 +38,17 @@ class ProductSearch extends Product
     {
         return [
             [['id', 'created_at', 'updated_at', 'manufacture_id', 'measurement_type_id',
-                'formfactor', 'range_from', 'range_to', 'response_time',
+                'formfactor', 'range_from', 'range_to',
                 'energy_consumption_from', 'energy_consumption_to', 'temperature_range_from',
                 'temperature_range_to'], 'integer'],
 
-            [['price', 'resolution'], 'number'],
+            [['price', 'resolution', 'response_time'], 'number'],
 
             [['resolution_from', 'resolution_to'], 'number'],
             [['gaz_id', 'gaz_group_id', 'measurement_type_id',
-                'response_time_from', 'response_time_to',
             ], 'integer'],
+
+            [['response_time_from', 'response_time_to'], 'number'],
 
             [['name', 'img', 'slug', 'range_unit', 'sensitivity_unit', 'sensitivity',
                 'gaz_title', 'manufacture_title', 'measurement_type_name',], 'safe'],
