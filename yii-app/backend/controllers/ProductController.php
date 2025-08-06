@@ -161,10 +161,8 @@ class ProductController extends Controller
             $isValid = $model->validate();
             $isValid = $modelSeo->validate() && $isValid;
 
-            $oldIDs = ArrayHelper::map($modelsRange, 'id', 'id');
             $modelsRange = Product::createMultiple(ProductRange::class, $modelsRange);
             Product::loadMultiple($modelsRange, $req->post());
-            $deletedIDs = array_diff($oldIDs, array_filter(ArrayHelper::map($modelsRange, 'id', 'id')));
             $isValid = Product::validateMultiple($modelsRange, ['from', 'to', 'unit']) && $isValid;
 
             if ($isValid) {
@@ -205,6 +203,14 @@ class ProductController extends Controller
 
                     if (isset($req->post('ProductGaz')['is_main_2']) && !empty($req->post('ProductGaz')['is_main_2'])) $model->saveMainbGaz2($req->post('ProductGaz')['is_main_2']);
                     if (isset($req->post('ProductGaz')['is_main_3']) && !empty($req->post('ProductGaz')['is_main_3'])) $model->saveMainbGaz3($req->post('ProductGaz')['is_main_3']);
+
+                    $deletedIDs = [];
+
+                    for ($i=0; $i<count($_POST['ProductRange']); $i++) {
+                        if (!isset($_POST['ProductRange'][$i]['pos']) || !isset($_POST['ProductRange'][$i]['unit']) || !isset($_POST['ProductRange'][$i]['to'])) {
+                            $deletedIDs[] = $_POST['ProductRange'][$i]['id'];
+                        }
+                    }
 
                     if ($deletedIDs) {
                         ProductRange::deleteAll(['id' => $deletedIDs]);
