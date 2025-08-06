@@ -44,8 +44,8 @@ use yii\helpers\Url;
                                 <ul>
                                     <li><a href="<?=Url::to(['/']) ?>">Новости</a></li>
                                     <li><a href="<?=Url::to(['/page/vacancy']) ?>">Вакансии</a></li>
-                                    <li><a href="<?=Url::to(['/page/contacts']) ?>">Контакты</a></li>
                                     <li><a href="<?=Url::to(['/page/privacy']) ?>">Политика конфиденциальности</a></li>
+                                    <li><a href="<?=Url::to(['/page/contacts']) ?>">Контакты</a></li>
                                 </ul>
                             </div>
                         </div>

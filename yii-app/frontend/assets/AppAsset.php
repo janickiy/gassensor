@@ -14,6 +14,7 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/common.css',
         'css/style.css',
+        'css/privacy.css',
         'lib/ionicon/css/ionicon.css',
         'lib/fa/css/all.css',
     ];

@@ -9,7 +9,6 @@ $user = Yii::$app->user;
 $currentUrl = Url::current();
 
 ?>
-
 <header id="site-header" class="site-header mobile-header-blue header-style-1">
       <div id="header_topbar" class="header-topbar md-hidden sm-hidden "> <!-- .clearfix -->
         <div class="container-custom">
@@ -153,8 +152,8 @@ $currentUrl = Url::current();
                   <li class="menu-item <?=$currentUrl == '/page/accessories' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/page/accessories') ?>">Аксессуары</a></li>
                   <li class="menu-item <?=$currentUrl == '/manufacture/index' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/manufacture') ?>">Производители</a></li>
                   <li class="menu-item <?=$currentUrl == '/converter/index' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/converter') ?>">Конвертер</a></li>
-                  <li class="menu-item <?=$currentUrl == '/page/contacts' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/page/contacts') ?>">Контакты</a></li>
                   <li class="menu-item <?=$currentUrl == '/page/privacy' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/page/privacy') ?>">Политика конфиденциальности</a></li>
+                  <li class="menu-item <?=$currentUrl == '/page/contacts' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/page/contacts') ?>">Контакты</a></li>
               </ul>
             </div>
           </div>

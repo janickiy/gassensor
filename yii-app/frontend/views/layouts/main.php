@@ -1,6 +1,5 @@
 <?php
 /* @var $this \yii\web\View */
-
 /* @var $content string */
 
 use common\widgets\Alert;
@@ -88,7 +87,17 @@ LegacyAsset::register($this);
     <?php else: ?>
     <!--  LOCAL_SITE -->
     <?php endif; ?>
- 
+
+    <!-- START Cookie-Alert -->
+    <div id="cookie_note">
+        <p>Данный веб-сайт использует cookie-файлы в целях предоставления вам лучшего пользовательского опыта на нашем сайте. Продолжая использовать данный сайт, вы соглашаетесь с использованием нами cookie-файлов.
+            Для получения дополнительной информации см. <a href="<?=Url::to(['/page/privacy']) ?>" target="_blank">Политика конфиденциальности.</a></p>
+        <div class="d-flex justify-content-center">
+            <button class="button cookie_accept btn btn-primary btn-sm">Я согласен</button>
+        </div>
+    </div>
+    <!-- END Cookie-Alert -->
+
     </body>
     </html>
 <?php $this->endPage() ?>
