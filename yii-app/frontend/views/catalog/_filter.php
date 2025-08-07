@@ -82,19 +82,6 @@ use yii\bootstrap5\Html;
     </div>
 <?php endif; ?>
 
-<div class="mb-3 border p-1">
-    <label>Диапазон температур °C</label>
-
-    <div class="row g-1">
-        <div class="col">
-            <?= $form->field($model, 'temperature_range_from')->input('number') ?>
-        </div>
-        <div class="col">
-            <?= $form->field($model, 'temperature_range_to')->input('number') ?>
-        </div>
-    </div>
-</div>
-
 <div class="form-group">
     <?= Html::submitButton('Поиск', ['class' => 'btn mt-3 w-100']) ?>
 </div>
