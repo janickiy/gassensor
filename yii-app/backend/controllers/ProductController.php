@@ -477,6 +477,7 @@ class ProductController extends Controller
                     $name = trim($sheetData[$i]['A']);
                     $posNumber = (int)$sheetData[$i]['D'];
                     $gaz = trim($sheetData[$i]['C']);
+                    $gaz = str_replace('#NULL!', '', $gaz);
 
                     $model = new SensorsList();
 
