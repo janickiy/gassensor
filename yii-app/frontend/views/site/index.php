@@ -4,6 +4,7 @@
 /* @var $sensorsList common\models\SensorsList */
 
 use common\models\News;
+use common\models\Product;
 use common\models\Seo;
 use common\models\Setting;
 use frontend\widgets\GazLinks;
@@ -47,12 +48,14 @@ $seo = Seo::findOne(['type' => Seo::TYPE_PAGE_HOME])->registerMetaTags($this);
                         <thead>
                         <tr>
                             <th>Позиция</th>
-                            <th>Количество</th>
+                            <th style="width: 80px;">Газ</th>
+                            <th class="text-nowrap">К-во</th>
                         </tr>
                         </thead>
                         <tbody>
 
                         <?php foreach ($sensorsList as $sensor): ?>
+
                             <tr>
                                 <td>
                                     <?php if ($sensor->link): ?>
@@ -61,6 +64,7 @@ $seo = Seo::findOne(['type' => Seo::TYPE_PAGE_HOME])->registerMetaTags($this);
                                         <?= $sensor->name ?>
                                     <?php endif; ?>
                                 </td>
+                                <td><?= $sensor->gaz ?></td>
                                 <td><?= $sensor->count ?></td>
                             </tr>
                         <?php endforeach; ?>

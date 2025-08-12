@@ -476,10 +476,12 @@ class ProductController extends Controller
                 if ($sheetData[$i]['A'] && $sheetData[$i]['D']) {
                     $name = trim($sheetData[$i]['A']);
                     $posNumber = (int)$sheetData[$i]['D'];
+                    $gaz = trim($sheetData[$i]['C']);
 
                     $model = new SensorsList();
 
                     $model->name = $name;
+                    $model->gaz = $gaz;
                     $model->count = $posNumber;
 
                     $product = Product::find()->where(['like','name', $name])->limit(1)->one();
