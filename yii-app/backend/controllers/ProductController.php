@@ -482,7 +482,7 @@ class ProductController extends Controller
                     $model = new SensorsList();
 
                     $model->name = $name;
-                    $model->gaz = $gaz;
+                    $model->name2 = $gaz;
                     $model->count = $posNumber;
 
                     $product = Product::find()->where(['like','name', $name])->limit(1)->one();

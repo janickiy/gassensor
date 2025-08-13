@@ -4,7 +4,6 @@
 /* @var $sensorsList common\models\SensorsList */
 
 use common\models\News;
-use common\models\Product;
 use common\models\Seo;
 use common\models\Setting;
 use frontend\widgets\GazLinks;
@@ -64,7 +63,7 @@ $seo = Seo::findOne(['type' => Seo::TYPE_PAGE_HOME])->registerMetaTags($this);
                                         <?= $sensor->name ?>
                                     <?php endif; ?>
                                 </td>
-                                <td><?= $sensor->gaz ?></td>
+                                <td><?= $sensor->name2 ?></td>
                                 <td><?= $sensor->count ?></td>
                             </tr>
                         <?php endforeach; ?>
