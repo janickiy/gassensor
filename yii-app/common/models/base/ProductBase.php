@@ -49,6 +49,9 @@ use common\models\ProductRange;
  * @property integer $temperature_range_to
  * @property string $info
  * @property string $bias_voltage
+ * @property bool $primary
+ * @property bool $analog
+ * @property bool $digital
  *
  * @property Gaz[] $gazs
  * @property Manufacture $manufacture
@@ -86,6 +89,7 @@ class ProductBase extends \yii\db\ActiveRecord
             [['formfactor_unit', 'sensitivity_unit'], 'string', 'max' => 20],
             [['response_time_unit', 'energy_consumption_unit'], 'string', 'max' => 10],
             [['slug'], 'unique'],
+            [['primary', 'analog', 'digital'], 'boolean'],
             [['manufacture_id'], 'exist', 'skipOnError' => true, 'targetClass' => ManufactureBase::class, 'targetAttribute' => ['manufacture_id' => 'id']],
             [['measurement_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => MeasurementTypeBase::class, 'targetAttribute' => ['measurement_type_id' => 'id']],
         ];
@@ -116,6 +120,9 @@ class ProductBase extends \yii\db\ActiveRecord
             'range_unit' => Yii::t('app', 'Range Unit'),
             'resolution' => Yii::t('app', 'Resolution'),
             'sensitivity' => Yii::t('app', 'Sensitivity'),
+            'primary' => Yii::t('app', 'Primary'),
+            'analog' => Yii::t('app', 'Analog'),
+            'digital' => Yii::t('app', 'Digital'),
             'sensitivity_from' => Yii::t('app', 'Sensitivity From'),
             'sensitivity_to' => Yii::t('app', 'Sensitivity To'),
             'sensitivity_unit' => Yii::t('app', 'Sensitivity Unit'),

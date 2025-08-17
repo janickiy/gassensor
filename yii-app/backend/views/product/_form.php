@@ -71,7 +71,7 @@ use yii\web\View;
 
             </div>
 
-            <legend></legend>
+            <legend>Чувствительность</legend>
 
             <div class="row">
                 <?= $form->field($model, 'measurement_type_id')
@@ -97,6 +97,18 @@ use yii\web\View;
 
             <div class="row">
                 <?= $form->field($model, 'sensitivity')->textInput() ?>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <?= $form->field($model, 'primary')->checkbox() ?>
+                </div>
+                <div class="col">
+                    <?= $form->field($model, 'analog')->checkbox() ?>
+                </div>
+                <div class="col">
+                    <?= $form->field($model, 'digital')->checkbox() ?>
+                </div>
             </div>
 
             <div class="row">

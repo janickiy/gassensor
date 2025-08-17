@@ -1,6 +1,5 @@
 <?php
 /* @var $this yii\web\View */
-
 /* @var $model common\models\Product */
 
 use yii\helpers\Html;
@@ -58,6 +57,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         'formfactor_unit',
                         'resolution',
                         'sensitivity',
+                        'primary',
+                        'analog',
+                        'digital',
                         'sensitivity_from:raw:Чувсвительность от',
                         'sensitivity_to:raw:Чувсвительность до',
                         'sensitivity_unit:raw:Чувсвительность unit',
