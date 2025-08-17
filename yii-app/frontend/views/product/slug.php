@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 /* @var $model common\models\Product */
 /* @var $modelGaz common\models\Gaz */
+
 /* @var $formAdd common\components\cart\AddToCartForm */
 
 use common\models\Product;
