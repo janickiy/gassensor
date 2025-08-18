@@ -49,7 +49,7 @@ use common\models\ProductRange;
  * @property integer $temperature_range_to
  * @property string $info
  * @property string $bias_voltage
- * @property bool $primary
+ * @property bool $first
  * @property bool $analog
  * @property bool $digital
  *
@@ -89,7 +89,7 @@ class ProductBase extends \yii\db\ActiveRecord
             [['formfactor_unit', 'sensitivity_unit'], 'string', 'max' => 20],
             [['response_time_unit', 'energy_consumption_unit'], 'string', 'max' => 10],
             [['slug'], 'unique'],
-            [['primary', 'analog', 'digital'], 'boolean'],
+            [['first', 'analog', 'digital'], 'boolean'],
             [['manufacture_id'], 'exist', 'skipOnError' => true, 'targetClass' => ManufactureBase::class, 'targetAttribute' => ['manufacture_id' => 'id']],
             [['measurement_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => MeasurementTypeBase::class, 'targetAttribute' => ['measurement_type_id' => 'id']],
         ];

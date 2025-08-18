@@ -57,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'formfactor_unit',
                         'resolution',
                         'sensitivity',
-                        'primary',
+                        'first',
                         'analog',
                         'digital',
                         'sensitivity_from:raw:Чувсвительность от',

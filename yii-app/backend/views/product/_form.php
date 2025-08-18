@@ -101,7 +101,7 @@ use yii\web\View;
 
             <div class="row">
                 <div class="col">
-                    <?= $form->field($model, 'primary')->checkbox() ?>
+                    <?= $form->field($model, 'first')->checkbox() ?>
                 </div>
                 <div class="col">
                     <?= $form->field($model, 'analog')->checkbox() ?>

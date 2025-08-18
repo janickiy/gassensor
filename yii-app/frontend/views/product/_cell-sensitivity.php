@@ -4,7 +4,7 @@
 
 $sensitivity = [];
 
-if ($model->primary === 1) $sensitivity[] = Yii::t('app', 'Primary');
+if ($model->first === 1) $sensitivity[] = Yii::t('app', 'Primary');
 if ($model->analog === 1) $sensitivity[] = Yii::t('app', 'Analog');
 if ($model->digital === 1) $sensitivity[] = Yii::t('app', 'Digital');
 

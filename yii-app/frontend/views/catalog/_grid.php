@@ -69,8 +69,6 @@ use yii\helpers\Html;
         'sensitivity'
 
 
-
-
                 //'img',
     //             'price',
     //             'slug',
