@@ -26,7 +26,7 @@ return [
     'Temperature Range To' => 'До',
     'Bias Voltage' => 'Напряжение смещения',
     'Sensitivity' => 'Чувствительность / выходной сигнал',
-    'Primary' => 'первичный',
+    'First' => 'первичный',
     'Analog' => 'аналоговый',
     'Digital' => 'цифровой',
     'Resolution' => 'Разрешение',

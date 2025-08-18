@@ -120,7 +120,7 @@ class ProductBase extends \yii\db\ActiveRecord
             'range_unit' => Yii::t('app', 'Range Unit'),
             'resolution' => Yii::t('app', 'Resolution'),
             'sensitivity' => Yii::t('app', 'Sensitivity'),
-            'primary' => Yii::t('app', 'Primary'),
+            'first' => Yii::t('app', 'First'),
             'analog' => Yii::t('app', 'Analog'),
             'digital' => Yii::t('app', 'Digital'),
             'sensitivity_from' => Yii::t('app', 'Sensitivity From'),
