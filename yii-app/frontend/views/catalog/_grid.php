@@ -66,9 +66,6 @@ use yii\helpers\Html;
 
         Product::getManufactureTitleGridCol(),
 
-        'sensitivity'
-
-
                 //'img',
     //             'price',
     //             'slug',
@@ -85,7 +82,6 @@ use yii\helpers\Html;
                  //'energy_consumption_to',
                  //'temperature_range_from',
                  //'temperature_range_to',
-
 
     ],
 ]); ?>

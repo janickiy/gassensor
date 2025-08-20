@@ -33,7 +33,7 @@ $seo = Seo::findOne(['type' => Seo::TYPE_PAGE_HOME])->registerMetaTags($this);
         <div class="col-xxl-2 col-md-3">
             <div class="sensors-count card p-2 bg-light">
                 <div class="flex-grow-1 d-flex flex-column justify-content-center align-items-center">
-                    <h3 class="text-center">Остатки<br>сенсоров на&nbsp;складе</h3>
+                    <h3 class="text-center">Наличие<br>сенсоров на складе</h3>
                     <img src="./i/logo-excel.svg" alt="Логотип Excel" class="d-block text-center">
                 </div>
 
