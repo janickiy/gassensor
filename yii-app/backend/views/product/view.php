@@ -57,9 +57,31 @@ $this->params['breadcrumbs'][] = $this->title;
                         'formfactor_unit',
                         'resolution',
                         'sensitivity',
-                        'first',
-                        'analog',
-                        'digital',
+
+                        [
+                            'attribute' => 'sensitivity_first',
+                            'format' => 'raw',
+                            'value' => function ($model) {
+                                return $model->sensitivity_first;
+                            }
+                        ],
+
+                        [
+                            'attribute' => 'sensitivity_analog',
+                            'format' => 'raw',
+                            'value' => function ($model) {
+                                return $model->sensitivity_analog;
+                            }
+                        ],
+
+                        [
+                            'attribute' => 'sensitivity_digital',
+                            'format' => 'raw',
+                            'value' => function ($model) {
+                                return $model->sensitivity_digital;
+                            }
+                        ],
+
                         'sensitivity_from:raw:Чувсвительность от',
                         'sensitivity_to:raw:Чувсвительность до',
                         'sensitivity_unit:raw:Чувсвительность unit',

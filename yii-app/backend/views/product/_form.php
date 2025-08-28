@@ -112,6 +112,12 @@ use yii\web\View;
             </div>
 
             <div class="row">
+                <div class="col"><?= $form->field($model, 'sensitivity_first')->textInput(['maxlength' => true])->label(false) ?></div>
+                <div class="col"><?= $form->field($model, 'sensitivity_analog')->textInput(['maxlength' => true])->label(false) ?></div>
+                <div class="col"><?= $form->field($model, 'sensitivity_digital')->textInput(['maxlength' => true])->label(false) ?></div>
+            </div>
+
+            <div class="row">
                 <div class="col"><?= $form->field($model, 'sensitivity_from')->textInput() ?></div>
                 <div class="col"><?= $form->field($model, 'sensitivity_to')->textInput() ?></div>
                 <div class="col"><?= $form->field($model, 'sensitivity_unit')->textInput(['maxlength' => true])->label('Ед. изм.') ?></div>

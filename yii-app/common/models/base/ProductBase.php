@@ -36,7 +36,10 @@ use common\models\ProductRange;
  * @property double $range_to
  * @property string $range_unit
  * @property double $resolution
- * @property integer $sensitivity
+ * @property string $sensitivity
+ * @property string $sensitivity_first
+ * @property string $sensitivity_analog
+ * @property string $sensitivity_digital
  * @property double $sensitivity_from
  * @property double $sensitivity_to
  * @property string $sensitivity_unit
@@ -87,6 +90,7 @@ class ProductBase extends \yii\db\ActiveRecord
             [['pdf', 'pdf2', 'pdf3', 'slug'], 'string', 'max' => 100],
             [['info'], 'string', 'max' => 512],
             [['bias_voltage'], 'string', 'max' => 255],
+            [['sensitivity_first','sensitivity_analog','sensitivity_digital'], 'string', 'max' => 25],
             [['formfactor_unit', 'sensitivity_unit'], 'string', 'max' => 20],
             [['response_time_unit', 'energy_consumption_unit'], 'string', 'max' => 10],
             [['slug'], 'unique'],
@@ -124,6 +128,9 @@ class ProductBase extends \yii\db\ActiveRecord
             'first' => Yii::t('app', 'First'),
             'analog' => Yii::t('app', 'Analog'),
             'digital' => Yii::t('app', 'Digital'),
+            'sensitivity_first' => Yii::t('app', 'Sensitivity First'),
+            'sensitivity_analog' => Yii::t('app', 'Sensitivity Analog'),
+            'sensitivity_digital' => Yii::t('app', 'Sensitivity Digital'),
             'sensitivity_from' => Yii::t('app', 'Sensitivity From'),
             'sensitivity_to' => Yii::t('app', 'Sensitivity To'),
             'sensitivity_unit' => Yii::t('app', 'Sensitivity Unit'),
