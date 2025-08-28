@@ -52,10 +52,10 @@ class ProductSearch extends Product
             ['response_time_from', 'default', 'value' => 0],
             ['response_time_to', 'default', 'value' => 1000],
 
-            [['temperature_range_from'], 'number', 'min' => -60, 'max' => 1000],
+            [['temperature_range_from'], 'number', 'min' => -100, 'max' => 1000],
             [['temperature_range_to'], 'number', 'min' => 0, 'max' => 1000],
 
-            ['temperature_range_from', 'default', 'value' => -60],
+            ['temperature_range_from', 'default', 'value' => -100],
             ['temperature_range_to', 'default', 'value' => 1000],
 
             [['name', 'img', 'slug', 'range_unit', 'sensitivity_unit', 'sensitivity',
