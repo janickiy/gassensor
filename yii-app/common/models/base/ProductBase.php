@@ -81,7 +81,7 @@ class ProductBase extends \yii\db\ActiveRecord
     {
         return [
             [['created_at', 'updated_at', 'manufacture_id', 'measurement_type_id', 'temperature_range_from', 'temperature_range_to'], 'integer'],
-            [['manufacture_id', 'name', 'measurement_type_id'], 'required'],
+            [['manufacture_id', 'name', 'measurement_type_id', 'response_time'], 'required'],
             [['price', 'range_from', 'range_to', 'resolution', 'sensitivity_from', 'sensitivity_to', 'energy_consumption_from', 'energy_consumption_to', 'response_time'], 'number'],
             [['formfactor', 'range_unit'], 'string', 'max' => 30],
             [['name'], 'string', 'max' => 100],
