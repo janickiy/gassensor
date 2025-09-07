@@ -475,7 +475,10 @@ class ProductController extends Controller
             while ($i < $sheetCount) {
                 if ($sheetData[$i]['A'] && $sheetData[$i]['D']) {
                     $name = trim($sheetData[$i]['A']);
-                    $posNumber = (int)$sheetData[$i]['D'];
+                    $posNumber = $sheetData[$i]['D'];
+                    $posNumber = str_replace(' ', '', $posNumber);
+                    $posNumber = (int)$posNumber;
+
                     $gaz = trim($sheetData[$i]['C']);
                     $gaz = str_replace('#NULL!', '', $gaz);
 
