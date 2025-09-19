@@ -169,7 +169,6 @@ class ProductSearch extends Product
             'price' => $this->price,
             'measurement_type_id' => $this->measurement_type_id,
             'formfactor' => $this->formfactor,
-            'sensitivity' => $this->sensitivity,
             'response_time' => $this->response_time,
             'energy_consumption_from' => $this->energy_consumption_from,
             'energy_consumption_to' => $this->energy_consumption_to,

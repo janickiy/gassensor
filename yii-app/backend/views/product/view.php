@@ -56,7 +56,6 @@ $this->params['breadcrumbs'][] = $this->title;
                         'formfactor',
                         'formfactor_unit',
                         'resolution',
-                        'sensitivity',
 
                         [
                             'attribute' => 'sensitivity_first',

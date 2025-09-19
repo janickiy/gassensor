@@ -58,7 +58,7 @@ $seo = Seo::findOne(['type' => Seo::TYPE_PAGE_HOME])->registerMetaTags($this);
                             <tr>
                                 <td>
                                     <?php if ($sensor->link): ?>
-                                        <a href="<?= Url::to([$sensor->link]) ?>"><?= $sensor->name ?></a>
+                                        <a href="<?= $sensor->link ?>"><?= $sensor->name ?></a>
                                     <?php else: ?>
                                         <?= $sensor->name ?>
                                     <?php endif; ?>
