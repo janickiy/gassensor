@@ -2,12 +2,46 @@
 /* @var $this yii\web\View */
 /* @var $model common\models\Product */
 
-$sensitivity = [];
-
-if ($model->first === 1) $sensitivity[] = Yii::t('app', 'First');
-if ($model->analog === 1) $sensitivity[] = Yii::t('app', 'Analog');
-if ($model->digital === 1) $sensitivity[] = Yii::t('app', 'Digital');
-
 ?>
 
-<?= $model->sensitivity ?> <?= $model->sensitivity_unit ?> <?= implode(', ', $sensitivity) ?>
+<div class="container">
+    <div class="row">
+
+        <?php if ($model->first === 1): ?>
+
+            <div class="col-sm">
+
+                <?= Yii::t('app', 'First') ?><br>
+
+                <?= $model->sensitivity_first ?>
+
+            </div>
+
+        <?php endif; ?>
+
+        <?php if ($model->analog === 1): ?>
+
+            <div class="col-sm">
+
+                <?= Yii::t('app', 'Analog') ?><br>
+
+                <?= $model->sensitivity_analog ?>
+
+            </div>
+
+        <?php endif; ?>
+
+        <?php if ($model->digital === 1): ?>
+
+            <div class="col-sm">
+
+                <?= Yii::t('app', 'Digital') ?><br>
+
+                <?= $model->sensitivity_digital ?>
+
+            </div>
+
+        <?php endif; ?>
+
+    </div>
+</div>

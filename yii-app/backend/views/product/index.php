@@ -100,7 +100,6 @@ $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index', 's
                                 }
                             ),
                             'resolution',
-                            'sensitivity',
                             'sensitivity_unit',
                             'response_time:datetime',
                             'energy_consumption_from',

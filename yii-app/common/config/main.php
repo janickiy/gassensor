@@ -95,7 +95,7 @@ return [
         ]
     ],
 
-    
+   /*
     'on beforeRequest' => function ($event) {
         if(!Yii::$app->request->isSecureConnection){
             $url = Yii::$app->request->getAbsoluteUrl();
@@ -105,4 +105,5 @@ return [
         }
 
     },
+   */
 ];

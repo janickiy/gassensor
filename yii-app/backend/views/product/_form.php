@@ -96,10 +96,6 @@ use yii\web\View;
             </div>
 
             <div class="row">
-                <?= $form->field($model, 'sensitivity')->textInput() ?>
-            </div>
-
-            <div class="row">
                 <div class="col">
                     <?= $form->field($model, 'first')->checkbox() ?>
                 </div>

@@ -36,7 +36,6 @@ use common\models\ProductRange;
  * @property double $range_to
  * @property string $range_unit
  * @property double $resolution
- * @property string $sensitivity
  * @property string $sensitivity_first
  * @property string $sensitivity_analog
  * @property string $sensitivity_digital
@@ -86,7 +85,6 @@ class ProductBase extends \yii\db\ActiveRecord
             [['formfactor', 'range_unit'], 'string', 'max' => 30],
             [['name'], 'string', 'max' => 100],
             [['img'], 'string', 'max' => 3],
-            [['sensitivity'], 'string',],
             [['pdf', 'pdf2', 'pdf3', 'slug'], 'string', 'max' => 100],
             [['info'], 'string', 'max' => 512],
             [['bias_voltage'], 'string', 'max' => 255],

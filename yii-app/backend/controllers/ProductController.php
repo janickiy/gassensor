@@ -475,7 +475,10 @@ class ProductController extends Controller
             while ($i < $sheetCount) {
                 if ($sheetData[$i]['A'] && $sheetData[$i]['D']) {
                     $name = trim($sheetData[$i]['A']);
-                    $posNumber = (int)$sheetData[$i]['D'];
+                    $posNumber = $sheetData[$i]['D'];
+                    $posNumber = str_replace(' ', '', $posNumber);
+                    $posNumber = (int)$posNumber;
+
                     $gaz = trim($sheetData[$i]['C']);
                     $gaz = str_replace('#NULL!', '', $gaz);
 
@@ -485,15 +488,11 @@ class ProductController extends Controller
                     $model->name2 = $gaz;
                     $model->count = $posNumber;
 
-                    $product = Product::find()->where(['like','name', $name])->limit(1)->one();
+                    $link = $sheetData[$i]['E'];
+                    $link = str_replace('#NULL!', '', $link);
+                    $link = trim($link);
 
-                    if ($product) {
-                        if ($product->gaz->slug ?? null) {
-                            $link = "/catalog/{$product->gaz->slug}/{$product->slug}";
-                        } else {
-                            $link = "/product/{$product->slug}";
-                        }
-
+                    if (!empty($link)) {
                         $model->link = $link;
                     }
 

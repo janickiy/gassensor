@@ -181,7 +181,7 @@ class ProductSearch extends Product
 //             'range_from' => $this->range_from,
 //             'range_to' => $this->range_to,
 //             'resolution' => $this->resolution,
-            'sensitivity' => $this->sensitivity,
+ //           'sensitivity' => $this->sensitivity,
             'response_time' => $this->response_time,
             'energy_consumption_from' => $this->energy_consumption_from,
             'energy_consumption_to' => $this->energy_consumption_to,
@@ -220,7 +220,6 @@ class ProductSearch extends Product
             'price' => $this->price,
             'measurement_type_id' => $this->measurement_type_id,
             'formfactor' => $this->formfactor,
-            'sensitivity' => $this->sensitivity,
             'response_time' => $this->response_time,
         ]);
 
