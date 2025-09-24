@@ -36,6 +36,7 @@ return [
                     'catalog/index' => 'catalog/index',
                     'catalog/<slug>' => 'catalog/gas',
                     'page/<slug>' => 'page/index',
+                    '/<page:\d+>' => 'site/index',
                 [
                     'pattern' => 'products',
                     'route' => 'redirector/index',
