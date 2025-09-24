@@ -27,14 +27,16 @@ return [
         'urlManager' => [
             'rules' => [
                     'catalog/manufacture/<slug>' => 'catalog/manufacture',
-                    'news/<slug>' => 'news/slug',
-                    'manufacture/<slug>' => 'manufacture/slug',
-                    'applications/index' => 'applications/index',
+                    'news/<slug>'         => 'news/slug',
+                    'manufacture/<slug>'  => 'manufacture/slug',
+                    'applications/index'  => 'applications/index',
+                    'applications/<page:\d+>'  => 'applications/index',
                     'applications/<slug>' => 'applications/slug',
-                    'product/<slug>' => 'product/slug',
+                    'product/<slug>'      => 'product/slug',
                     'catalog/<slugGaz>/<slug>' => 'product/slug',
-                    'catalog/index' => 'catalog/index',
+                    'catalog/index'  => 'catalog/index',
                     'catalog/<slug>' => 'catalog/gas',
+                    'catalog/<page:\d+>' => 'catalog/index',
                     'page/<slug>' => 'page/index',
                     '/<page:\d+>' => 'site/index',
                 [
