@@ -14,6 +14,7 @@ use yii\web\View;
 <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
 <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 <?= $form->field($model, 'content')->textarea(['rows' => '6', 'class' => 'form-control', 'id' => 'app-gas-content']) ?>
+<?= $form->field($model, 'type')->radioList([ 1 => 'газовые сенсоры', 2 => 'газодетекторыне трубки' ]) ?>
 
 <h3>SEO</h3>
 

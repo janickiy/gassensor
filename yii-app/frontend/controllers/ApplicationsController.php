@@ -18,9 +18,14 @@ class ApplicationsController extends Controller
         $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 5]);
         $applications = $query->offset($pages->offset)
             ->limit($pages->limit)
+            ->where('type=1')
+            ->all();
+        $detectorTubes = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->where('type=2')
             ->all();
 
-        return $this->render($this->action->id, compact('applications', 'pages'));
+        return $this->render($this->action->id, compact('applications', 'detectorTubes', 'pages'));
     }
 
     /**

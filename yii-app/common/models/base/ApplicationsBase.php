@@ -11,6 +11,7 @@ use Yii;
  * @property string $slug
  * @property string $title
  * @property string $content
+ * @property integer $type
  */
 class ApplicationsBase extends \yii\db\ActiveRecord
 {
@@ -28,8 +29,9 @@ class ApplicationsBase extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'content'], 'required'],
+            [['title', 'content', 'type'], 'required'],
             [['content'], 'string'],
+            [['type'], 'integer'],
             [['slug', 'title'], 'string', 'max' => 255],
             [['slug'], 'unique'],
         ];
@@ -45,6 +47,7 @@ class ApplicationsBase extends \yii\db\ActiveRecord
             'slug' => Yii::t('app', 'Slug'),
             'title' => Yii::t('app', 'Title'),
             'content' => Yii::t('app', 'Content'),
+            'type' => Yii::t('app', 'Type'),
         ];
     }
 

@@ -52,15 +52,20 @@ $this->params['breadcrumbs'][] = $this->title;
                             'slug',
                             //'content:ntext',
 
-
-
                             [
                                 'attribute' => 'content',
                                 'label' => 'Контент',
                                 'value' => function ($data) {
                                     return StringHelpers::shortText(StringHelpers::removeHtmlTags($data->content));
                                 }
+                            ],
 
+                            [
+                                'attribute' => 'type',
+                                'label' => 'Тип',
+                                'value' => function ($data) {
+                                    return $data->type === 1 ? 'газовые сенсоры' : 'газодетекторные трубоки';
+                                }
                             ],
 
                         ],
