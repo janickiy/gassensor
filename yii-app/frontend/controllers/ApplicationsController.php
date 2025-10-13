@@ -15,7 +15,7 @@ class ApplicationsController extends Controller
     public function actionIndex()
     {
         $query = Applications::find();
-        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 5]);
+        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 5, 'pageSizeParam' => false, ]);
         $applications = $query->offset($pages->offset)
             ->limit($pages->limit)
             ->where('type=1')

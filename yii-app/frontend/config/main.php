@@ -26,24 +26,23 @@ return [
         ],
         'urlManager' => [
             'rules' => [
-                    'catalog/manufacture/<slug>' => 'catalog/manufacture',
-                    'news/<slug>'         => 'news/slug',
-                    'manufacture/<slug>'  => 'manufacture/slug',
-                    'applications/index'  => 'applications/index',
-                    'applications/<page:\d+>'  => 'applications/index',
-                    'applications/<slug>' => 'applications/slug',
-                    'product/<slug>'      => 'product/slug',
-                    'catalog/<slugGaz>/<slug>' => 'product/slug',
-                    'catalog/index'  => 'catalog/index',
-                    'catalog/<slug>' => 'catalog/gas',
-                    'catalog/<page:\d+>' => 'catalog/index',
-                    'page/<slug>' => 'page/index',
-                    '/<page:\d+>' => 'site/index',
+                'catalog/manufacture/<slug>' => 'catalog/manufacture',
+                'news/<slug>' => 'news/slug',
+                'manufacture/<slug>' => 'manufacture/slug',
+                'applications/page/<page:\d+>' => 'applications/index',
+                'applications/<slug>' => 'applications/slug',
+                'product/<slug>' => 'product/slug',
+                'catalog/page/<page:\d+>' => 'catalog/index',
+                'catalog/<slugGaz>/<slug>' => 'product/slug',
+                'catalog/<slug>' => 'catalog/gas',
+                'page/<slug>' => 'page/index',
+                '/<page:\d+>' => 'site/index',
+
                 [
                     'pattern' => 'products',
                     'route' => 'redirector/index',
                     'defaults' => ['url' => '/catalog',],
-                ],[
+                ], [
                     'pattern' => 'sensors',
                     'route' => 'redirector/index',
                     'defaults' => ['url' => '/manufacture',],
