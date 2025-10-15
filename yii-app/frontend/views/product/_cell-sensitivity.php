@@ -11,7 +11,7 @@
 
             <div class="col-sm">
 
-                <?= Yii::t('app', 'First') ?><br>
+                <?php /* Yii::t('app', 'First') */?>
 
                 <?= $model->sensitivity_first ?>
 
@@ -23,7 +23,7 @@
 
             <div class="col-sm">
 
-                <?= Yii::t('app', 'Analog') ?><br>
+                <?php /* Yii::t('app', 'Analog') */?>
 
                 <?= $model->sensitivity_analog ?>
 
@@ -35,7 +35,7 @@
 
             <div class="col-sm">
 
-                <?= Yii::t('app', 'Digital') ?><br>
+                <?php /* Yii::t('app', 'Digital') */?>
 
                 <?= $model->sensitivity_digital ?>
 
