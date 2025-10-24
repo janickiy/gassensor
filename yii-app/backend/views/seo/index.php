@@ -31,9 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="row">
                         <div class="col-md-12">
 
-                            <?= Html::a(Yii::t('app', 'Добавить'), ['create'], ['class' => 'btn btn-info btn-sm pull-left']) ?>
-
-                            <br><br>
+                            <?= Html::a(Yii::t('app', 'Добавить'), ['create'], ['class' => 'btn btn-info mb-1']) ?>
 
                             <?php foreach ([Seo::TYPE_PAGE_HOME,
                                                Seo::TYPE_PAGE_CATALOG,
@@ -50,17 +48,17 @@ $this->params['breadcrumbs'][] = $this->title;
                                 }
                                 ?>
                                 <?= Html::a('<i class="fa fa-fw fa-edit"></i> ' . ($model->typeName ?? "create type:$v"),
-                                $url, ['class' => 'btn btn-success']) ?>
-                                <br><br>
+                                $url, ['class' => 'btn btn-success mb-1 mr-1']) ?>
+
                             <?php endforeach; ?>
 
-                            <?= Html::a('<i class="fa fa-fw fa-edit"></i> Производители (каталог)', Url::to(['seo/manufacture']), ['class' => 'btn btn-success']) ?>
-                            <br><br>
-                            <?= Html::a('<i class="fa fa-fw fa-edit"></i> Robots.txt', Url::to(['seo/robots']), ['class' => 'btn btn-success']) ?>
-                            <br><br>
-                            <?= Html::a('<i class="fa fa-fw fa-edit"></i> Sitemap.xml', Url::to(['seo/sitemap']), ['class' => 'btn btn-success']) ?>
-                            <br><br>
-                            <?= Html::a('<i class="fa fa-fw fa-edit"></i> Google Indexing URLs', Url::to(['seo/google']), ['class' => 'btn btn-success']) ?>
+                            <?= Html::a('<i class="fa fa-fw fa-edit"></i> Производители (каталог)', Url::to(['seo/manufacture']), ['class' => 'btn btn-success mr-1']) ?>
+
+                            <?= Html::a('<i class="fa fa-fw fa-edit"></i> Robots.txt', Url::to(['seo/robots']), ['class' => 'btn btn-success mr-1']) ?>
+
+                            <?= Html::a('<i class="fa fa-fw fa-edit"></i> Sitemap.xml', Url::to(['seo/sitemap']), ['class' => 'btn btn-success mr-1']) ?>
+
+                            <?= Html::a('<i class="fa fa-fw fa-edit"></i> Google Indexing URLs', Url::to(['seo/google']), ['class' => 'btn btn-success mr-1']) ?>
 
                         </div>
 

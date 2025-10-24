@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 
@@ -40,17 +41,29 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="table-responsive">
                     <?php Pjax::begin(); ?>
                     <?= GridView::widget([
-                        'dataProvider' => $dataProvider,
-                        'filterModel' => $searchModel,
-                        'columns' => [
-                            ['class' => 'yii\grid\SerialColumn'],
-                            'id',
-                            'createdUpdatedAt:raw:Создано / Изменено',
-                            'createdUpdatedBy:raw:Создал / Редактировал',
-                            'from',
-                            'to',
-                            ['class' => 'yii\grid\ActionColumn'],
-                        ],
+                            'dataProvider' => $dataProvider,
+                            'filterModel' => $searchModel,
+                            'columns' => [
+                                    ['class' => 'yii\grid\SerialColumn'],
+                                    'id',
+                                    'createdUpdatedAt:raw:Создано / Изменено',
+                                    'createdUpdatedBy:raw:Создал / Редактировал',
+                                    [
+                                            'attribute' => 'from',
+                                            'format' => 'html',
+                                            'value' => function ($model) {
+                                                return Html::a($model->from, Url::to($model->from, true), ['target' => '_blank', 'data-pjax' => 0]);
+                                            }
+                                    ],
+                                    [
+                                            'attribute' => 'to',
+                                            'format' => 'raw',
+                                            'value' => function ($model) {
+                                                return Html::a($model->to, Url::to($model->to, true), ['target' => '_blank', 'data-pjax' => 0]);
+                                            }
+                                    ],
+                                    ['class' => 'yii\grid\ActionColumn'],
+                            ],
                     ]); ?>
 
                     <?php Pjax::end(); ?>
