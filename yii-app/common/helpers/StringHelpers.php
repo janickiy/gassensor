@@ -149,6 +149,7 @@ class StringHelpers
         }
 
         $text = str_replace(' ', '-', $text);
+        $text = urlencode($text);
 
         return $text;
     }
