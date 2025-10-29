@@ -2,12 +2,12 @@
 
 namespace backend\controllers;
 
-use common\models\{Gaz,Seo};
+use common\models\{Gaz, Seo};
 use common\models\search\GazSearch;
+use common\helpers\StringHelpers;
 use Yii;
 use yii\filters\VerbFilter;
-use yii\web\{Controller,NotFoundHttpException};
-use common\helpers\StringHelpers;
+use yii\web\{Controller, NotFoundHttpException};
 
 /**
  * GazController implements the CRUD actions for Gaz model.
@@ -71,11 +71,10 @@ class GazController extends Controller
 
         if ($req->isPost) {
             if ($model->load($req->post()) && $modelSeo->load($req->post())) {
-
-            if (empty($model->slug)) $model->slug = $model->title;
+                if (empty($model->slug)) $model->slug = $model->title;
 
                 $isValid = $model->validate();
-              //  $isValid = $modelSeo->validate() && $isValid;
+                //  $isValid = $modelSeo->validate() && $isValid;
 
                 if ($isValid) {
                     $model->slug = StringHelpers::slug($model->slug);

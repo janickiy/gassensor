@@ -15,6 +15,27 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\web\View;
 
+$js =
+        <<<JS
+ $("#product-slug").on("change keyup input click", function () {
+     if (this.value.length >= 2) {
+         let q = this.value;
+         let request = $.ajax({
+             url: '/backend/ajax/slug?q=' + q,
+                method: "GET",
+                dataType: "json"
+         });
+         request.done(function (data) {
+             if (data.slug != null && data.slug !== '') {
+                 $("#product-slug").val(data.slug);
+             }
+         });
+     }
+  });
+JS;
+
+$this->registerJs($js, $this::POS_READY);
+
 ?>
 
 <?php $form = ActiveForm::begin(['id' => 'form-product', 'options' => ['class' => 'list_opt']]); ?>
