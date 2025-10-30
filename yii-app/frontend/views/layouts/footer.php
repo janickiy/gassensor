@@ -53,10 +53,23 @@ use yii\helpers\Url;
                 </div>
                 <!-- end col-lg-3 -->
 
-                <div class="col-md-3 col-sm-6">
-                    <div class="widget-footer">
+                <div class="col-md-3 col-sm-6 space-beetween">
+                    <div class="widget-footer ">
+                        <ul class="bottombar-left">
+                            <li><p><a target="_blank" onclick="ym(85084891,'reachGoal','CLICK_ON_ADRESS_FOOTER')"
+                                   href="https://yandex.ru/maps/-/CCQ~aVhHlD">
+                                    <i class="icon ion-md-pin"></i><?= Setting::getAdress() ?>
+                                </a><p>
+                                <p><a onclick="ym(85084891,'reachGoal','CLICK_ON_PHONE')" href="tel:+<?=Setting::getPhoneOnlyNumber() ?>"><i class="icon ion-md-call"></i><?= Setting::getPhone() ?></a></p>
+                                <p><a onclick="ym(85084891,'reachGoal','CLICK_ON_PHONE')" href="tel:+<?=Setting::getPhoneOnlyNumber2() ?>"><i class="icon ion-md-call"></i><?= Setting::getPhone2() ?></a></p>
+                                <p><a href="mailto:<?= Setting::getEmail() ?>"><i class="icon ion-md-mail"></i><?= Setting::getEmail() ?></a></p>
+                                <p class="text-right"><a id="back-to-top" href="#" class="btn btn-back-to-top">Наверх<i class="icon ion-ios-arrow-dropup-circle"></i></a></p>
+                            </li>
+
+                        </ul>
 
                     </div>
+
                 </div>
                 <!-- end col-lg-3 -->
 
@@ -69,23 +82,12 @@ use yii\helpers\Url;
             <div class="row">
                 <div class="col-md-12 flex-end space-beetween">
                     <div>
-                        <ul class="topbar-left">
-                            <li><a target="_blank" onclick="ym(85084891,'reachGoal','CLICK_ON_ADRESS_FOOTER')"
-                                   href="https://yandex.ru/maps/-/CCQ~aVhHlD">
-                                    <i class="icon ion-md-pin"></i><?= Setting::getAdress() ?>
-                                </a></li>
-                            <li><a onclick="ym(85084891,'reachGoal','CLICK_ON_PHONE')" href="tel:+<?=Setting::getPhoneOnlyNumber() ?>"><i class="icon ion-md-call"></i><?= Setting::getPhone() ?></a></li>
-                            <li><a onclick="ym(85084891,'reachGoal','CLICK_ON_PHONE')" href="tel:+<?=Setting::getPhoneOnlyNumber2() ?>"><i class="icon ion-md-call"></i><?= Setting::getPhone2() ?></a></li>
-                            <li><a href="mailto:<?= Setting::getEmail() ?>"><i class="icon ion-md-mail"></i><?= Setting::getEmail() ?></a></li>
-                        </ul>
-                        <div id="custom_html-1" class="widget_text widget widget_custom_html" style="padding: 10px 0;">
+                        <div id="custom_html-1" class="widget_text widget widget_custom_html pb-1">
                             <div class="textwidget custom-html-widget">
                                 <p>© 2011-<?= date('Y') ?> Газсенсор. Все права защищены.</p>
                             </div>
                         </div>
                     </div>
-                    <a id="back-to-top" href="#" class="btn btn-back-to-top pull-right">Наверх<i
-                                class="icon ion-ios-arrow-dropup-circle"></i></a>
                 </div>
             </div>
         </div>

@@ -1255,6 +1255,32 @@ input.form-control, select.form-control {
 .topbar-left a:hover {
   color: #b53e00;
 }
+
+.bottombar-left {
+    display: inline-block;
+}
+.bottombar-left li {
+    display: inline-block;
+    line-height: 26px;
+    padding: 10px 20px !important;
+    border-left: 1px solid rgba(183,183,183,0.2);
+}
+
+.bottombar-left i {
+    margin-right: 8px;
+    color: #dddddd;
+    font-size: 20px;
+    line-height: 26px;
+    position: relative;
+    vertical-align: middle;
+}
+.bottombar-left a {
+    color: #ffffff;
+}
+.bottombar-left a:hover {
+    color: #b53e00;
+}
+
 .topbar-right li {
   float: left;
   padding: 13px 24px 16px 24px;
