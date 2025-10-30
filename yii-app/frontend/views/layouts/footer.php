@@ -48,7 +48,9 @@ use yii\helpers\Url;
                                     <li><a href="<?=Url::to(['/page/contacts']) ?>">Контакты</a></li>
                                 </ul>
                             </div>
+                        <div class="mt-4"><a id="back-to-top" href="#" class="btn btn-back-to-top">Наверх<i class="icon ion-ios-arrow-dropup-circle"></i></a> </div>
                         </div>
+
                     </div>
                 </div>
                 <!-- end col-lg-3 -->
@@ -63,7 +65,6 @@ use yii\helpers\Url;
                                 <p><a onclick="ym(85084891,'reachGoal','CLICK_ON_PHONE')" href="tel:+<?=Setting::getPhoneOnlyNumber() ?>"><i class="icon ion-md-call"></i><?= Setting::getPhone() ?></a></p>
                                 <p><a onclick="ym(85084891,'reachGoal','CLICK_ON_PHONE')" href="tel:+<?=Setting::getPhoneOnlyNumber2() ?>"><i class="icon ion-md-call"></i><?= Setting::getPhone2() ?></a></p>
                                 <p><a href="mailto:<?= Setting::getEmail() ?>"><i class="icon ion-md-mail"></i><?= Setting::getEmail() ?></a></p>
-                                <p class="text-right"><a id="back-to-top" href="#" class="btn btn-back-to-top">Наверх<i class="icon ion-ios-arrow-dropup-circle"></i></a></p>
                             </li>
 
                         </ul>
