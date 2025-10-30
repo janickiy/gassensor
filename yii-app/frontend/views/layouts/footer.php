@@ -82,7 +82,7 @@ use yii\helpers\Url;
             <div class="row">
                 <div class="col-md-12 flex-end space-beetween">
                     <div>
-                        <div id="custom_html-1" class="widget_text widget widget_custom_html pb-1">
+                        <div id="custom_html-1" class="widget_text widget widget_custom_html mb-3">
                             <div class="textwidget custom-html-widget">
                                 <p>© 2011-<?= date('Y') ?> Газсенсор. Все права защищены.</p>
                             </div>
