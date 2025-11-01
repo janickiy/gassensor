@@ -48,4 +48,5 @@ return [
     'Img' => 'Изображение',
     'Updated At' => 'Изменено',
     'Response Time Unit' => 'Ед. изм.',
+    'Remains' => 'Остатки',
 ];

@@ -30,6 +30,7 @@ return [
                 'news/<slug>' => 'news/slug',
                 'manufacture/<slug>' => 'manufacture/slug',
                 'applications/page/<page:\d+>' => 'applications/index',
+                'remains/page/<page:\d+>' => 'remains/index',
                 'applications/<slug>' => 'applications/slug',
                 'product/<slug>' => 'product/slug',
                 'catalog/page/<page:\d+>' => 'catalog/index',
