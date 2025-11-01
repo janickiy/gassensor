@@ -1,6 +1,5 @@
 <?php
 
-
 /* @var $this yii\web\View */
 /* @var $sensorsList common\models\SensorsList */
 
@@ -39,37 +38,6 @@ $seo = Seo::findOne(['type' => Seo::TYPE_PAGE_HOME])->registerMetaTags($this);
                 <a href="./upload/<?= Setting::getSensorsList() ?>" download class="btn btn-primary mt-4">
                     Скачать файл
                 </a>
-            </div>
-            <div class="d-none d-md-block card bg-light p-2 mt-2">
-                <div class="sensors-table overflow-auto rounded-1">
-                    <table class="table table-sm mb-0">
-                        <thead>
-                        <tr>
-                            <th>Позиция</th>
-                            <th style="width: 80px;">Газ</th>
-                            <th class="text-nowrap">К-во</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        <?php foreach ($sensorsList as $sensor): ?>
-
-                            <tr>
-                                <td>
-                                    <?php if ($sensor->link): ?>
-                                        <a href="<?= $sensor->link ?>"><?= $sensor->name ?></a>
-                                    <?php else: ?>
-                                        <?= $sensor->name ?>
-                                    <?php endif; ?>
-                                </td>
-                                <td><?= $sensor->name2 ?></td>
-                                <td><?= $sensor->count ?></td>
-                            </tr>
-                        <?php endforeach; ?>
-
-                        </tbody>
-                    </table>
-                </div>
             </div>
         </div>
         <div class="col-xxl-8 col-md-6 order-first order-md-0">

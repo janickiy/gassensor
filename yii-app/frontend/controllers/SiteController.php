@@ -2,7 +2,6 @@
 namespace frontend\controllers;
 
 use common\models\LoginForm;
-use common\models\SensorsList;
 use frontend\models\SignupForm;
 use frontend\widgets\gazConverter\GazConverterForm;
 use Yii;
@@ -40,9 +39,7 @@ class SiteController extends Controller
             return $this->redirect('/', 301);
         }
 
-        $sensorsList = SensorsList::find()->orderBy('name')->all();
-
-        return $this->render('index', ['sensorsList' => $sensorsList]);
+        return $this->render('index', []);
     }
 
     /**
