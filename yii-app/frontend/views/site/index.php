@@ -1,6 +1,7 @@
 <?php
-/* @var $this yii\web\View */
 
+
+/* @var $this yii\web\View */
 /* @var $sensorsList common\models\SensorsList */
 
 use common\models\News;
@@ -10,7 +11,6 @@ use frontend\widgets\GazLinks;
 use frontend\widgets\gazConverter\GazConverterWidget;
 use yii\data\ActiveDataProvider;
 use yii\widgets\ListView;
-use yii\helpers\Url;
 
 $dataProvider = new ActiveDataProvider(['query' => News::find()->orderBy('date DESC')]);
 $listView = new ListView([
@@ -85,8 +85,6 @@ $seo = Seo::findOne(['type' => Seo::TYPE_PAGE_HOME])->registerMetaTags($this);
 
         </div>
         <div class="col-md-2">
-
-            <?= GazConverterWidget::widget() ?>
 
             <?= GazLinks::widget() ?>
 

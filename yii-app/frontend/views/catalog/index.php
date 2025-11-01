@@ -74,7 +74,7 @@ $this->registerJs($js, $this::POS_READY);
             ]) ?>
 
         </div>
-        <div class="col-md-7">
+        <div class="col-md-10">
 
             <?= $this->render('_grid', [
                 'dataProvider' => $dataProvider,
@@ -82,9 +82,7 @@ $this->registerJs($js, $this::POS_READY);
             ]) ?>
 
         </div>
-        <div class="col-md-3">
-            <?= GazConverterWidget::widget() ?>
-        </div>
+
 
     </div>
 

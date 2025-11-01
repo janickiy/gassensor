@@ -10,18 +10,17 @@ $seo = Seo::findOne(['type' => Seo::TYPE_PAGE_CONVERTER])->registerMetaTags($thi
 
 $this->params['breadcrumbs'][] = $this->title;
 
+$form_convert = '<div class="row">
+        <div class="col-sm-9 col-md-6 col-lg-4">
+            ' . GazConverterWidget::widget(['title' => false]) . '
+        </div>
+    </div><br>';
 ?>
 
 <div class='<?= $this->context->id ?>-<?= $this->context->action->id ?> container'>
-     <h1><?= $seo->h1 ?></h1>
+    <h1><?= $seo->h1 ?></h1>
 
-  <?= Page::findOne(['type' => Page::TYPE_CONVERTER])->content ?>
-
-    <div class="row">
-        <div class="col-sm-9 col-md-6 col-lg-4">
-          <?= GazConverterWidget::widget(['title' => false]) ?>
-        </div>
-    </div>
+    <?= str_replace("FORM_CONVERT", $form_convert, Page::findOne(['type' => Page::TYPE_CONVERTER])->content) ?>
 
 </div>
 

@@ -37,7 +37,7 @@ $currentUrl = Url::current();
                   </form>
                 </li>
                 <li class="topbar-search">
-                  <a href="/cart">
+                  <a href="<?= Url::to('/cart') ?>">
                     <span class="icon ion-md-basket">
                       <span id="cartTotalNum" class="fs-09" style="vertical-align: middle;">
 
@@ -51,9 +51,9 @@ $currentUrl = Url::current();
                 </li>
                 <li>
                 <?php if ($user->isGuest): ?>
-                  <a href="/site/login">Login</a>
+                  <a href="<?= Url::to('/site/login') ?>">Login</a>
                 <?php else: ?>
-                  <a href="/backend/site/index" target="_blank">admin</a>
+                  <a href="<?= Url::to('/backend/site/index') ?>" target="_blank">admin</a>
                 <?php endif; ?>
 
                 </li>
@@ -94,7 +94,7 @@ $currentUrl = Url::current();
                 <a href="<?=Url::to(['/manufacture']) ?>">Производители</a>
             </li>
             <li class="menu-item <?=$currentUrl == '/converter/index' ? 'current-menu-ancestor current-menu-parent':'' ?>">
-                <a href="<?=Url::to(['/converter']) ?>">Конвертер</a>
+                <a href="<?=Url::to(['/converter']) ?>">Конвертер газа</a>
             </li>
             <li class="menu-item <?=$currentUrl == '/page/contacts' ? 'current-menu-ancestor current-menu-parent':'' ?>">
                 <a href="<?=Url::to(['/page/contacts']) ?>">Контакты </a>
@@ -151,7 +151,7 @@ $currentUrl = Url::current();
                   <li class="menu-item <?=$currentUrl == '/applications/index' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/applications') ?>">Применение</a></li>
                   <li class="menu-item <?=$currentUrl == '/page/accessories' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/page/accessories') ?>">Аксессуары</a></li>
                   <li class="menu-item <?=$currentUrl == '/manufacture/index' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/manufacture') ?>">Производители</a></li>
-                  <li class="menu-item <?=$currentUrl == '/converter/index' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/converter') ?>">Конвертер</a></li>
+                  <li class="menu-item <?=$currentUrl == '/converter/index' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/converter') ?>">Конвертер газа</a></li>
                   <li class="menu-item <?=$currentUrl == '/page/privacy' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/page/privacy') ?>">Политика конфиденциальности</a></li>
                   <li class="menu-item <?=$currentUrl == '/page/contacts' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/page/contacts') ?>">Контакты</a></li>
               </ul>

@@ -4,7 +4,6 @@ use common\models\Setting;
 use yii\helpers\Url;
 
 ?>
-
 <footer id="site-footer" class="site-footer bg-footer">
     <div class="main-footer">
         <div class="container-custom">
@@ -29,7 +28,7 @@ use yii\helpers\Url;
                                     <li><a href="<?=Url::to(['/applications']) ?>">Применение</a></li>
                                     <li><a href="<?=Url::to(['/page/accessories']) ?>">Аксессуары</a></li>
                                     <li><a href="<?=Url::to(['/manufacture']) ?>">Производители</a></li>
-                                    <li><a href="<?=Url::to(['/converter']) ?>">Конвертер</a></li>
+                                    <li><a href="<?=Url::to(['/converter']) ?>">Конвертер газа</a></li>
                                 </ul>
                             </div>
                         </div>
