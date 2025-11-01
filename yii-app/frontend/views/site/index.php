@@ -8,7 +8,6 @@ use common\models\News;
 use common\models\Seo;
 use common\models\Setting;
 use frontend\widgets\GazLinks;
-use frontend\widgets\gazConverter\GazConverterWidget;
 use yii\data\ActiveDataProvider;
 use yii\widgets\ListView;
 

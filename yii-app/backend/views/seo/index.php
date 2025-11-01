@@ -40,7 +40,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                                Seo::TYPE_PAGE_VACANCY,
                                                Seo::TYPE_PAGE_PRIVACY,
                                                Seo::TYPE_PAGE_ACCESSORIES,
-                                               Seo::TYPE_PAGE_CONVERTER,] as $v):
+                                               Seo::TYPE_PAGE_CONVERTER,
+                                                   Seo::TYPE_PAGE_REMAINS,
+                                                   ] as $v):
                                 if ($model = Seo::findOne(['type' => $v])) {
                                     $url = ['update', 'id' => $model->id];
                                 } else {

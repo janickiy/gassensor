@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         </div>
         <div class="col-12 col-sm-6">
-            <h2>Применение Газодетекторных трубок</h2>
+            <h2>Применение газодетекторных трубок</h2>
 
             <ul>
                 <?php foreach ($detectorTubes ?? [] as $application): ?>
@@ -68,13 +68,12 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
-
     <div class="row">
         <div class="col-12">
             <?= LinkPager::widget([
                 'pagination' => $pages,
             ]); ?>
         </div>
-
     </div>
+
 </div>

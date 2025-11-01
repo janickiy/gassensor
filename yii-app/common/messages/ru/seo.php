@@ -7,8 +7,9 @@ return [
     'TYPE_PAGE_VACANCY' => 'Страница вакансии',
     'TYPE_PAGE_PRIVACY' => 'Страница политики обработки персональных данных',
     'TYPE_MANUFACTURES' => 'Страница производителей',
-    'TYPE_PAGE_ACCESSORIES' => 'Страница аксуссуаров',
-    'TYPE_PAGE_CONVERTER' => 'Страница конвертер газов',
+    'TYPE_PAGE_ACCESSORIES' => 'Страница аксессуаров',
+    'TYPE_PAGE_CONVERTER'   => 'Страница конвертер газов',
+    'TYPE_PAGE_REMAINS'     => 'Страница остатки',
 ];
 
 

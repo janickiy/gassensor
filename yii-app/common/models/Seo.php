@@ -27,6 +27,7 @@ class Seo extends SeoBase
     const TYPE_PAGE_VACANCY = 22;
     const TYPE_PAGE_ACCESSORIES = 23;
     const TYPE_PAGE_CONVERTER = 24;
+    const TYPE_PAGE_REMAINS = 26;
     const TYPE_APPLICATIONS = 25;
     const TYPE_NEWS = 30;
     const TYPE_MANUFACTURES = 40;
@@ -132,6 +133,9 @@ class Seo extends SeoBase
                 break;
             case self::TYPE_APPLICATIONS:
                 $result = '/applications';
+                break;
+            case self::TYPE_PAGE_REMAINS:
+                $result = '/remains';
                 break;
             case self::TYPE_CATALOG_GAZ:
                 $result = "/catalog/{$this->gaz->slug}";
