@@ -14,6 +14,7 @@ class RemainsController extends Controller
         $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 50, 'pageSizeParam' => false, ]);
         $sensors = $query->offset($pages->offset)
             ->limit($pages->limit)
+            ->orderBy('name')
             ->all();
 
         return $this->render($this->action->id, compact('sensors', 'pages'));
