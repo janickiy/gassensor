@@ -10,9 +10,6 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule [A-Z] %1 [R=301,L]
 
 
-RewriteCond %{HTTP_HOST} ^www\.(.+) [NC]
-RewriteRule ^(.*) https://%1/$1 [R=301,NE,L]
-
 
 RewriteCond %{REQUEST_URI} ^/.*/$
 RewriteRule ^(.*)/ /$1 [L,R=301]
@@ -21,8 +18,6 @@ RewriteCond %{REQUEST_URI} ^/news$
 RewriteRule .* / [L,R=301]
 
 
-RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
-RewriteRule ^index\.php$ https://{HTTP_HOST} [R=301,L] 
 
 
 RewriteCond %{REQUEST_FILENAME} !-f

@@ -19,9 +19,9 @@ $this->params['breadcrumbs'][] = $this->title;
             <table class="table  table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th>Позиция</th>
-                    <th>Газ</th>
-                    <th class="text-nowrap">Количество</th>
+                    <th style="text-align:center;">Позиция</th>
+                    <th style="text-align:center;">Газ</th>
+                    <th style="text-align:center;" class="text-nowrap">Количество</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <?php endif; ?>
                         </td>
                         <td><?= $sensor->name2 ?></td>
-                        <td><?= $sensor->count ?></td>
+                        <td style="text-align:right;"><?= $sensor->count ?></td>
                     </tr>
                 <?php endforeach; ?>
 
