@@ -85,7 +85,7 @@ $currentUrl = Url::current();
                 <a href="<?=Url::to(['/catalog']) ?>">Каталог</a>
             </li>
             <li class="menu-item <?=$currentUrl == '/remains/index' ? 'current-menu-ancestor current-menu-parent':'' ?>">
-                <a href="<?=Url::to(['/remains']) ?>">Остатки</a>
+                <a href="<?=Url::to(['/remains']) ?>">Склад</a>
             </li>
             <li class="menu-item <?=$currentUrl == '/applications/index' ? 'current-menu-ancestor current-menu-parent':'' ?>">
                 <a href="<?=Url::to(['/applications']) ?>">Применение</a>
@@ -151,7 +151,7 @@ $currentUrl = Url::current();
               <ul id="primary-menu-mobile" class="mobile-menu">
                   <li class="menu-item <?=$currentUrl == '/site/index' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/') ?>">Главная</a></li>
                   <li class="menu-item <?=$currentUrl == '/catalog/index' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/catalog') ?>">Каталог</a></li>
-                  <li class="menu-item <?=$currentUrl == '/remains/index' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/remains') ?>">Остатки</a></li>
+                  <li class="menu-item <?=$currentUrl == '/remains/index' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/remains') ?>">Склад</a></li>
                   <li class="menu-item <?=$currentUrl == '/applications/index' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/applications') ?>">Применение</a></li>
                   <li class="menu-item <?=$currentUrl == '/page/accessories' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/page/accessories') ?>">Аксессуары</a></li>
                   <li class="menu-item <?=$currentUrl == '/manufacture/index' ? 'current-menu-ancestor current-menu-parent':'' ?>"><a href="<?=Url::to('/manufacture') ?>">Производители</a></li>
