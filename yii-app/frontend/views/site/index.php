@@ -10,9 +10,8 @@ use common\models\Setting;
 use frontend\widgets\GazLinks;
 use yii\data\ActiveDataProvider;
 use yii\widgets\ListView;
+use yii\helpers\Url;
 
-
-use yii\bootstrap\Modal;
 
 $dataProvider = new ActiveDataProvider([
     'query' => News::find()->orderBy('date DESC'),
@@ -53,10 +52,12 @@ $seo = Seo::findOne(['type' => Seo::TYPE_PAGE_HOME])->registerMetaTags($this);
         </div>
         <div class="col-xxl-8 col-md-6 order-first order-md-0">
 
-            <?= $this->render('../catalog/_grid', [
+            <?= $this->render('_grid', [
                 'dataProvider' => $dataProviderCatalog,
                 //'searchModel' => $searchModel,
             ]) ?>
+
+            <p>Перейти в полный <a href="<?= Url::to(['/catalog']) ?>">каталог продукции Газсенсор</a></p>
 
             <h2 class="text-center">Новости</h2>
 
