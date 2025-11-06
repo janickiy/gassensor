@@ -431,6 +431,7 @@ class Product extends ProductBase
         return [
             'attribute' => 'measurement_type_name',
             'label' => 'Тип измерения',
+            'headerOptions' => ['style' => 'text-align:center;'],
             'format' => 'raw',
             'value' => function ($model) {
                 return $model->measurementType->name ?? null;
