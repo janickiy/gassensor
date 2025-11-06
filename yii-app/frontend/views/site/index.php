@@ -2,6 +2,7 @@
 
 /* @var $this yii\web\View */
 /* @var $sensorsList common\models\SensorsList */
+/* @var $dataProviderCatalog yii\data\ActiveDataProvider */
 
 use common\models\News;
 use common\models\Seo;
@@ -10,14 +11,17 @@ use frontend\widgets\GazLinks;
 use yii\data\ActiveDataProvider;
 use yii\widgets\ListView;
 
-$dataProvider = new ActiveDataProvider(['query' => News::find()->orderBy('date DESC')]);
-$listView = new ListView([
-    'dataProvider' => $dataProvider,
-    'pager' => [
-        'options' => [
-            'class' => 'pagination justify-content-center',
+$dataProvider = new ActiveDataProvider([
+        'query' => News::find()->orderBy('date DESC'),
+        'pagination' => [
+                'pageSize' => 8,
+                'pageSizeParam' => false
         ],
-    ],
+]);
+
+$listView = new ListView([
+        'dataProvider' => $dataProvider,
+
 ]);
 
 $seo = Seo::findOne(['type' => Seo::TYPE_PAGE_HOME])->registerMetaTags($this);
@@ -41,6 +45,13 @@ $seo = Seo::findOne(['type' => Seo::TYPE_PAGE_HOME])->registerMetaTags($this);
             </div>
         </div>
         <div class="col-xxl-8 col-md-6 order-first order-md-0">
+
+            <?= $this->render('../catalog/_grid', [
+                    'dataProvider' => $dataProviderCatalog,
+                //'searchModel' => $searchModel,
+            ]) ?>
+
+            <h2 class="text-center">Новости</h2>
 
             <div id="contentSection">
                 <?php foreach ($dataProvider->getModels() as $model): ?>

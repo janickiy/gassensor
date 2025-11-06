@@ -6,11 +6,9 @@
 /* @var $seo common\models\Seo|null */
 
 use common\models\Seo;
-use frontend\widgets\gazConverter\GazConverterWidget;
 use yii\helpers\Html;
 
 $this->title = 'Каталог';
-
 $this->params['breadcrumbs'][] = $this->title;
 
 if (!$seo) {

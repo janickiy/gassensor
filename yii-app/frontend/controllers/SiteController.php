@@ -2,6 +2,7 @@
 namespace frontend\controllers;
 
 use common\models\LoginForm;
+use common\models\search\ProductSearch;
 use frontend\models\SignupForm;
 use frontend\widgets\gazConverter\GazConverterForm;
 use Yii;
@@ -39,7 +40,20 @@ class SiteController extends Controller
             return $this->redirect('/', 301);
         }
 
-        return $this->render('index', []);
+        $searchModel = new ProductSearch();
+        $params = $this->request->queryParams;
+
+        $params['pagination'] =[
+            'pageSize' => 10,
+            'pageSizeParam' => false,
+        ];
+
+        $dataProviderCatalog = $searchModel->searchFront($params);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProviderCatalog' => $dataProviderCatalog,
+        ]);
     }
 
     /**
