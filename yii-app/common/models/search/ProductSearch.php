@@ -100,9 +100,9 @@ class ProductSearch extends Product
 
         // add conditions that should always apply here
 
-        if (isset($params['pagination']) && $params['pagination']) {
+        if (isset($params['pagination'])) {
             $dataProvider = new ActiveDataProvider([
-                'query' => $query,
+                'query' => isset($params['limit']) && $params['limit'] ? $query->limit($params['limit']) : $query,
                 'pagination' => $params['pagination'],
             ]);
         } else {

@@ -9,6 +9,8 @@ use Yii;
 use yii\web\Controller;
 use yii\web\Response;
 
+
+
 /**
  * Site controller
  */
@@ -43,10 +45,8 @@ class SiteController extends Controller
         $searchModel = new ProductSearch();
         $params = $this->request->queryParams;
 
-        $params['pagination'] =[
-            'pageSize' => 10,
-            'pageSizeParam' => false,
-        ];
+        $params['pagination'] = false;
+        $params['limit'] = 15;
 
         $dataProviderCatalog = $searchModel->searchFront($params);
 
