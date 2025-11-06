@@ -408,6 +408,7 @@ class Product extends ProductBase
         return [
             'attribute' => 'manufacture_title',
             'label' => 'Производитель',
+            'headerOptions' => ['style' => 'text-align:center;'],
             'format' => 'raw',
             'value' => function ($model) use ($backend) {
                 $label = $model->manufacture->title ?? null;
