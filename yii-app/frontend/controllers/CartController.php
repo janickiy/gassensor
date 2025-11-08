@@ -8,7 +8,6 @@ namespace frontend\controllers;
 
 use common\components\cart\AddToCartForm;
 use Yii;
-use yii\filters\VerbFilter;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\web\Response;
@@ -92,11 +91,11 @@ class CartController extends Controller
     }
 
     /**
-     * @param $id
-     * @param $count
+     * @param int $id
+     * @param int $count
      * @return int
      */
-    public function actionSetCount($id, $count)
+    public function actionSetCount(int $id, int $count)
     {
         /* @var \common\components\cart\Cart $cart */
         $cart = Yii::$app->cart;

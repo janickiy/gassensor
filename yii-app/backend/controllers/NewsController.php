@@ -6,10 +6,10 @@ use Yii;
 use common\helpers\FlashTrait;
 use common\models\{News, Seo};
 use common\models\search\NewsSearch;
+use common\helpers\StringHelpers;
 use yii\filters\VerbFilter;
 use yii\helpers\Inflector;
 use yii\web\{Controller, NotFoundHttpException, UploadedFile};
-use common\helpers\StringHelpers;
 
 
 /**
@@ -82,7 +82,6 @@ class NewsController extends Controller
 
                 if ($isValid) {
                     $model->slug = StringHelpers::slug($model->slug);
-
                     $model->save();
 
                     $modelSeo->ref_id = $model->id;

@@ -26,7 +26,7 @@ class SearchController extends Controller
      * @return string|\yii\web\Response
      * @throws BadRequestHttpException
      */
-    public function actionSeo($id = null)
+    public function actionSeo(int $id = null)
     {
         if (!$model = Seo::findOne($id)) {
             throw new BadRequestHttpException('bad request');

@@ -1,14 +1,13 @@
 <?php
+
 namespace frontend\controllers;
 
 use common\models\LoginForm;
 use common\models\search\ProductSearch;
-use frontend\models\SignupForm;
 use frontend\widgets\gazConverter\GazConverterForm;
 use Yii;
 use yii\web\Controller;
 use yii\web\Response;
-
 
 
 /**
@@ -82,6 +81,7 @@ class SiteController extends Controller
     public function actionSignup()
     {
         return 'ok';
+        /*
         $model = new SignupForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
@@ -92,6 +92,7 @@ class SiteController extends Controller
         return $this->render('signup', [
             'model' => $model,
         ]);
+        */
     }
 
     /**

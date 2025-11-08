@@ -42,11 +42,11 @@ class CatalogController extends Controller
     }
 
     /**
-     * @param $slug
+     * @param string $slug
      * @return string
      * @throws NotFoundHttpException
      */
-    public function actionGas($slug)
+    public function actionGas(string $slug)
     {
         $searchModel = new ProductSearch();
 
@@ -70,11 +70,11 @@ class CatalogController extends Controller
     }
 
     /**
-     * @param $slug
+     * @param string $slug
      * @return string
      * @throws NotFoundHttpException
      */
-    public function actionManufacture($slug)
+    public function actionManufacture(string $slug)
     {
         $searchModel = new ProductSearch();
 

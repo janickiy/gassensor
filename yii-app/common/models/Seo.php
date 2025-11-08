@@ -27,8 +27,11 @@ class Seo extends SeoBase
     const TYPE_PAGE_VACANCY = 22;
     const TYPE_PAGE_ACCESSORIES = 23;
     const TYPE_PAGE_CONVERTER = 24;
-    const TYPE_PAGE_REMAINS = 26;
+
     const TYPE_APPLICATIONS = 25;
+    const TYPE_PAGE_REMAINS = 26;
+    const TYPE_PAGE_NEWS = 27;
+
     const TYPE_NEWS = 30;
     const TYPE_MANUFACTURES = 40;
     const TYPE_MANUFACTURE = 50;
@@ -158,6 +161,9 @@ class Seo extends SeoBase
                 if ($news = $this->news) {
                     $result = "/news/{$news->slug}";
                 }
+                break;
+            case self::TYPE_PAGE_NEWS:
+                $result = '/news';
                 break;
             case self::TYPE_PAGE_PRIVACY:
                 $result = '/page/privacy';

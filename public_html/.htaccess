@@ -10,14 +10,8 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule [A-Z] %1 [R=301,L]
 
 
-
 RewriteCond %{REQUEST_URI} ^/.*/$
 RewriteRule ^(.*)/ /$1 [L,R=301]
-
-RewriteCond %{REQUEST_URI} ^/news$
-RewriteRule .* / [L,R=301]
-
-
 
 
 RewriteCond %{REQUEST_FILENAME} !-f

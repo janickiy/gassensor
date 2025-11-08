@@ -23,7 +23,7 @@ class ProductController extends Controller
      * @throws BadRequestHttpException
      * @throws NotFoundHttpException
      */
-    public function actionSlug($slug, $slugGaz = null)
+    public function actionSlug(string $slug, $slugGaz = null)
     {
         if (!$model = Product::findOne(['slug' => $slug])) {
             throw new NotFoundHttpException('not found');

@@ -104,7 +104,7 @@ class News extends NewsBase
      */
     public static function getUploadBaseUrl()
     {
-        return '/news';
+        return '/upload/news';
     }
 
     /**

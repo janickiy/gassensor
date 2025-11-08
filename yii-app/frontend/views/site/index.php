@@ -12,7 +12,6 @@ use yii\data\ActiveDataProvider;
 use yii\widgets\ListView;
 use yii\helpers\Url;
 
-
 $dataProvider = new ActiveDataProvider([
     'query' => News::find()->orderBy('date DESC'),
     'pagination' => [

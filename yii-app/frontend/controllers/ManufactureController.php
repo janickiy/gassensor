@@ -23,7 +23,7 @@ class ManufactureController extends Controller
      * @return string
      * @throws NotFoundHttpException
      */
-    public function actionSlug($slug)
+    public function actionSlug(string $slug)
     {
         if (!$model = Manufacture::findOne(['slug' => $slug])) {
             throw new NotFoundHttpException('not found');
