@@ -15,7 +15,7 @@ class NewsController extends Controller
         $dataProvider = new ActiveDataProvider([
             'query' => News::find()->orderBy('date DESC'),
             'pagination' => [
-                'pageSize' => 8,
+                'pageSize' => 12,
                 'pageSizeParam' => false
             ],
         ]);

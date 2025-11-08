@@ -9,7 +9,6 @@ use common\models\Seo;
 use common\models\Setting;
 use frontend\widgets\GazLinks;
 use yii\data\ActiveDataProvider;
-use yii\widgets\ListView;
 use yii\helpers\Url;
 
 $dataProvider = new ActiveDataProvider([
@@ -17,15 +16,6 @@ $dataProvider = new ActiveDataProvider([
     'pagination' => [
         'pageSize' => 8,
         'pageSizeParam' => false
-    ],
-]);
-
-$listView = new ListView([
-    'dataProvider' => $dataProvider,
-    'pager' => [
-        'options' => [
-            'class' => 'pagination justify-content-center',
-        ],
     ],
 ]);
 
@@ -66,7 +56,7 @@ $seo = Seo::findOne(['type' => Seo::TYPE_PAGE_HOME])->registerMetaTags($this);
                 <?php endforeach; ?>
             </div>
 
-            <?= $listView->renderPager() ?>
+            <p>Читать <a class="share" href="<?= Url::to(['/news']) ?>">все новости &rarr;</a></p>
 
         </div>
         <div class="col-md-2">

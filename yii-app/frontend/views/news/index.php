@@ -17,6 +17,9 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php foreach ($dataProvider->getModels() as $model): ?>
             <?= $this->render('_news-item', ['model' => $model]) ?>
         <?php endforeach; ?>
+
+        <?= $listView->renderPager() ?>
+
     </div>
 
 </div>
