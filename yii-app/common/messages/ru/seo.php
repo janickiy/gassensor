@@ -9,8 +9,10 @@ return [
     'TYPE_MANUFACTURES' => 'Страница производителей',
     'TYPE_PAGE_ACCESSORIES' => 'Страница аксессуаров',
     'TYPE_PAGE_CONVERTER'   => 'Страница конвертер газов',
-    'TYPE_PAGE_REMAINS'     => 'Страница остатки',
+    'TYPE_PAGE_REMAINS' => 'Страница остатки',
+    'TYPE_APPLICATIONS' => 'Страница применение',
+    'TYPE_PAGE_NEWS'    => 'Страница список новости',
+    'TYPE_NEWS'    => 'Страница новости',
+    'TYPE_PRODUCT' => 'Страница товара',
+    'TYPE_CATALOG_MANUFACTURES' => 'Страница каталога производителей',
 ];
-
-
-//privacy
