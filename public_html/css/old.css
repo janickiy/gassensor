@@ -2147,9 +2147,12 @@ blockquote .author-name {
   line-height: 26px;
   margin-left: 10px;
 }
+a.share {
+  text-decoration: underline !important;
+}
 a.share:hover {
   color: #b53e00;
-  text-decoration: underline !important;
+  text-decoration:none !important;
 }
 .author-post {
   padding: 30px;
