@@ -56,7 +56,7 @@ $seo = Seo::findOne(['type' => Seo::TYPE_PAGE_HOME])->registerMetaTags($this);
                 <?php endforeach; ?>
             </div>
 
-            <p>Читать <a class="share" href="<?= Url::to(['/news']) ?>">все новости &rarr;</a></p>
+            <p><a class="share" href="<?= Url::to(['/news']) ?>">Читать все новости &rarr;</a></p>
 
         </div>
         <div class="col-md-2">
