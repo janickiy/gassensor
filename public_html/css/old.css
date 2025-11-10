@@ -2147,7 +2147,7 @@ blockquote .author-name {
   line-height: 26px;
   margin-left: 10px;
 }
-.share a:hover {
+a.share:hover {
   color: #b53e00;
   text-decoration: underline !important;
 }
