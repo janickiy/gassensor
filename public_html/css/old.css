@@ -2148,6 +2148,7 @@ blockquote .author-name {
 }
 .share a:hover {
   color: #b53e00;
+  text-decoration: underline;
 }
 .author-post {
   padding: 30px;

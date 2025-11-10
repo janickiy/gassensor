@@ -5,7 +5,7 @@
 /*.php
 /*.log
 /*.sql
-/public_html/news
+/public_html/upload/news
 /yii-app/tests
 .vscode/settings.json
 /public_html/i/products

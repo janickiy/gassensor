@@ -9,7 +9,14 @@ $seo = Seo::findOne(['type' => Seo::TYPE_PAGE_NEWS])->registerMetaTags($this);
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
-
+<style>
+    .page-item.active .page-link {
+        z-index: 3;
+        color: #fff;
+        background-color: #4c5d8d;
+        border-color: #4c5d8d;
+    }
+</style>
 <div class='<?= $this->context->id ?>-<?= $this->context->action->id ?> container'>
     <h1><?= $seo->h1 ?></h1>
 

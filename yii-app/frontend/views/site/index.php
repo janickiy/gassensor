@@ -46,7 +46,7 @@ $seo = Seo::findOne(['type' => Seo::TYPE_PAGE_HOME])->registerMetaTags($this);
                 //'searchModel' => $searchModel,
             ]) ?>
 
-            <p>Перейти в полный <a class="share" href="<?= Url::to(['/catalog']) ?>">каталог продукции Газсенсор &rarr;</a></p>
+            <p>Перейти в <a class="share" href="<?= Url::to(['/catalog']) ?>">каталог продукции Газсенсор &rarr;</a></p>
 
             <h2 class="text-center">Новости</h2>
 

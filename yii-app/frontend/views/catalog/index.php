@@ -56,7 +56,14 @@ JS;
 $this->registerJs($js, $this::POS_READY);
 
 ?>
-
+<style>
+    .page-item.active .page-link {
+        z-index: 3;
+        color: #fff;
+        background-color: #4c5d8d;
+        border-color: #4c5d8d;
+    }
+</style>
 <div class='<?= $this->context->id ?>-<?= $this->context->action->id ?> px-2'>
     <h1><?= $seo->h1 ?? $this->title ?></h1>
 

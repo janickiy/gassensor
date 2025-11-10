@@ -15,6 +15,13 @@ $this->params['breadcrumbs'][] = $this->title;
         justify-content: center !important;
     }
 
+    .page-item.active .page-link {
+        z-index: 3;
+        color: #fff;
+        background-color: #4c5d8d;
+        border-color: #4c5d8d;
+    }
+
 </style>
 <div class='<?= $this->context->id ?>-<?= $this->context->action->id ?> container'>
     <h1 class="text-center"><?= $seo->h1 ?></h1>

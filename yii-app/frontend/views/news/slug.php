@@ -5,7 +5,9 @@
 use yii\helpers\Html;
 
 $this->title = $model->title;
+$this->params['breadcrumbs'][] = ['label' => 'Новости', 'url' => '/news'];
 $this->params['breadcrumbs'][] = $this->title;
+
 
 if ($seo = $model->seo) {
     $seo->registerMetaTags($this);
