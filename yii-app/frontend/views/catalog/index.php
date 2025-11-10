@@ -63,6 +63,15 @@ $this->registerJs($js, $this::POS_READY);
         background-color: #4c5d8d;
         border-color: #4c5d8d;
     }
+    .page-link {
+        position:relative;
+        display:block;
+        color:#4c5d8d;
+        text-decoration:none;
+        background-color:#fff;
+        border:1px solid #dee2e6;
+        transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out
+    }
 </style>
 <div class='<?= $this->context->id ?>-<?= $this->context->action->id ?> px-2'>
     <h1><?= $seo->h1 ?? $this->title ?></h1>
