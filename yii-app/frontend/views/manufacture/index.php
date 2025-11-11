@@ -47,9 +47,9 @@ $seo = Seo::findOne(['type' => Seo::TYPE_MANUFACTURES])->registerMetaTags($this)
                     <?= $model->short_description ?>
                   </span>
                   <div>
-                    <a class="post-link" href="/manufacture/<?= $model->slug ?>">
+                    <p class="text-right"><a class="post-link" href="/manufacture/<?= $model->slug ?>">
                       Подробнее &rarr;
-                    </a>
+                        </a></p>
                   </div>
                 </div>
               </div>
