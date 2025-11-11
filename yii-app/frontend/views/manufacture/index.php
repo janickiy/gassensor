@@ -22,7 +22,7 @@ $seo = Seo::findOne(['type' => Seo::TYPE_MANUFACTURES])->registerMetaTags($this)
 
     <div class="row manufactures">
         <?php foreach ($models ?? [] as $model):
-            $url = "/catalog/manufacture/{$model->slug}";
+            $url = "/manufacture/{$model->slug}";
         ?>
         <div class="manufacture col-lg-3 col-md-4 col-sm-6">
               <div class="my-services-box">
@@ -36,12 +36,6 @@ $seo = Seo::findOne(['type' => Seo::TYPE_MANUFACTURES])->registerMetaTags($this)
                   <p>
                     <i class="icon ion-md-map"></i>
                     <?= $model->country ?>
-                  </p>
-                  <p>
-                    <a href="<?= $model->url ?>">
-                      <i class="icon ion-md-map"></i>
-                      <?= $model->url ?>
-                    </a>
                   </p>
                   <span class="description">
                     <?= $model->short_description ?>

@@ -35,10 +35,10 @@ if ($seo = $model->seo) {
                             <?= $model->country ?>
                         </div>
                     <?php endif; ?>
-                    <div>
-                        <i class="icon ion-md-map"></i> <a href="<?= $model->url ?>"><?= $model->url ?></a>
+                    <div class="mt-2">
+                        <i class="icon ion-md-map"></i> <a target="_blank" rel="nofollow" href="<?= $model->url ?>"><?= $model->url ?></a>
                     </div>
-                    <div>
+                    <div class="mt-2">
                         <i class="icon ion-md-map"></i> <a href="/catalog/manufacture/<?= $model->slug ?>">Перейти в товары
                             бренда <?= $model->title ?></a>
                     </div>
