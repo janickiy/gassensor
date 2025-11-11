@@ -3,8 +3,8 @@
 
 use common\models\Manufacture;
 use common\models\Seo;
-use yii\helpers\Html;
 use common\models\Page;
+use yii\helpers\Html;
 
 $this->title = 'Производители';
 $this->params['breadcrumbs'][] = $this->title;
@@ -21,7 +21,7 @@ $seo = Seo::findOne(['type' => Seo::TYPE_MANUFACTURES])->registerMetaTags($this)
     <?= Page::findOne(['type' => Page::TYPE_MANUFACTURE])->content ?>
 
     <div class="row manufactures">
-        <?php foreach ($models as $model):
+        <?php foreach ($models ?? [] as $model):
             $url = "/catalog/manufacture/{$model->slug}";
         ?>
         <div class="manufacture col-lg-3 col-md-4 col-sm-6">

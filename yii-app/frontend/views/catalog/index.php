@@ -74,7 +74,7 @@ $this->registerJs($js, $this::POS_READY);
     }
 </style>
 <div class='<?= $this->context->id ?>-<?= $this->context->action->id ?> px-2'>
-    <h1><?= $seo->h1 ?? $this->title ?></h1>
+    <h1 class="text-center"><?= $seo->h1 ?? $this->title ?></h1>
 
     <?php if ($req->get('ProductSearch')): ?>
         <?= Html::a('Сброс фильтров', '/products', ['class' => 'btn mb-2']) ?>
@@ -96,7 +96,6 @@ $this->registerJs($js, $this::POS_READY);
             ]) ?>
 
         </div>
-
 
     </div>
 

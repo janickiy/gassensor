@@ -154,5 +154,16 @@ class StringHelpers
         return $text;
     }
 
+    /**
+     * @param int $bytes
+     * @param int $decimals
+     * @return string
+     */
+    public static function humanFilesize(int $bytes, int $decimals = 2): string
+    {
+        $sz = 'BKMGTP';
+        $factor = floor((strlen($bytes) - 1) / 3);
+        return sprintf("%.{$decimals}f ", $bytes / pow(1024, $factor)) . @$sz[$factor] . 'б';
+    }
 
 }

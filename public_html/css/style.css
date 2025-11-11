@@ -287,7 +287,7 @@ option:disabled {
 }
 
 .sensors-count {
-    height: 332px;
+    height: 220px;
 }
 
 @media (max-width: 1627px) {

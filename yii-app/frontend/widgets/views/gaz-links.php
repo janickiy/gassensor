@@ -30,7 +30,7 @@ use frontend\widgets\gazConverter\GazConverterWidget;
 
 <div class='gaz-links-widget card p-2 d-block mt-2 bg-light'>
 
-    <h3>Датчики и сенсоры по типу газа</h3>
+    <p style="font-size: 16px; font-weight: bold">Датчики и сенсоры по типу газа</p>
 
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
