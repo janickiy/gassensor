@@ -23,31 +23,34 @@ $seo = Seo::findOne(['type' => Seo::TYPE_MANUFACTURES])->registerMetaTags($this)
     <div class="row manufactures">
         <?php foreach ($models ?? [] as $model):
             $url = "/manufacture/{$model->slug}";
-        ?>
-        <div class="manufacture col-lg-3 col-md-4 col-sm-6">
-              <div class="my-services-box">
-                <div class="services-icon">
-                  <a href="<?= $url ?>">
-                      <?= Html::img($model->logoUrl, ['style' => "max-height: 100px;", 'loading' => "lazy", 'alt' => $model->title, 'title' => $model->title]) ?>
-                  </a>
-                </div>
-                <div class="services-content">
-                  <h3><a href="<?= $url ?>"><?= $model->title ?></a></h3>
-                  <p>
-                    <i class="icon ion-md-map"></i>
-                    <?= $model->country ?>
-                  </p>
-                  <span class="description">
+            ?>
+            <div class="manufacture col-lg-3 col-md-4 col-sm-6">
+                <div class="my-services-box">
+                    <div class="services-icon">
+                        <a href="<?= $url ?>">
+                            <?= Html::img($model->logoUrl, ['style' => "max-height: 100px;", 'loading' => "lazy", 'alt' => $model->title, 'title' => $model->title]) ?>
+                        </a>
+                    </div>
+                    <div class="services-content">
+                        <div style="position: relative; height: 0;">
+                            <div style="position: absolute; bottom: -225px; left: 120px">
+                                <a class="post-link" href="/manufacture/<?= $model->slug ?>">
+                                    Подробнее &rarr;
+                                </a>
+                            </div>
+                        </div>
+                        <h3><a href="<?= $url ?>"><?= $model->title ?></a></h3>
+                        <p>
+                            <i class="icon ion-md-map"></i>
+                            <?= $model->country ?>
+                        </p>
+                        <span class="description">
                     <?= $model->short_description ?>
                   </span>
-                  <div>
-                    <p class="text-right"><a class="post-link" href="/manufacture/<?= $model->slug ?>">
-                      Подробнее &rarr;
-                        </a></p>
-                  </div>
+
+                    </div>
                 </div>
-              </div>
-        </div>
+            </div>
         <?php endforeach; ?>
     </div>
 
