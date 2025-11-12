@@ -33,11 +33,11 @@ $seo = Seo::findOne(['type' => Seo::TYPE_MANUFACTURES])->registerMetaTags($this)
                     </div>
                     <div class="services-content">
                         <div style="position: relative; height: 0;">
-                            <div style="position: absolute; bottom: -225px; left: 120px">
+                            <p style="position: absolute; bottom: -225px; left: 160px">
                                 <a class="post-link" href="/manufacture/<?= $model->slug ?>">
                                     Подробнее &rarr;
                                 </a>
-                            </div>
+                            </p>
                         </div>
                         <h3><a href="<?= $url ?>"><?= $model->title ?></a></h3>
                         <p>
