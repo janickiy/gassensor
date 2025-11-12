@@ -10,6 +10,8 @@ use common\helpers\Tools;
 use common\models\base\ProductBase;
 use common\models\query\ProductQuery;
 use common\models\traits\CreatedUpdateAtText;
+use common\models\traits\DynamicForm;
+use common\helpers\MyDataColumn;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
@@ -18,7 +20,7 @@ use yii\web\UploadedFile;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use Yii;
-use common\models\traits\DynamicForm;
+
 
 /**
  *
@@ -409,6 +411,7 @@ class Product extends ProductBase
             'attribute' => 'manufacture_title',
             'label' => 'Производитель',
             'headerOptions' => ['style' => 'text-align:center;'],
+            'contentOptions' => ['style' => 'text-align:center;'],
             'format' => 'raw',
             'value' => function ($model) use ($backend) {
                 $label = $model->manufacture->title ?? null;
@@ -433,6 +436,7 @@ class Product extends ProductBase
             'attribute' => 'measurement_type_name',
             'label' => 'Тип измерения',
             'headerOptions' => ['style' => 'text-align:center;'],
+            'contentOptions' => ['style' => 'text-align:center;'],
             'format' => 'raw',
             'value' => function ($model) {
                 return $model->measurementType->name ?? null;

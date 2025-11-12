@@ -66,7 +66,16 @@ use yii\helpers\Html;
 
         Product::getMeasurementTypeNameGridCol(),
 
-        'formfactor:raw:Диаметр, мм (типоразмер)',
+        [
+            'attribute' => 'formfactor',
+            'label' => 'Диаметр, мм (типоразмер)',
+            'headerOptions' => ['style' => 'text-align:center;'],
+            'contentOptions' => ['style' => 'text-align:center;'],
+            'format' => 'raw',
+            'value' => function ($model) {
+                return $model->formfactor ?? null;
+            }
+        ],
 
         Product::getManufactureTitleGridCol(),
 

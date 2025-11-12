@@ -61,7 +61,7 @@ $filename = './upload/' . Setting::getSensorsList();
                                 <?= $sensor->name ?>
                             <?php endif; ?>
                         </td>
-                        <td><?= $sensor->name2 ?></td>
+                        <td style="text-align:center;"><?= $sensor->name2 ?></td>
                         <td style="text-align:right;"><?= $sensor->count ?></td>
                     </tr>
                 <?php endforeach; ?>
