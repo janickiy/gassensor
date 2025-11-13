@@ -3,7 +3,6 @@
 /* @var $this yii\web\View */
 /* @var $model common\models\Product */
 /* @var $modelGaz common\models\Gaz */
-
 /* @var $formAdd common\components\cart\AddToCartForm */
 
 use common\models\Product;
@@ -11,6 +10,7 @@ use frontend\assets\AppAsset;
 use frontend\widgets\CartAddWidget;
 use yii\bootstrap5\Html;
 use yii\widgets\DetailView;
+use yii\helpers\Url;
 
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Каталог', 'url' => '/catalog'];
@@ -46,10 +46,10 @@ $this->params['productJsonLd'] = $model->getJsonLd();
             $url = $model->getPictUrl() ?: '/i/no-photo.gif';
             ?>
             <?= Html::img($url, [
-                'alt' => $this->title,
-                'loading' => "lazy",
-                'title' => $this->title,
-                'class' => 'border',
+                    'alt' => $this->title,
+                    'loading' => "lazy",
+                    'title' => $this->title,
+                    'class' => 'border',
             ]) ?>
             <hr/>
 
@@ -86,114 +86,125 @@ $this->params['productJsonLd'] = $model->getJsonLd();
 
 
             <?= DetailView::widget([
-                'model' => $model,
-                'attributes' => [
-                    'name:text:Название',
-                    'manufacture.title:text:Производитель',
-                    //'price',
+                    'model' => $model,
+                    'attributes' => [
+                            'name:text:Название',
 
-                    [
-                        'attribute' => 'mainGaz',
-                        'label' => 'Основной газ',
-                        'format' => 'raw',
-                        'value' => function ($model) {
+                            [
+                                    'attribute' => 'manufacture.title',
+                                    'label' => 'Производитель',
+                                    'format' => 'raw',
+                                    'value' => function ($model) {
+                                        // return $model->manufacture->title;
+                                        return Html::a($model->manufacture->title, Url::to(['/manufacture/' . $model->manufacture->slug]), []);
 
-                            $arrs = [];
-                            $rerurn = '';
+                                    }
 
-                            if ($gaz = $model->mainGaz) {
-                                $arrs[] = ['slug' => $gaz->slug, 'title' => $gaz->title];
-                            }
+                            ],
+                        //'price',
 
-                            if ($gaz2 = $model->mainGaz2) {
-                                $arrs[] = ['slug' => $gaz2->slug, 'title' => $gaz2->title];
-                            }
+                            [
+                                    'attribute' => 'mainGaz',
+                                    'label' => 'Основной газ',
+                                    'format' => 'raw',
+                                    'value' => function ($model) {
 
-                            if ($gaz3 = $model->mainGaz3) {
-                                $arrs[] = ['slug' => $gaz3->slug, 'title' => $gaz3->title];
-                            }
+                                        $arrs = [];
+                                        $rerurn = '';
 
-                            foreach ($arrs as $arr) {
-                                $rerurn .= Html::a($arr['title'], "/catalog/{$arr['slug']}") . ' / ';
-                            }
+                                        if ($gaz = $model->mainGaz) {
+                                            $arrs[] = ['slug' => $gaz->slug, 'title' => $gaz->title];
+                                        }
 
-                            $rerurn = rtrim($rerurn, ' / ');
+                                        if ($gaz2 = $model->mainGaz2) {
+                                            $arrs[] = ['slug' => $gaz2->slug, 'title' => $gaz2->title];
+                                        }
 
-                            return $rerurn;
-                        }
+                                        if ($gaz3 = $model->mainGaz3) {
+                                            $arrs[] = ['slug' => $gaz3->slug, 'title' => $gaz3->title];
+                                        }
+
+                                        foreach ($arrs as $arr) {
+                                            $rerurn .= Html::a($arr['title'], "/catalog/{$arr['slug']}") . ' / ';
+                                        }
+
+                                        $rerurn = rtrim($rerurn, ' / ');
+
+                                        return $rerurn;
+                                    }
+                            ],
+
+                            Product::getGazesGridCol(false, $model->notMainGazes),
+
+                            'measurementType.name:text:Тип измерения',
+
+                            [
+                                    'attribute' => 'formfactor',
+                                    'label' => 'Диаметр, мм (типоразмер)',
+                                    'format' => 'raw',
+                                    'value' => function ($model) {
+                                        return $this->render('_cell-formfactor', ['model' => $model]);
+                                    }
+                            ],
+
+                            [
+                                    'attribute' => 'range',
+                                    'label' => 'Диапазон',
+                                    'format' => 'raw',
+                                    'value' => function ($model) {
+                                        return $this->render('_cell-range', ['model' => $model]);
+                                    }
+                            ],
+
+                            [
+                                    'attribute' => 'sensitivity',
+                                    'format' => 'raw',
+                                    'value' => function ($model) {
+                                        return $this->render('_cell-sensitivity', ['model' => $model]);
+                                    }
+                            ],
+
+                            [
+                                    'attribute' => 'response_time',
+                                    'format' => 'raw',
+                                    'value' => function ($model) {
+                                        return $this->render('_cell-response-time', ['model' => $model]);
+                                    }
+                            ],
+
+                            [
+                                    'attribute' => 'energy_consumption',
+                                    'label' => 'Энергопотребление',
+                                    'format' => 'raw',
+                                    'value' => function ($model) {
+                                        return $this->render('_cell-energy_consumption', ['model' => $model]);
+                                    }
+                            ],
+
+                            [
+                                    'attribute' => 'temperature_range',
+                                    'label' => 'Температурный диапазон',
+                                    'format' => 'raw',
+                                    'value' => function ($model) {
+                                        return $this->render('_cell-temperature_range', ['model' => $model]);
+                                    }
+                            ],
+                            [
+                                    'attribute' => 'info',
+                                    'label' => 'Описание',
+                                    'value' => $model->info,
+                                    'visible' => $model->info,
+                            ],
+                            [
+                                    'attribute' => 'bias_voltage',
+                                    'label' => 'Напряжение смещения (Bias Voltage)',
+                                    'value' => $model->bias_voltage,
+                                    'visible' => $model->bias_voltage,
+                                    'format' => 'html',
+                                    'captionOptions' => ['style' => 'color: red'],
+                                    'contentOptions' => ['style' => 'color: red'],
+                            ],
                     ],
-
-                    Product::getGazesGridCol(false, $model->notMainGazes),
-
-                    'measurementType.name:text:Тип измерения',
-
-                    [
-                        'attribute' => 'formfactor',
-                        'label' => 'Диаметр, мм (типоразмер)',
-                        'format' => 'raw',
-                        'value' => function ($model) {
-                            return $this->render('_cell-formfactor', ['model' => $model]);
-                        }
-                    ],
-
-                    [
-                        'attribute' => 'range',
-                        'label' => 'Диапазон',
-                        'format' => 'raw',
-                        'value' => function ($model) {
-                            return $this->render('_cell-range', ['model' => $model]);
-                        }
-                    ],
-
-                    [
-                        'attribute' => 'sensitivity',
-                        'format' => 'raw',
-                        'value' => function ($model) {
-                            return $this->render('_cell-sensitivity', ['model' => $model]);
-                        }
-                    ],
-
-                    [
-                        'attribute' => 'response_time',
-                        'format' => 'raw',
-                        'value' => function ($model) {
-                            return $this->render('_cell-response-time', ['model' => $model]);
-                        }
-                    ],
-
-                    [
-                        'attribute' => 'energy_consumption',
-                        'label' => 'Энергопотребление',
-                        'format' => 'raw',
-                        'value' => function ($model) {
-                            return $this->render('_cell-energy_consumption', ['model' => $model]);
-                        }
-                    ],
-
-                    [
-                        'attribute' => 'temperature_range',
-                        'label' => 'Температурный диапазон',
-                        'format' => 'raw',
-                        'value' => function ($model) {
-                            return $this->render('_cell-temperature_range', ['model' => $model]);
-                        }
-                    ],
-                    [
-                        'attribute' => 'info',
-                        'label' => 'Описание',
-                        'value' => $model->info,
-                        'visible' => $model->info,
-                    ],
-                    [
-                        'attribute' => 'bias_voltage',
-                        'label' => 'Напряжение смещения (Bias Voltage)',
-                        'value' => $model->bias_voltage,
-                        'visible' => $model->bias_voltage,
-                        'format' => 'html',
-                        'captionOptions' => ['style' => 'color: red'],
-                        'contentOptions' => ['style' => 'color: red'],
-                    ],
-                ],
             ]) ?>
 
         </div>

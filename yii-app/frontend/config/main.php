@@ -34,9 +34,10 @@ return [
                 'remains/page/<page:\d+>' => 'remains/index',
                 'applications/<slug>' => 'applications/slug',
                 'product/<slug>' => 'product/slug',
-                'catalog/page/<page:\d+>' => 'catalog/index',
+                'catalog/<page:\d+>' => 'catalog/index',
                 'catalog/<slugGaz>/<slug>' => 'product/slug',
                 'catalog/<slug>' => 'catalog/gas',
+                'catalog' => 'catalog/index',
                 'page/<slug>' => 'page/index',
                 '/<page:\d+>' => 'site/index',
 

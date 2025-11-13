@@ -11,7 +11,6 @@ use common\models\base\ProductBase;
 use common\models\query\ProductQuery;
 use common\models\traits\CreatedUpdateAtText;
 use common\models\traits\DynamicForm;
-use common\helpers\MyDataColumn;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
@@ -405,7 +404,7 @@ class Product extends ProductBase
      * @param false $backend
      * @return array
      */
-    public static function getManufactureTitleGridCol($backend = false)
+    public static function getManufactureTitleGridCol(bool $backend = false)
     {
         return [
             'attribute' => 'manufacture_title',
@@ -415,11 +414,14 @@ class Product extends ProductBase
             'format' => 'raw',
             'value' => function ($model) use ($backend) {
                 $label = $model->manufacture->title ?? null;
+                $url = $model->manufacture->url;
+                /*
                 if ($backend) {
                     $url = ['manufacture/view', 'id' => $model->manufacture_id];
                 } else {
                     $url = "/manufacture/{$model->manufacture->slug}";
                 }
+                */
 
                 return Html::a($label, $url,
                     ['target' => '_blank', 'data-pjax' => 0,]);

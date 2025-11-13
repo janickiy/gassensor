@@ -9,9 +9,9 @@ namespace common\helpers;
 use Yii;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use SimpleXMLElement;
-use yii\base\{Model,DynamicModel};
+use yii\base\{Model, DynamicModel};
 use yii\data\ArrayDataProvider;
-use yii\helpers\{ArrayHelper,Json};
+use yii\helpers\{ArrayHelper, Json};
 
 
 class Tools
@@ -125,9 +125,9 @@ class Tools
      * @param $arr
      * @return mixed
      */
-    public static function arrayValsToScalar($arr)
+    public static function arrayValsToScalar(array $arr)
     {
-        foreach ($arr as &$v) {
+        foreach ($arr ?? [] as &$v) {
             if (null !== $v && !is_scalar($v)) {
                 $v = Json::encode($v);
             }
@@ -468,5 +468,22 @@ class Tools
 
         $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
         $writer->save($filename);
+    }
+
+    /**
+     * @param string $value
+     * @return string
+     */
+    public static function checkStringType(string $value): string
+    {
+        if (preg_match('/^-?\d+$/', $value)) {
+            return "int";
+        } elseif (preg_match('/^-?\d+\.\d+$/', $value)) {
+            return "float";
+        } elseif (preg_match('/^-?\.\d+$/', $value)) {
+            return "float";
+        } else {
+            return "string";
+        }
     }
 }
