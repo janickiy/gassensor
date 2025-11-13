@@ -414,7 +414,6 @@ class Product extends ProductBase
             'format' => 'raw',
             'value' => function ($model) use ($backend) {
                 $label = $model->manufacture->title ?? null;
-
                 $url = "/catalog/manufacture/{$model->manufacture->slug}";
 
                 /*
@@ -425,7 +424,7 @@ class Product extends ProductBase
                 }
                 */
 
-                return Html::a($label, $url, ['target' => '_blank', 'data-pjax' => 0]);
+                return Html::a($label, $url, ['data-pjax' => 0]);
             }
         ];
     }
