@@ -4,6 +4,7 @@
 
 use common\helpers\MyDataColumn;
 use common\models\Product;
+use common\helpers\Tools;
 use yii\grid\GridView;
 use yii\helpers\Html;
 
@@ -70,10 +71,24 @@ use yii\helpers\Html;
             'attribute' => 'formfactor',
             'label' => 'Диаметр, мм (типоразмер)',
             'headerOptions' => ['style' => 'text-align:center;'],
-            'contentOptions' => ['style' => 'text-align:center;'],
+            //   'contentOptions' => ['style' => 'text-align:center;'],
             'format' => 'raw',
             'value' => function ($model) {
-                return $model->formfactor ?? null;
+                $type = Tools::checkStringType($model->formfactor);
+
+                if ($type == 'int' || $type == 'float') {
+                    $value = $model->formfactor;
+
+                    if ($type == 'float') {
+                        $value = (float)$value;
+                        $value = round($value, 1);
+                    }
+
+                    return '<div class="text-end">' . $value . '</div>';
+                } else {
+                    return '<p class="text-center">' . $model->formfactor . '</p>';
+                }
+
             }
         ],
 

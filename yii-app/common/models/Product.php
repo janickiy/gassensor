@@ -414,14 +414,12 @@ class Product extends ProductBase
             'format' => 'raw',
             'value' => function ($model) use ($backend) {
                 $label = $model->manufacture->title ?? null;
-                $url = $model->manufacture->url;
-                /*
+
                 if ($backend) {
                     $url = ['manufacture/view', 'id' => $model->manufacture_id];
                 } else {
                     $url = "/manufacture/{$model->manufacture->slug}";
                 }
-                */
 
                 return Html::a($label, $url,
                     ['target' => '_blank', 'data-pjax' => 0,]);
