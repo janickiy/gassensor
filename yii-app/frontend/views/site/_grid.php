@@ -82,6 +82,8 @@ use yii\helpers\Html;
                     if ($type == 'float') {
                         $value = (float)$value;
                         $value = round($value, 1);
+                    } else {
+                        $value = $value . '.0';
                     }
 
                     return '<div class="text-end">' . $value . '</div>';

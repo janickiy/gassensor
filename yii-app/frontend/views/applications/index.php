@@ -2,33 +2,19 @@
 /* @var $this yii\web\View */
 
 use common\models\Seo;
-use yii\widgets\LinkPager;
 use yii\helpers\Html;
 
 $seo = Seo::findOne(['type' => Seo::TYPE_APPLICATIONS])->registerMetaTags($this);
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
-<style>
 
-    .pagination {
-        justify-content: center !important;
-    }
-
-    .page-item.active .page-link {
-        z-index: 3;
-        color: #fff;
-        background-color: #4c5d8d;
-        border-color: #4c5d8d;
-    }
-
-</style>
 <div class='<?= $this->context->id ?>-<?= $this->context->action->id ?> container'>
     <h1 class="text-center"><?= $seo->h1 ?></h1>
 
     <div class="row">
         <div class="col-12 col-sm-6">
-            <h2>Применение газовых сенсоров</h2>
+            <h3>Применение газовых сенсоров</h3>
 
             <ul>
                 <?php foreach ($applications ?? [] as $application): ?>
@@ -51,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         </div>
         <div class="col-12 col-sm-6">
-            <h2>Применение газодетекторных трубок</h2>
+            <h3>Применение газодетекторных трубок</h3>
 
             <ul>
                 <?php foreach ($detectorTubes ?? [] as $application): ?>
@@ -74,13 +60,4 @@ $this->params['breadcrumbs'][] = $this->title;
 
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-12">
-            <?= LinkPager::widget([
-                'pagination' => $pages,
-            ]); ?>
-        </div>
-    </div>
-
 </div>

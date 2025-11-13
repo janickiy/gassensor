@@ -15,17 +15,10 @@ class ApplicationsController extends Controller
     public function actionIndex()
     {
         $query = Applications::find();
-        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 5, 'pageSizeParam' => false, ]);
-        $applications = $query->offset($pages->offset)
-            ->limit($pages->limit)
-            ->where('type=1')
-            ->all();
-        $detectorTubes = $query->offset($pages->offset)
-            ->limit($pages->limit)
-            ->where('type=2')
-            ->all();
+        $applications = $query->where('type=1')->all();
+        $detectorTubes = $query->where('type=2')->all();
 
-        return $this->render($this->action->id, compact('applications', 'detectorTubes', 'pages'));
+        return $this->render($this->action->id, compact('applications', 'detectorTubes'));
     }
 
     /**
