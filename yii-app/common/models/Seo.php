@@ -40,6 +40,8 @@ class Seo extends SeoBase
     const TYPE_CATALOG_MANUFACTURES = 80;
     const TYPE_PAGE_PRIVACY = 90;
 
+    const TYPE_PAGE_ABOUT = 100;
+
     /**
      * @param false $isPrependEmpty
      * @return array

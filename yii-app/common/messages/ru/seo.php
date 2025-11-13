@@ -15,4 +15,5 @@ return [
     'TYPE_NEWS'    => 'Страница новости',
     'TYPE_PRODUCT' => 'Страница товара',
     'TYPE_CATALOG_MANUFACTURES' => 'Страница каталога производителей',
+    'TYPE_PAGE_ABOUT' => 'О компании',
 ];

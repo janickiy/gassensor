@@ -21,6 +21,7 @@ class Page extends PageBase
     const TYPE_VACANCY = 400;
     const TYPE_ACCESSORIES = 500;
     const TYPE_PRIVACY = 600;
+    const TYPE_ABOUT = 700;
 
     public function rules()
     {

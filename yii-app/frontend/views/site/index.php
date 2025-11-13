@@ -6,6 +6,7 @@
 
 use common\models\News;
 use common\models\Seo;
+use common\models\Page;
 use frontend\widgets\GazLinks;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
@@ -19,6 +20,7 @@ $dataProvider = new ActiveDataProvider([
 ]);
 
 $seo = Seo::findOne(['type' => Seo::TYPE_PAGE_HOME])->registerMetaTags($this);
+$seoHome = Seo::findOne(['type' => Seo::TYPE_PAGE_ABOUT])->registerMetaTags($this);
 
 ?>
 <div class="site-index">
@@ -53,6 +55,10 @@ $seo = Seo::findOne(['type' => Seo::TYPE_PAGE_HOME])->registerMetaTags($this);
             </div>
 
             <p><a class="share" href="<?= Url::to(['/news']) ?>">Читать все новости &rarr;</a></p>
+
+            <h2><?=$seoHome->h1 ?></h2>
+
+            <?= Page::findOne(['type' => Page::TYPE_ABOUT])->content ?>
 
         </div>
         <div class="col-md-2">

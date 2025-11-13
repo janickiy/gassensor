@@ -2,6 +2,7 @@
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\search\SeoSearch */
+
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 use yii\grid\GridView;
@@ -33,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                             <?= Html::a(Yii::t('app', 'Добавить'), ['create'], ['class' => 'btn btn-info mb-1']) ?>
 
-                            <?php foreach ([Seo::TYPE_PAGE_HOME,
+                            <?php foreach (array(Seo::TYPE_PAGE_HOME,
                                                Seo::TYPE_PAGE_CATALOG,
                                                Seo::TYPE_PAGE_CONTACT,
                                                Seo::TYPE_MANUFACTURES,
@@ -41,8 +42,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                                Seo::TYPE_PAGE_PRIVACY,
                                                Seo::TYPE_PAGE_ACCESSORIES,
                                                Seo::TYPE_PAGE_CONVERTER,
-                                                   Seo::TYPE_PAGE_REMAINS,
-                                                   ] as $v):
+                                               Seo::TYPE_PAGE_REMAINS,
+                                               Seo::TYPE_PAGE_ABOUT,
+                                           ) as $v):
                                 if ($model = Seo::findOne(['type' => $v])) {
                                     $url = ['update', 'id' => $model->id];
                                 } else {
