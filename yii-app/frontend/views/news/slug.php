@@ -2,7 +2,9 @@
 /* @var $this yii\web\View */
 /* @var $model common\models\News */
 
+use common\helpers\Tools;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Новости', 'url' => '/news'];
@@ -13,16 +15,25 @@ if ($seo = $model->seo) {
     $seo->registerMetaTags($this);
 }
 
+$time = strtotime($model->date);
+
 ?>
 
 <div class='<?= $this->context->id ?>-<?= $this->context->action->id ?> container'>
+
+      <span class="date text-right">
+          <?= date('d', $time) ?>
+          <?= Tools::$months[date('n', $time) - 1] ?>
+          <?= date('Y', $time) ?>
+       </span>
+
     <h1><?= $model->seo->h1 ?? $this->title ?></h1>
 
     <div class="single-img w-100">
         <div class="" id="news-photo-block">
-
             <div class="row w-100">
                 <div class="col-md-4">
+
                     <?php
                     $url = $model->getPictUrl() ?: 'https://dummyimage.com/240x160/fff/aaa.png&text=no%20foto';
                     ?>
@@ -46,6 +57,7 @@ if ($seo = $model->seo) {
 
             <p id="news-content">
                 <?= $model->content ?>
+                <a class="share" href="<?= Url::to(['/news']) ?>">назад</a>
             </p>
 
         </div>

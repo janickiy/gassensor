@@ -17,6 +17,7 @@ use yii\helpers\Html;
                     $time = strtotime($model->date);
                 ?>
               <span class="date text-right">
+                <?= date('d', $time) ?>
                 <?= Tools::$months[date('n', $time) -1] ?>
                 <?= date('Y', $time) ?>
               </span>
