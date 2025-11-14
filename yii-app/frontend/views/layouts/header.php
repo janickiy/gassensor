@@ -65,7 +65,7 @@ $currentUrl = Url::current();
     </div>
 
     <div id="sky">
-      <img src="/i/header.png" loading="lazy" alt="header" title="header">
+      <img src="/i/header.jpg" loading="lazy" alt="Газсенсор" title="header">
       <div class="lozung-block">
         <span>Поиск, подбор, поставка и техническая<br>поддержка газовых датчиков и сенсоров</span>
       </div>
