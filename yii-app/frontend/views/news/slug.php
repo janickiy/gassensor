@@ -57,7 +57,7 @@ $time = strtotime($model->date);
 
             <p id="news-content">
                 <?= $model->content ?>
-                <a class="share" href="<?= Url::to(['/news']) ?>">назад</a>
+                <a class="share" href="<?= Url::to(['/news']) ?>">Назад</a>
             </p>
 
         </div>
