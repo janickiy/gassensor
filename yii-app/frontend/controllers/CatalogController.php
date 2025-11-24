@@ -33,6 +33,7 @@ class CatalogController extends Controller
         $params = $this->request->queryParams;
 
         $dataProvider = $searchModel->searchFront($params);
+        $dataProvider->sort = false;
 
         return $this->render('index', [
             'searchModel' => $searchModel,
