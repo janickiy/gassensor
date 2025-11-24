@@ -5264,7 +5264,8 @@ cursor: pointer;
 .logo-block {
   position: absolute;
   top: 30px;
-  right: 10px;
+  /*right: 10px;*/
+  left: 10px;
   display: flex;
   align-items: center;
 }
