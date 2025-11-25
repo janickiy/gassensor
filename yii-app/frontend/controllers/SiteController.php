@@ -48,6 +48,7 @@ class SiteController extends Controller
         $params['limit'] = 15;
 
         $dataProviderCatalog = $searchModel->searchFront($params);
+        $dataProviderCatalog->sort = false;
 
         return $this->render('index', [
             'searchModel' => $searchModel,

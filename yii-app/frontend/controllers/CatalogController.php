@@ -16,10 +16,9 @@ use yii\web\NotFoundHttpException;
 class CatalogController extends Controller
 {
     /**
-     * @param null $sort
      * @return string
      */
-    public function actionIndex($sort = null)
+    public function actionIndex()
     {
         $searchModel = new ProductSearch();
 
