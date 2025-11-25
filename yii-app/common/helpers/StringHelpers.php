@@ -27,10 +27,10 @@ class StringHelpers
      */
     public static function shortText($str, $chars = 500)
     {
-        $pos = strpos(substr($str, $chars), " ");
-        $srttmpend = strlen($str) > $chars ? '...' : '';
+        $pos = mb_strpos(mb_substr($str, $chars), " ");
+        $srttmpend = mb_strlen($str) > $chars ? '...' : '';
 
-        return substr($str, 0, $chars + $pos) . (isset($srttmpend) ? $srttmpend : '');
+        return mb_substr($str, 0, $chars + $pos) . ($srttmpend ?? '');
     }
 
     /**
