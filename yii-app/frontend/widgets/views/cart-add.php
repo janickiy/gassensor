@@ -16,7 +16,17 @@ use yii\widgets\ActiveForm;
     <?= $form->field($formAdd, 'productId')->hiddenInput(['id' => 'addtocartform-productid-p' . $model->id])->label(false) ?>
 
     <?php
-    $countControl = $form->field($formAdd, 'count', ['template' => '{input}<button type="submit" class="btn btn-primary" style="margin-left: 15px;">Добавить в корзину</button>{error}{hint}']);
+    $countControl = $form->field($formAdd, 'count', [
+            'template' => '<div class="row">
+            <div class="col-md-6">
+                {input}
+            </div>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-primary">Добавить в корзину</button>
+            </div>
+        </div>
+{error}{hint}'
+    ]);
     ?>
     <?php if ($hiddenCount): ?>
         <?= $countControl->hiddenInput(['id' => 'addtocartform-productid-' . $model->id])->label(false) ?>
