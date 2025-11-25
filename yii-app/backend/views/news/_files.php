@@ -5,18 +5,17 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\News */
+
 ?>
 
 <?php foreach ($model->getUploadFilenames() as $filename):
+
     $url = $model->getUploadUrl() . '/' . basename($filename);
-    ?>
-    <div class="border m-1 p-1 rounded bg-light">
+
+?>
+    <div class="m-1 p-1">
 
         <a href="<?= $url ?>" target="_blank">
-
-            <?= Html::a('<i class="fa fa-trash-alt"></i>',
-                ['delete-file', 'id' => $model->id, 'basename' => basename($filename),],
-                ['class' => 'btn btn-sm btn-danger ms-1']) ?>
 
             <?php if (Yii::$app->user->isDeveloper()): ?>
                 <?= Html::a('fix name',
@@ -33,6 +32,11 @@ use yii\helpers\Html;
             <?php endif; ?>
 
         </a>
+
+        <?= Html::a('<i class="fa fa-close"></i>',
+            ['delete-file', 'id' => $model->id, 'basename' => basename($filename),],
+            ['class' => 'btn btn-sm btn-danger', 'onclick' => "return confirm('Вы действительно хотите удалить этот файл?')"]) ?>
+
     </div>
 <?php endforeach; ?>
 
