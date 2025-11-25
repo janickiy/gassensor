@@ -9,7 +9,6 @@ use yii\base\Widget;
 
 class GazLinks extends Widget
 {
-
     public function run()
     {
         return $this->render('gaz-links');

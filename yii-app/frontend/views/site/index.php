@@ -2,6 +2,7 @@
 
 /* @var $this yii\web\View */
 /* @var $sensorsList common\models\SensorsList */
+
 /* @var $dataProviderCatalog yii\data\ActiveDataProvider */
 
 use common\models\News;
@@ -29,12 +30,15 @@ $seoHome = Seo::findOne(['type' => Seo::TYPE_PAGE_ABOUT])->registerMetaTags($thi
 
     <div class="row">
         <div class="col-xxl-2 col-md-3">
-            <a href="<?= Url::to(['/remains']) ?>" class="sensors-count card p-2 bg-light">
-                <div class="flex-grow-1 d-flex flex-column justify-content-center align-items-center">
-                    <h3 class="text-center">Наличие<br>сенсоров на складе</h3>
-                    <img src="./i/logo-excel.svg" alt="Логотип Excel" class="d-block text-center">
-                </div>
-            </a>
+
+            <p style="font-size: 16px; font-weight: bold">Новости</p>
+
+            <?php foreach ($dataProvider->getModels() ?? [] as $model): ?>
+                <?= $this->render('_news-list', ['model' => $model]) ?>
+            <?php endforeach; ?>
+
+            <p><a class="share" href="<?= Url::to(['/news']) ?>">Читать все новости &rarr;</a></p>
+
         </div>
 
         <div class="col-xxl-8 col-md-6 order-first order-md-0">
@@ -46,17 +50,7 @@ $seoHome = Seo::findOne(['type' => Seo::TYPE_PAGE_ABOUT])->registerMetaTags($thi
 
             <p><a class="share" href="<?= Url::to(['/catalog']) ?>">Перейти в каталог продукции Газсенсор &rarr;</a></p>
 
-            <h2 class="text-center">Новости</h2>
-
-            <div id="contentSection">
-                <?php foreach ($dataProvider->getModels() ?? [] as $model): ?>
-                    <?= $this->render('_news-item', ['model' => $model]) ?>
-                <?php endforeach; ?>
-            </div>
-
-            <p><a class="share" href="<?= Url::to(['/news']) ?>">Читать все новости &rarr;</a></p>
-
-            <h2><?=$seoHome->h1 ?></h2>
+            <h2><?= $seoHome->h1 ?></h2>
 
             <?= Page::findOne(['type' => Page::TYPE_ABOUT])->content ?>
 

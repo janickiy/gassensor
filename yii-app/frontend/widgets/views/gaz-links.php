@@ -3,6 +3,7 @@
 
 use common\models\Gaz;
 use frontend\widgets\gazConverter\GazConverterWidget;
+use yii\helpers\Url;
 
 ?>
 
@@ -25,8 +26,17 @@ use frontend\widgets\gazConverter\GazConverterWidget;
 </div>
 
 <div class="d-flex justify-content-center">
-    <button style="width: 100%;" class="btn btn-primary mb-2 popup-open" data-bs-toggle="modal" data-bs-target="#convertModal">Конвертер газа</button>
+    <button style="width: 100%;" class="btn btn-primary mb-2 popup-open" data-bs-toggle="modal"
+            data-bs-target="#convertModal">Конвертер газа
+    </button>
 </div>
+
+<a href="<?= Url::to(['/remains']) ?>" class="sensors-count card p-2 bg-light">
+    <div class="flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+        <h3 class="text-center">Наличие<br>сенсоров на складе</h3>
+        <img src="./i/logo-excel.svg" alt="Логотип Excel" class="d-block text-center">
+    </div>
+</a>
 
 <div class='gaz-links-widget card p-2 d-block mt-2 bg-light'>
 
@@ -56,6 +66,7 @@ use frontend\widgets\gazConverter\GazConverterWidget;
             </div>
 
         </div>
+
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <div class="row m-1">
                 <?php foreach (Gaz::find()->freons()->orderBy('title')->all() as $model): ?>
