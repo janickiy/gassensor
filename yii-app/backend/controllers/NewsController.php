@@ -121,9 +121,7 @@ class NewsController extends Controller
 
             if ($isValid) {
                 $model->slug = StringHelpers::slug($model->slug);
-
                 $model->save();
-
                 $modelSeo->save(false);
 
                 if ($model->uploadFile = UploadedFile::getInstance($model, 'uploadFile')) {

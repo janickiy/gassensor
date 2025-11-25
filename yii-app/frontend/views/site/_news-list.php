@@ -9,6 +9,6 @@ $time = strtotime($model->date);
 
 ?>
 <p>
-    <b><?= date('d.m.Y', $time) ?> - </b>
+    <span class="new-block"><?= date('d.m.Y', $time) ?> - </span>
     <a href="/news/<?= $model->slug ?>"><?= StringHelpers::shortText($model->seo->h1 ?? $this->title, 100) ?></a>
 </p>

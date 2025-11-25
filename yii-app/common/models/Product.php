@@ -409,7 +409,7 @@ class Product extends ProductBase
         return [
             'attribute' => 'manufacture_title',
             'label' => 'Производитель',
-            'headerOptions' => ['style' => 'text-align:center;'],
+            'headerOptions' => ['class' => 'table-top'],
             'contentOptions' => ['style' => 'text-align:center;'],
             'format' => 'raw',
             'value' => function ($model) use ($backend) {
@@ -437,7 +437,7 @@ class Product extends ProductBase
         return [
             'attribute' => 'measurement_type_name',
             'label' => 'Тип измерения',
-            'headerOptions' => ['style' => 'text-align:center;'],
+            'headerOptions' => ['class' => 'table-top'],
             'contentOptions' => ['style' => 'text-align:center;'],
             'format' => 'raw',
             'value' => function ($model) {

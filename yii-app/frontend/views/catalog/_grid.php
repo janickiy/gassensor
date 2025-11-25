@@ -19,7 +19,7 @@ use yii\helpers\Html;
             //'id',
             [
                 'attribute' => 'name',
-                'headerOptions' => ['style' => 'text-align:center;'],
+                'headerOptions' => ['style' => 'white-space: nowrap;', 'class' => 'table-top'],
                 'label' => 'Сенсор (датчик)',
                 'format' => 'raw',
                 'value' => function ($model) {
@@ -30,7 +30,7 @@ use yii\helpers\Html;
 
             [
                 'attribute' => 'gaz_title',
-                'headerOptions' => ['style' => 'text-align:center;'],
+                'headerOptions' => ['class' => 'table-top'],
                 'label' => 'Газ',
                 'format' => 'raw',
                 'value' => function ($model) {
@@ -51,7 +51,7 @@ use yii\helpers\Html;
             [
                 'attribute' => 'cart',
                 'label' => 'Заказать',
-                'headerOptions' => ['style' => 'text-align:center;'],
+                'headerOptions' => ['class' => 'table-top'],
                 'format' => 'raw',
                 'value' => function ($model) {
                     return $this->render('_cell-cart', ['model' => $model]);
@@ -60,7 +60,7 @@ use yii\helpers\Html;
 
             [
                 'label' => 'Диапазон',
-                'headerOptions' => ['style' => 'text-align:center;'],
+                'headerOptions' => ['class' => 'table-top'],
                 'class' => MyDataColumn::class,
                 'tpl' => '/product/_cell-range',
             ],
@@ -70,7 +70,7 @@ use yii\helpers\Html;
             [
                 'attribute' => 'formfactor',
                 'label' => 'Диаметр, мм (типоразмер)',
-                'headerOptions' => ['style' => 'text-align:center;'],
+                'headerOptions' => ['class' => 'table-top'],
                 //   'contentOptions' => ['style' => 'text-align:center;'],
                 'format' => 'raw',
                 'value' => function ($model) {
