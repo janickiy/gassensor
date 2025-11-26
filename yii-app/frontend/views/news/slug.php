@@ -1,5 +1,6 @@
 <?php
 /* @var $this yii\web\View */
+
 /* @var $model common\models\News */
 
 use common\helpers\Tools;
@@ -32,12 +33,13 @@ $time = strtotime($model->date);
     <div class="single-img w-100">
         <div class="" id="news-photo-block">
             <div class="row w-100">
-                <div class="col-md-4">
-
-                    <?php
-                    $url = $model->getPictUrl() ?: 'https://dummyimage.com/240x160/fff/aaa.png&text=no%20foto';
-                    ?>
-                    <?= Html::img($url, ['alt' => $model->title, 'loading' => "lazy", 'title' => $model->title]) ?>
+                <div class="col-md-412">
+                    <div style="text-align: center;">
+                        <?php
+                        $url = $model->getPictUrl() ?: 'https://dummyimage.com/240x160/fff/aaa.png&text=no%20foto';
+                        ?>
+                        <?= Html::img($url, ['alt' => $model->title, 'loading' => "lazy", 'title' => $model->title]) ?>
+                    </div>
                 </div>
                 <div class="col">
 

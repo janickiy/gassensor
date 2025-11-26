@@ -88,6 +88,7 @@ class CatalogController extends Controller
 
         $params['ProductSearch']['manufacture_id'] = $manufacture->id;
         $dataProvider = $searchModel->searchFront($params);
+        $dataProvider->sort = false;
 
         return $this->render('index', [
             'searchModel' => $searchModel,
