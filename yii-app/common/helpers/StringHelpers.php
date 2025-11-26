@@ -25,7 +25,7 @@ class StringHelpers
      * @param int $chars
      * @return string
      */
-    public static function shortText($str, $chars = 500)
+    public static function shortText($str, int $chars = 500)
     {
         $pos = mb_strpos(mb_substr($str, $chars), " ");
         $srttmpend = strlen($str) > $chars ? '...' : '';
