@@ -61,6 +61,7 @@ class CatalogController extends Controller
         $dataProvider = $searchModel->searchFront($params);
 
         $dataProvider->query->joinWith('manufacture')->orderBy('manufacture.weight, id');
+        $dataProvider->sort = false;
 
         return $this->render('index', [
             'searchModel' => $searchModel,
