@@ -1,4 +1,5 @@
 <?php
+
 /* @var $this yii\web\View */
 /* @var $formAdd common\components\cart\AddToCartForm */
 /* @var $hiddenCount bool */
@@ -12,18 +13,38 @@ use yii\widgets\ActiveForm;
 <div class="add-product-to-cart-wrap">
     <?php $form = ActiveForm::begin(['action' => ['cart/add']]) ?>
 
-    <?= $form->field($formAdd, 'productId')->hiddenInput(['id'=>'addtocartform-productid-p' . $model->id])->label(false) ?>
+    <?= $form->field($formAdd, 'productId')->hiddenInput(['id' => 'addtocartform-productid-p' . $model->id])->label(false) ?>
 
     <?php
-    $countControl = $form->field($formAdd, 'count');
+
+    if ($tableGrid) {
+        $countControl = $form->field($formAdd, 'count', [
+            'template' => '<div class="row">
+            <div class="col-md-6">
+                {input}
+            </div>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-primary p-2">Добавить в корзину</button>
+            </div>
+        </div>
+        {error}{hint}'
+        ]);
+    } else {
+        $countControl = $form->field($formAdd, 'count');
+    }
+
     ?>
-    <?php if($hiddenCount): ?>
-        <?= $countControl->hiddenInput(['id'=>'addtocartform-productid-' . $model->id])->label(false) ?>
+
+    <?php if ($hiddenCount): ?>
+        <?= $countControl->hiddenInput(['id' => 'addtocartform-productid-' . $model->id])->label(false) ?>
     <?php else: ?>
         <?= $countControl->input('number', ['class' => 'cart-item-count'])->label('Кол-во') ?>
+
     <?php endif; ?>
 
+    <?php if ($tableGrid === false): ?>
     <?= Html::submitButton('Добавить в корзину', ['class' => 'btn btn-primary mt-1',]) ?>
+    <?php endif; ?>
 
     <?php ActiveForm::end(); ?>
 
@@ -62,7 +83,6 @@ use yii\widgets\ActiveForm;
         </tr>
     </table>
 
-
-    <?php ModalCustomHeader::end();?>
+    <?php ModalCustomHeader::end(); ?>
 
 </div>

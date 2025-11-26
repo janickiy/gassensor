@@ -68,7 +68,7 @@ $this->params['productJsonLd'] = $model->getJsonLd();
             <?php endforeach; ?>
 
             <div class="border my-3 p-2 bg-light">
-                <?= CartAddWidget::widget(['formAdd' => $formAdd, 'model' => $model, 'hiddenCount' => false]) ?>
+                <?= CartAddWidget::widget(['formAdd' => $formAdd, 'model' => $model, 'hiddenCount' => false, 'tableGrid' => true]) ?>
             </div>
             <?php if (\Yii::$app->user->isAdmin()): ?>
                 <div class="mt-5">

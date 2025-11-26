@@ -20,12 +20,16 @@ class CartAddWidget extends Widget
 
     public $hiddenCount = true;
 
+    public $tableGrid = false;
+
     public function run()
     {
         return $this->render('cart-add', [
             'formAdd' => $this->formAdd,
             'model' => $this->model,
             'hiddenCount' => $this->hiddenCount,
+            'tableGrid' => $this->tableGrid,
+
         ]);
     }
 }
