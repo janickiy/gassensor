@@ -23,7 +23,7 @@ use yii\widgets\ActiveForm;
             <div class="col-md-6">
                 {input}
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 text-right">
                 <button type="submit" class="btn btn-primary p-2">Добавить в корзину</button>
             </div>
         </div>

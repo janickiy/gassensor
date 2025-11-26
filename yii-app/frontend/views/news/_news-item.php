@@ -5,6 +5,7 @@
 
 use common\helpers\Tools;
 use yii\helpers\Html;
+use common\helpers\StringHelpers;
 
 ?>
 <a class="col-md-4 col-sm-6 col-xs-12 news-box p-1" href="/news/<?= $model->slug ?>">
@@ -36,7 +37,7 @@ use yii\helpers\Html;
         <div class="inner-post">
             <div class="entry-summary">
                 <p>
-                    <?= $model->seo->h1 ?? $this->title ?>
+                    <?= StringHelpers::shortText($model->seo->h1 ?? $this->title, 73) ?>
                 </p>
             </div>
         </div>
