@@ -41,32 +41,16 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php Pjax::begin(); ?>
                     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-                    <?= Html::beginForm(['news/checkbox-delete'],'post');?>
+                    <?= Html::beginForm(['news/checkbox-delete'], 'post'); ?>
 
                     <?= GridView::widget([
                         'dataProvider' => $dataProvider,
                         'filterModel' => $searchModel,
                         'columns' => [
                             ['class' => 'yii\grid\SerialColumn'],
-                            ['class' => 'yii\grid\ActionColumn'],
-                            [
-                                'class' => 'yii\grid\CheckboxColumn', 'checkboxOptions' => function($model) {
-                                    return ['value' => $model->id];
-                                },
-                            ],
                             'id',
                             'created_at:dateTime',
                             'date:date',
-                            [
-                                'attribute' => 'slug',
-                                'format' => 'raw',
-                                'value' => function ($model) {
-                                    return Html::a($model->slug, "/news/{$model->slug}", ['target' => '_blank', 'data-pjax' => 0]);
-                                }
-                            ],
-                            'title',
-                            //'content:ntext',
-
                             [
                                 'attribute' => 'files',
                                 'format' => 'raw',
@@ -74,6 +58,16 @@ $this->params['breadcrumbs'][] = $this->title;
                                     return $this->render('_files', ['model' => $model,]);
                                 }
                             ],
+                            [
+                                'attribute' => 'slug',
+                                'format' => 'raw',
+                                'value' => function ($model) {
+                                    return Html::a($model->slug, "/news/{$model->slug}", ['target' => '_blank', 'data-pjax' => 0]);
+                                }
+                            ],
+
+                            'title',
+                            //'content:ntext',
 
                             [
                                 'attribute' => 'content',
@@ -82,10 +76,18 @@ $this->params['breadcrumbs'][] = $this->title;
                                     return StringHelpers::shortText(StringHelpers::removeHtmlTags($data->content));
                                 }
                             ],
+
+                            [
+                                'class' => 'yii\grid\CheckboxColumn', 'checkboxOptions' => function ($model) {
+                                return ['value' => $model->id];
+                            },
+                            ],
+
+                            ['class' => 'yii\grid\ActionColumn'],
                         ],
                     ]); ?>
 
-                    <?= Html::submitButton('Удалить выбранные', ['class' => 'btn btn-danger mt-3 mb-3','data-confirm' => Yii::t('yii', 'Вы уверены, что хотите удалить данные записи? Восстановить их будет нельзя.'),]); ?>
+                    <?= Html::submitButton('Удалить выбранные', ['class' => 'btn btn-danger mt-3 mb-3', 'data-confirm' => Yii::t('yii', 'Вы уверены, что хотите удалить данные записи? Восстановить их будет нельзя.'),]); ?>
 
                     <?= Html::endForm() ?>
 
