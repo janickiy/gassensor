@@ -28,7 +28,7 @@ class StringHelpers
     public static function shortText($str, $chars = 500)
     {
         $pos = mb_strpos(mb_substr($str, $chars), " ");
-        $srttmpend = mb_strlen($str) > $chars ? '...' : '';
+        $srttmpend = strlen($str) > $chars ? '...' : '';
 
         return mb_substr($str, 0, $chars + $pos) . ($srttmpend ?? '');
     }
