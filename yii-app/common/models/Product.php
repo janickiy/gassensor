@@ -425,10 +425,10 @@ class Product extends ProductBase
                 */
                 if (isset($_GET['ProductSearch']['manufacture_id']) && $_GET['ProductSearch']['manufacture_id']) {
 
-                    $text = '<p>' . $label . '</p>';
+                    $text = '<p>' . $label;
                     $text .= '<a href="/manufacture/' . $model->manufacture->slug . '">
-                            ' . Html::img($model->manufacture->logoUrl, ['style' => "max-height: 100px;", 'loading' => "lazy", 'alt' => $label, 'title' => $label]) . '
-                        </a>';
+                            ' . Html::img('/i/new-window.gif', ['loading' => "lazy"]) . '
+                        </a></p>';
 
                     return $text;
                 } else {

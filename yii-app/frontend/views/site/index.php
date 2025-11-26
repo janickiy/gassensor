@@ -20,6 +20,14 @@ $dataProvider = new ActiveDataProvider([
     ],
 ]);
 
+$dataProviderNews = new ActiveDataProvider([
+    'query' => News::find()->orderBy('date DESC'),
+    'pagination' => [
+        'pageSize' => 4,
+        'pageSizeParam' => false
+    ],
+]);
+
 $seo = Seo::findOne(['type' => Seo::TYPE_PAGE_HOME])->registerMetaTags($this);
 $seoHome = Seo::findOne(['type' => Seo::TYPE_PAGE_ABOUT])->registerMetaTags($this);
 
@@ -53,6 +61,16 @@ $seoHome = Seo::findOne(['type' => Seo::TYPE_PAGE_ABOUT])->registerMetaTags($thi
             <h2><?= $seoHome->h1 ?></h2>
 
             <?= Page::findOne(['type' => Page::TYPE_ABOUT])->content ?>
+
+            <h2 class="text-center">Новости</h2>
+
+            <div id="contentSection">
+                <?php foreach ($dataProviderNews->getModels() ?? [] as $model): ?>
+                    <?= $this->render('_news-item', ['model' => $model]) ?>
+                <?php endforeach; ?>
+            </div>
+
+            <p><a class="share" href="<?= Url::to(['/news']) ?>">Читать все новости &rarr;</a></p>
 
         </div>
         <div class="col-md-2">
