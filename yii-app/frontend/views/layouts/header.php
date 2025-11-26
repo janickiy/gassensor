@@ -110,7 +110,6 @@ $currentUrl = Url::current();
         <a style="display: none" href="#" class="btn btn-primary">Вопрос<i class="icon ion-md-paper-plane"></i></a>
       </div>
     </div>
-    <div id="sky-wrap" style="background-position: 831.871em 0px;"></div>
 
     <div class="collapse searchbar" id="searchbar">
       <div class="search-area">
