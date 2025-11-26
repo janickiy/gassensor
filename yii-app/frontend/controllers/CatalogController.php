@@ -58,6 +58,8 @@ class CatalogController extends Controller
 
         $params['ProductSearch']['gaz_id'] = $gaz->id;
 
+        $_GET['filter'] = false;
+
         $dataProvider = $searchModel->searchFront($params);
 
         $dataProvider->query->joinWith('manufacture')->orderBy('manufacture.weight, id');
