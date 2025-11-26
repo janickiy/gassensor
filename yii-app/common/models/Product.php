@@ -423,8 +423,16 @@ class Product extends ProductBase
                     $url = "/manufacture/{$model->manufacture->slug}";
                 }
                 */
-                if (isset($_GET['ProductSearch']['manufacture_id']) && $_GET['ProductSearch']['manufacture_id']) {
 
+
+                if (isset($_GET['ProductSearch']['manufacture_id']) && $_GET['ProductSearch']['manufacture_id']) {
+                    $text = '<p>' . $label;
+                    $text .= '<a href="/manufacture/' . $model->manufacture->slug . '">
+                            ' . Html::img('/i/new-window.gif', ['loading' => "lazy"]) . '
+                        </a></p>';
+
+                    return $text;
+                } elseif (isset($_GET['slug']) && $_GET['slug']) {
                     $text = '<p>' . $label;
                     $text .= '<a href="/manufacture/' . $model->manufacture->slug . '">
                             ' . Html::img('/i/new-window.gif', ['loading' => "lazy"]) . '

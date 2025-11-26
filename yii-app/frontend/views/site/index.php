@@ -58,10 +58,6 @@ $seoHome = Seo::findOne(['type' => Seo::TYPE_PAGE_ABOUT])->registerMetaTags($thi
 
             <p><a class="share" href="<?= Url::to(['/catalog']) ?>">Перейти в каталог продукции Газсенсор &rarr;</a></p>
 
-            <h2><?= $seoHome->h1 ?></h2>
-
-            <?= Page::findOne(['type' => Page::TYPE_ABOUT])->content ?>
-
             <h2 class="text-center">Новости</h2>
 
             <div id="contentSection">
@@ -71,6 +67,10 @@ $seoHome = Seo::findOne(['type' => Seo::TYPE_PAGE_ABOUT])->registerMetaTags($thi
             </div>
 
             <p><a class="share" href="<?= Url::to(['/news']) ?>">Читать все новости &rarr;</a></p>
+
+            <h2><?= $seoHome->h1 ?></h2>
+
+            <?= Page::findOne(['type' => Page::TYPE_ABOUT])->content ?>
 
         </div>
         <div class="col-md-2">
