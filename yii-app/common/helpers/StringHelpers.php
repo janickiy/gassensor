@@ -21,14 +21,15 @@ class StringHelpers
     }
 
     /**
-     * @param $str
+     * @param string $str
      * @param int $chars
      * @return string
      */
-    public static function shortText($str, int $chars = 500)
+    public static function shortText(string $str, int $chars = 500): string
     {
-        $pos = mb_strpos(mb_substr($str, $chars), " ");
-        $srttmpend = strlen($str) > $chars ? '...' : '';
+        $string = str_replace(' ', '', $str);
+        $pos = mb_strpos(mb_substr($string, $chars), " ");
+        $srttmpend = mb_strlen($string) > $chars ? '...' : '';
 
         return mb_substr($str, 0, $chars + $pos) . ($srttmpend ?? '');
     }
