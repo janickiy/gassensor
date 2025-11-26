@@ -22,7 +22,7 @@ use yii\widgets\ActiveForm;
                 {input}
             </div>
             <div class="col-md-6">
-                <button type="submit" class="btn btn-primary">Добавить в корзину</button>
+                <button type="submit" class="btn btn-primary p-2">Добавить в корзину</button>
             </div>
         </div>
 {error}{hint}'

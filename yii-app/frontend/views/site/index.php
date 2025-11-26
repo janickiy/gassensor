@@ -15,7 +15,7 @@ use yii\helpers\Url;
 $dataProvider = new ActiveDataProvider([
     'query' => News::find()->orderBy('date DESC'),
     'pagination' => [
-        'pageSize' => 8,
+        'pageSize' => 20,
         'pageSizeParam' => false
     ],
 ]);

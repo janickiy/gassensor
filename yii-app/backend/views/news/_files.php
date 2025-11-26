@@ -15,7 +15,7 @@ use yii\helpers\Html;
 ?>
     <div class="m-1 p-1">
 
-        <a href="<?= $url ?>" target="_blank">
+
 
             <?php if (Yii::$app->user->isDeveloper()): ?>
                 <?= Html::a('fix name',
@@ -31,7 +31,7 @@ use yii\helpers\Html;
                 <img src="<?= $url ?>" style="width: 120px;" class="border m-2"/>
             <?php endif; ?>
 
-        </a>
+
 
         <?= Html::a('<i class="fa fa-close"></i>',
             ['delete-file', 'id' => $model->id, 'basename' => basename($filename),],
