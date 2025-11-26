@@ -97,4 +97,5 @@ use yii\helpers\Html;
         Product::getManufactureTitleGridCol(),
     ],
 ]); ?>
+
 </div>

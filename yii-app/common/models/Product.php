@@ -423,8 +423,17 @@ class Product extends ProductBase
                     $url = "/manufacture/{$model->manufacture->slug}";
                 }
                 */
+                if (isset($_GET['ProductSearch']['manufacture_id']) && $_GET['ProductSearch']['manufacture_id']) {
 
-                return Html::a($label, $url, ['data-pjax' => 0]);
+                    $text = '<p>' . $label . '</p>';
+                    $text .= '<a href="/manufacture/' . $model->manufacture->slug . '">
+                            ' . Html::img($model->manufacture->logoUrl, ['style' => "max-height: 100px;", 'loading' => "lazy", 'alt' => $label, 'title' => $label]) . '
+                        </a>';
+
+                    return $text;
+                } else {
+                    return Html::a($label, $url, ['data-pjax' => 0]);
+                }
             }
         ];
     }
@@ -570,7 +579,7 @@ class Product extends ProductBase
         $model->is_main_3 = 1;
 
         if (!$model->save()) {
-             throw new \Exception('fail saving ProductGaz');
+            throw new \Exception('fail saving ProductGaz');
         }
     }
 
@@ -639,7 +648,7 @@ class Product extends ProductBase
 
         $sheet->getStyle("A:E")
             ->getNumberFormat()
-            ->setFormatCode( \PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_TEXT );
+            ->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_TEXT);
 
         $cols = ['name', 'measurement_type_id', "CONCAT(range_from, '-', range_to, ' ', range_unit) AS range"];
 
@@ -690,7 +699,7 @@ class Product extends ProductBase
             return $response->sendStreamAsFile($tmpResource, $attachmentName, $options);
         }
 
-        $response->on(Response::EVENT_AFTER_SEND, function() use ($tmpResource) {
+        $response->on(Response::EVENT_AFTER_SEND, function () use ($tmpResource) {
             // with temporary file resource closing file matching its URI will be deleted, even if resource is invalid
             fclose($tmpResource);
         });
