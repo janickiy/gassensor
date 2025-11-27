@@ -1,6 +1,7 @@
 <?php
 
 /* @var $this yii\web\View */
+
 /* @var $model common\models\search\ProductSearch */
 
 use common\models\Gaz;
@@ -16,44 +17,39 @@ use yii\bootstrap5\Html;
     'action' => '/catalog',
     'fieldConfig' => [
         'template' => "<div class=\"col\">{input}\n{hint}\n{error}</div>",
-        'options' => [ 'tag' => false, ]
+        'options' => ['tag' => false,]
     ],
 ]); ?>
 
-<div class="row">
+    <div class="row">
 
-<?= $form->field($model, 'manufacture_id')->dropDownList(
-    Manufacture::getDropDownData(true),
-    ['class' => 'form-select', 'options' => Manufacture::manufactureOption2($model)])->label(false)
-?>
+        <?= $form->field($model, 'manufacture_id')->dropDownList(
+            Manufacture::getDropDownData(true),
+            ['class' => 'form-select', 'options' => Manufacture::manufactureOption2($model)])->label(false)
+        ?>
 
-<?= $form->field($model, 'gaz_id')->dropDownList(
-    Gaz::getDropDownData(true),
-    ['class' => 'form-select', 'options' => Gaz::gazOption2($model)])
-?>
+        <?= $form->field($model, 'gaz_id')->dropDownList(
+            Gaz::getDropDownData(true),
+            ['class' => 'form-select', 'options' => Gaz::gazOption2($model)])
+        ?>
 
-<?= $form->field($model, 'measurement_type_id')->dropDownList(
-    MeasurementType::getDropDownData(true),
-    ['class' => 'form-select', 'options' => MeasurementType::measurementTypeOption2($model)])
-?>
+        <?= $form->field($model, 'measurement_type_id')->dropDownList(
+            MeasurementType::getDropDownData(true),
+            ['class' => 'form-select', 'options' => MeasurementType::measurementTypeOption2($model)])
+        ?>
 
-</div>
-
-<div class="col">
-    <label>Время отклика SEC</label>
-
-    <div class="row g-1">
         <div class="col">
-            <?= $form->field($model, 'response_time_from')->input('number') ?>
+            <label>Время отклика SEC</label>
         </div>
-        <div class="col">
-            <?= $form->field($model, 'response_time_to')->input('number') ?>
-        </div>
+
+        <?= $form->field($model, 'response_time_from')->input('number') ?>
+
+        <?= $form->field($model, 'response_time_to')->input('number') ?>
+
     </div>
-</div>
 
-<div class="col">
-    <?= Html::submitButton('Поиск', ['class' => 'btn mt-3 w-100']) ?>
-</div>
+    <div class="col">
+        <?= Html::submitButton('Поиск', ['class' => 'btn mt-3']) ?>
+    </div>
 
 <?php ActiveForm::end(); ?>
