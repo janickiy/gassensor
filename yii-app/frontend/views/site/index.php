@@ -29,7 +29,7 @@ $dataProviderNews = new ActiveDataProvider([
 ]);
 
 $dataProviderManufacture = new ActiveDataProvider([
-    'query' => Manufacture::find(),
+    'query' => Manufacture::find()->orderBy('id DESC'),
     'pagination' => [
         'pageSize' => 16,
         'pageSizeParam' => false
@@ -77,7 +77,7 @@ $seoHome = Seo::findOne(['type' => Seo::TYPE_PAGE_ABOUT])->registerMetaTags($thi
 
             <p><a class="share" href="<?= Url::to(['/manufacture']) ?>">Перейти в каталог производителей &rarr;</a></p>
 
-            <h2>Новинки</h2>
+            <h2>Последние поступления продукции</h2>
 
             <div class="col-lg-12 col-md-6 bg-light border p-3 mb-3">
                 <?= $this->render('_filter', [
