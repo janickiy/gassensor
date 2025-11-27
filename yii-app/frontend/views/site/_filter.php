@@ -20,7 +20,7 @@ use yii\bootstrap5\Html;
     ],
 ]); ?>
 
-    <div class="row">
+    <div class="row align-items-center">
 
         <?= $form->field($model, 'manufacture_id')->dropDownList(
             Manufacture::getDropDownData(true),
