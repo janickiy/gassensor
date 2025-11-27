@@ -108,7 +108,7 @@ class Seo extends SeoBase
     public function registerMetaTags(\yii\web\View $view)
     {
         $view->registerMetaTag(['name' => 'description', 'content' => $this->description,]);
-        $view->registerMetaTag(['name' => 'keywords', 'content' => $this->keyword,]);
+       // $view->registerMetaTag(['name' => 'keywords', 'content' => $this->keyword,]);
         $view->title = $this->title;
 
         if ($this->url_canonical) {

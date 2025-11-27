@@ -66,17 +66,6 @@ $seoHome = Seo::findOne(['type' => Seo::TYPE_PAGE_ABOUT])->registerMetaTags($thi
 
         <div class="col-xxl-8 col-md-6 order-first order-md-0">
 
-            <p>Компания Газсенсор активно развивает направление поставок газовых датчиков и сенсоров от ведущих мировых
-                производителей.</p>
-
-            <div id="contentSection">
-                <?php foreach ($dataProviderManufacture->getModels() ?? [] as $model): ?>
-                    <?= $this->render('_manufacture-item', ['model' => $model]) ?>
-                <?php endforeach; ?>
-            </div>
-
-            <p><a class="share" href="<?= Url::to(['/manufacture']) ?>">Перейти в каталог производителей &rarr;</a></p>
-
             <h2>Последние поступления продукции</h2>
 
             <div class="col-lg-12 col-md-6 bg-light border p-3 mb-3">
@@ -92,6 +81,16 @@ $seoHome = Seo::findOne(['type' => Seo::TYPE_PAGE_ABOUT])->registerMetaTags($thi
 
             <p><a class="share" href="<?= Url::to(['/catalog']) ?>">Перейти в каталог продукции Газсенсор &rarr;</a></p>
 
+            <p>Компания Газсенсор активно развивает направление поставок газовых датчиков и сенсоров от ведущих мировых
+                производителей.</p>
+
+            <div id="contentSection">
+                <?php foreach ($dataProviderManufacture->getModels() ?? [] as $model): ?>
+                    <?= $this->render('_manufacture-item', ['model' => $model]) ?>
+                <?php endforeach; ?>
+            </div>
+
+            <p><a class="share" href="<?= Url::to(['/manufacture']) ?>">Перейти в каталог производителей &rarr;</a></p>
 
             <h2><?= $seoHome->h1 ?></h2>
 

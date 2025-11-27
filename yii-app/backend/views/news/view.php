@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use common\helpers\StringHelpers;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\News */
@@ -9,6 +10,7 @@ use yii\widgets\DetailView;
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'News'), 'url' => ['index', 'sort' => '-id']];
 $this->params['breadcrumbs'][] = $this->title;
+
 \yii\web\YiiAsset::register($this);
 
 ?>
@@ -43,7 +45,15 @@ $this->params['breadcrumbs'][] = $this->title;
                         'date',
                         'slug',
                         'title',
-                        'content:ntext',
+
+                        [
+                            'attribute' => 'content',
+                            'label' => 'Контент',
+                            'value' => function ($data) {
+                                return StringHelpers::shortText(StringHelpers::removeHtmlTags($data->content), 300);
+                            }
+                        ],
+
                     ],
                 ]) ?>
 

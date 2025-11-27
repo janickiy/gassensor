@@ -73,7 +73,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'attribute' => 'content',
                                 'label' => 'Контент',
                                 'value' => function ($data) {
-                                    return StringHelpers::shortText(StringHelpers::removeHtmlTags($data->content));
+                                    return StringHelpers::shortText(StringHelpers::removeHtmlTags($data->content), 300);
                                 }
                             ],
 
