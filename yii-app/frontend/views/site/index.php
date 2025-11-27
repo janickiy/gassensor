@@ -92,15 +92,6 @@ $seoHome = Seo::findOne(['type' => Seo::TYPE_PAGE_ABOUT])->registerMetaTags($thi
 
             <p><a class="share" href="<?= Url::to(['/catalog']) ?>">Перейти в каталог продукции Газсенсор &rarr;</a></p>
 
-            <h2>Новости</h2>
-
-            <div id="contentSection">
-                <?php foreach ($dataProviderNews->getModels() ?? [] as $model): ?>
-                    <?= $this->render('_news-item', ['model' => $model]) ?>
-                <?php endforeach; ?>
-            </div>
-
-            <p><a class="share" href="<?= Url::to(['/news']) ?>">Читать все новости &rarr;</a></p>
 
             <h2><?= $seoHome->h1 ?></h2>
 
