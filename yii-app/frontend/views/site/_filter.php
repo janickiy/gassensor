@@ -39,7 +39,7 @@ use yii\bootstrap5\Html;
         ?>
 
         <div class="col">
-            <label>Время отклика SEC</label>
+            <label class="align-middle">Время отклика SEC</label>
         </div>
 
         <?= $form->field($model, 'response_time_from')->input('number') ?>
