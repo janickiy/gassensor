@@ -37,7 +37,7 @@ $dataProviderManufacture = new ActiveDataProvider([
 ]);
 
 $seo = Seo::findOne(['type' => Seo::TYPE_PAGE_HOME])->registerMetaTags($this);
-$seoHome = Seo::findOne(['type' => Seo::TYPE_PAGE_ABOUT])->registerMetaTags($this);
+$seoHome = Seo::findOne(['type' => Seo::TYPE_PAGE_ABOUT]);
 
 ?>
 <style>
