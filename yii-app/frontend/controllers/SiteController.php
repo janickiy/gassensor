@@ -54,7 +54,7 @@ class SiteController extends Controller
             'searchModel' => $searchModel,
             'dataProviderCatalog' => $dataProviderCatalog,
             'sort' => [
-                'defaultOrder' => ['id' => SORT_ASC]
+                'defaultOrder' => ['id' => SORT_DESC]
             ]
         ]);
     }

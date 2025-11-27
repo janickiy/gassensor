@@ -29,7 +29,7 @@ $dataProviderNews = new ActiveDataProvider([
 ]);
 
 $dataProviderManufacture = new ActiveDataProvider([
-    'query' => Manufacture::find()->orderBy('id DESC'),
+    'query' => Manufacture::find(),
     'pagination' => [
         'pageSize' => 16,
         'pageSizeParam' => false
