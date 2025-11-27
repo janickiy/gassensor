@@ -74,8 +74,9 @@ $seoHome = Seo::findOne(['type' => Seo::TYPE_PAGE_ABOUT])->registerMetaTags($thi
                 <?php endforeach; ?>
             </div>
 
-
             <p><a class="share" href="<?= Url::to(['/manufacture']) ?>">Перейти в каталог производителей &rarr;</a></p>
+
+            <h2>Новинки</h2>
 
             <?= $this->render('_grid', [
                 'dataProvider' => $dataProviderCatalog,

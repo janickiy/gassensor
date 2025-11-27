@@ -53,6 +53,9 @@ class SiteController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProviderCatalog' => $dataProviderCatalog,
+            'sort' => [
+                'defaultOrder' => ['id' => SORT_ASC]
+            ]
         ]);
     }
 
