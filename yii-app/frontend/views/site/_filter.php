@@ -39,17 +39,17 @@ use yii\bootstrap5\Html;
         ?>
 
         <div class="col">
-            <label>Время отклика SEC</label>
+            <label>Время отклика<br>SEC</label>
         </div>
 
         <?= $form->field($model, 'response_time_from')->input('number') ?>
 
         <?= $form->field($model, 'response_time_to')->input('number') ?>
 
-    </div>
+        <div class="col">
+            <?= Html::submitButton('Поиск', ['class' => 'btn']) ?>
+        </div>
 
-    <div class="col">
-        <?= Html::submitButton('Поиск', ['class' => 'btn mt-3']) ?>
     </div>
 
 <?php ActiveForm::end(); ?>
