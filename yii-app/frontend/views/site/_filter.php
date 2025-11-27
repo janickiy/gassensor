@@ -1,7 +1,6 @@
 <?php
 
 /* @var $this yii\web\View */
-
 /* @var $model common\models\search\ProductSearch */
 
 use common\models\Gaz;
@@ -42,9 +41,9 @@ use yii\bootstrap5\Html;
             <label class="align-middle">Время отклика SEC</label>
         </div>
 
-        <?= $form->field($model, 'response_time_from')->input('number') ?>
+        <?= $form->field($model, 'response_time_from')->input('number', ['style' => 'min-width: 60px;']) ?>
 
-        <?= $form->field($model, 'response_time_to')->input('number') ?>
+        <?= $form->field($model, 'response_time_to')->input('number', ['style' => 'min-width: 60px;']) ?>
 
         <div class="col">
             <?= Html::submitButton('Поиск', ['class' => 'btn']) ?>
