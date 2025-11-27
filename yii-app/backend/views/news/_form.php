@@ -36,7 +36,7 @@ $this->registerJs($js, $this::POS_READY);
 <?= $form->field($model, 'date')->textInput() ?>
 <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
 <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-<?= $form->field($model, 'content')->textarea(['rows' => '6', 'class' => 'form-control']) ?>
+<?= $form->field($model, 'content')->textarea(['rows' => '6', 'class' => 'form-control', 'maxlength' => true]) ?>
 
 <h3>SEO</h3>
 

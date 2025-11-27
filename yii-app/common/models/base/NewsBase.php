@@ -37,7 +37,7 @@ class NewsBase extends \yii\db\ActiveRecord
             [['created_at'], 'integer'],
             [['date'], 'safe'],
             [['title', 'content'], 'required'],
-            [['content'], 'string'],
+            [['content'], 'string', 'max' => 300],
             [['slug', 'title'], 'string', 'max' => 255],
             [['slug'], 'unique'],
         ];

@@ -2,12 +2,12 @@
 
 /* @var $this yii\web\View */
 /* @var $sensorsList common\models\SensorsList */
-
 /* @var $dataProviderCatalog yii\data\ActiveDataProvider */
 
 use common\models\News;
 use common\models\Seo;
 use common\models\Page;
+use common\models\Manufacture;
 use frontend\widgets\GazLinks;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
@@ -24,6 +24,14 @@ $dataProviderNews = new ActiveDataProvider([
     'query' => News::find()->orderBy('date DESC'),
     'pagination' => [
         'pageSize' => 4,
+        'pageSizeParam' => false
+    ],
+]);
+
+$dataProviderManufacture = new ActiveDataProvider([
+    'query' => Manufacture::find(),
+    'pagination' => [
+        'pageSize' => 16,
         'pageSizeParam' => false
     ],
 ]);
@@ -58,6 +66,17 @@ $seoHome = Seo::findOne(['type' => Seo::TYPE_PAGE_ABOUT])->registerMetaTags($thi
 
         <div class="col-xxl-8 col-md-6 order-first order-md-0">
 
+            <p>Компания Газсенсор активно развивает направление поставок газовых датчиков и сенсоров от ведущих мировых производителей.</p>
+
+            <div id="contentSection">
+                <?php foreach ($dataProviderManufacture->getModels() ?? [] as $model): ?>
+                    <?= $this->render('_manufacture-item', ['model' => $model]) ?>
+                <?php endforeach; ?>
+            </div>
+
+
+            <p><a class="share" href="<?= Url::to(['/manufacture']) ?>">Перейти в каталог производителей &rarr;</a></p>
+
             <?= $this->render('_grid', [
                 'dataProvider' => $dataProviderCatalog,
                 //'searchModel' => $searchModel,
@@ -78,7 +97,6 @@ $seoHome = Seo::findOne(['type' => Seo::TYPE_PAGE_ABOUT])->registerMetaTags($thi
             <h2><?= $seoHome->h1 ?></h2>
 
             <?= Page::findOne(['type' => Page::TYPE_ABOUT])->content ?>
-
 
         </div>
         <div class="col-md-2">

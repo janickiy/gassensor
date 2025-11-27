@@ -1816,6 +1816,33 @@ input.form-control, select.form-control {
   align-items: center;
   justify-content: center;
 }
+
+.post-manufacture {
+  border: 1px solid #e1e1e1;
+  max-width: 100%;
+  margin-bottom: 30px;
+  transition: all 0.3s linear;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  -ms-transition: all 0.3s linear;
+}
+.post-manufacture:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+.post-manufacture  {
+  padding: 10px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
 .entry-media img {
   width: auto;
   /* height: 100%; */

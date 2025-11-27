@@ -129,7 +129,7 @@ class NewsController extends Controller
                     $model->upload();
                 }
 
-                return $this->redirect(['view', 'id' => $id]);
+                return $this->redirect(['update', 'id' => $id]);
             }
         }
 

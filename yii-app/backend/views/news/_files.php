@@ -11,15 +11,12 @@ use common\helpers\Tools;
 
     $url = $model->getUploadUrl() . '/' . basename($filename);
 
-    ?>
-    <div class="m-1 p-1">
+?>
 
-        <?php if (Tools::isPict($url)): ?>
-            <br/>
-            <img src="<?= $url ?>" style="width: 120px;" class="border m-2"/>
-        <?php endif; ?>
+    <?php if (Tools::isPict($url)): ?>
+    <img src="<?= $url ?>" style="width: 120px;" class="border m-2"/>
+    <?php endif; ?>
 
-    </div>
 <?php endforeach; ?>
 
 
