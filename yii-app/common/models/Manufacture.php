@@ -188,7 +188,7 @@ class Manufacture extends ManufactureBase
     public static function manufactureOption2(ProductSearch $searchModel): array
     {
         $availableIds = self::findAvailableManufacturesIds($searchModel);
-        $option = ['' => ['label' => ' ']];
+        $option = ['' => ['label' => 'Производитель']];
 
         if ($availableIds) {
             foreach (self::getDropDownData(true) as $id => $label) {

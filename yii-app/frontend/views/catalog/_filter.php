@@ -18,24 +18,24 @@ use yii\bootstrap5\Html;
 
 <?= $form->field($model, 'manufacture_id')->dropDownList(
     Manufacture::getDropDownData(true),
-    ['class' => 'form-select', 'options' => Manufacture::manufactureOption2($model)])
+    ['class' => 'form-select', 'options' => Manufacture::manufactureOption2($model)])->label(false)
 ?>
 
 <?= $form->field($model, 'gaz_id')->dropDownList(
     Gaz::getDropDownData(true),
-    ['class' => 'form-select', 'options' => Gaz::gazOption2($model)])
+    ['class' => 'form-select', 'options' => Gaz::gazOption2($model)])->label(false)
 ?>
 
 <?php if (0): ?>
     <?= $form->field($model, 'gaz_group_id')->dropDownList(
         GazGroup::getDropDownData(true),
-        ['class' => 'form-select', 'options' => ['' => ['label' => ' ']]])
+        ['class' => 'form-select', 'options' => ['' => ['label' => 'выберите']]])
     ?>
 <?php endif; ?>
 
 <?= $form->field($model, 'measurement_type_id')->dropDownList(
     MeasurementType::getDropDownData(true),
-    ['class' => 'form-select', 'options' => MeasurementType::measurementTypeOption2($model)])
+    ['class' => 'form-select', 'options' => MeasurementType::measurementTypeOption2($model)])->label(false)
 ?>
 
 <?php if (0): ?>

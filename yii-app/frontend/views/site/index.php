@@ -42,9 +42,9 @@ $seoHome = Seo::findOne(['type' => Seo::TYPE_PAGE_ABOUT])->registerMetaTags($thi
 ?>
 <style>
 
-.post-box {
-    margin-bottom: 12px;
-}
+    .post-box {
+        margin-bottom: 12px;
+    }
 
 </style>
 <div class="site-index">
@@ -66,7 +66,8 @@ $seoHome = Seo::findOne(['type' => Seo::TYPE_PAGE_ABOUT])->registerMetaTags($thi
 
         <div class="col-xxl-8 col-md-6 order-first order-md-0">
 
-            <p>Компания Газсенсор активно развивает направление поставок газовых датчиков и сенсоров от ведущих мировых производителей.</p>
+            <p>Компания Газсенсор активно развивает направление поставок газовых датчиков и сенсоров от ведущих мировых
+                производителей.</p>
 
             <div id="contentSection">
                 <?php foreach ($dataProviderManufacture->getModels() ?? [] as $model): ?>
@@ -77,6 +78,12 @@ $seoHome = Seo::findOne(['type' => Seo::TYPE_PAGE_ABOUT])->registerMetaTags($thi
             <p><a class="share" href="<?= Url::to(['/manufacture']) ?>">Перейти в каталог производителей &rarr;</a></p>
 
             <h2>Новинки</h2>
+
+            <div class="col-lg-12 col-md-6 bg-light border p-3 mb-3">
+                <?= $this->render('_filter', [
+                    'model' => $searchModel,
+                ]) ?>
+            </div>
 
             <?= $this->render('_grid', [
                 'dataProvider' => $dataProviderCatalog,

@@ -135,7 +135,7 @@ class MeasurementType extends MeasurementTypeBase
     public static function measurementTypeOption2(ProductSearch $searchModel): array
     {
         $measurementTypeIds = self::findAvailableMeasurementTypeIds($searchModel);
-        $measurementTypeOption = ['' => ['label' => ' ']];
+        $measurementTypeOption = ['' => ['label' => 'Тип измерения']];
 
         if ($measurementTypeIds) {
             foreach (self::getDropDownData(true) as $id => $label) {

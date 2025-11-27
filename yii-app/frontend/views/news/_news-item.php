@@ -37,7 +37,7 @@ use common\helpers\StringHelpers;
         <div class="inner-post">
             <div class="entry-summary">
                 <p>
-                    <?= StringHelpers::shortText($model->seo->h1 ?? $this->title, 73) ?>
+                    <?= StringHelpers::shortText($model->title, 73) ?>
                 </p>
             </div>
         </div>

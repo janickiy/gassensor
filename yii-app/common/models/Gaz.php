@@ -187,7 +187,7 @@ class Gaz extends GazBase
     public static function gazOption2(ProductSearch $searchModel): array
     {
         $gazAvailableIds = self::findAvailableGazIds($searchModel);
-        $gazOption = ['' => ['label' => ' ']];
+        $gazOption = ['' => ['label' => 'Газ']];
 
         if ($gazAvailableIds) {
             foreach (self::getDropDownData(true) as $id => $label) {
