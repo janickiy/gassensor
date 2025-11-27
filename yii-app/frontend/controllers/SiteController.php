@@ -46,6 +46,7 @@ class SiteController extends Controller
 
         $params['pagination'] = false;
         $params['limit'] = 15;
+        $params['new'] = true;
 
         $dataProviderCatalog = $searchModel->searchFront($params);
         $dataProviderCatalog->sort = false;
@@ -53,9 +54,6 @@ class SiteController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProviderCatalog' => $dataProviderCatalog,
-            'sort' => [
-                'defaultOrder' => ['id' => SORT_DESC]
-            ]
         ]);
     }
 
