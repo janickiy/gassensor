@@ -1,6 +1,7 @@
 <?php
 
 /* @var $this yii\web\View */
+
 /* @var $model common\models\search\ProductSearch */
 
 use common\models\Gaz;
@@ -9,13 +10,14 @@ use common\models\Manufacture;
 use common\models\MeasurementType;
 use yii\bootstrap5\ActiveForm;
 use yii\bootstrap5\Html;
+use yii\helpers\Url;
 
 /* @var $request \yii\web\Request */
 $req = Yii::$app->request;
 
 ?>
 
-<?php $form = ActiveForm::begin(['method' => 'get', 'action' => '/catalog', 'options' => [ 'class' => 'pt-2' ]]); ?>
+<?php $form = ActiveForm::begin(['method' => 'get', 'action' => '/catalog', 'options' => ['class' => 'pt-2']]); ?>
 
 <input type="hidden" name="scroll" value="">
 
@@ -85,14 +87,21 @@ $req = Yii::$app->request;
     </div>
 <?php endif; ?>
 
-<div class="form-group" style="text-align: center">
-
-    <?= Html::submitButton('Поиск', ['class' => 'btn', 'style' => 'min-width: 50px']) ?>
-
+<div class="mb-3 border">
     <?php if ($req->get('ProductSearch')): ?>
-        <a title="Сброс фильтров" href="/products" class="btn" style="min-width: 50px"><i class="fa fa-fw fa-refresh" style="margin-left: 0;"></i></a>
-    <?php endif; ?>
+        <div class="row g-1">
+            <div class="col-8">
+                <?= Html::submitButton('Поиск', ['class' => 'btn-form w-100']) ?>
+            </div>
+            <div class="col-4">
+                <a title="Сброс фильтров" href="<?= Url::to(['/products']) ?>" class="btn-form w-100"><i
+                            class="fa fa-fw fa-refresh" style="margin-left: 0;"></i></a>
 
+            </div>
+        </div>
+    <?php else: ?>
+        <?= Html::submitButton('Поиск', ['class' => 'btn-form w-100']) ?>
+    <?php endif; ?>
 </div>
 
 <?php ActiveForm::end(); ?>
