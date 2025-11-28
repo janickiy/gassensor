@@ -12,7 +12,7 @@ use yii\bootstrap5\Html;
 
 ?>
 
-<?php $form = ActiveForm::begin(['method' => 'get', 'action' => '/catalog']); ?>
+<?php $form = ActiveForm::begin(['method' => 'get', 'action' => '/catalog', 'options' => [ 'class' => 'pt-2' ]]); ?>
 
 <input type="hidden" name="scroll" value="">
 
@@ -55,7 +55,7 @@ use yii\bootstrap5\Html;
 
 
 <div class="mb-3 border p-1">
-    <label>Время отклика SEC</label>
+    <label>Время отклика, SEC</label>
 
     <div class="row g-1">
         <div class="col">

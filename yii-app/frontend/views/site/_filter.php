@@ -38,12 +38,12 @@ use yii\bootstrap5\Html;
         ?>
 
         <div class="col">
-            <label class="align-middle">Время отклика SEC</label>
+            <label class="align-middle">Время отклика, SEC</label>
         </div>
 
-        <?= $form->field($model, 'response_time_from')->input('number', ['style' => 'min-width: 40px;']) ?>
+        <?= $form->field($model, 'response_time_from')->input('number', ['style' => 'min-width: 30px;']) ?>
 
-        <?= $form->field($model, 'response_time_to')->input('number', ['style' => 'min-width: 40px;']) ?>
+        <?= $form->field($model, 'response_time_to')->input('number', ['style' => 'min-width: 30px;']) ?>
 
         <div class="col">
             <?= Html::submitButton('Поиск', ['class' => 'btn']) ?>

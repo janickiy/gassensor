@@ -220,6 +220,8 @@ class ProductSearch extends Product
 
         if (isset($params['new']) && $params['new'] === true) {
             $query->orderBy('id DESC');
+        } else {
+            $query->orderBy('product.name ASC');
         }
 
         // grid filtering conditions

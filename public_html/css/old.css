@@ -1840,9 +1840,6 @@ input.form-control, select.form-control {
   justify-content: center;
 }
 
-
-
-
 .entry-media img {
   width: auto;
   /* height: 100%; */
@@ -5457,4 +5454,8 @@ section {
 
 .table-top {
   vertical-align: middle; text-align:center;
+}
+
+h2 {
+  font-size: 1.7rem;
 }
