@@ -10,6 +10,9 @@ use common\models\MeasurementType;
 use yii\bootstrap5\ActiveForm;
 use yii\bootstrap5\Html;
 
+/* @var $request \yii\web\Request */
+$req = Yii::$app->request;
+
 ?>
 
 <?php $form = ActiveForm::begin(['method' => 'get', 'action' => '/catalog', 'options' => [ 'class' => 'pt-2' ]]); ?>
@@ -83,7 +86,12 @@ use yii\bootstrap5\Html;
 <?php endif; ?>
 
 <div class="form-group">
-    <?= Html::submitButton('Поиск', ['class' => 'btn mt-3 w-100']) ?>
+    <?= Html::submitButton('Поиск', ['class' => 'btn mt-3', 'style' => 'min-width: 50px']) ?>
+
+    <?php if ($req->get('ProductSearch')): ?>
+        <a title="Сброс фильтров" href="/products" class="btn mt-3" style="min-width: 50px"><i class="fa fa-fw fa-refresh"></i></a>
+    <?php endif; ?>
+
 </div>
 
 <?php ActiveForm::end(); ?>

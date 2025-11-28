@@ -6,7 +6,6 @@
 /* @var $seo common\models\Seo|null */
 
 use common\models\Seo;
-use yii\helpers\Html;
 
 $this->title = 'Каталог';
 $this->params['breadcrumbs'][] = $this->title;
@@ -76,12 +75,8 @@ $this->registerJs($js, $this::POS_READY);
 <div class='<?= $this->context->id ?>-<?= $this->context->action->id ?> px-2'>
     <h1 class="text-center"><?= $seo->h1 ?? $this->title ?></h1>
 
-    <?php if ($req->get('ProductSearch')): ?>
-        <?= Html::a('Сброс фильтров', '/products', ['class' => 'btn mb-2']) ?>
-    <?php endif; ?>
-
     <div class="row">
-        <div class="col-lg-2 col-md-3 bg-light border py-1">
+        <div style="height: 375px" class="col-lg-2 col-md-3 bg-light border py-1">
 
             <?= $this->render('_filter', [
                 'model' => $searchModel,
