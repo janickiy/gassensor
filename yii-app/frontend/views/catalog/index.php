@@ -76,7 +76,7 @@ $this->registerJs($js, $this::POS_READY);
     <h1 class="text-center"><?= $seo->h1 ?? $this->title ?></h1>
 
     <div class="row">
-        <div style="height: 375px" class="col-lg-2 col-md-3 bg-light border py-1">
+        <div style="height: 360px" class="col-lg-2 col-md-3 bg-light border py-1">
 
             <?= $this->render('_filter', [
                 'model' => $searchModel,
