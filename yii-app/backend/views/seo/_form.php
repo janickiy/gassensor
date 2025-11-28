@@ -1,20 +1,19 @@
 <?php
 
+/* @var $this yii\web\View */
+/* @var $model common\models\Seo */
+/* @var $form yii\widgets\ActiveForm */
+
 use common\models\Seo;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-/* @var $this yii\web\View */
-/* @var $model common\models\Seo */
-/* @var $form yii\widgets\ActiveForm */
 ?>
-
 
 <?php $form = ActiveForm::begin(); ?>
 
 <?= $form->field($model, 'type')->dropDownList(Seo::getTypeDropDownData(1), ['class' => 'form-select']) ?>
 <?= $form->field($model, 'h1')->textInput(['maxlength' => true]) ?>
-<?= $form->field($model, 'keyword')->textarea(['rows' => 6]) ?>
 
 <?php if (0): ?>
 
