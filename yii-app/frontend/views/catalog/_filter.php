@@ -85,7 +85,8 @@ $req = Yii::$app->request;
     </div>
 <?php endif; ?>
 
-<div class="form-group">
+<div class="form-group" style="text-align: center">
+
     <?= Html::submitButton('Поиск', ['class' => 'btn mt-3', 'style' => 'min-width: 50px']) ?>
 
     <?php if ($req->get('ProductSearch')): ?>
