@@ -89,7 +89,7 @@ $req = Yii::$app->request;
     <?= Html::submitButton('Поиск', ['class' => 'btn mt-3', 'style' => 'min-width: 50px']) ?>
 
     <?php if ($req->get('ProductSearch')): ?>
-        <a title="Сброс фильтров" href="/products" class="btn mt-3" style="min-width: 50px"><i class="fa fa-fw fa-refresh"></i></a>
+        <a title="Сброс фильтров" href="/products" class="btn mt-3" style="min-width: 50px"><i class="fa fa-fw fa-refresh" style="margin-left: 0px;"></i></a>
     <?php endif; ?>
 
 </div>
