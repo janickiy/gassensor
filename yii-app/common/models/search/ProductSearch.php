@@ -47,10 +47,10 @@ class ProductSearch extends Product
             [['gaz_id', 'gaz_group_id', 'measurement_type_id'], 'integer'],
 
             [['response_time_from'], 'number', 'min' => 0, 'max' => 1000],
-            [['response_time_to'], 'number', 'min' => 0, 'max' => 1000],
+            [['response_time_to'], 'number', 'min' => 0, 'max' => 5000],
 
             ['response_time_from', 'default', 'value' => 0],
-            ['response_time_to', 'default', 'value' => 1000],
+            ['response_time_to', 'default', 'value' => 5000],
 
             [['temperature_range_from'], 'number', 'min' => -100, 'max' => 1000],
             [['temperature_range_to'], 'number', 'min' => 0, 'max' => 1000],
