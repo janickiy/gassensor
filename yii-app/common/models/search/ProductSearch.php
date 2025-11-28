@@ -47,10 +47,10 @@ class ProductSearch extends Product
             [['gaz_id', 'gaz_group_id', 'measurement_type_id'], 'integer'],
 
             [['response_time_from'], 'number', 'min' => 0, 'max' => 1000],
-            [['response_time_to'], 'number', 'min' => 0, 'max' => 5000],
+            [['response_time_to'], 'number', 'min' => 0, 'max' => 1000],
 
             ['response_time_from', 'default', 'value' => 0],
-            ['response_time_to', 'default', 'value' => 5000],
+            ['response_time_to', 'default', 'value' => 1000],
 
             [['temperature_range_from'], 'number', 'min' => -100, 'max' => 1000],
             [['temperature_range_to'], 'number', 'min' => 0, 'max' => 1000],
@@ -218,6 +218,10 @@ class ProductSearch extends Product
         /* @var $query \yii\db\ActiveQuery */
         $query = $dataProvider->query;
 
+        if (isset($params['new']) && $params['new'] === true) {
+            $query->orderBy('id DESC');
+        }
+
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
@@ -229,12 +233,6 @@ class ProductSearch extends Product
             'formfactor' => $this->formfactor,
             'response_time' => $this->response_time,
         ]);
-
-        if (isset($params['new'])) {
-            $query->orderBy('id DESC');
-        } else {
-            $query->orderBy('name ASC');
-        }
 
         $query->andFilterWhere(['>=', 'temperature_range_from', $this->temperature_range_from]);
         $query->andFilterWhere(['<=', 'temperature_range_to', $this->temperature_range_to]);
