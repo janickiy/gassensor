@@ -51,15 +51,16 @@ $this->params['breadcrumbs'][] = $this->title;
                             'id',
                             'created_at:dateTime',
                             'date:date',
+
                             [
-                                'attribute' => 'files',
+                                'attribute' => 'Изображение',
                                 'format' => 'raw',
                                 'value' => function ($model) {
                                     return $this->render('_files', ['model' => $model,]);
                                 }
                             ],
                             [
-                                'attribute' => 'slug',
+                                'attribute' => 'ЧПУ',
                                 'format' => 'raw',
                                 'value' => function ($model) {
                                     return Html::a($model->slug, "/news/{$model->slug}", ['target' => '_blank', 'data-pjax' => 0]);

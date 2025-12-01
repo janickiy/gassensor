@@ -81,7 +81,7 @@ Use search to find needed section.
     <div id="logo-group">
 
         <!-- PLACE YOUR LOGO HERE -->
-        <span id="logo"> <img src="{{ url('/admin/img/logo.png') }}" alt=""> </span>
+        <span id="logo">  </span>
         <!-- END LOGO PLACEHOLDER -->
     </div>
 
@@ -112,7 +112,6 @@ Use search to find needed section.
             </span>
         </div>
         <!-- end fullscreen button -->
-
 
     </div>
     <!-- end pulled right: nav area -->
@@ -152,12 +151,6 @@ Use search to find needed section.
         -->
 
         <ul>
-
-            <li class="nav-item">
-                <a href="<?= Url::to(['news/index', 'sort' => '-id']) ?>"><i class="fa fa-fw fa-list-ul"></i> <span
-                            class="menu-item-parent"> <?= Yii::t('app', 'News') ?></span></a>
-            </li>
-
             <li class="nav-item">
                 <a href="<?= Url::to(['url/index', 'sort' => '-id']) ?>"><i class="fa fa-fw fa-chain"></i> <span
                             class="menu-item-parent"> URL</span></a>
@@ -168,7 +161,7 @@ Use search to find needed section.
                             class="menu-item-parent"> Редиректы</span></a>
             </li>
             <li class="nav-item">
-                <a href="<?= Url::to(['seo/index', 'sort' => '-id']) ?>"><i class="fa fa-fw fa-list-ul"></i> <span
+                <a href="<?= Url::to(['seo/index', 'sort' => '-id']) ?>"><i class="fa fa-fw fa-globe"></i> <span
                             class="menu-item-parent"> SEO</span></a>
             </li>
             <li class="nav-item">
@@ -176,14 +169,14 @@ Use search to find needed section.
                             class="menu-item-parent"> Страницы</span></a>
             </li>
             <li class="nav-item">
+                <a href="<?= Url::to(['news/index', 'sort' => '-id']) ?>"><i class="fa fa-fw fa-list-ul"></i> <span
+                            class="menu-item-parent"> <?= Yii::t('app', 'News') ?></span></a>
+            </li>
+            <li class="nav-item">
                 <a href="<?= Url::to(['gaz/index', 'sort' => '-id']) ?>"><i class="fa fa-fw fa-list-ul"></i> <span
                             class="menu-item-parent"> Газы</span></a>
             </li>
-            <li class="nav-item">
-                <a href="<?= Url::to(['order/index', 'sort' => '-id']) ?>"><i class="fa fa-fw fa-shopping-cart"></i>
-                    <span
-                            class="menu-item-parent"> <?= Yii::t('app', 'Orders') ?></span></a>
-            </li>
+
             <li class="nav-item">
                 <a href="<?= Url::to(['measurement-type/index']) ?> "><i class="fa fa-fw fa-list-ul"></i> <span
                             class="menu-item-parent"> <?= Yii::t('app', 'Measurement Types') ?></span></a>
@@ -206,6 +199,11 @@ Use search to find needed section.
                 <a href="<?= Url::to(['user/index']) ?>"><i class="fa fa-fw fa-users"></i> <span
                             class="menu-item-parent"> <?= Yii::t('app', 'Users') ?></span></a>
             </li>
+                <li class="nav-item">
+                    <a href="<?= Url::to(['order/index', 'sort' => '-id']) ?>"><i class="fa fa-fw fa-shopping-cart"></i>
+                        <span
+                                class="menu-item-parent"> <?= Yii::t('app', 'Orders') ?></span></a>
+                </li>
             <?php endif; ?>
             <?php if (!Yii::$app->user->isManager()): ?>
                 <li class="nav-item">

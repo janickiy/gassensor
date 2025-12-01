@@ -33,7 +33,7 @@ $this->registerJs($js, $this::POS_READY);
 
 <?php $form = ActiveForm::begin(); ?>
 
-<?= $form->field($model, 'date')->textInput() ?>
+<?= $form->field($model, 'date')->textInput()->label('Дата публикации') ?>
 <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
 <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 <?= $form->field($model, 'content')->textarea(['rows' => '6', 'class' => 'form-control', 'maxlength' => true]) ?>
