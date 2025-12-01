@@ -43,7 +43,7 @@ use yii\bootstrap5\Html;
         <div class="col-xl-5 col-lg-12">
             <div class="row align-items-center">
                 <div class="col-4">
-                    <label class="float-end">Время отклика, SEC</label>
+                    <label class="float-end" style="font-size: 15px">Время отклика, SEC</label>
                 </div>
 
                 <?= $form->field($model, 'response_time_from')->input('number', ['style' => 'min-width: 40px; max-width: 225px;']) ?>

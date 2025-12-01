@@ -95,7 +95,7 @@ $req = Yii::$app->request;
             </div>
             <div class="col-4">
                 <a title="Сброс фильтров" href="<?= Url::to(['/products']) ?>" class="btn-form w-100"><i
-                            class="fa fa-fw fa-refresh" style="margin-left: 0;"></i></a>
+                            class="fa fa-fw fa-eraser" style="margin-left: 0;"></i></a>
 
             </div>
         </div>
