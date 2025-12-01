@@ -38,7 +38,7 @@ use yii\helpers\Url;
     </div>
 </a>
 
-<div class='gaz-links-widget card p-2 d-block mt-2 bg-light'>
+<div class='gaz-links-widget card p-2 d-block mt-2' id="navbarScroll">
 
     <p style="font-size: 16px; font-weight: bold">Датчики и сенсоры по типу газа</p>
 
@@ -59,7 +59,7 @@ use yii\helpers\Url;
     <div class="tab-content bg-white border border-top-0" id="myTabContent">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
-            <div class="row m-1">
+            <div class="row m-1 sensors-table overflow-auto rounded-1">
                 <?php foreach (Gaz::find()->notFreons()->orderBy('title')->all() as $model): ?>
                     <?= $this->render('_item', ['model' => $model]) ?>
                 <?php endforeach; ?>
