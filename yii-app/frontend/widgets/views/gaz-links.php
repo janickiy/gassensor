@@ -59,7 +59,7 @@ use yii\helpers\Url;
     <div class="tab-content bg-white border border-top-0" id="myTabContent">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
-            <div class="row m-1 sensors-table overflow-auto rounded-1">
+            <div class="row m-1 sensors-table overflow-auto rounded-1" style="height: 1820px;">
                 <?php foreach (Gaz::find()->notFreons()->orderBy('title')->all() as $model): ?>
                     <?= $this->render('_item', ['model' => $model]) ?>
                 <?php endforeach; ?>
