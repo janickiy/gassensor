@@ -60,7 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 }
                             ],
                             [
-                                'attribute' => 'ЧПУ',
+                                'attribute' => 'slug',
                                 'format' => 'raw',
                                 'value' => function ($model) {
                                     return Html::a($model->slug, "/news/{$model->slug}", ['target' => '_blank', 'data-pjax' => 0]);

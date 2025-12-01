@@ -4,7 +4,7 @@
 /* @var $form yii\widgets\ActiveForm  */
 ?>
 
-<?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+<?= $form->field($model, 'title')->textInput(['maxlength' => true])->label('Title') ?>
 
 <?= $form->field($model, 'h1')->textInput(['maxlength' => true]) ?>
 
