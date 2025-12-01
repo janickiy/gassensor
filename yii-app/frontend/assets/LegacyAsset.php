@@ -12,7 +12,7 @@ class LegacyAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/old.css?v=2',
+        'css/old.css?v=3',
         'admin/css/font-awesome.min.css'
     ];
     public $js = [

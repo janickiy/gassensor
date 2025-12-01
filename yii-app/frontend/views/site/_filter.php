@@ -20,34 +20,46 @@ use yii\bootstrap5\Html;
     ],
 ]); ?>
 
-    <div class="row align-items-center">
+    <div class="row justify-form-middle">
+        <div class="col-xl-7 col-lg-12">
+            <div class="row align-items-center">
+                <?= $form->field($model, 'manufacture_id')->dropDownList(
+                    Manufacture::getDropDownData(true),
+                    ['class' => 'form-select', 'style' => 'min-width: 40px', 'options' => Manufacture::manufactureOption2($model)])->label(false)
+                ?>
 
-        <?= $form->field($model, 'manufacture_id')->dropDownList(
-            Manufacture::getDropDownData(true),
-            ['class' => 'form-select', 'options' => Manufacture::manufactureOption2($model)])->label(false)
-        ?>
+                <?= $form->field($model, 'gaz_id')->dropDownList(
+                    Gaz::getDropDownData(true),
+                    ['class' => 'form-select', 'style' => 'min-width: 40px', 'options' => Gaz::gazOption2($model)])
+                ?>
 
-        <?= $form->field($model, 'gaz_id')->dropDownList(
-            Gaz::getDropDownData(true),
-            ['class' => 'form-select', 'options' => Gaz::gazOption2($model)])
-        ?>
-
-        <?= $form->field($model, 'measurement_type_id')->dropDownList(
-            MeasurementType::getDropDownData(true),
-            ['class' => 'form-select', 'options' => MeasurementType::measurementTypeOption2($model)])
-        ?>
-
-        <div class="col">
-            <label class="align-middle">Время отклика, SEC</label>
+                <?= $form->field($model, 'measurement_type_id')->dropDownList(
+                    MeasurementType::getDropDownData(true),
+                    ['class' => 'form-select', 'style' => 'min-width: 40px', 'options' => MeasurementType::measurementTypeOption2($model)])
+                ?>
+            </div>
         </div>
 
-        <?= $form->field($model, 'response_time_from')->input('number', ['style' => 'max-width: 60px;']) ?>
+        <div class="col-xl-5 col-lg-12">
+            <div class="row align-items-center">
+                <div class="col-4">
+                    <label class="float-end">Время отклика, SEC</label>
+                </div>
 
-        <?= $form->field($model, 'response_time_to')->input('number', ['style' => 'max-width: 60px;']) ?>
+                <?= $form->field($model, 'response_time_from')->input('number', ['style' => 'min-width: 40px; max-width: 225px;']) ?>
 
-        <div class="col">
-            <?= Html::submitButton('Поиск', ['class' => 'btn']) ?>
+                <?= $form->field($model, 'response_time_to')->input('number', ['style' => 'min-width: 40px; max-width: 225px;']) ?>
+
+                <div class="col">
+                    <?= Html::submitButton('Поиск', ['class' => 'btn-form float-end']) ?>
+                </div>
+            </div>
         </div>
+
+
+
+
+
 
     </div>
 
