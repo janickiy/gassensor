@@ -2,76 +2,47 @@
 
 namespace backend\controllers;
 
-use Yii;
+use application\Manufacture\Service\ManufactureService;
+use application\Seo\Service\SeoTextFileService;
+use application\Seo\Service\SeoService;
+use common\models\search\ManufactureSearch;
 use common\models\search\SeoSearch;
-use common\models\{search\ManufactureSearch, UploadSitemap, Seo, Manufacture};
-use yii\web\{Controller,NotFoundHttpException,UploadedFile};
-use yii\filters\VerbFilter;
+use common\models\Seo as SeoModel;
+use common\models\UploadSitemap;
+use modules\admin\controllers\BaseCrudController;
+use Yii;
 
-/**
- * SeoController implements the CRUD actions for Seo model.
- */
-class SeoController extends Controller
+class SeoController extends BaseCrudController
 {
-    /**
-     * @inheritDoc
-     */
-    public function behaviors()
+    protected function serviceClass(): string
     {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::class,
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
-                ],
-            ]
-        );
+        return SeoService::class;
     }
 
-    /**
-     * Lists all Seo models.
-     * @return mixed
-     */
-    public function actionIndex()
+    protected function searchModelClass(): string
     {
-        $searchModel = new SeoSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
-
-        return $this->render('index', compact('searchModel', 'dataProvider'));
+        return SeoSearch::class;
     }
 
-    /**
-     * Редактирование robots.txt
-     * @return string
-     */
-    public function actionRobots()
+    public function actionRobots(): string
     {
-        $content = file_get_contents('../../public_html/robots.txt', true);
+        $content = $this->seoTextFileService()->readRobots();
 
         return $this->render('robots', compact('content'));
     }
 
-    /**
-     * Обновление robots.txt
-     * @return void|\yii\web\Response
-     */
     public function actionUpdateRobots()
     {
         if (Yii::$app->request->post()) {
-            $content = Yii::$app->request->post('content');
-
-            file_put_contents('../../public_html/robots.txt', $content);
-
-            return $this->redirect(['/seo']);
+            $this->seoTextFileService()->saveRobots((string)Yii::$app->request->post('content'));
         }
+
+        return $this->redirect(['/seo']);
     }
 
-    public function actionGoogle()
+    public function actionGoogle(): string
     {
-        $content = file_get_contents('../../public_html/url_list.txt', true);
+        $content = $this->seoTextFileService()->readGoogleUrlList();
 
         return $this->render('google', compact('content'));
     }
@@ -79,114 +50,31 @@ class SeoController extends Controller
     public function actionUpdateGoogle()
     {
         if (Yii::$app->request->post()) {
-            $content = Yii::$app->request->post('content');
-
-            file_put_contents('../../public_html/url_list.txt', $content);
-
-            return $this->redirect(['/seo']);
+            $this->seoTextFileService()->saveGoogleUrlList((string)Yii::$app->request->post('content'));
         }
+
+        return $this->redirect(['/seo']);
     }
 
-    /**
-     * @return string
-     */
-    public function actionSitemap()
+    public function actionSitemap(): string
     {
         return $this->render('sitemap');
     }
 
-
-    /**
-     * @return string|\yii\web\Response
-     */
     public function actionUploadSitemap()
     {
         $model = new UploadSitemap();
 
-        if (Yii::$app->request->isPost) {
-            $model->file = UploadedFile::getInstance($model, 'file');
-            if ($model->upload()) {
-                Yii::$app->session->setFlash('success', 'Файл загружен успешно');
+        if (Yii::$app->request->isPost && $this->seoTextFileService()->uploadSitemapFromRequest($model)) {
+            Yii::$app->session->setFlash('success', 'Файл загружен успешно');
 
-                return $this->redirect(['seo/sitemap']);
-            }
+            return $this->redirect(['seo/sitemap']);
         }
 
         return $this->render('sitemap-upload', compact('model'));
     }
 
-    /**
-     * Displays a single Seo model.
-     * @param int $id ID
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionView(int $id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
-
-    /**
-     * Creates a new Seo model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate()
-    {
-        $model = new Seo();
-
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
-        } else {
-            $model->loadDefaultValues();
-        }
-
-        return $this->render('create', compact('model'));
-    }
-
-    /**
-     * Updates an existing Seo model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     *
-     * @param int $id
-     * @return string|\yii\web\Response
-     * @throws NotFoundHttpException
-     * @throws \yii\db\Exception
-     */
-    public function actionUpdate(int $id)
-    {
-        $model = $this->findModel($id);
-
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            Yii::$app->getSession()->setFlash('success', "Данные успешно обновлены");
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
-
-        return $this->render('update', compact('model'));
-    }
-
-    /**
-     * Deletes an existing Seo model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $id ID
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionDelete(int $id)
-    {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
-    }
-
-    /**
-     * @return string
-     */
-    public function actionManufacture()
+    public function actionManufacture(): string
     {
         $searchModel = new ManufactureSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
@@ -195,48 +83,37 @@ class SeoController extends Controller
         return $this->render('manufacture', compact('searchModel', 'dataProvider'));
     }
 
-    /**
-     * @param int $id
-     * @return string|\yii\web\Response
-     * @throws \yii\db\Exception
-     */
     public function actionManufactureUpdate(int $id)
     {
-        $model = Manufacture::findOne($id);
-        $seo = Seo::find()->where(['type' => Seo::TYPE_CATALOG_MANUFACTURES, 'ref_id' => $id])->one();
-        $modelSeo = $seo ?: new Seo(['type' => Seo::TYPE_CATALOG_MANUFACTURES, 'ref_id' => $id]);
-
-        if (!isset($modelSeo->type)) $modelSeo->type = Seo::TYPE_CATALOG_MANUFACTURES;
-
+        $model = $this->manufactureService()->getModel($id);
+        $modelSeo = $model->seo ?: $this->seoService()->createModel([
+            'type' => SeoModel::TYPE_CATALOG_MANUFACTURES,
+            'ref_id' => $id,
+        ]);
+        $modelSeo->type = $modelSeo->type ?: SeoModel::TYPE_CATALOG_MANUFACTURES;
         $modelSeo->ref_id = $id;
-        $req = $this->request;
 
-        if ($req->isPost && $modelSeo->load($req->post())) {
-            $isValid = $modelSeo->validate();
+        if ($this->request->isPost && $this->seoService()->load($modelSeo, $this->request->post()) && $this->seoService()->validate($modelSeo)) {
+            $this->seoService()->saveModel($modelSeo);
 
-            if ($isValid) {
-                $modelSeo->save(false);
-
-                return $this->redirect(['manufacture']);
-            }
+            return $this->redirect(['manufacture']);
         }
 
         return $this->render('manufacture-update', compact('modelSeo', 'model'));
     }
 
-    /**
-     * Finds the Seo model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $id ID
-     * @return Seo the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findModel(int $id)
+    private function seoService(): SeoService
     {
-        if (($model = Seo::findOne($id)) !== null) {
-            return $model;
-        }
+        return Yii::$container->get(SeoService::class);
+    }
 
-        throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+    private function seoTextFileService(): SeoTextFileService
+    {
+        return Yii::$container->get(SeoTextFileService::class);
+    }
+
+    private function manufactureService(): ManufactureService
+    {
+        return Yii::$container->get(ManufactureService::class);
     }
 }

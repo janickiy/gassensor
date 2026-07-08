@@ -2,17 +2,17 @@
 
 namespace backend\controllers;
 
-use Yii;
+use application\Setting\Service\SettingService;
 use common\helpers\FlashTrait;
-use common\models\Setting;
-use yii\web\Controller;
+use Yii;
 use yii\filters\AccessControl;
+use yii\web\Controller;
 
 class SettingController extends Controller
 {
     use FlashTrait;
 
-    public function behaviors()
+    public function behaviors(): array
     {
         return [
             'access' => [
@@ -33,7 +33,7 @@ class SettingController extends Controller
     /**
      * @return string
      */
-    public function actionIndex()
+    public function actionIndex(): string
     {
         return $this->render($this->action->id, []);
     }
@@ -43,16 +43,21 @@ class SettingController extends Controller
      */
     public function actionSave()
     {
-        $req = Yii::$app->request;
+        $settings = Yii::$app->request->post('setting', []);
+        if ($settings === []) {
+            Yii::$app->getSession()->setFlash('error', 'Нет настроек для сохранения');
 
-        foreach ($req->post('setting') as $name => $v) {
-            if (Setting::saveValue($name, $v)) {
-                Yii::$app->getSession()->setFlash('success', "Сохранена настройка '$name' = '$v'");
-            } else {
-                Yii::$app->getSession()->setFlash('error',"Ошибка сохранения настройки '$name'");
-            }
+            return $this->redirect(Yii::$app->request->referrer ?: ['index']);
         }
 
+        $count = $this->settingService()->saveValues($settings);
+        Yii::$app->getSession()->setFlash('success', "Сохранено настроек: {$count}");
+
         return $this->redirect(Yii::$app->request->referrer ?: ['index']);
+    }
+
+    private function settingService(): SettingService
+    {
+        return Yii::$container->get(SettingService::class);
     }
 }

@@ -2,20 +2,24 @@
 
 namespace backend\controllers;
 
-use common\helpers\StringHelpers;
+use application\Shared\Service\SlugService;
 use Yii;
 use yii\web\Controller;
+use yii\web\Response;
 
 class AjaxController extends Controller
 {
-    public function actionSlug()
+    public function actionSlug(): array
     {
-        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        $request = Yii::$app->request;
-        $q = $request->get('q');
+        Yii::$app->response->format = Response::FORMAT_JSON;
 
         return [
-            'slug' => StringHelpers::slug($q),
+            'slug' => $this->slugService()->normalize((string)$this->request->get('q')),
         ];
+    }
+
+    private function slugService(): SlugService
+    {
+        return Yii::$container->get(SlugService::class);
     }
 }

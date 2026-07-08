@@ -2,8 +2,9 @@
 
 namespace backend\controllers;
 
+use application\Site\Service\UploadService;
 use Yii;
-use common\helpers\{Uploader,FlashTrait};
+use common\helpers\FlashTrait;
 use yii\filters\VerbFilter;
 use yii\web\{Controller,Response};
 
@@ -17,7 +18,7 @@ class SiteController extends Controller
     /**
      * {@inheritdoc}
      */
-    public function behaviors()
+    public function behaviors(): array
     {
         return [
             'verbs' => [
@@ -32,7 +33,7 @@ class SiteController extends Controller
     /**
      * {@inheritdoc}
      */
-    public function actions()
+    public function actions(): array
     {
         return [
             'error' => [
@@ -46,7 +47,7 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex(): string
     {
 
         //$this->addFlashSuccess('test1');
@@ -60,25 +61,20 @@ class SiteController extends Controller
      *
      * @return Response
      */
-    public function actionLogout()
+    public function actionLogout(): Response
     {
         @Yii::$app->user->logout();
 
         return $this->redirect('/site/login');
     }
 
-    public function actionUpload()
+    public function actionUpload(): string
     {
-
-        $uploader = new Uploader([
-            'name' => key($_FILES),
-        ]);
-
-        $filename = $uploader->upload();
-
-        $url = $uploader->baseUrl . '/' . basename($filename);
-
-        return $url;
+        return $this->uploadService()->uploadFromRequestFiles($_FILES);
     }
 
+    private function uploadService(): UploadService
+    {
+        return Yii::$container->get(UploadService::class);
+    }
 }

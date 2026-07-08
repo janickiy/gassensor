@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="46f73909-99bb-4d92-8e60-a9219f17addc" name="Changes" comment="рефактоинг кода">
+      <change afterPath="$PROJECT_DIR$/.idea/phpunit.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Applications/Form/ApplicationsFormModelProviderInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Applications/Service/ApplicationsService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Gaz/Form/GazFormModelProviderInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Gaz/Service/GazService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Manufacture/Form/ManufactureFormModelProviderInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Manufacture/Service/ManufactureFileService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Manufacture/Service/ManufactureService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/MeasurementType/Form/MeasurementTypeFormModelProviderInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/MeasurementType/Service/MeasurementTypeService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/News/Form/NewsFormModelProviderInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/News/Service/NewsFileService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/News/Service/NewsService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Order/Form/OrderFormModelProviderInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Order/Service/OrderService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/OrderProduct/Form/OrderProductFormModelProviderInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/OrderProduct/Service/OrderProductService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Page/Form/PageFormModelProviderInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Page/Service/PageService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Product/Form/ProductFormModelProviderInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Product/Port/ProductFileManagerInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Product/Port/ProductRelationManagerInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Product/Port/SensorsImporterInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Product/Service/ProductService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Redirect/Form/RedirectFormModelProviderInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Redirect/Service/RedirectService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Seo/Form/SeoFormModelProviderInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Seo/Service/SeoService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Seo/Service/SeoTextFileService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Setting/Form/SettingFormModelProviderInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Setting/Service/SettingService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Shared/DTO/CrudResultDto.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Shared/DTO/FormDto.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Shared/Form/FormModelProviderInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Shared/Service/CrudService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Shared/Service/SlugService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Site/Service/UploadService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Tools/Service/ControllerTemplateService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Url/Form/UrlFormModelProviderInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/Url/Service/UrlService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/User/Form/UserFormModelProviderInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/User/Security/PasswordHasherInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/User/Security/RoleAssignerInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/User/Security/TokenGeneratorInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/application/User/Service/UserService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/common/config/di.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/console/migrations/m260707_001926_create_applications_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/console/migrations/m260707_001927_create_auth_rule_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/console/migrations/m260707_001928_create_auth_item_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/console/migrations/m260707_001929_create_auth_assignment_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/console/migrations/m260707_001930_create_auth_item_child_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/console/migrations/m260707_001931_create_file_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/console/migrations/m260707_001932_create_gaz_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/console/migrations/m260707_001933_create_gaz_group_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/console/migrations/m260707_001934_create_gaz_to_group_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/console/migrations/m260707_001935_create_manufacture_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/console/migrations/m260707_001936_create_measurement_type_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/console/migrations/m260707_001937_create_news_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/console/migrations/m260707_001938_create_order_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/console/migrations/m260707_001939_create_page_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/console/migrations/m260707_001940_create_product_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/console/migrations/m260707_001941_create_order_product_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/console/migrations/m260707_001942_create_product_gaz_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/console/migrations/m260707_001943_create_product_range_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/console/migrations/m260707_001944_create_redirect_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/console/migrations/m260707_001945_create_sensors_list_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/console/migrations/m260707_001946_create_seo_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/console/migrations/m260707_001947_create_setting_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/console/migrations/m260707_001948_create_url_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/console/migrations/m260707_001949_create_user_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Applications/DataMapper/ApplicationsDataMapperInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Applications/Entity/Applications.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Applications/Exception/ApplicationsNotFoundException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Applications/Repository/ApplicationsRepositoryInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Gaz/DataMapper/GazDataMapperInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Gaz/Entity/Gaz.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Gaz/Exception/GazNotFoundException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Gaz/Repository/GazRepositoryInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Manufacture/DataMapper/ManufactureDataMapperInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Manufacture/Entity/Manufacture.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Manufacture/Exception/ManufactureNotFoundException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Manufacture/Repository/ManufactureRepositoryInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/MeasurementType/DataMapper/MeasurementTypeDataMapperInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/MeasurementType/Entity/MeasurementType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/MeasurementType/Repository/MeasurementTypeRepositoryInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/News/DataMapper/NewsDataMapperInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/News/Entity/News.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/News/Exception/NewsNotFoundException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/News/Repository/NewsRepositoryInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Order/DataMapper/OrderDataMapperInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Order/Entity/Order.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Order/Exception/OrderNotFoundException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Order/Repository/OrderRepositoryInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/OrderProduct/DataMapper/OrderProductDataMapperInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/OrderProduct/Entity/OrderProduct.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/OrderProduct/Exception/OrderProductNotFoundException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/OrderProduct/Repository/OrderProductRepositoryInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Page/DataMapper/PageDataMapperInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Page/Entity/Page.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Page/Exception/PageNotFoundException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Page/Repository/PageRepositoryInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Product/DataMapper/ProductDataMapperInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Product/Entity/Product.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Product/Exception/ProductNotFoundException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Product/Repository/ProductRepositoryInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Redirect/DataMapper/RedirectDataMapperInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Redirect/Entity/Redirect.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Redirect/Exception/RedirectNotFoundException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Redirect/Repository/RedirectRepositoryInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Seo/DataMapper/SeoDataMapperInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Seo/Entity/Seo.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Seo/Exception/SeoNotFoundException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Seo/Repository/SeoRepositoryInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Setting/DataMapper/SettingDataMapperInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Setting/Entity/Setting.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Setting/Exception/SettingNotFoundException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Setting/Repository/SettingRepositoryInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Shared/DataMapper/DataMapperInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Shared/Entity/AbstractEntity.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Shared/Exception/DomainException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Shared/Exception/EntityNotFoundException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Shared/Exception/EntitySaveException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Url/DataMapper/UrlDataMapperInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Url/Entity/Url.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/Url/Repository/UrlRepositoryInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/User/DataMapper/UserDataMapperInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/User/Entity/User.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/User/Exception/UserNotFoundException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/domain/User/Repository/UserRepositoryInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Applications/ActiveRecord/ApplicationsAR.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Applications/DataMapper/ApplicationsDataMapper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Applications/Form/ApplicationsFormModelProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Applications/Repository/ApplicationsRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Gaz/ActiveRecord/GazAR.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Gaz/DataMapper/GazDataMapper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Gaz/Form/GazFormModelProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Gaz/Repository/GazRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Manufacture/ActiveRecord/ManufactureAR.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Manufacture/DataMapper/ManufactureDataMapper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Manufacture/Form/ManufactureFormModelProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Manufacture/Repository/ManufactureRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/MeasurementType/ActiveRecord/MeasurementTypeAR.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/MeasurementType/DataMapper/MeasurementTypeDataMapper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/MeasurementType/Form/MeasurementTypeFormModelProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/MeasurementType/Repository/MeasurementTypeRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/News/ActiveRecord/NewsAR.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/News/DataMapper/NewsDataMapper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/News/Form/NewsFormModelProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/News/Repository/NewsRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Order/ActiveRecord/OrderAR.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Order/DataMapper/OrderDataMapper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Order/Form/OrderFormModelProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Order/Repository/OrderRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/OrderProduct/ActiveRecord/OrderProductAR.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/OrderProduct/DataMapper/OrderProductDataMapper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/OrderProduct/Form/OrderProductFormModelProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/OrderProduct/Repository/OrderProductRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Page/ActiveRecord/PageAR.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Page/DataMapper/PageDataMapper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Page/Form/PageFormModelProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Page/Repository/PageRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Product/ActiveRecord/ProductAR.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Product/DataMapper/ProductDataMapper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Product/Form/ProductFormModelProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Product/Repository/ProductRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Product/Service/ProductFileManager.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Product/Service/ProductRelationManager.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Product/Service/SensorsImporter.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Redirect/ActiveRecord/RedirectAR.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Redirect/DataMapper/RedirectDataMapper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Redirect/Form/RedirectFormModelProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Redirect/Repository/RedirectRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Seo/ActiveRecord/SeoAR.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Seo/DataMapper/SeoDataMapper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Seo/Form/SeoFormModelProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Seo/Repository/SeoRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Setting/ActiveRecord/SettingAR.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Setting/DataMapper/SettingDataMapper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Setting/Form/SettingFormModelProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Setting/Repository/SettingRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Shared/DataMapper/AbstractDataMapper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Shared/Form/ActiveRecordFormModelProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Shared/Repository/ActiveRecordCrudRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Url/ActiveRecord/UrlAR.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Url/DataMapper/UrlDataMapper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Url/Form/UrlFormModelProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/Url/Repository/UrlRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/User/ActiveRecord/UserAR.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/User/DataMapper/UserDataMapper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/User/Form/UserFormModelProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/User/Repository/UserRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/User/Security/YiiPasswordHasher.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/User/Security/YiiRoleAssigner.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/infrastructure/User/Security/YiiTokenGenerator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/modules/admin/Module.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/modules/admin/controllers/BaseCrudController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/modules/admin/controllers/SeoCrudController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii-app/modules/api/Module.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/www.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/www.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yii-app/backend/controllers/AjaxController.php" beforeDir="false" afterPath="$PROJECT_DIR$/yii-app/backend/controllers/AjaxController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yii-app/backend/controllers/ApplicationsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/yii-app/backend/controllers/ApplicationsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yii-app/backend/controllers/GazController.php" beforeDir="false" afterPath="$PROJECT_DIR$/yii-app/backend/controllers/GazController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yii-app/backend/controllers/ManufactureController.php" beforeDir="false" afterPath="$PROJECT_DIR$/yii-app/backend/controllers/ManufactureController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yii-app/backend/controllers/MeasurementTypeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/yii-app/backend/controllers/MeasurementTypeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yii-app/backend/controllers/MyToolsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/yii-app/backend/controllers/MyToolsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yii-app/backend/controllers/NewsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/yii-app/backend/controllers/NewsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yii-app/backend/controllers/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/yii-app/backend/controllers/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yii-app/backend/controllers/PageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/yii-app/backend/controllers/PageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yii-app/backend/controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/yii-app/backend/controllers/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yii-app/backend/controllers/RedirectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/yii-app/backend/controllers/RedirectController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yii-app/backend/controllers/SeoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/yii-app/backend/controllers/SeoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yii-app/backend/controllers/SettingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/yii-app/backend/controllers/SettingController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yii-app/backend/controllers/SiteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/yii-app/backend/controllers/SiteController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yii-app/backend/controllers/UrlController.php" beforeDir="false" afterPath="$PROJECT_DIR$/yii-app/backend/controllers/UrlController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yii-app/backend/controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/yii-app/backend/controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yii-app/common/config/bootstrap.php" beforeDir="false" afterPath="$PROJECT_DIR$/yii-app/common/config/bootstrap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yii-app/common/config/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/yii-app/common/config/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yii-app/yii" beforeDir="false" afterPath="$PROJECT_DIR$/yii-app/yii" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/public_html/db/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/williamdes/mariadb-mysql-kbs" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/dasprid/enum" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/google/recaptcha" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/nikic/fast-route" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/twig/twig" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/symfony/expression-language" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/symfony/config" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/symfony/cache" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/bacon/bacon-qr-code" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/symfony/polyfill-php81" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/pragmarx/google2fa" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/code-lts/u2f-php-server" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/paragonie/constant_time_encoding" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/pragmarx/google2fa-qrcode" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/symfony/cache-contracts" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/symfony/var-exporter" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/symfony/dependency-injection" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/tecnickcom/tcpdf" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/phpmyadmin/twig-i18n-extension" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/phpmyadmin/shapefile" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/phpseclib/phpseclib" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/phpmyadmin/sql-parser" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/phpmyadmin/motranslator" />
+      <path value="$PROJECT_DIR$/public_html/db/vendor/composer" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/composer" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/psr/event-dispatcher" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/box/spout" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/jdorn/sql-formatter" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/ezyang/htmlpurifier" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/google/auth" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/wdmg/yii2-helpers" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/wdmg/yii2-selectinput" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/wdmg/yii2-robots" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/behat/gherkin" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/psy/psysh" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/cebe/markdown" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/twbs/bootstrap" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/wdmg/yii2-base" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/phpunit/php-invoker" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/phpspec/php-diff" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/bazilio/yii2-stubs-generator" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/google/apiclient" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/google/apiclient-services" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/kidzen/yii2-dynamicform" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/vlucas/phpdotenv" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/symfony/dom-crawler" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/symfony/browser-kit" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/select2/select2" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/symfony/polyfill-iconv" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/yiisoft/yii2-composer" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/yiisoft/yii2-httpclient" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/yiisoft/yii2-bootstrap" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/yiisoft/yii2-gii" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/yiisoft/yii2-swiftmailer" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/yiisoft/yii2-bootstrap5" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/yiisoft/yii2-faker" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/yiisoft/yii2-debug" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/yiisoft/yii2" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/kartik-v/yii2-editors" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/maennchen/zipstream-php" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/markbaker/complex" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/markbaker/matrix" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/kartik-v/yii2-widget-select2" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/kartik-v/yii2-grid" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/kartik-v/yii2-dialog" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/kartik-v/yii2-krajee-base" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/fakerphp/faker" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/firebase/php-jwt" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/sebastian/lines-of-code" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/sebastian/type" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/sebastian/complexity" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/phpoffice/phpspreadsheet" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/phpoption/phpoption" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/phpseclib/phpseclib" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/bower-asset/bootstrap" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/bower-asset/jquery" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/bower-asset/bootstrap-selectinput-plugin" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/bower-asset/yii2-pjax" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/bower-asset/inputmask" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/bower-asset/punycode" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/sebastian/resource-operations" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/wbraganca/yii2-dynamicform" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/yiithings/yii2-dotenv" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/sebastian/cli-parser" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/sebastian/code-unit" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/masterminds/html5" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/graham-campbell/result-type" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/codeception/module-yii2" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/codeception/lib-innerbrowser" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/codeception/stub" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/codeception/specify" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/codeception/codeception" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/codeception/verify" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/codeception/lib-asserts" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/codeception/lib-web" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/myclabs/php-enum" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/codeception/phpunit-wrapper" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/yii-app/vendor/phpunit/php-token-stream" />
+    </include_path>
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "git-widget-placeholder": "master"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="рефактоинг кода" />
+    <option name="LAST_COMMIT_MESSAGE" value="рефактоинг кода" />
+  </component>
+</project>

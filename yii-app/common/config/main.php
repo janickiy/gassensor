@@ -4,6 +4,8 @@ defined('ROLE_NAME_ADMIN') or define('ROLE_NAME_ADMIN', 'admin');
 defined('ROLE_NAME_MANAGER') or define('ROLE_NAME_MANAGER', 'manager');
 defined('ROLE_NAME_DEVELOPER') or define('ROLE_NAME_DEVELOPER', 'developer');
 
+$di = require __DIR__ . '/di.php';
+
 $i18n = [];
 foreach (['app', 'seo', 'order',] as $v) {
     $i18n['translations'][$v] = [
@@ -84,12 +86,18 @@ return [
     ],
 
     'container' => [
-        'definitions' => [
+        'definitions' => array_merge($di['definitions'], [
             \yii\widgets\LinkPager::class => \yii\bootstrap5\LinkPager::class,
-        ],
+        ]),
     ],
 
     'modules' => [
+        'admin' => [
+            'class' => \modules\admin\Module::class,
+        ],
+        'api' => [
+            'class' => \modules\api\Module::class,
+        ],
         'gridview' => [
             'class' => '\kartik\grid\Module'
         ]

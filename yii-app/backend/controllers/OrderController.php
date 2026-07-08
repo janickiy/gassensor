@@ -2,188 +2,71 @@
 
 namespace backend\controllers;
 
-use Yii;
+use application\Order\Service\OrderService;
 use common\helpers\FlashTrait;
-use common\models\Order;
+use common\models\Order as OrderModel;
 use common\models\search\OrderSearch;
-use yii\filters\VerbFilter;
-use yii\web\{BadRequestHttpException, Controller, NotFoundHttpException};
+use modules\admin\controllers\BaseCrudController;
+use Yii;
+use yii\web\BadRequestHttpException;
 
-
-/**
- * OrderController implements the CRUD actions for Order model.
- */
-class OrderController extends Controller
+class OrderController extends BaseCrudController
 {
     use FlashTrait;
 
-    /**
-     * @inheritDoc
-     */
-    public function behaviors()
+    protected function serviceClass(): string
     {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::class,
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
-                ],
-            ]
-        );
+        return OrderService::class;
     }
 
-    /**
-     * Lists all Order models.
-     * @return mixed
-     */
-    public function actionIndex()
+    protected function searchModelClass(): string
     {
-        $searchModel = new OrderSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
-
-        return $this->render('index', compact('searchModel', 'dataProvider'));
+        return OrderSearch::class;
     }
 
-    /**
-     * Displays a single Order model.
-     * @param int $id ID
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionView(int $id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
-
-    /**
-     * Creates a new Order model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate()
-    {
-        $model = new Order();
-
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
-        } else {
-            $model->loadDefaultValues();
-        }
-
-        return $this->render('create', compact('model'));
-    }
-
-    /**
-     * Updates an existing Order model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $id ID
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionUpdate(int $id)
-    {
-        $model = $this->findModel($id);
-
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            Yii::$app->getSession()->setFlash('success', "Данные успешно обновлены");
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
-
-        return $this->render('update', compact('model'));
-    }
-
-    /**
-     * Deletes an existing Order model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $id ID
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionDelete(int $id)
     {
-        $this->findModel($id)->delete();
+        $this->orderService()->delete($id);
 
         return $this->redirect(Yii::$app->request->referrer ?: ['index']);
     }
 
-    /**
-     * @param int $id
-     * @param $status
-     * @return \yii\web\Response
-     * @throws NotFoundHttpException
-     * @throws \yii\db\Exception
-     */
-    public function actionSetStatus(int $id, $status)
+    public function actionSetStatus(int $id, int $status)
     {
-        $model = $this->findModel($id);
+        $result = $this->orderService()->setStatus($id, $status);
+        $statusName = OrderModel::getStatusDropDownData()[$status] ?? $status;
 
-        $model->status = $status;
-
-        if ($model->save()) {
-            Yii::$app->getSession()->setFlash('success', "Установлен статус '{$model->statusName}' заказа #{$model->id}");
-        } else {
-            Yii::$app->getSession()->setFlash('error', $model->errors);
-        }
+        Yii::$app->getSession()->setFlash('success', "Установлен статус '{$statusName}' заказа #{$result->getId()}");
 
         return $this->redirect(['index', 'sort' => '-id']);
     }
 
-    /**
-     * @return \yii\web\Response
-     * @throws BadRequestHttpException
-     */
     public function actionBatch()
     {
-        $req = Yii::$app->request;
+        $action = Yii::$app->request->post('action');
+        $ids = json_decode((string)Yii::$app->request->post('data'), true);
 
-        if (!$action = $req->post('action') or !$data = json_decode($req->post('data'))) {
+        if (!$action || !is_array($ids)) {
             throw new BadRequestHttpException('invalid request');
         }
 
-        switch ($action) {
-            case 'delete':
-                $count = Order::deleteAll(['id' => $data]);
-                $this->addFlashSuccess("Удалено $count шт");
-                break;
-            default:
-                throw new BadRequestHttpException('unknown action');
+        if ($action !== 'delete') {
+            throw new BadRequestHttpException('unknown action');
         }
+
+        $count = $this->orderService()->deleteMany($ids);
+        $this->addFlashSuccess("Удалено {$count} шт");
 
         return $this->redirect(Yii::$app->request->referrer ?: ['index']);
     }
 
-    /**
-     * @param $sort
-     * @return \yii\web\Response
-     * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
-     * @throws \yii\db\Exception
-     * @throws \yii\web\RangeNotSatisfiableHttpException
-     */
     public function actionExportExcel($sort = null)
     {
-        return Order::exportExcel();
+        return OrderModel::exportExcel();
     }
 
-    /**
-     * Finds the Order model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $id ID
-     * @return Order the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findModel(int $id)
+    private function orderService(): OrderService
     {
-        if (($model = Order::findOne($id)) !== null) {
-            return $model;
-        }
-
-        throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+        return Yii::$container->get(OrderService::class);
     }
 }
